@@ -111,7 +111,7 @@ project(':clean') {
     }
 }
 
-project(':forge') {    
+project(':magma') {
     evaluationDependsOn(':clean')
     apply plugin: 'java-library'
     apply plugin: 'maven-publish'
@@ -207,8 +207,8 @@ project(':forge') {
         sideAnnotationStripper = file("$rootDir/src/main/resources/forge.sas")
 
         runs {
-            forge_client {
-                taskName 'forge_client'
+            magma_client {
+                taskName 'magma_client'
 
                 main 'net.minecraftforge.userdev.LaunchTesting'
                 workingDirectory project.file('run')
@@ -232,8 +232,8 @@ project(':forge') {
                 source sourceSets.userdev
             }
 
-            forge_server {
-                taskName 'forge_server'
+            magma_server {
+                taskName 'magma_server'
 
                 main 'net.minecraftforge.userdev.LaunchTesting'
                 workingDirectory project.file('run')
@@ -253,8 +253,8 @@ project(':forge') {
                 source sourceSets.userdev
             }
 
-            forge_data {
-                taskName 'forge_data'
+            magma_data {
+                taskName 'magma_data'
 
                 main 'net.minecraftforge.userdev.LaunchTesting'
                 workingDirectory project.file('run')
@@ -1181,6 +1181,6 @@ def getClasspath(project, libs, artifact) {
 //evaluationDependsOnChildren()
 task setup() {
     dependsOn ':clean:extractMapped'
-    dependsOn ':forge:extractMapped' //These must be strings so that we can do lazy resolution. Else we need evaluationDependsOnChildren above
+    dependsOn ':magma:extractMapped' //These must be strings so that we can do lazy resolution. Else we need evaluationDependsOnChildren above
 }
 

@@ -1,9 +1,9 @@
-rootProject.name = 'Forge'
+rootProject.name = 'Magma'
 
 include ':mcp'
 include ':clean'
-include ':forge'
+include ':magma'
 
 project(":mcp").projectDir = file("projects/mcp")
 project(":clean").projectDir = file("projects/clean")
-project(":forge").projectDir = file("projects/forge")
+project(":magma").projectDir = file("projects/magma")
