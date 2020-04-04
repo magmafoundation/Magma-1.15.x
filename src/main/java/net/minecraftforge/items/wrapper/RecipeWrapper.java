@@ -19,10 +19,15 @@
 
 package net.minecraftforge.items.wrapper;
 
+import java.util.List;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandlerModifiable;
+import org.bukkit.Location;
+import org.bukkit.craftbukkit.entity.CraftHumanEntity;
+import org.bukkit.entity.HumanEntity;
+import org.bukkit.inventory.InventoryHolder;
 
 public class RecipeWrapper implements IInventory {
 
@@ -97,6 +102,43 @@ public class RecipeWrapper implements IInventory {
     {
         return inv.isItemValid(slot, stack);
     }
+
+    // CraftBukkit start
+    @Override
+    public List<ItemStack> getContents() {
+        return null;
+    }
+
+    @Override
+    public void onOpen(CraftHumanEntity who) {
+
+    }
+
+    @Override
+    public void onClose(CraftHumanEntity who) {
+
+    }
+
+    @Override
+    public List<HumanEntity> getViewers() {
+        return null;
+    }
+
+    @Override
+    public InventoryHolder getOwner() {
+        return null;
+    }
+
+    @Override
+    public void setMaxStackSize(int size) {
+
+    }
+
+    @Override
+    public Location getLocation() {
+        return null;
+    }
+    // CraftBukkit end
 
     @Override
     public void clear() 

@@ -1,0 +1,24 @@
+--- a/net/minecraft/inventory/container/StonecutterContainer.java
++++ b/net/minecraft/inventory/container/StonecutterContainer.java
+@@ -19,6 +19,7 @@
+ import net.minecraft.world.World;
+ import net.minecraftforge.api.distmarker.Dist;
+ import net.minecraftforge.api.distmarker.OnlyIn;
++import org.bukkit.inventory.InventoryView;
+ 
+ public class StonecutterContainer extends Container {
+    private final IWorldPosCallable field_217088_g;
+@@ -106,6 +107,13 @@
+       return this.field_217085_d.func_75216_d() && !this.field_217091_j.isEmpty();
+    }
+ 
++   // CraftBukkit start
++   @Override
++   public InventoryView getBukkitView() {
++      return null;
++   }
++   // CraftBukkit end
++
+    public boolean func_75145_c(PlayerEntity p_75145_1_) {
+       return func_216963_a(this.field_217088_g, p_75145_1_, Blocks.field_222430_lS);
+    }

@@ -1,5 +1,14 @@
 --- a/net/minecraft/entity/projectile/FishingBobberEntity.java
 +++ b/net/minecraft/entity/projectile/FishingBobberEntity.java
+@@ -47,7 +47,7 @@
+    private static final DataParameter<Integer> field_184528_c = EntityDataManager.func_187226_a(FishingBobberEntity.class, DataSerializers.field_187192_b);
+    private boolean field_146051_au;
+    private int field_146049_av;
+-   private final PlayerEntity field_146042_b;
++   public PlayerEntity field_146042_b; // private final->public CraftBukkit
+    private int field_146047_aw;
+    private int field_146045_ax;
+    private int field_146040_ay;
 @@ -207,8 +207,8 @@
     private boolean func_190625_o() {
        ItemStack itemstack = this.field_146042_b.func_184614_ca();

@@ -1,0 +1,31 @@
+--- a/net/minecraft/data/CommandsReport.java
++++ b/net/minecraft/data/CommandsReport.java
+@@ -30,19 +30,21 @@
+    }
+ 
+    public void func_200398_a(DirectoryCache p_200398_1_) throws IOException {
++      /* CraftBukkit - disable report
+       YggdrasilAuthenticationService yggdrasilauthenticationservice = new YggdrasilAuthenticationService(Proxy.NO_PROXY, UUID.randomUUID().toString());
+       MinecraftSessionService minecraftsessionservice = yggdrasilauthenticationservice.createMinecraftSessionService();
+       GameProfileRepository gameprofilerepository = yggdrasilauthenticationservice.createProfileRepository();
+-      File file1 = new File(this.field_200400_a.func_200391_b().toFile(), "tmp");
+-      PlayerProfileCache playerprofilecache = new PlayerProfileCache(gameprofilerepository, new File(file1, MinecraftServer.field_152367_a.getName()));
++      File file1 = new File(this.generator.getOutputFolder().toFile(), "tmp");
++      PlayerProfileCache playerprofilecache = new PlayerProfileCache(gameprofilerepository, new File(file1, MinecraftServer.USER_CACHE_FILE.getName()));
+       ServerPropertiesProvider serverpropertiesprovider = new ServerPropertiesProvider(Paths.get("server.properties"));
+-      MinecraftServer minecraftserver = new DedicatedServer(file1, serverpropertiesprovider, DataFixesManager.func_210901_a(), yggdrasilauthenticationservice, minecraftsessionservice, gameprofilerepository, playerprofilecache, LoggingChunkStatusListener::new, serverpropertiesprovider.func_219034_a().field_219021_o);
+-      Path path = this.field_200400_a.func_200391_b().resolve("reports/commands.json");
+-      CommandDispatcher<CommandSource> commanddispatcher = minecraftserver.func_195571_aL().func_197054_a();
+-      IDataProvider.func_218426_a(field_218430_b, p_200398_1_, ArgumentTypes.func_200388_a(commanddispatcher, commanddispatcher.getRoot()), path);
++      MinecraftServer minecraftserver = new DedicatedServer(file1, serverpropertiesprovider, DataFixesManager.getDataFixer(), yggdrasilauthenticationservice, minecraftsessionservice, gameprofilerepository, playerprofilecache, LoggingChunkStatusListener::new, serverpropertiesprovider.getProperties().worldName);
++      Path path = this.generator.getOutputFolder().resolve("reports/commands.json");
++      CommandDispatcher<CommandSource> commanddispatcher = minecraftserver.getCommandManager().getDispatcher();
++      IDataProvider.save(GSON, cache, ArgumentTypes.serialize(commanddispatcher, commanddispatcher.getRoot()), path);
++       */
+    }
+-
+    public String func_200397_b() {
+       return "Command Syntax";
+    }
+ }
++
