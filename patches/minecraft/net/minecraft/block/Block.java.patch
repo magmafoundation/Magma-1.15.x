@@ -1,6 +1,57 @@
 --- a/net/minecraft/block/Block.java
 +++ b/net/minecraft/block/Block.java
-@@ -75,9 +75,10 @@
+@@ -23,12 +23,7 @@
+ import net.minecraft.fluid.Fluids;
+ import net.minecraft.fluid.IFluidState;
+ import net.minecraft.inventory.container.INamedContainerProvider;
+-import net.minecraft.item.BlockItem;
+-import net.minecraft.item.BlockItemUseContext;
+-import net.minecraft.item.DyeColor;
+-import net.minecraft.item.Item;
+-import net.minecraft.item.ItemGroup;
+-import net.minecraft.item.ItemStack;
++import net.minecraft.item.*;
+ import net.minecraft.network.DebugPacketSender;
+ import net.minecraft.pathfinding.PathType;
+ import net.minecraft.state.StateContainer;
+@@ -37,16 +32,7 @@
+ import net.minecraft.tags.FluidTags;
+ import net.minecraft.tags.Tag;
+ import net.minecraft.tileentity.TileEntity;
+-import net.minecraft.util.ActionResultType;
+-import net.minecraft.util.Direction;
+-import net.minecraft.util.Hand;
+-import net.minecraft.util.IItemProvider;
+-import net.minecraft.util.Mirror;
+-import net.minecraft.util.NonNullList;
+-import net.minecraft.util.ObjectIntIdentityMap;
+-import net.minecraft.util.ResourceLocation;
+-import net.minecraft.util.Rotation;
+-import net.minecraft.util.Util;
++import net.minecraft.util.*;
+ import net.minecraft.util.math.BlockPos;
+ import net.minecraft.util.math.BlockRayTraceResult;
+ import net.minecraft.util.math.MathHelper;
+@@ -58,26 +44,18 @@
+ import net.minecraft.util.registry.Registry;
+ import net.minecraft.util.text.ITextComponent;
+ import net.minecraft.util.text.TranslationTextComponent;
+-import net.minecraft.world.Explosion;
+-import net.minecraft.world.GameRules;
+-import net.minecraft.world.IBlockReader;
+-import net.minecraft.world.IWorld;
+-import net.minecraft.world.IWorldReader;
+-import net.minecraft.world.World;
++import net.minecraft.world.*;
+ import net.minecraft.world.server.ServerWorld;
+-import net.minecraft.world.storage.loot.LootContext;
+-import net.minecraft.world.storage.loot.LootParameterSets;
+-import net.minecraft.world.storage.loot.LootParameters;
+-import net.minecraft.world.storage.loot.LootTable;
+-import net.minecraft.world.storage.loot.LootTables;
++import net.minecraft.world.storage.loot.*;
+ import net.minecraftforge.api.distmarker.Dist;
+ import net.minecraftforge.api.distmarker.OnlyIn;
  import org.apache.logging.log4j.LogManager;
  import org.apache.logging.log4j.Logger;
  
@@ -13,7 +64,7 @@
     private static final Direction[] field_212556_a = new Direction[]{Direction.WEST, Direction.EAST, Direction.NORTH, Direction.SOUTH, Direction.DOWN, Direction.UP};
     private static final LoadingCache<VoxelShape, Boolean> field_223006_b = CacheBuilder.newBuilder().maximumSize(512L).weakKeys().build(new CacheLoader<VoxelShape, Boolean>() {
        public Boolean load(VoxelShape p_load_1_) {
-@@ -151,7 +152,7 @@
+@@ -151,7 +129,7 @@
  
     @Deprecated
     public boolean func_220067_a(BlockState p_220067_1_, IBlockReader p_220067_2_, BlockPos p_220067_3_, EntityType<?> p_220067_4_) {
@@ -22,7 +73,7 @@
     }
  
     @Deprecated
-@@ -246,6 +247,10 @@
+@@ -246,6 +224,10 @@
        this.field_149781_w = p_i48440_1_.field_200958_f;
        this.field_149782_v = p_i48440_1_.field_200959_g;
        this.field_149789_z = p_i48440_1_.field_200960_h;
@@ -33,7 +84,7 @@
        this.field_149765_K = p_i48440_1_.field_200961_i;
        this.field_226886_f_ = p_i48440_1_.field_226893_j_;
        this.field_226887_g_ = p_i48440_1_.field_226894_k_;
-@@ -297,7 +302,7 @@
+@@ -297,7 +279,7 @@
  
     @Deprecated
     public boolean func_196253_a(BlockState p_196253_1_, BlockItemUseContext p_196253_2_) {
@@ -42,7 +93,7 @@
     }
  
     @Deprecated
-@@ -314,8 +319,9 @@
+@@ -314,8 +296,9 @@
        return this.field_149789_z;
     }
  
@@ -53,7 +104,7 @@
     }
  
     @Deprecated
-@@ -471,10 +477,9 @@
+@@ -471,10 +454,9 @@
  
     @Deprecated
     public void func_196243_a(BlockState p_196243_1_, World p_196243_2_, BlockPos p_196243_3_, BlockState p_196243_4_, boolean p_196243_5_) {
@@ -65,7 +116,7 @@
     }
  
     @Deprecated
-@@ -483,8 +488,8 @@
+@@ -483,8 +465,8 @@
        if (f == -1.0F) {
           return 0.0F;
        } else {
@@ -76,7 +127,7 @@
        }
     }
  
-@@ -494,8 +499,7 @@
+@@ -494,8 +476,7 @@
  
     public ResourceLocation func_220068_i() {
        if (this.field_220085_g == null) {
@@ -86,7 +137,7 @@
        }
  
        return this.field_220085_g;
-@@ -555,7 +559,7 @@
+@@ -555,19 +536,31 @@
     }
  
     public static void func_180635_a(World p_180635_0_, BlockPos p_180635_1_, ItemStack p_180635_2_) {
@@ -95,16 +146,33 @@
           float f = 0.5F;
           double d0 = (double)(p_180635_0_.field_73012_v.nextFloat() * 0.5F) + 0.25D;
           double d1 = (double)(p_180635_0_.field_73012_v.nextFloat() * 0.5F) + 0.25D;
-@@ -567,7 +571,7 @@
+          double d2 = (double)(p_180635_0_.field_73012_v.nextFloat() * 0.5F) + 0.25D;
+          ItemEntity itementity = new ItemEntity(p_180635_0_, (double)p_180635_1_.func_177958_n() + d0, (double)p_180635_1_.func_177956_o() + d1, (double)p_180635_1_.func_177952_p() + d2, p_180635_2_);
+          itementity.func_174869_p();
+-         p_180635_0_.func_217376_c(itementity);
++         // CraftBukkit start
++         if (p_180635_0_.captureDrops != null) {
++            p_180635_0_.captureDrops.add(itementity);
++         } else {
++            p_180635_0_.func_217376_c(itementity);
++         }
++         // CraftBukkit stop
+       }
     }
  
++   // CraftBukkit start
++   public int getExpDrop(BlockState blockState, World world, BlockPos blockposition, ItemStack itemstack) {
++      return 0;
++   }
++   // CraftBukkit end
++
     public void func_180637_b(World p_180637_1_, BlockPos p_180637_2_, int p_180637_3_) {
 -      if (!p_180637_1_.field_72995_K && p_180637_1_.func_82736_K().func_223586_b(GameRules.field_223603_f)) {
 +      if (!p_180637_1_.field_72995_K && p_180637_1_.func_82736_K().func_223586_b(GameRules.field_223603_f) && !p_180637_1_.restoringBlockSnapshots) { // do not drop items while restoring blockstates, prevents item dupe
           while(p_180637_3_ > 0) {
              int i = ExperienceOrbEntity.func_70527_a(p_180637_3_);
              p_180637_3_ -= i;
-@@ -577,6 +581,7 @@
+@@ -577,6 +570,7 @@
  
     }
  
@@ -112,7 +180,7 @@
     public float func_149638_a() {
        return this.field_149781_w;
     }
-@@ -675,6 +680,7 @@
+@@ -675,6 +669,7 @@
        p_176216_2_.func_213317_d(p_176216_2_.func_213322_ci().func_216372_d(1.0D, 0.0D, 1.0D));
     }
  
@@ -120,7 +188,7 @@
     public ItemStack func_185473_a(IBlockReader p_185473_1_, BlockPos p_185473_2_, BlockState p_185473_3_) {
        return new ItemStack(this);
     }
-@@ -688,6 +694,7 @@
+@@ -688,6 +683,7 @@
        return Fluids.field_204541_a.func_207188_f();
     }
  
@@ -128,7 +196,7 @@
     public float func_208618_m() {
        return this.field_149765_K;
     }
-@@ -716,6 +723,7 @@
+@@ -716,6 +712,7 @@
     public void func_176224_k(World p_176224_1_, BlockPos p_176224_2_) {
     }
  
@@ -136,7 +204,7 @@
     public boolean func_149659_a(Explosion p_149659_1_) {
        return true;
     }
-@@ -760,6 +768,7 @@
+@@ -760,6 +757,7 @@
        }
     }
  
@@ -144,7 +212,7 @@
     public SoundType func_220072_p(BlockState p_220072_1_) {
        return this.field_149762_H;
     }
-@@ -769,7 +778,7 @@
+@@ -769,7 +767,7 @@
           this.field_220086_i = Item.func_150898_a(this);
        }
  
@@ -153,7 +221,7 @@
     }
  
     public boolean func_208619_r() {
-@@ -777,13 +786,81 @@
+@@ -777,13 +775,81 @@
     }
  
     public String toString() {
@@ -236,7 +304,7 @@
     public static enum OffsetType {
        NONE,
        XZ,
-@@ -805,6 +882,9 @@
+@@ -805,6 +871,9 @@
        private ResourceLocation field_222381_j;
        private boolean field_226895_m_ = true;
        private boolean field_208772_j;
@@ -246,7 +314,7 @@
  
        private Properties(Material p_i48616_1_, MaterialColor p_i48616_2_) {
           this.field_200953_a = p_i48616_1_;
-@@ -837,6 +917,8 @@
+@@ -837,6 +906,8 @@
           block$properties.field_226893_j_ = p_200950_0_.func_226891_m_();
           block$properties.field_208772_j = p_200950_0_.field_208621_p;
           block$properties.field_226895_m_ = p_200950_0_.field_226888_j_;
@@ -255,7 +323,7 @@
           return block$properties;
        }
  
-@@ -901,13 +983,23 @@
+@@ -901,13 +972,23 @@
           return this;
        }
  
