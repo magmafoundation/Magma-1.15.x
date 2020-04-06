@@ -2,7 +2,7 @@
 
 # Magma 1.15.2
 
-![](https://img.shields.io/badge/Minecraft%20Forge-1.15.2%20--%2032.1.0-orange.svg?style=for-the-badge) ![](https://img.shields.io/badge/Status-Unstable-red?style=for-the-badge) [![](https://img.shields.io/jenkins/build/https/ci.hexeption.co.uk/job/Magma-Main/job/1.14?label=CI&style=for-the-badge)](https://ci.hexeption.co.uk)
+![](https://img.shields.io/badge/Minecraft%20Forge-1.15.2%20--%2032.1.0-orange.svg?style=for-the-badge) ![](https://img.shields.io/badge/Status-Unstable-red?style=for-the-badge) [![](https://img.shields.io/jenkins/build.svg?jobUrl=https%3A%2F%2Fci.hexeption.co.uk%2Fjob%2FMagma-1.15.x%2Fjob%2F1.15.x&label=CI&style=for-the-badge)](https://ci.hexeption.co.uk/job/Magma-1.15.x/job/1.15.x/)
 
 ## About
 
