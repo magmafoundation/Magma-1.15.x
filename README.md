@@ -12,15 +12,8 @@ Magma is based on Forge and Paper, meaning it can run both Craftbukkit/Spigot/Pa
 
 We hope to eliminate all issues with craftbukkit forge servers. In the end, we envision a seamless, low lag Magma experience with support for newer 1.12+ versions of Minecraft.
 
-## Deployment
-
-### Installation
-
-1. Download the recommended builds from the [**Releases** section](https://github.com/magmafoundation/Magma-1.14/releases)
-   1. Download Beta builds from the [**CI**](https://ci.hexeption.co.uk/job/Magma-1.14/)
-2. Make a new directory for the server
-3. Move the jar that you previously downloaded to the new directory
-4. Run the jar
+## Downloads 
+Currently, no builds are available for 1.15 as we are in early development please check back later. 
 
 ### Building the sources
 Not able to be build yet, Check back soon!
