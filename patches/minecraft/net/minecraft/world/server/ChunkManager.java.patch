@@ -1,6 +1,68 @@
 --- a/net/minecraft/world/server/ChunkManager.java
 +++ b/net/minecraft/world/server/ChunkManager.java
-@@ -95,7 +95,7 @@
+@@ -1,28 +1,19 @@
+ package net.minecraft.world.server;
+ 
+-import com.google.common.collect.ImmutableList;
+-import com.google.common.collect.Iterables;
+-import com.google.common.collect.Lists;
+-import com.google.common.collect.Queues;
+-import com.google.common.collect.Sets;
++import com.google.common.collect.*;
+ import com.mojang.datafixers.DataFixer;
+ import com.mojang.datafixers.util.Either;
+ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+ import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
++import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+ import it.unimi.dsi.fastutil.longs.LongIterator;
+ import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+ import it.unimi.dsi.fastutil.longs.LongSet;
+-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+ import java.io.File;
+ import java.io.IOException;
+ import java.io.Writer;
+-import java.util.Collection;
+-import java.util.List;
+-import java.util.Objects;
+-import java.util.Optional;
+-import java.util.Queue;
+-import java.util.Set;
++import java.util.*;
+ import java.util.concurrent.CancellationException;
+ import java.util.concurrent.CompletableFuture;
+ import java.util.concurrent.CompletionException;
+@@ -48,11 +39,7 @@
+ import net.minecraft.nbt.CompoundNBT;
+ import net.minecraft.network.DebugPacketSender;
+ import net.minecraft.network.IPacket;
+-import net.minecraft.network.play.server.SChunkDataPacket;
+-import net.minecraft.network.play.server.SMountEntityPacket;
+-import net.minecraft.network.play.server.SSetPassengersPacket;
+-import net.minecraft.network.play.server.SUpdateChunkPositionPacket;
+-import net.minecraft.network.play.server.SUpdateLightPacket;
++import net.minecraft.network.play.server.*;
+ import net.minecraft.profiler.IProfiler;
+ import net.minecraft.util.CSVWriter;
+ import net.minecraft.util.ClassInheritanceMultiMap;
+@@ -68,15 +55,7 @@
+ import net.minecraft.village.PointOfInterestManager;
+ import net.minecraft.world.GameRules;
+ import net.minecraft.world.TrackedEntity;
+-import net.minecraft.world.chunk.Chunk;
+-import net.minecraft.world.chunk.ChunkPrimer;
+-import net.minecraft.world.chunk.ChunkPrimerWrapper;
+-import net.minecraft.world.chunk.ChunkStatus;
+-import net.minecraft.world.chunk.ChunkTaskPriorityQueue;
+-import net.minecraft.world.chunk.ChunkTaskPriorityQueueSorter;
+-import net.minecraft.world.chunk.IChunk;
+-import net.minecraft.world.chunk.IChunkLightProvider;
+-import net.minecraft.world.chunk.PlayerGenerationTracker;
++import net.minecraft.world.chunk.*;
+ import net.minecraft.world.chunk.listener.IChunkStatusListener;
+ import net.minecraft.world.chunk.storage.ChunkLoader;
+ import net.minecraft.world.chunk.storage.ChunkSerializer;
+@@ -95,7 +74,7 @@
     private static final Logger field_219250_d = LogManager.getLogger();
     public static final int field_219249_a = 33 + ChunkStatus.func_222600_b();
     private final Long2ObjectLinkedOpenHashMap<ChunkHolder> field_219251_e = new Long2ObjectLinkedOpenHashMap<>();
@@ -9,7 +71,7 @@
     private final Long2ObjectLinkedOpenHashMap<ChunkHolder> field_219253_g = new Long2ObjectLinkedOpenHashMap<>();
     private final LongSet field_219254_h = new LongOpenHashSet();
     private final ServerWorld field_219255_i;
-@@ -109,13 +109,13 @@
+@@ -109,16 +88,42 @@
     private final ChunkTaskPriorityQueueSorter field_219263_q;
     private final ITaskExecutor<ChunkTaskPriorityQueueSorter.FunctionEntry<Runnable>> field_219264_r;
     private final ITaskExecutor<ChunkTaskPriorityQueueSorter.FunctionEntry<Runnable>> field_219265_s;
@@ -26,7 +88,36 @@
     private final Queue<Runnable> field_223181_A = Queues.newConcurrentLinkedQueue();
     private int field_219247_A;
  
-@@ -368,6 +368,7 @@
++   // CraftBukkit start - recursion-safe executor for Chunk loadCallback() and unloadCallback()
++   public final CallbackExecutor callbackExecutor = new CallbackExecutor();
++
++   public static final class CallbackExecutor implements java.util.concurrent.Executor, Runnable {
++
++      private Runnable queued;
++
++      @Override
++      public void execute(Runnable runnable) {
++         if (queued != null) {
++            throw new IllegalStateException("Already queued");
++         }
++         queued = runnable;
++      }
++
++      @Override
++      public void run() {
++         Runnable task = queued;
++         queued = null;
++         if (task != null) {
++            task.run();
++         }
++      }
++   }
++   // CraftBukkit end
++
+    public ChunkManager(ServerWorld p_i51538_1_, File p_i51538_2_, DataFixer p_i51538_3_, TemplateManager p_i51538_4_, Executor p_i51538_5_, ThreadTaskExecutor<Runnable> p_i51538_6_, IChunkLightProvider p_i51538_7_, ChunkGenerator<?> p_i51538_8_, IChunkStatusListener p_i51538_9_, Supplier<DimensionSavedDataManager> p_i51538_10_, int p_i51538_11_) {
+       super(new File(p_i51538_1_.func_201675_m().func_186058_p().func_212679_a(p_i51538_2_), "region"), p_i51538_3_);
+       this.field_219269_w = p_i51538_4_;
+@@ -368,6 +373,7 @@
        iprofiler.func_219895_b("chunk_unload");
        if (!this.field_219255_i.func_217402_u()) {
           this.func_223155_b(p_219204_1_);
@@ -34,7 +125,7 @@
        }
  
        iprofiler.func_76319_b();
-@@ -404,6 +405,7 @@
+@@ -404,6 +410,7 @@
              if (this.field_219253_g.remove(p_219212_1_, p_219212_3_) && p_219185_5_ != null) {
                 if (p_219185_5_ instanceof Chunk) {
                    ((Chunk)p_219185_5_).func_177417_c(false);
@@ -42,7 +133,7 @@
                 }
  
                 this.func_219229_a(p_219185_5_);
-@@ -482,6 +484,7 @@
+@@ -482,6 +489,7 @@
                 if (flag) {
                    IChunk ichunk = ChunkSerializer.func_222656_a(this.field_219255_i, this.field_219269_w, this.field_219260_n, p_223172_1_, compoundnbt);
                    ichunk.func_177432_b(this.field_219255_i.func_82737_E());
@@ -50,7 +141,7 @@
                    return Either.left(ichunk);
                 }
  
-@@ -594,6 +597,7 @@
+@@ -594,6 +602,7 @@
                 if (list != null) {
                    list.forEach(chunk::func_76622_b);
                 }
@@ -58,7 +149,7 @@
              }
  
              return chunk;
-@@ -679,6 +683,7 @@
+@@ -679,6 +688,7 @@
  
              this.field_219255_i.func_217381_Z().func_230035_c_("chunkSave");
              CompoundNBT compoundnbt1 = ChunkSerializer.func_222645_a(this.field_219255_i, p_219229_1_);
@@ -66,7 +157,7 @@
              this.func_219100_a(chunkpos, compoundnbt1);
              return true;
           } catch (Exception exception) {
-@@ -711,6 +716,7 @@
+@@ -711,6 +721,7 @@
  
     protected void func_219199_a(ServerPlayerEntity p_219199_1_, ChunkPos p_219199_2_, IPacket<?>[] p_219199_3_, boolean p_219199_4_, boolean p_219199_5_) {
        if (p_219199_1_.field_70170_p == this.field_219255_i) {
@@ -74,7 +165,7 @@
           if (p_219199_5_ && !p_219199_4_) {
              ChunkHolder chunkholder = this.func_219219_b(p_219199_2_.func_201841_a());
              if (chunkholder != null) {
-@@ -1056,12 +1062,12 @@
+@@ -1056,12 +1067,12 @@
        });
     }
  

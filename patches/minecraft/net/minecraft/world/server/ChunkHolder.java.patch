@@ -1,5 +1,14 @@
 --- a/net/minecraft/world/server/ChunkHolder.java
 +++ b/net/minecraft/world/server/ChunkHolder.java
+@@ -44,7 +44,7 @@
+    private volatile CompletableFuture<Either<Chunk, ChunkHolder.IChunkLoadingError>> field_219313_h = field_219309_d;
+    private volatile CompletableFuture<Either<Chunk, ChunkHolder.IChunkLoadingError>> field_219314_i = field_219309_d;
+    private CompletableFuture<IChunk> field_219315_j = CompletableFuture.completedFuture((IChunk)null);
+-   private int field_219316_k;
++   public int field_219316_k; // private->public | oldTicketLevel
+    private int field_219317_l;
+    private int field_219318_m;
+    private final ChunkPos field_219319_n;
 @@ -70,6 +70,17 @@
        this.func_219292_a(p_i50716_2_);
     }
