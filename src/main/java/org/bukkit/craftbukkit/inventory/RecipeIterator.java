@@ -1,7 +1,8 @@
 package org.bukkit.craftbukkit.inventory;
 
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import java.util.Iterator;
-import java.util.Map;
+import java.util.Map.Entry;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.server.MinecraftServer;
@@ -9,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import org.bukkit.inventory.Recipe;
 
 public class RecipeIterator implements Iterator<Recipe> {
-    private final Iterator<Map.Entry<IRecipeType<?>, Map<ResourceLocation, IRecipe<?>>>> recipes;
+    private final Iterator<Entry<IRecipeType<?>, Object2ObjectLinkedOpenHashMap<ResourceLocation, IRecipe<?>>>> recipes;
     private Iterator<IRecipe<?>> current;
 
     public RecipeIterator() {
