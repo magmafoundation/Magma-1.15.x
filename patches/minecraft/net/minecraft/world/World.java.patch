@@ -57,11 +57,13 @@
     private final Thread field_217407_c;
     private int field_73008_k;
     protected int field_73005_l = (new Random()).nextInt();
-@@ -80,14 +83,43 @@
+@@ -79,15 +82,44 @@
+    public float field_73017_q;
     public final Random field_73012_v = new Random();
     public final Dimension field_73011_w;
-    protected final AbstractChunkProvider field_73020_y;
+-   protected final AbstractChunkProvider field_73020_y;
 -   protected final WorldInfo field_72986_A;
++   public final AbstractChunkProvider field_73020_y; // protected->public CraftBukkit
 +   public final WorldInfo field_72986_A; // protected->public CraftBukkit
     private final IProfiler field_72984_F;
     public final boolean field_72995_K;

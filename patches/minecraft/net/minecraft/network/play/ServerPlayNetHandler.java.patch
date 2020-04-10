@@ -1,14 +1,174 @@
 --- a/net/minecraft/network/play/ServerPlayNetHandler.java
 +++ b/net/minecraft/network/play/ServerPlayNetHandler.java
-@@ -131,6 +131,7 @@
+@@ -10,6 +10,7 @@
+ import it.unimi.dsi.fastutil.ints.Int2ShortOpenHashMap;
+ import java.util.Collections;
+ import java.util.Set;
++import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
+ import javax.annotation.Nullable;
+ import net.minecraft.advancements.Advancement;
+ import net.minecraft.advancements.CriteriaTriggers;
+@@ -31,11 +32,7 @@
+ import net.minecraft.entity.player.PlayerInventory;
+ import net.minecraft.entity.player.ServerPlayerEntity;
+ import net.minecraft.entity.projectile.AbstractArrowEntity;
+-import net.minecraft.inventory.container.BeaconContainer;
+-import net.minecraft.inventory.container.Container;
+-import net.minecraft.inventory.container.MerchantContainer;
+-import net.minecraft.inventory.container.RecipeBookContainer;
+-import net.minecraft.inventory.container.RepairContainer;
++import net.minecraft.inventory.container.*;
+ import net.minecraft.item.ItemStack;
+ import net.minecraft.item.Items;
+ import net.minecraft.item.WritableBookItem;
+@@ -46,84 +43,16 @@
+ import net.minecraft.network.IPacket;
+ import net.minecraft.network.NetworkManager;
+ import net.minecraft.network.PacketThreadUtil;
+-import net.minecraft.network.play.client.CAnimateHandPacket;
+-import net.minecraft.network.play.client.CChatMessagePacket;
+-import net.minecraft.network.play.client.CClickWindowPacket;
+-import net.minecraft.network.play.client.CClientSettingsPacket;
+-import net.minecraft.network.play.client.CClientStatusPacket;
+-import net.minecraft.network.play.client.CCloseWindowPacket;
+-import net.minecraft.network.play.client.CConfirmTeleportPacket;
+-import net.minecraft.network.play.client.CConfirmTransactionPacket;
+-import net.minecraft.network.play.client.CCreativeInventoryActionPacket;
+-import net.minecraft.network.play.client.CCustomPayloadPacket;
+-import net.minecraft.network.play.client.CEditBookPacket;
+-import net.minecraft.network.play.client.CEnchantItemPacket;
+-import net.minecraft.network.play.client.CEntityActionPacket;
+-import net.minecraft.network.play.client.CHeldItemChangePacket;
+-import net.minecraft.network.play.client.CInputPacket;
+-import net.minecraft.network.play.client.CKeepAlivePacket;
+-import net.minecraft.network.play.client.CLockDifficultyPacket;
+-import net.minecraft.network.play.client.CMoveVehiclePacket;
+-import net.minecraft.network.play.client.CPickItemPacket;
+-import net.minecraft.network.play.client.CPlaceRecipePacket;
+-import net.minecraft.network.play.client.CPlayerAbilitiesPacket;
+-import net.minecraft.network.play.client.CPlayerDiggingPacket;
+-import net.minecraft.network.play.client.CPlayerPacket;
+-import net.minecraft.network.play.client.CPlayerTryUseItemOnBlockPacket;
+-import net.minecraft.network.play.client.CPlayerTryUseItemPacket;
+-import net.minecraft.network.play.client.CQueryEntityNBTPacket;
+-import net.minecraft.network.play.client.CQueryTileEntityNBTPacket;
+-import net.minecraft.network.play.client.CRecipeInfoPacket;
+-import net.minecraft.network.play.client.CRenameItemPacket;
+-import net.minecraft.network.play.client.CResourcePackStatusPacket;
+-import net.minecraft.network.play.client.CSeenAdvancementsPacket;
+-import net.minecraft.network.play.client.CSelectTradePacket;
+-import net.minecraft.network.play.client.CSetDifficultyPacket;
+-import net.minecraft.network.play.client.CSpectatePacket;
+-import net.minecraft.network.play.client.CSteerBoatPacket;
+-import net.minecraft.network.play.client.CTabCompletePacket;
+-import net.minecraft.network.play.client.CUpdateBeaconPacket;
+-import net.minecraft.network.play.client.CUpdateCommandBlockPacket;
+-import net.minecraft.network.play.client.CUpdateJigsawBlockPacket;
+-import net.minecraft.network.play.client.CUpdateMinecartCommandBlockPacket;
+-import net.minecraft.network.play.client.CUpdateSignPacket;
+-import net.minecraft.network.play.client.CUpdateStructureBlockPacket;
+-import net.minecraft.network.play.client.CUseEntityPacket;
+-import net.minecraft.network.play.server.SChangeBlockPacket;
+-import net.minecraft.network.play.server.SChatPacket;
+-import net.minecraft.network.play.server.SConfirmTransactionPacket;
+-import net.minecraft.network.play.server.SDisconnectPacket;
+-import net.minecraft.network.play.server.SHeldItemChangePacket;
+-import net.minecraft.network.play.server.SKeepAlivePacket;
+-import net.minecraft.network.play.server.SMoveVehiclePacket;
+-import net.minecraft.network.play.server.SPlayerPositionLookPacket;
+-import net.minecraft.network.play.server.SQueryNBTResponsePacket;
+-import net.minecraft.network.play.server.SSetSlotPacket;
+-import net.minecraft.network.play.server.STabCompletePacket;
++import net.minecraft.network.play.client.*;
++import net.minecraft.network.play.server.*;
+ import net.minecraft.potion.Effects;
+ import net.minecraft.server.MinecraftServer;
+-import net.minecraft.tileentity.CommandBlockLogic;
+-import net.minecraft.tileentity.CommandBlockTileEntity;
+-import net.minecraft.tileentity.JigsawTileEntity;
+-import net.minecraft.tileentity.SignTileEntity;
+-import net.minecraft.tileentity.StructureBlockTileEntity;
+-import net.minecraft.tileentity.TileEntity;
+-import net.minecraft.util.ActionResultType;
+-import net.minecraft.util.Direction;
+-import net.minecraft.util.Hand;
+-import net.minecraft.util.NonNullList;
+-import net.minecraft.util.ResourceLocation;
+-import net.minecraft.util.SharedConstants;
+-import net.minecraft.util.StringUtils;
+-import net.minecraft.util.Util;
++import net.minecraft.tileentity.*;
++import net.minecraft.util.*;
+ import net.minecraft.util.math.BlockPos;
+ import net.minecraft.util.math.BlockRayTraceResult;
+ import net.minecraft.util.math.Vec3d;
+-import net.minecraft.util.text.ChatType;
+-import net.minecraft.util.text.ITextComponent;
+-import net.minecraft.util.text.StringTextComponent;
+-import net.minecraft.util.text.TextFormatting;
+-import net.minecraft.util.text.TranslationTextComponent;
++import net.minecraft.util.text.*;
+ import net.minecraft.world.GameRules;
+ import net.minecraft.world.GameType;
+ import net.minecraft.world.IWorldReader;
+@@ -131,6 +60,11 @@
  import net.minecraft.world.server.ServerWorld;
  import org.apache.logging.log4j.LogManager;
  import org.apache.logging.log4j.Logger;
 +import org.bukkit.Location;
++import org.bukkit.craftbukkit.entity.CraftPlayer;
++import org.bukkit.entity.Player;
++import org.bukkit.event.player.PlayerTeleportEvent;
++import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
  
  public class ServerPlayNetHandler implements IServerPlayNetHandler {
     private static final Logger field_147370_c = LogManager.getLogger();
-@@ -272,6 +273,12 @@
+@@ -141,7 +75,10 @@
+    private long field_194402_f;
+    private boolean field_194403_g;
+    private long field_194404_h;
+-   private int field_147374_l;
++   // CraftBukkit start - multithreaded fields
++   private volatile int field_147374_l;
++   private static final AtomicIntegerFieldUpdater chatSpamField = AtomicIntegerFieldUpdater.newUpdater(ServerPlayNetHandler.class, "chatSpamThresholdCount");
++   // CraftBukkit end
+    private int field_147375_m;
+    private final Int2ShortMap field_147372_n = new Int2ShortOpenHashMap();
+    private double field_184349_l;
+@@ -173,8 +110,32 @@
+       p_i1530_2_.func_150719_a(this);
+       this.field_147369_b = p_i1530_3_;
+       p_i1530_3_.field_71135_a = this;
++
++      // CraftBukkit start - add fields and methods
++      this.craftServer = p_i1530_1_.server;
+    }
+ 
++   private final org.bukkit.craftbukkit.CraftServer craftServer;
++   public boolean processedDisconnect;
++   private int lastTick = MinecraftServer.currentTick;
++   private int allowedPlayerTicks = 1;
++   private int lastDropTick = MinecraftServer.currentTick;
++   private int lastBookTick  = MinecraftServer.currentTick;
++   private int dropCount = 0;
++   private static final int SURVIVAL_PLACE_DISTANCE_SQUARED = 6 * 6;
++   private static final int CREATIVE_PLACE_DISTANCE_SQUARED = 7 * 7;
++   // Get position of last block hit for BlockDamageLevel.STOPPED
++   private double lastPosX = Double.MAX_VALUE;
++   private double lastPosY = Double.MAX_VALUE;
++   private double lastPosZ = Double.MAX_VALUE;
++   private float lastPitch = Float.MAX_VALUE;
++   private float lastYaw = Float.MAX_VALUE;
++   private boolean justTeleported = false;
++   public CraftPlayer getPlayerCB() {
++      return (this.field_147369_b == null) ? null : (CraftPlayer) this.field_147369_b.getBukkitEntity();
++   }
++   // CraftBukkit end
++
+    public void func_73660_a() {
+       this.func_184342_d();
+       this.field_147369_b.field_70169_q = this.field_147369_b.func_226277_ct_();
+@@ -272,6 +233,12 @@
        this.field_147367_d.func_213167_f(this.field_147371_a::func_179293_l);
     }
  
@@ -21,7 +181,7 @@
     public void func_147358_a(CInputPacket p_147358_1_) {
        PacketThreadUtil.func_218796_a(p_147358_1_, this, this.field_147369_b.func_71121_q());
        this.field_147369_b.func_110430_a(p_147358_1_.func_149620_c(), p_147358_1_.func_192620_b(), p_147358_1_.func_149618_e(), p_147358_1_.func_229755_e_());
-@@ -336,9 +343,11 @@
+@@ -336,9 +303,11 @@
              }
  
              entity.func_70080_a(d3, d4, d5, f, f1);
@@ -33,7 +193,86 @@
                 this.field_147371_a.func_179290_a(new SMoveVehiclePacket(entity));
                 return;
              }
-@@ -845,7 +854,9 @@
+@@ -780,20 +749,70 @@
+       this.func_175089_a(p_147364_1_, p_147364_3_, p_147364_5_, p_147364_7_, p_147364_8_, Collections.emptySet());
+    }
+ 
++   // CraftBukkit start - Delegate to teleport(Location)
++   public void setPlayerLocation(double x, double y, double z, float yaw, float pitch, TeleportCause cause) {
++      this.setPlayerLocation(x, y, z, yaw, pitch, Collections.emptySet(), cause);
++   }
++
+    public void func_175089_a(double p_175089_1_, double p_175089_3_, double p_175089_5_, float p_175089_7_, float p_175089_8_, Set<SPlayerPositionLookPacket.Flags> p_175089_9_) {
+-      double d0 = p_175089_9_.contains(SPlayerPositionLookPacket.Flags.X) ? this.field_147369_b.func_226277_ct_() : 0.0D;
+-      double d1 = p_175089_9_.contains(SPlayerPositionLookPacket.Flags.Y) ? this.field_147369_b.func_226278_cu_() : 0.0D;
+-      double d2 = p_175089_9_.contains(SPlayerPositionLookPacket.Flags.Z) ? this.field_147369_b.func_226281_cx_() : 0.0D;
+-      float f = p_175089_9_.contains(SPlayerPositionLookPacket.Flags.Y_ROT) ? this.field_147369_b.field_70177_z : 0.0F;
+-      float f1 = p_175089_9_.contains(SPlayerPositionLookPacket.Flags.X_ROT) ? this.field_147369_b.field_70125_A : 0.0F;
+-      this.field_184362_y = new Vec3d(p_175089_1_, p_175089_3_, p_175089_5_);
++      this.setPlayerLocation(p_175089_1_, p_175089_3_, p_175089_5_, p_175089_7_, p_175089_8_, p_175089_9_, TeleportCause.UNKNOWN);
++   }
++
++   public void setPlayerLocation(double d0, double d1, double d2, float f, float f1, Set<SPlayerPositionLookPacket.Flags> relativeSet, TeleportCause cause) {
++      Player player = this.getPlayerCB();
++      Location from = player.getLocation();
++      double x = d0;
++      double y = d1;
++      double z = d2;
++      float yaw = f;
++      float pitch = f1;
++      Location to = new Location(this.getPlayerCB().getWorld(), x, y, z, yaw, pitch);
++      // SPIGOT-5171: Triggered on join
++      if (from.equals(to)) {
++         this.internalTeleport(d0, d1, d2, f, f1, relativeSet);
++         return;
++      }
++      PlayerTeleportEvent event = new PlayerTeleportEvent(player, from.clone(), to.clone(), cause);
++      this.craftServer.getPluginManager().callEvent(event);
++      if (event.isCancelled() || !to.equals(event.getTo())) {
++         relativeSet.clear(); // Can't relative teleport
++         to = event.isCancelled() ? event.getFrom() : event.getTo();
++         d0 = to.getX();
++         d1 = to.getY();
++         d2 = to.getZ();
++         f = to.getYaw();
++         f1 = to.getPitch();
++      }
++      this.internalTeleport(x, y, z, yaw, pitch, relativeSet);
++   }
++
++   public void teleport(Location dest) {
++      internalTeleport(dest.getX(), dest.getY(), dest.getZ(), dest.getYaw(), dest.getPitch(), Collections.<SPlayerPositionLookPacket.Flags>emptySet());
++   }
++
++   private void internalTeleport(double x, double y, double z, float yaw, float pitch, Set<SPlayerPositionLookPacket.Flags> relativeSet) {
++      // CraftBukkit start
++      if (Float.isNaN(yaw)) {
++         yaw = 0;
++      }
++      if (Float.isNaN(pitch)) {
++         pitch = 0;
++      }
++      this.justTeleported = true;
++      // CraftBukkit end
++      double d0 = relativeSet.contains(SPlayerPositionLookPacket.Flags.X) ? this.field_147369_b.func_226277_ct_() : 0.0D;
++      double d1 = relativeSet.contains(SPlayerPositionLookPacket.Flags.Y) ? this.field_147369_b.func_226278_cu_() : 0.0D;
++      double d2 = relativeSet.contains(SPlayerPositionLookPacket.Flags.Z) ? this.field_147369_b.func_226281_cx_() : 0.0D;
++      float f = relativeSet.contains(SPlayerPositionLookPacket.Flags.Y_ROT) ? this.field_147369_b.field_70177_z : 0.0F;
++      float f1 = relativeSet.contains(SPlayerPositionLookPacket.Flags.X_ROT) ? this.field_147369_b.field_70125_A : 0.0F;
++      this.field_184362_y = new Vec3d(x, y, z);
+       if (++this.field_184363_z == Integer.MAX_VALUE) {
+          this.field_184363_z = 0;
+       }
+ 
+       this.field_184343_A = this.field_147368_e;
+-      this.field_147369_b.func_70080_a(p_175089_1_, p_175089_3_, p_175089_5_, p_175089_7_, p_175089_8_);
+-      this.field_147369_b.field_71135_a.func_147359_a(new SPlayerPositionLookPacket(p_175089_1_ - d0, p_175089_3_ - d1, p_175089_5_ - d2, p_175089_7_ - f, p_175089_8_ - f1, p_175089_9_, this.field_184363_z));
++      this.field_147369_b.func_70080_a(x, y, z, yaw, pitch);
++      this.field_147369_b.field_71135_a.func_147359_a(new SPlayerPositionLookPacket(x - d0, y - d1, z - d2, yaw - f, pitch - f1, relativeSet, this.field_184363_z));
+    }
+ 
+    public void func_147345_a(CPlayerDiggingPacket p_147345_1_) {
+@@ -845,7 +864,9 @@
        Direction direction = blockraytraceresult.func_216354_b();
        this.field_147369_b.func_143004_u();
        if (blockpos.func_177956_o() < this.field_147367_d.func_71207_Z() - 1 || direction != Direction.UP && blockpos.func_177956_o() < this.field_147367_d.func_71207_Z()) {
@@ -44,7 +283,7 @@
              ActionResultType actionresulttype = this.field_147369_b.field_71134_c.func_219441_a(this.field_147369_b, serverworld, itemstack, hand, blockraytraceresult);
              if (actionresulttype.func_226247_b_()) {
                 this.field_147369_b.func_226292_a_(hand, true);
-@@ -968,7 +979,9 @@
+@@ -968,7 +989,9 @@
           if (s.startsWith("/")) {
              this.func_147361_d(s);
           } else {
@@ -55,7 +294,7 @@
              this.field_147367_d.func_184103_al().func_148544_a(itextcomponent, false);
           }
  
-@@ -980,6 +993,12 @@
+@@ -980,6 +1003,12 @@
        }
     }
  
@@ -68,7 +307,7 @@
     private void func_147361_d(String p_147361_1_) {
        this.field_147367_d.func_195571_aL().func_197059_a(this.field_147369_b.func_195051_bN(), p_147361_1_);
     }
-@@ -1061,6 +1080,7 @@
+@@ -1061,6 +1090,7 @@
                 this.field_147369_b.func_190775_a(entity, hand);
              } else if (p_147340_1_.func_149565_c() == CUseEntityPacket.Action.INTERACT_AT) {
                 Hand hand1 = p_147340_1_.func_186994_b();
@@ -76,7 +315,7 @@
                 ActionResultType actionresulttype = entity.func_184199_a(this.field_147369_b, p_147340_1_.func_179712_b(), hand1);
                 if (actionresulttype.func_226247_b_()) {
                    this.field_147369_b.func_226292_a_(hand1, true);
-@@ -1094,7 +1114,7 @@
+@@ -1094,7 +1124,7 @@
                 return;
              }
  
@@ -85,7 +324,7 @@
              if (this.field_147367_d.func_71199_h()) {
                 this.field_147369_b.func_71033_a(GameType.SPECTATOR);
                 this.field_147369_b.func_71121_q().func_82736_K().func_223585_a(GameRules.field_223613_p).func_223570_a(false, this.field_147367_d);
-@@ -1268,6 +1288,8 @@
+@@ -1268,6 +1298,8 @@
     }
  
     public void func_147349_a(CCustomPayloadPacket p_147349_1_) {
@@ -94,15 +333,12 @@
     }
  
     public void func_217263_a(CSetDifficultyPacket p_217263_1_) {
-@@ -1283,4 +1305,13 @@
+@@ -1283,4 +1315,10 @@
           this.field_147367_d.func_213209_d(p_217261_1_.func_218776_b());
        }
     }
 +
 +   // CraftBukkit start
-+   public void teleport(Location to) {
-+   }
-+
 +   public boolean isDisconnected() {
 +      return false;
 +   }

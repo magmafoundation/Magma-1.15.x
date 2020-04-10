@@ -494,36 +494,69 @@
     }
  
     protected void func_70670_a(EffectInstance p_70670_1_) {
-@@ -1207,15 +1320,17 @@
+@@ -1202,30 +1315,42 @@
+       return this.field_192042_bX;
+    }
+ 
++   // CraftBukkit start
+    public void func_200619_a(ServerWorld p_200619_1_, double p_200619_2_, double p_200619_4_, double p_200619_6_, float p_200619_8_, float p_200619_9_) {
++      this.teleport(p_200619_1_, p_200619_2_, p_200619_4_, p_200619_6_, p_200619_8_, p_200619_9_, TeleportCause.UNKNOWN);
++   }
++
++   public void teleport(ServerWorld newWorld, double x, double y, double z, float yaw, float pitch, TeleportCause cause) {
++      // CraftBukkit end
+       this.func_175399_e(this);
        this.func_184210_p();
-       if (p_200619_1_ == this.field_70170_p) {
-          this.field_71135_a.func_147364_a(p_200619_2_, p_200619_4_, p_200619_6_, p_200619_8_, p_200619_9_);
+-      if (p_200619_1_ == this.field_70170_p) {
+-         this.field_71135_a.func_147364_a(p_200619_2_, p_200619_4_, p_200619_6_, p_200619_8_, p_200619_9_);
 -      } else {
-+      } else if (net.minecraftforge.common.ForgeHooks.onTravelToDimension(this, p_200619_1_.field_73011_w.func_186058_p())) {
-+         DimensionType oldDimension = this.field_71093_bK;
-          ServerWorld serverworld = this.func_71121_q();
-          this.field_71093_bK = p_200619_1_.field_73011_w.func_186058_p();
-          WorldInfo worldinfo = p_200619_1_.func_72912_H();
-+         net.minecraftforge.fml.network.NetworkHooks.sendDimensionDataPacket(this.field_71135_a.field_147371_a, this);
-          this.field_71135_a.func_147359_a(new SRespawnPacket(this.field_71093_bK, WorldInfo.func_227498_c_(worldinfo.func_76063_b()), worldinfo.func_76067_t(), this.field_71134_c.func_73081_b()));
-          this.field_71135_a.func_147359_a(new SServerDifficultyPacket(worldinfo.func_176130_y(), worldinfo.func_176123_z()));
-          this.field_71133_b.func_184103_al().func_187243_f(this);
+-         ServerWorld serverworld = this.func_71121_q();
+-         this.field_71093_bK = p_200619_1_.field_73011_w.func_186058_p();
+-         WorldInfo worldinfo = p_200619_1_.func_72912_H();
+-         this.field_71135_a.func_147359_a(new SRespawnPacket(this.field_71093_bK, WorldInfo.func_227498_c_(worldinfo.func_76063_b()), worldinfo.func_76067_t(), this.field_71134_c.func_73081_b()));
+-         this.field_71135_a.func_147359_a(new SServerDifficultyPacket(worldinfo.func_176130_y(), worldinfo.func_176123_z()));
+-         this.field_71133_b.func_184103_al().func_187243_f(this);
 -         serverworld.func_217434_e(this);
 -         this.field_70128_L = false;
+-         this.func_70012_b(p_200619_2_, p_200619_4_, p_200619_6_, p_200619_8_, p_200619_9_);
+-         this.func_70029_a(p_200619_1_);
+-         p_200619_1_.func_217446_a(this);
++       /* CraftBukkit start - replace with bukkit handling for multi-world
++      if (newWorld == this.world) {
++         this.connection.setPlayerLocation(x, y, z, yaw, pitch);
++      } else if (net.minecraftforge.common.ForgeHooks.onTravelToDimension(this, newWorld.dimension.getType())) {
++         DimensionType oldDimension = this.dimension;
++         ServerWorld serverworld = this.getServerWorld();
++         this.dimension = newWorld.dimension.getType();
++         WorldInfo worldinfo = newWorld.getWorldInfo();
++         net.minecraftforge.fml.network.NetworkHooks.sendDimensionDataPacket(this.connection.netManager, this);
++         this.connection.sendPacket(new SRespawnPacket(this.dimension, WorldInfo.byHashing(worldinfo.getSeed()), worldinfo.getGenerator(), this.interactionManager.getGameType()));
++         this.connection.sendPacket(new SServerDifficultyPacket(worldinfo.getDifficulty(), worldinfo.isDifficultyLocked()));
++         this.server.getPlayerList().updatePermissionLevel(this);
 +         serverworld.removePlayer(this, true); //Forge: The player entity itself is moved, and not cloned. So we need to keep the data alive with no matching invalidate call later.
 +         this.revive();
-          this.func_70012_b(p_200619_2_, p_200619_4_, p_200619_6_, p_200619_8_, p_200619_9_);
-          this.func_70029_a(p_200619_1_);
-          p_200619_1_.func_217446_a(this);
-@@ -1224,6 +1339,7 @@
-          this.field_71134_c.func_73080_a(p_200619_1_);
-          this.field_71133_b.func_184103_al().func_72354_b(this, p_200619_1_);
-          this.field_71133_b.func_184103_al().func_72385_f(this);
-+         net.minecraftforge.fml.hooks.BasicEventHooks.firePlayerChangedDimensionEvent(this, oldDimension, this.field_71093_bK);
++         this.setLocationAndAngles(x, y, z, yaw, pitch);
++         this.setWorld(newWorld);
++         newWorld.func_217446_a(this);
+          this.func_213846_b(serverworld);
+-         this.field_71135_a.func_147364_a(p_200619_2_, p_200619_4_, p_200619_6_, p_200619_8_, p_200619_9_);
+-         this.field_71134_c.func_73080_a(p_200619_1_);
+-         this.field_71133_b.func_184103_al().func_72354_b(this, p_200619_1_);
+-         this.field_71133_b.func_184103_al().func_72385_f(this);
++         this.connection.setPlayerLocation(x, y, z, yaw, pitch);
++         this.interactionManager.setWorld(newWorld);
++         this.server.getPlayerList().sendWorldInfo(this, newWorld);
++         this.server.getPlayerList().sendInventory(this);
++         net.minecraftforge.fml.hooks.BasicEventHooks.firePlayerChangedDimensionEvent(this, oldDimension, this.dimension);
        }
- 
+-
++        */
++      this.getBukkitEntity().teleport(new Location(newWorld.getWorldCB(), x, y, z, yaw, pitch), cause);
++      // CraftBukkit end
     }
-@@ -1261,6 +1377,8 @@
+ 
+    public void func_213844_a(ChunkPos p_213844_1_, IPacket<?> p_213844_2_, IPacket<?> p_213844_3_) {
+@@ -1261,6 +1386,8 @@
        if (itementity == null) {
           return null;
        } else {
@@ -532,7 +565,7 @@
           this.field_70170_p.func_217376_c(itementity);
           ItemStack itemstack = itementity.func_92059_d();
           if (p_146097_3_) {
-@@ -1274,4 +1392,28 @@
+@@ -1274,4 +1401,28 @@
           return itementity;
        }
     }
