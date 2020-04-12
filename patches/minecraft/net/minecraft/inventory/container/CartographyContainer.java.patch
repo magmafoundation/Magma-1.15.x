@@ -1,24 +1,71 @@
 --- a/net/minecraft/inventory/container/CartographyContainer.java
 +++ b/net/minecraft/inventory/container/CartographyContainer.java
-@@ -14,6 +14,7 @@
+@@ -14,16 +14,34 @@
  import net.minecraft.util.SoundCategory;
  import net.minecraft.util.SoundEvents;
  import net.minecraft.world.storage.MapData;
++import org.bukkit.Location;
++import org.bukkit.craftbukkit.inventory.CraftInventoryCartography;
++import org.bukkit.craftbukkit.inventory.CraftInventoryView;
++import org.bukkit.entity.Player;
 +import org.bukkit.inventory.InventoryView;
  
  public class CartographyContainer extends Container {
     private final IWorldPosCallable field_216999_d;
-@@ -104,6 +105,13 @@
+    private boolean field_217000_e;
+    private long field_226605_f_;
++
++   // CraftBukkit start
++   private CraftInventoryView bukkitEntity = null;
++   private Player player;
++   // CraftBukkit end
++
+    public final IInventory field_216998_c = new Inventory(2) {
+       public void func_70296_d() {
+          CartographyContainer.this.func_75130_a(this);
+          super.func_70296_d();
+       }
++
++      // CraftBukkit start
++      @Override
++      public Location getLocation() {
++         return field_216998_c.getLocation();
++      }
++      // CraftBukkit end
+    };
+    private final CraftResultInventory field_217001_f = new CraftResultInventory() {
+       public void func_70296_d() {
+@@ -102,9 +120,23 @@
+          this.func_75146_a(new Slot(p_i50094_2_, k, 8 + k * 18, 142));
+       }
  
++      player = (Player) p_i50094_2_.field_70458_d.getBukkitEntity();
     }
  
 +   // CraftBukkit start
 +   @Override
 +   public InventoryView getBukkitView() {
-+      return null;
++      if (bukkitEntity != null) {
++         return bukkitEntity;
++      }
++      CraftInventoryCartography inventory = new CraftInventoryCartography(this.field_216998_c, this.field_217001_f);
++      bukkitEntity = new CraftInventoryView(this.player, inventory, this);
++      return bukkitEntity;
 +   }
 +   // CraftBukkit end
 +
     public boolean func_75145_c(PlayerEntity p_75145_1_) {
++      if (!this.checkReachable) return true; // CraftBukkit
        return func_216963_a(this.field_216999_d, p_75145_1_, Blocks.field_222425_lN);
     }
+ 
+@@ -153,8 +185,8 @@
+                this.field_217001_f.func_70299_a(2, itemstack);
+                this.func_75142_b();
+             }
+-
+          }
++
+       });
+    }
+ 
