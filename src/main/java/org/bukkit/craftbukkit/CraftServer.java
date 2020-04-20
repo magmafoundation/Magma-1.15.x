@@ -721,7 +721,7 @@ public final class CraftServer implements Server {
         commandsConfiguration = YamlConfiguration.loadConfiguration(getCommandsConfigFile());
 
         Path path = Paths.get("server.properties");
-        console.settings = new ServerPropertiesProvider(path);
+        console.settings = new ServerPropertiesProvider(console.options);
         ServerProperties config = console.settings.getProperties();
 
         console.setCanSpawnAnimals(config.spawnAnimals);

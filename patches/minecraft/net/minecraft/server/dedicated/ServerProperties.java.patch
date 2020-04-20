@@ -1,6 +1,13 @@
 --- a/net/minecraft/server/dedicated/ServerProperties.java
 +++ b/net/minecraft/server/dedicated/ServerProperties.java
-@@ -9,6 +9,7 @@
+@@ -3,12 +3,14 @@
+ import java.nio.file.Path;
+ import java.util.Properties;
+ import java.util.concurrent.TimeUnit;
++import joptsimple.OptionSet;
+ import net.minecraft.util.math.MathHelper;
+ import net.minecraft.world.Difficulty;
+ import net.minecraft.world.GameType;
  import net.minecraft.world.WorldType;
  
  public class ServerProperties extends PropertyManager<ServerProperties> {
@@ -8,3 +15,34 @@
     public final boolean field_219007_a = this.func_218982_a("online-mode", true);
     public final boolean field_219008_b = this.func_218982_a("prevent-proxy-connections", false);
     public final String field_219009_c = this.func_218973_a("server-ip", "");
+@@ -58,8 +60,10 @@
+    public final PropertyManager<ServerProperties>.Property<Integer> field_219005_R;
+    public final PropertyManager<ServerProperties>.Property<Boolean> field_219006_S;
+ 
+-   public ServerProperties(Properties p_i50719_1_) {
+-      super(p_i50719_1_);
++   // CraftBukkit start
++   public ServerProperties(Properties properties, OptionSet optionSet) {
++      super(properties, optionSet);
++      // CraftBukkit end
+       if (this.func_218982_a("snooper-enabled", true)) {
+          ;
+       }
+@@ -83,11 +87,13 @@
+       this.field_219006_S = this.func_218961_b("white-list", false);
+    }
+ 
+-   public static ServerProperties func_218985_a(Path p_218985_0_) {
+-      return new ServerProperties(func_218969_b(p_218985_0_));
++   // CraftBukkit start
++   public static ServerProperties create(Path pathIn, OptionSet optionSet) {
++      return new ServerProperties(func_218969_b(pathIn), optionSet);
+    }
+ 
+-   protected ServerProperties func_212857_b_(Properties p_212857_1_) {
+-      return new ServerProperties(p_212857_1_);
++   protected ServerProperties func_212857_b_(Properties properties, OptionSet optionSet) {
++      return new ServerProperties(properties, optionSet);
++      // CraftBukkit end
+    }
+ }
