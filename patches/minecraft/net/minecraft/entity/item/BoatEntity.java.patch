@@ -32,18 +32,19 @@
                             ++k1;
                          }
                       }
-@@ -776,6 +785,16 @@
+@@ -776,6 +785,17 @@
        return new SSpawnObjectPacket(this);
     }
  
 +   // Forge: Fix MC-119811 by instantly completing lerp on board
 +   @Override
-+   protected void func_184200_o(Entity passenger) {
-+      super.func_184200_o(passenger);
++   protected boolean addPassenger(Entity passenger) {
++      super.addPassenger(passenger);
 +      if (this.func_184186_bw() && this.field_184476_at > 0) {
 +         this.field_184476_at = 0;
 +         this.func_70080_a(this.field_70281_h, this.field_184477_av, this.field_184478_aw, (float)this.field_70273_g, (float)this.field_184479_ay);
 +      }
++      return false;
 +   }
 +
     public static enum Status {

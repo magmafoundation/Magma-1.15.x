@@ -1,4 +1,4 @@
-![Magma](https://img.hexeption.co.uk/magma.png)
+![Magma](https://i.imgur.com/zTCTCWG.png)
 
 # Magma 1.15.2
 

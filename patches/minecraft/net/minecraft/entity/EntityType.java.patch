@@ -69,6 +69,15 @@
     public T func_220349_b(World p_220349_1_, @Nullable CompoundNBT p_220349_2_, @Nullable ITextComponent p_220349_3_, @Nullable PlayerEntity p_220349_4_, BlockPos p_220349_5_, SpawnReason p_220349_6_, boolean p_220349_7_, boolean p_220349_8_) {
        T t = this.func_200721_a(p_220349_1_);
        if (t == null) {
+@@ -315,7 +336,7 @@
+             t.func_200203_b(p_220349_3_);
+          }
+ 
+-         func_208048_a(p_220349_1_, p_220349_4_, t, p_220349_2_);
++         try { func_208048_a(p_220349_1_, p_220349_4_, t, p_220349_2_); } catch (Throwable throwable) { field_200731_aJ.warn("Error loading spawn egg NBT", throwable); } // CraftBukkit - SPIGOT-5665
+          return t;
+       }
+    }
 @@ -466,6 +487,9 @@
     }
  

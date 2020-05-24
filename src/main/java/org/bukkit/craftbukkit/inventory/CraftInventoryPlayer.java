@@ -1,15 +1,18 @@
 package org.bukkit.craftbukkit.inventory;
 
 import com.google.common.base.Preconditions;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.play.server.SHeldItemChangePacket;
 import net.minecraft.network.play.server.SSetSlotPacket;
-import net.minecraft.entity.player.PlayerInventory;
 import org.apache.commons.lang.Validate;
 import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.inventory.EntityEquipment;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class CraftInventoryPlayer extends CraftInventory implements org.bukkit.inventory.PlayerInventory, EntityEquipment {
     public CraftInventoryPlayer(net.minecraft.entity.player.PlayerInventory inventory) {
@@ -100,6 +103,56 @@ public class CraftInventoryPlayer extends CraftInventory implements org.bukkit.i
             index = 8 - (index - 36);
         }
         player.connection.sendPacket(new SSetSlotPacket(player.container.windowId, index, CraftItemStack.asNMSCopy(item)));
+    }
+
+    @Override
+    public void setItem(EquipmentSlot slot, ItemStack item) {
+        Preconditions.checkArgument(slot != null, "slot must not be null");
+
+        switch (slot) {
+            case HAND:
+                this.setItemInMainHand(item);
+                break;
+            case OFF_HAND:
+                this.setItemInOffHand(item);
+                break;
+            case FEET:
+                this.setBoots(item);
+                break;
+            case LEGS:
+                this.setLeggings(item);
+                break;
+            case CHEST:
+                this.setChestplate(item);
+                break;
+            case HEAD:
+                this.setHelmet(item);
+                break;
+            default:
+                throw new IllegalArgumentException("Not implemented. This is a bug");
+        }
+    }
+
+    @Override
+    public ItemStack getItem(EquipmentSlot slot) {
+        Preconditions.checkArgument(slot != null, "slot must not be null");
+
+        switch (slot) {
+            case HAND:
+                return getItemInMainHand();
+            case OFF_HAND:
+                return getItemInOffHand();
+            case FEET:
+                return getBoots();
+            case LEGS:
+                return getLeggings();
+            case CHEST:
+                return getChestplate();
+            case HEAD:
+                return getHelmet();
+            default:
+                throw new IllegalArgumentException("Not implemented. This is a bug");
+        }
     }
 
     @Override
