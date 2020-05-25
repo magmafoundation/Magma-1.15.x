@@ -537,7 +537,7 @@
 +         this.revive();
 +         this.setLocationAndAngles(x, y, z, yaw, pitch);
 +         this.setWorld(newWorld);
-+         newWorld.func_217446_a(this);
++         newWorld.addDuringCommandTeleport(this);
           this.func_213846_b(serverworld);
 -         this.field_71135_a.func_147364_a(p_200619_2_, p_200619_4_, p_200619_6_, p_200619_8_, p_200619_9_);
 -         this.field_71134_c.func_73080_a(p_200619_1_);

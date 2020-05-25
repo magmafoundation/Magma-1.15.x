@@ -4,32 +4,32 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeManager;
 import net.minecraft.block.Block;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.chunk.ChunkStatus;
-import net.minecraft.world.DifficultyInstance;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.fluid.Fluid;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.gen.Heightmap;
-import net.minecraft.block.BlockState;
-import net.minecraft.world.chunk.IChunk;
-import net.minecraft.world.chunk.AbstractChunkProvider;
-import net.minecraft.world.lighting.WorldLightManager;
+import net.minecraft.fluid.IFluidState;
 import net.minecraft.particles.IParticleData;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.ITickList;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeManager;
 import net.minecraft.world.border.WorldBorder;
-import net.minecraft.world.storage.WorldInfo;
+import net.minecraft.world.chunk.AbstractChunkProvider;
+import net.minecraft.world.chunk.ChunkStatus;
+import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.dimension.Dimension;
+import net.minecraft.world.gen.Heightmap;
+import net.minecraft.world.lighting.WorldLightManager;
+import net.minecraft.world.storage.WorldInfo;
 
 public class DummyGeneratorAccess implements IWorld {
 
@@ -199,7 +199,8 @@ public class DummyGeneratorAccess implements IWorld {
     }
 
     @Override
-    public boolean func_225521_a_(BlockPos blockposition, boolean flag, @Nullable Entity entity) {
+    public boolean destroyBlock(BlockPos pos, boolean p_225521_2_, @Nullable Entity entityIn) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
 }

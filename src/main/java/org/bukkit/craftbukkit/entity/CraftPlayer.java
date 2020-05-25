@@ -676,7 +676,7 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
 
     @Override
     public boolean isSneaking() {
-        return getHandle().isShiftKeyDown();
+        return getHandle().isSneaking();
     }
 
     @Override
@@ -1015,7 +1015,7 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
         ServerPlayerEntity other = ((CraftPlayer) player).getHandle();
         ChunkManager.EntityTracker entry = tracker.entities.get(other.getEntityId());
         if (entry != null) {
-            entry.func_219399_a(getHandle());
+            entry.removeTracker(getHandle());
         }
 
         // Remove the hidden player from this player user list, if they're on it

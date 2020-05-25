@@ -37,24 +37,35 @@
        this.field_192390_i = p_i50090_2_.field_70458_d;
        this.func_75146_a(new CraftingResultSlot(p_i50090_2_.field_70458_d, this.field_75162_e, this.field_75160_f, 0, 124, 35));
  
-@@ -53,7 +67,7 @@
+@@ -53,26 +67,27 @@
  
     }
  
 -   protected static void func_217066_a(int p_217066_0_, World p_217066_1_, PlayerEntity p_217066_2_, CraftingInventory p_217066_3_, CraftResultInventory p_217066_4_) {
-+   protected static void func_217066_a(int p_217066_0_, World p_217066_1_, PlayerEntity p_217066_2_, CraftingInventory p_217066_3_, CraftResultInventory p_217066_4_, Container container) { // CraftBukkit
-       if (!p_217066_1_.field_72995_K) {
-          ServerPlayerEntity serverplayerentity = (ServerPlayerEntity)p_217066_2_;
+-      if (!p_217066_1_.field_72995_K) {
+-         ServerPlayerEntity serverplayerentity = (ServerPlayerEntity)p_217066_2_;
++   protected static void func_217066_a(int id, World worldIn, PlayerEntity playerIn, CraftingInventory inventoryIn, CraftResultInventory inventoryResult, Container container) { // CraftBukkit
++      if (!worldIn.field_72995_K) {
++         ServerPlayerEntity serverplayerentity = (ServerPlayerEntity)playerIn;
           ItemStack itemstack = ItemStack.field_190927_a;
-@@ -64,6 +78,7 @@
-                itemstack = icraftingrecipe.func_77572_b(p_217066_3_);
+-         Optional<ICraftingRecipe> optional = p_217066_1_.func_73046_m().func_199529_aN().func_215371_a(IRecipeType.field_222149_a, p_217066_3_, p_217066_1_);
++         Optional<ICraftingRecipe> optional = worldIn.func_73046_m().func_199529_aN().func_215371_a(IRecipeType.field_222149_a, inventoryIn, worldIn);
+          if (optional.isPresent()) {
+             ICraftingRecipe icraftingrecipe = optional.get();
+-            if (p_217066_4_.func_201561_a(p_217066_1_, serverplayerentity, icraftingrecipe)) {
+-               itemstack = icraftingrecipe.func_77572_b(p_217066_3_);
++            if (inventoryResult.func_201561_a(worldIn, serverplayerentity, icraftingrecipe)) {
++               itemstack = icraftingrecipe.func_77572_b(inventoryIn);
              }
           }
-+         itemstack = CraftEventFactory.callPreCraftEvent(p_217066_3_, p_217066_4_,itemstack, container.getBukkitView(), false); // CraftBukkit
++         itemstack = CraftEventFactory.callPreCraftEvent(inventoryIn, inventoryResult,itemstack, container.getBukkitView(), false); // CraftBukkit
  
-          p_217066_4_.func_70299_a(0, itemstack);
-          serverplayerentity.field_71135_a.func_147359_a(new SSetSlotPacket(p_217066_0_, 0, itemstack));
-@@ -72,7 +87,7 @@
+-         p_217066_4_.func_70299_a(0, itemstack);
+-         serverplayerentity.field_71135_a.func_147359_a(new SSetSlotPacket(p_217066_0_, 0, itemstack));
++         inventoryResult.func_70299_a(0, itemstack);
++         serverplayerentity.field_71135_a.func_147359_a(new SSetSlotPacket(id, 0, itemstack));
+       }
+    }
  
     public void func_75130_a(IInventory p_75130_1_) {
        this.field_217070_e.func_221486_a((p_217069_1_, p_217069_2_) -> {
