@@ -59,10 +59,10 @@
     public void func_70624_b(@Nullable LivingEntity p_70624_1_) {
 -      this.field_70696_bz = p_70624_1_;
 +      // CraftBukkit start
-+      this.setGoalTarget(p_70624_1_, EntityTargetEvent.TargetReason.UNKNOWN, true);
++      this.setAttackTarget(p_70624_1_, EntityTargetEvent.TargetReason.UNKNOWN, true);
     }
  
-+   public boolean setGoalTarget(LivingEntity entitylivingbaseIn, EntityTargetEvent.TargetReason reason, final boolean fireEvent) {
++   public boolean setAttackTarget(LivingEntity entitylivingbaseIn, EntityTargetEvent.TargetReason reason, final boolean fireEvent) {
 +      if (this.func_70638_az() == entitylivingbaseIn) {
 +         return false;
 +      }
