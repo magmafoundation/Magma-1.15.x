@@ -130,6 +130,11 @@ public class RecipeWrapper implements IInventory {
     }
 
     @Override
+    public int getMaxStackSize() {
+        return 0;
+    }
+
+    @Override
     public void setMaxStackSize(int size) {
 
     }

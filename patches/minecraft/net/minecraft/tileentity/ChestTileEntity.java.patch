@@ -38,7 +38,7 @@
     protected ITextComponent func_213907_g() {
        return new TranslationTextComponent("container.chest");
     }
-@@ -178,6 +187,33 @@
+@@ -178,6 +187,38 @@
  
     }
  
@@ -64,6 +64,11 @@
 +   }
 +
 +   @Override
++   public int getMaxStackSize() {
++      return 0;
++   }
++
++   @Override
 +   public void setMaxStackSize(int size) {
 +
 +   }
@@ -72,7 +77,7 @@
     protected void func_195482_p() {
        Block block = this.func_195044_w().func_177230_c();
        if (block instanceof ChestBlock) {
-@@ -202,7 +238,7 @@
+@@ -202,7 +243,7 @@
  
     public static int func_195481_a(IBlockReader p_195481_0_, BlockPos p_195481_1_) {
        BlockState blockstate = p_195481_0_.func_180495_p(p_195481_1_);
@@ -81,7 +86,7 @@
           TileEntity tileentity = p_195481_0_.func_175625_s(p_195481_1_);
           if (tileentity instanceof ChestTileEntity) {
              return ((ChestTileEntity)tileentity).field_145987_o;
-@@ -221,4 +257,56 @@
+@@ -221,4 +262,56 @@
     protected Container func_213906_a(int p_213906_1_, PlayerInventory p_213906_2_) {
        return ChestContainer.func_216992_a(p_213906_1_, p_213906_2_, this);
     }

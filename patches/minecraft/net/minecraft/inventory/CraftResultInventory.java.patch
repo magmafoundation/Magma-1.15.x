@@ -30,7 +30,7 @@
     public void func_70296_d() {
     }
  
-@@ -47,6 +59,43 @@
+@@ -47,6 +59,48 @@
        return true;
     }
  
@@ -58,6 +58,11 @@
 +   @Override
 +   public InventoryHolder getOwner() {
 +      return null;
++   }
++
++   @Override
++   public int getMaxStackSize() {
++      return 0;
 +   }
 +
 +   @Override

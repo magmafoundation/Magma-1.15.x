@@ -19,7 +19,7 @@
  
     public DoubleSidedInventory(IInventory p_i50399_1_, IInventory p_i50399_2_) {
        if (p_i50399_1_ == null) {
-@@ -80,6 +85,43 @@
+@@ -80,6 +85,48 @@
        return p_94041_1_ >= this.field_70477_b.func_70302_i_() ? this.field_70478_c.func_94041_b(p_94041_1_ - this.field_70477_b.func_70302_i_(), p_94041_2_) : this.field_70477_b.func_94041_b(p_94041_1_, p_94041_2_);
     }
  
@@ -47,6 +47,11 @@
 +   @Override
 +   public InventoryHolder getOwner() {
 +      return null;
++   }
++
++   @Override
++   public int getMaxStackSize() {
++      return 0;
 +   }
 +
 +   @Override

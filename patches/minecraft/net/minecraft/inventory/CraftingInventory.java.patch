@@ -19,7 +19,7 @@
  
  public class CraftingInventory implements IInventory, IRecipeHelperPopulator {
     private final NonNullList<ItemStack> field_70466_a;
-@@ -12,6 +20,58 @@
+@@ -12,6 +20,63 @@
     private final int field_174924_c;
     private final Container field_70465_c;
  
@@ -46,6 +46,11 @@
 +   }
 +   public org.bukkit.inventory.InventoryHolder getOwner() {
 +      return (owner == null) ? null : owner.getBukkitEntity();
++   }
++
++   @Override
++   public int getMaxStackSize() {
++      return 0;
 +   }
 +
 +   @Override

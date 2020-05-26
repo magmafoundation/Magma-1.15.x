@@ -9,7 +9,7 @@
  
  public class ShulkerBoxTileEntity extends LockableLootTileEntity implements ISidedInventory, ITickableTileEntity {
     private static final int[] field_190595_a = IntStream.range(0, 27).toArray();
-@@ -211,6 +213,38 @@
+@@ -211,6 +213,43 @@
  
     }
  
@@ -40,6 +40,11 @@
 +   }
 +
 +   @Override
++   public int getMaxStackSize() {
++      return 0;
++   }
++
++   @Override
 +   public void setMaxStackSize(int size) {
 +
 +   }
@@ -48,7 +53,7 @@
     protected ITextComponent func_213907_g() {
        return new TranslationTextComponent("container.shulkerBox");
     }
-@@ -280,6 +314,11 @@
+@@ -280,6 +319,11 @@
        return new ShulkerBoxContainer(p_213906_1_, p_213906_2_, this);
     }
  

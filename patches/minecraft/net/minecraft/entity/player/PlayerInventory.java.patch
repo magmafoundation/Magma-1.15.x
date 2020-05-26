@@ -60,7 +60,7 @@
     public float func_184438_a(BlockState p_184438_1_) {
        return this.field_70462_a.get(this.field_70461_c).func_150997_a(p_184438_1_);
     }
-@@ -585,6 +606,43 @@
+@@ -585,6 +606,48 @@
        }
     }
  
@@ -88,6 +88,11 @@
 +   @Override
 +   public InventoryHolder getOwner() {
 +      return null;
++   }
++
++   @Override
++   public int getMaxStackSize() {
++      return 0;
 +   }
 +
 +   @Override

@@ -1,6 +1,6 @@
 --- a/net/minecraft/inventory/Inventory.java
 +++ b/net/minecraft/inventory/Inventory.java
-@@ -8,17 +8,67 @@
+@@ -8,17 +8,72 @@
  import net.minecraft.item.ItemStack;
  import net.minecraft.item.crafting.RecipeItemHelper;
  import net.minecraft.util.NonNullList;
@@ -45,6 +45,11 @@
 +   }
 +
 +   @Override
++   public int getMaxStackSize() {
++      return 0;
++   }
++
++   @Override
 +   public void setMaxStackSize(int size) {
 +      maxStack = size;
 +   }
@@ -70,7 +75,7 @@
     public Inventory(ItemStack... p_i50398_1_) {
        this.field_70481_b = p_i50398_1_.length;
        this.field_70482_c = NonNullList.func_193580_a(ItemStack.field_190927_a, p_i50398_1_);
-@@ -101,6 +151,13 @@
+@@ -101,6 +156,13 @@
        this.func_70296_d();
     }
  

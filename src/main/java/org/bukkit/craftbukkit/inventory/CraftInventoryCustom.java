@@ -159,6 +159,11 @@ public class CraftInventoryCustom extends CraftInventory {
         }
 
         @Override
+        public int getMaxStackSize() {
+            return 0;
+        }
+
+        @Override
         public boolean isItemValidForSlot(int i, ItemStack itemstack) {
             return true;
         }

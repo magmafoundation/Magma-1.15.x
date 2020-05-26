@@ -9,7 +9,7 @@
  import javax.annotation.Nullable;
  import net.minecraft.block.LecternBlock;
  import net.minecraft.command.CommandSource;
-@@ -24,9 +27,57 @@
+@@ -24,9 +27,63 @@
  import net.minecraft.util.text.StringTextComponent;
  import net.minecraft.util.text.TranslationTextComponent;
  import net.minecraft.world.server.ServerWorld;
@@ -65,11 +65,17 @@
 +       public InventoryHolder getOwner() {
 +          return (Lectern) LecternTileEntity.this.getOwner();
 +       }
-+        // CraftBukkit end
++
++       @Override
++       public int getMaxStackSize() {
++          return 0;
++       }
++
++       // CraftBukkit end
        public int func_70302_i_() {
           return 1;
        }
-@@ -35,13 +86,13 @@
+@@ -35,13 +92,13 @@
           return LecternTileEntity.this.field_214050_c.func_190926_b();
        }
  
@@ -88,7 +94,7 @@
              if (LecternTileEntity.this.field_214050_c.func_190926_b()) {
                 LecternTileEntity.this.func_214042_s();
              }
-@@ -52,8 +103,8 @@
+@@ -52,8 +109,8 @@
           }
        }
  
@@ -99,7 +105,7 @@
              ItemStack itemstack = LecternTileEntity.this.field_214050_c;
              LecternTileEntity.this.field_214050_c = ItemStack.field_190927_a;
              LecternTileEntity.this.func_214042_s();
-@@ -63,26 +114,34 @@
+@@ -63,26 +120,34 @@
           }
        }
  
@@ -139,7 +145,7 @@
           return false;
        }
  
-@@ -90,13 +149,13 @@
+@@ -90,13 +155,13 @@
        }
     };
     private final IIntArray field_214049_b = new IIntArray() {
@@ -158,7 +164,7 @@
           }
  
        }
-@@ -139,7 +198,7 @@
+@@ -139,7 +204,7 @@
        this.func_70296_d();
     }
  
@@ -167,7 +173,7 @@
        int i = MathHelper.func_76125_a(p_214035_1_, 0, this.field_214052_h - 1);
        if (i != this.field_214051_g) {
           this.field_214051_g = i;
-@@ -166,6 +225,32 @@
+@@ -166,6 +231,32 @@
        return p_214047_1_;
     }
  
@@ -200,7 +206,7 @@
     private CommandSource func_214039_a(@Nullable PlayerEntity p_214039_1_) {
        String s;
        ITextComponent itextcomponent;
-@@ -178,7 +263,7 @@
+@@ -178,7 +269,7 @@
        }
  
        Vec3d vec3d = new Vec3d((double)this.field_174879_c.func_177958_n() + 0.5D, (double)this.field_174879_c.func_177956_o() + 0.5D, (double)this.field_174879_c.func_177952_p() + 0.5D);
@@ -209,7 +215,7 @@
     }
  
     public boolean func_183000_F() {
-@@ -212,7 +297,7 @@
+@@ -212,7 +303,7 @@
     }
  
     public Container createMenu(int p_createMenu_1_, PlayerInventory p_createMenu_2_, PlayerEntity p_createMenu_3_) {

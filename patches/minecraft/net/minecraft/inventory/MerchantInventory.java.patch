@@ -26,7 +26,7 @@
     private int field_214027_e;
  
     public MerchantInventory(IMerchant p_i50071_1_) {
-@@ -74,10 +79,54 @@
+@@ -74,10 +79,59 @@
  
     }
  
@@ -65,6 +65,11 @@
 +   @Override
 +   public InventoryHolder getOwner() {
 +      return null;
++   }
++
++   @Override
++   public int getMaxStackSize() {
++      return 0;
 +   }
 +
 +   @Override

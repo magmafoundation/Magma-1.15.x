@@ -16,7 +16,7 @@
  
  public class DispenserTileEntity extends LockableLootTileEntity {
     private static final Random field_174913_f = new Random();
-@@ -28,6 +31,38 @@
+@@ -28,6 +31,43 @@
        return 9;
     }
  
@@ -44,6 +44,11 @@
 +   @Override
 +   public List<HumanEntity> getViewers() {
 +      return null;
++   }
++
++   @Override
++   public int getMaxStackSize() {
++      return 0;
 +   }
 +
 +   @Override

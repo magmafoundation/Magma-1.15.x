@@ -73,7 +73,7 @@
     public boolean func_70300_a(PlayerEntity p_70300_1_) {
        if (this.field_145850_b.func_175625_s(this.field_174879_c) != this) {
           return false;
-@@ -229,17 +240,44 @@
+@@ -229,17 +240,49 @@
  
     public boolean func_94041_b(int p_94041_1_, ItemStack p_94041_2_) {
        if (p_94041_1_ == 3) {
@@ -112,6 +112,11 @@
 +   }
 +
 +   @Override
++   public int getMaxStackSize() {
++      return 0;
++   }
++
++   @Override
 +   public void setMaxStackSize(int size) {
 +
 +   }
@@ -120,7 +125,7 @@
     public int[] func_180463_a(Direction p_180463_1_) {
        if (p_180463_1_ == Direction.UP) {
           return field_145941_a;
-@@ -267,4 +305,27 @@
+@@ -267,4 +310,27 @@
     protected Container func_213906_a(int p_213906_1_, PlayerInventory p_213906_2_) {
        return new BrewingStandContainer(p_213906_1_, p_213906_2_, this, this.field_213954_a);
     }

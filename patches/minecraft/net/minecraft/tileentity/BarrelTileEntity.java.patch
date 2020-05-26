@@ -30,7 +30,7 @@
     protected NonNullList<ItemStack> func_190576_q() {
        return this.field_213966_a;
     }
-@@ -121,6 +131,33 @@
+@@ -121,6 +131,38 @@
  
     }
  
@@ -53,6 +53,11 @@
 +   @Override
 +   public List<HumanEntity> getViewers() {
 +      return null;
++   }
++
++   @Override
++   public int getMaxStackSize() {
++      return 0;
 +   }
 +
 +   @Override
