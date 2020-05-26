@@ -37,7 +37,7 @@
 +      // CraftBukkit end
 +      Vec3d vec3d = entity.func_181014_aG();
 +      Direction direction = entity.func_181012_aH();
-+      BlockPattern.PortalInfo portalInfo = this.findPortal(findPosition, entity.func_213322_ci(), direction, vec3d.field_72450_a, vec3d.field_72448_b, entity instanceof PlayerEntity, searchRadius); // CraftBukkit - add location and searchRadius
++      BlockPattern.PortalInfo portalInfo = this.placeInExistingPortal(findPosition, entity.func_213322_ci(), direction, vec3d.field_72450_a, vec3d.field_72448_b, entity instanceof PlayerEntity, searchRadius); // CraftBukkit - add location and searchRadius
 +      if (searchOnly) {
 +         return portalInfo; // CraftBukkit - optional teleporting
 +      }
@@ -63,10 +63,10 @@
 -   public BlockPattern.PortalInfo func_222272_a(BlockPos p_222272_1_, Vec3d p_222272_2_, Direction p_222272_3_, double p_222272_4_, double p_222272_6_, boolean p_222272_8_) {
 +   public BlockPattern.PortalInfo func_222272_a(BlockPos p_222272_1_, Vec3d p_222272_2_, Direction p_222272_3_, double p_222272_4_, double p_222272_6_, boolean p_222272_8_) { // PAIL: rename to findPortal, d0 = portal offset x, d1 = portal offset z, flag = instanceof EntityHuman
 +      // CraftBukkit start
-+      return findPortal(p_222272_1_, p_222272_2_, p_222272_3_, p_222272_4_, p_222272_6_, p_222272_8_, 128);
++      return placeInExistingPortal(p_222272_1_, p_222272_2_, p_222272_3_, p_222272_4_, p_222272_6_, p_222272_8_, 128);
 +   }
 +
-+   public PortalInfo findPortal(BlockPos blockPos, Vec3d vec3d, Direction direction, double d0 ,double d1, boolean flag, int searchRadius){
++   public PortalInfo placeInExistingPortal(BlockPos blockPos, Vec3d vec3d, Direction direction, double d0 ,double d1, boolean flag, int searchRadius){
 +      // CraftBukkit end
        PointOfInterestManager pointofinterestmanager = this.field_85192_a.func_217443_B();
 -      pointofinterestmanager.func_226347_a_(this.field_85192_a, p_222272_1_, 128);

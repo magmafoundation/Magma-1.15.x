@@ -132,6 +132,10 @@ public final class TransformationHelper
 
     public static class Deserializer implements JsonDeserializer<TransformationMatrix>
     {
+        private static final Vector3f ORIGIN_CORNER = new Vector3f();
+        private static final Vector3f ORIGIN_OPPOSING_CORNER = new Vector3f(1f, 1f, 1f);
+        private static final Vector3f ORIGIN_CENTER = new Vector3f(.5f, .5f, .5f);
+
         @Override
         public TransformationMatrix deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException
         {
@@ -170,6 +174,9 @@ public final class TransformationHelper
             Quaternion leftRot = null;
             Vector3f scale = null;
             Quaternion rightRot = null;
+            // TODO: Default origin is opposing corner, due to a mistake.
+            // This should probably be replaced with center in future versions.
+            Vector3f origin = ORIGIN_OPPOSING_CORNER;
             if (obj.has("translation"))
             {
                 translation = new Vector3f(parseFloatArray(obj.get("translation"), 3, "Translation"));
@@ -205,8 +212,59 @@ public final class TransformationHelper
                 rightRot = parseRotation(obj.get("post-rotation"));
                 obj.remove("post-rotation");
             }
-            if (!obj.entrySet().isEmpty()) throw new JsonParseException("TRSR: can either have single 'matrix' key, or a combination of 'translation', 'rotation', 'scale', 'post-rotation'");
-            return new TransformationMatrix(translation, leftRot, scale, rightRot);
+            if (obj.has("origin"))
+            {
+                origin = parseOrigin(obj);
+                obj.remove("origin");
+            }
+            if (!obj.entrySet().isEmpty()) throw new JsonParseException("TRSR: can either have single 'matrix' key, or a combination of 'translation', 'rotation', 'scale', 'post-rotation', 'origin'");
+            TransformationMatrix matrix = new TransformationMatrix(translation, leftRot, scale, rightRot);
+
+            // Use a different origin if needed.
+            if (!ORIGIN_CENTER.equals(origin))
+            {
+                Vector3f originFromCenter = origin.copy();
+                originFromCenter.sub(ORIGIN_CENTER);
+                matrix = matrix.applyOrigin(originFromCenter);
+            }
+            return matrix;
+        }
+
+        private static Vector3f parseOrigin(JsonObject obj) {
+            Vector3f origin = null;
+
+            // Two types supported: string ("center", "corner") and array ([x, y, z])
+            JsonElement originElement = obj.get("origin");
+            if (originElement.isJsonArray())
+            {
+                origin = new Vector3f(parseFloatArray(originElement, 3, "Origin"));
+            }
+            else if (originElement.isJsonPrimitive())
+            {
+                String originString = originElement.getAsString();
+                if ("center".equals(originString))
+                {
+                    origin = ORIGIN_CENTER;
+                }
+                else if ("corner".equals(originString))
+                {
+                    origin = ORIGIN_CORNER;
+                }
+                else if ("opposing-corner".equals(originString))
+                {
+                    // This option can be used to not break models that were written with this origin once the default is changed
+                    origin = ORIGIN_OPPOSING_CORNER;
+                }
+                else
+                {
+                    throw new JsonParseException("Origin: expected one of 'center', 'corner', 'opposing-corner'");
+                }
+            }
+            else
+            {
+                throw new JsonParseException("Origin: expected an array or one of 'center', 'corner', 'opposing-corner'");
+            }
+            return origin;
         }
 
         public static Matrix4f parseMatrix(JsonElement e)

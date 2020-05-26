@@ -13,7 +13,15 @@
                 } else {
                    this.func_192743_a(advancement, entry.getValue());
                 }
-@@ -187,6 +191,8 @@
+@@ -154,6 +158,7 @@
+       }
+ 
+       this.func_192748_e();
++      if (net.minecraftforge.common.ForgeConfig.SERVER.fixAdvancementLoading.get()) net.minecraftforge.common.AdvancementLoadFix.loadVisibility(this, this.field_192759_g, this.field_192760_h, this.field_192758_f, this.field_192761_i, this::func_192738_c); else
+       this.func_192752_d();
+       this.func_192751_c();
+    }
+@@ -187,6 +192,8 @@
     }
  
     public boolean func_192750_a(Advancement p_192750_1_, String p_192750_2_) {
@@ -22,7 +30,7 @@
        boolean flag = false;
        AdvancementProgress advancementprogress = this.func_192747_a(p_192750_1_);
        boolean flag1 = advancementprogress.func_192105_a();
-@@ -195,10 +201,12 @@
+@@ -195,10 +202,12 @@
           this.field_192761_i.add(p_192750_1_);
           flag = true;
           if (!flag1 && advancementprogress.func_192105_a()) {
