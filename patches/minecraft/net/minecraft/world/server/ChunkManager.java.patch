@@ -158,7 +158,7 @@
           if (p_219199_5_ && !p_219199_4_) {
              ChunkHolder chunkholder = this.func_219219_b(p_219199_2_.func_201841_a());
              if (chunkholder != null) {
-@@ -1056,12 +1067,12 @@
+@@ -1056,15 +1067,15 @@
        });
     }
  
@@ -172,4 +172,8 @@
 +      public final Set<ServerPlayerEntity> field_219406_f = Sets.newHashSet(); // private->public CraftBukkit
  
        public EntityTracker(Entity p_i50468_2_, int p_i50468_3_, int p_i50468_4_, boolean p_i50468_5_) {
-          this.field_219402_b = new TrackedEntity(ChunkManager.this.field_219255_i, p_i50468_2_, p_i50468_4_, p_i50468_5_, this::func_219391_a);
+-         this.field_219402_b = new TrackedEntity(ChunkManager.this.field_219255_i, p_i50468_2_, p_i50468_4_, p_i50468_5_, this::func_219391_a);
++         this.field_219402_b = new TrackedEntity(ChunkManager.this.field_219255_i, p_i50468_2_, p_i50468_4_, p_i50468_5_, this::func_219391_a, field_219406_f); // CraftBukkit
+          this.field_219403_c = p_i50468_2_;
+          this.field_219404_d = p_i50468_3_;
+          this.field_219405_e = SectionPos.func_218157_a(p_i50468_2_);

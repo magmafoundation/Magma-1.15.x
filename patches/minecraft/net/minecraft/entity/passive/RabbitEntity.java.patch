@@ -26,3 +26,23 @@
                 return false;
              }
  
+@@ -519,9 +525,19 @@
+             if (this.field_179499_e && block instanceof CarrotBlock) {
+                Integer integer = blockstate.func_177229_b(CarrotBlock.field_176488_a);
+                if (integer == 0) {
++                  // CraftBukkit start
++                  if (org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(this.field_179500_c, blockpos, Blocks.field_150350_a.func_176223_P()).isCancelled()) {
++                     return;
++                  }
++                  // CraftBukkit end
+                   world.func_180501_a(blockpos, Blocks.field_150350_a.func_176223_P(), 2);
+                   world.func_225521_a_(blockpos, true, this.field_179500_c);
+                } else {
++                  // CraftBukkit start
++                  if (org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(this.field_179500_c, blockpos, blockstate.func_206870_a(CarrotBlock.field_176488_a, integer -1)).isCancelled()) {
++                     return;
++                  }
++                  // CraftBukkit end
+                   world.func_180501_a(blockpos, blockstate.func_206870_a(CarrotBlock.field_176488_a, Integer.valueOf(integer - 1)), 2);
+                   world.func_217379_c(2001, blockpos, Block.func_196246_j(blockstate));
+                }

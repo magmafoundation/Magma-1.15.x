@@ -1,6 +1,9 @@
 # Dev Notes
 Ignore this :)
 
+## TODO
+- Finish last two Entity patches once Inventory/TileEntity patches are complete
+
 ### Patches update.
 - Add b331a055090
 - Take a look at 94cb030fb55

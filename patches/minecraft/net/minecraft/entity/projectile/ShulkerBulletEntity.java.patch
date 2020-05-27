@@ -1,6 +1,21 @@
 --- a/net/minecraft/entity/projectile/ShulkerBulletEntity.java
 +++ b/net/minecraft/entity/projectile/ShulkerBulletEntity.java
-@@ -77,6 +77,26 @@
+@@ -31,6 +31,7 @@
+ import net.minecraft.world.server.ServerWorld;
+ import net.minecraftforge.api.distmarker.Dist;
+ import net.minecraftforge.api.distmarker.OnlyIn;
++import org.bukkit.event.entity.EntityPotionEffectEvent.Cause;
+ 
+ public class ShulkerBulletEntity extends Entity {
+    private LivingEntity field_184570_a;
+@@ -71,12 +72,33 @@
+       this.field_184571_b = p_i46772_3_;
+       this.field_184573_c = Direction.UP;
+       this.func_184569_a(p_i46772_4_);
++      projectileSource = (org.bukkit.entity.LivingEntity) p_i46772_2_.getBukkitEntity(); // CraftBukkit
+    }
+ 
+    public SoundCategory func_184176_by() {
        return SoundCategory.HOSTILE;
     }
  
@@ -27,7 +42,7 @@
     protected void func_213281_b(CompoundNBT p_213281_1_) {
        if (this.field_184570_a != null) {
           BlockPos blockpos = new BlockPos(this.field_184570_a);
-@@ -255,7 +275,7 @@
+@@ -255,7 +277,7 @@
           }
  
           RayTraceResult raytraceresult = ProjectileHelper.func_221266_a(this, true, false, this.field_184570_a, RayTraceContext.BlockMode.COLLIDER);
@@ -36,3 +51,19 @@
              this.func_184567_a(raytraceresult);
           }
        }
+@@ -303,13 +325,14 @@
+    }
+ 
+    protected void func_184567_a(RayTraceResult p_184567_1_) {
++      org.bukkit.craftbukkit.event.CraftEventFactory.callProjectileHitEvent(this, p_184567_1_); // CraftBukkit - Call event
+       if (p_184567_1_.func_216346_c() == RayTraceResult.Type.ENTITY) {
+          Entity entity = ((EntityRayTraceResult)p_184567_1_).func_216348_a();
+          boolean flag = entity.func_70097_a(DamageSource.func_188403_a(this, this.field_184570_a).func_76349_b(), 4.0F);
+          if (flag) {
+             this.func_174815_a(this.field_184570_a, entity);
+             if (entity instanceof LivingEntity) {
+-               ((LivingEntity)entity).func_195064_c(new EffectInstance(Effects.field_188424_y, 200));
++               ((LivingEntity)entity).addPotionEffect(new EffectInstance(Effects.field_188424_y, 200), Cause.ATTACK); // CraftBukkit
+             }
+          }
+       } else {
