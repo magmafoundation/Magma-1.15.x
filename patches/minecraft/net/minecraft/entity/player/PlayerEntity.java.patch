@@ -113,7 +113,7 @@
     public static final EntitySize field_213835_bs = EntitySize.func_220314_b(0.6F, 1.8F);
     private static final Map<Pose, EntitySize> field_213836_b = ImmutableMap.<Pose, EntitySize>builder().put(Pose.STANDING, field_213835_bs).put(Pose.SLEEPING, field_213377_as).put(Pose.FALL_FLYING, EntitySize.func_220314_b(0.6F, 0.6F)).put(Pose.SWIMMING, EntitySize.func_220314_b(0.6F, 0.6F)).put(Pose.SPIN_ATTACK, EntitySize.func_220314_b(0.6F, 0.6F)).put(Pose.CROUCHING, EntitySize.func_220314_b(0.6F, 1.5F)).put(Pose.DYING, EntitySize.func_220311_c(0.2F, 0.2F)).build();
     private static final DataParameter<Float> field_184829_a = EntityDataManager.func_187226_a(PlayerEntity.class, DataSerializers.field_187193_c);
-@@ -119,7 +90,7 @@
+@@ -119,10 +90,10 @@
     protected static final DataParameter<CompoundNBT> field_192033_bu = EntityDataManager.func_187226_a(PlayerEntity.class, DataSerializers.field_192734_n);
     private long field_223730_e;
     public final PlayerInventory field_71071_by = new PlayerInventory(this);
@@ -121,8 +121,12 @@
 +   protected EnderChestInventory field_71078_a = new EnderChestInventory(this); // CraftBukkit - add "this" to constructor
     public final PlayerContainer field_71069_bz;
     public Container field_71070_bA;
-    protected FoodStats field_71100_bB = new FoodStats();
-@@ -133,11 +104,11 @@
+-   protected FoodStats field_71100_bB = new FoodStats();
++   protected FoodStats field_71100_bB = new FoodStats(this);
+    protected int field_71101_bC;
+    public float field_71107_bF;
+    public float field_71109_bG;
+@@ -133,7 +104,7 @@
     public double field_71094_bP;
     public double field_71095_bQ;
     public double field_71085_bR;
@@ -131,11 +135,6 @@
     protected boolean field_204230_bP;
     protected BlockPos field_71077_c;
     protected boolean field_82248_d;
--   public final PlayerAbilities field_71075_bZ = new PlayerAbilities();
-+   public final PlayerAbilities field_71075_bZ = new PlayerAbilities(); //TODO: Magma Add "this" to constructor
-    public int field_71068_ca;
-    public int field_71067_cb;
-    public float field_71106_cc;
 @@ -151,7 +122,21 @@
     private final CooldownTracker field_184832_bU = this.func_184815_l();
     @Nullable

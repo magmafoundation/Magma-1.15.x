@@ -1135,7 +1135,7 @@
 +      this.func_70606_j(this.func_110138_aP());
 +      this.field_190534_ay = 0;
 +      this.field_70143_R = 0;
-+      this.field_71100_bB = new FoodStats(); //TODO: Add craftbukkit food stats
++      this.field_71100_bB = new FoodStats(this);
 +      this.field_71068_ca = this.newLevel;
 +      this.field_71067_cb = this.newTotalExp;
 +      this.field_71106_cc = 0;

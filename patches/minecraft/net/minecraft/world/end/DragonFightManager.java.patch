@@ -7,7 +7,7 @@
 -   private final ServerBossInfo field_186109_c = (ServerBossInfo)(new ServerBossInfo(new TranslationTextComponent("entity.minecraft.ender_dragon"), BossInfo.Color.PINK, BossInfo.Overlay.PROGRESS)).func_186742_b(true).func_186743_c(true);
 -   private final ServerWorld field_186110_d;
 +   public final ServerBossInfo field_186109_c = (ServerBossInfo)(new ServerBossInfo(new TranslationTextComponent("entity.minecraft.ender_dragon"), BossInfo.Color.PINK, BossInfo.Overlay.PROGRESS)).func_186742_b(true).func_186743_c(true); // private->public CraftBukkit
-+   public final ServerWorld field_186110_d; // private->public CraftBukkit
++   public ServerWorld field_186110_d; // private->public CraftBukkit
     private final List<Integer> field_186111_e = Lists.newArrayList();
     private final BlockPattern field_186112_f;
     private int field_186113_g;
