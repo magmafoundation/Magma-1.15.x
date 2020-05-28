@@ -1,6 +1,6 @@
 --- a/net/minecraft/inventory/CraftingInventory.java
 +++ b/net/minecraft/inventory/CraftingInventory.java
-@@ -1,10 +1,18 @@
+@@ -1,10 +1,17 @@
  package net.minecraft.inventory;
  
 +import java.util.List;
@@ -15,11 +15,10 @@
 +import org.bukkit.craftbukkit.entity.CraftHumanEntity;
 +import org.bukkit.entity.HumanEntity;
 +import org.bukkit.event.inventory.InventoryType;
-+import org.bukkit.inventory.InventoryHolder;
  
  public class CraftingInventory implements IInventory, IRecipeHelperPopulator {
     private final NonNullList<ItemStack> field_70466_a;
-@@ -12,6 +20,63 @@
+@@ -12,6 +19,68 @@
     private final int field_174924_c;
     private final Container field_70465_c;
  
@@ -29,28 +28,29 @@
 +   public IInventory resultInventory;
 +   private PlayerEntity owner;
 +   private int maxStack = MAX_STACK;
++
 +   public List<ItemStack> getContents() {
 +      return this.field_70466_a;
 +   }
++
 +   public void onOpen(CraftHumanEntity who) {
 +      transaction.add(who);
 +   }
++
 +   public InventoryType getInvType() {
 +      return field_70466_a.size() == 4 ? InventoryType.CRAFTING : InventoryType.WORKBENCH;
 +   }
++
 +   public void onClose(CraftHumanEntity who) {
 +      transaction.remove(who);
 +   }
++
 +   public List<HumanEntity> getViewers() {
 +      return transaction;
 +   }
++
 +   public org.bukkit.inventory.InventoryHolder getOwner() {
 +      return (owner == null) ? null : owner.getBukkitEntity();
-+   }
-+
-+   @Override
-+   public int getMaxStackSize() {
-+      return 0;
 +   }
 +
 +   @Override
@@ -62,18 +62,22 @@
 +      maxStack = size;
 +      resultInventory.setMaxStackSize(size);
 +   }
++
 +   @Override
 +   public Location getLocation() {
 +      return field_70465_c instanceof WorkbenchContainer ? ((WorkbenchContainer) field_70465_c).field_75160_f.getLocation() : owner.getBukkitEntity().getLocation();
 +   }
++
 +   @Override
 +   public IRecipe getCurrentRecipe() {
 +      return currentRecipe;
 +   }
++
 +   @Override
 +   public void setCurrentRecipe(IRecipe currentRecipe) {
 +      this.currentRecipe = currentRecipe;
 +   }
++
 +   public CraftingInventory(Container container, int i, int j, PlayerEntity player) {
 +      this(container, i, j);
 +      this.owner = player;

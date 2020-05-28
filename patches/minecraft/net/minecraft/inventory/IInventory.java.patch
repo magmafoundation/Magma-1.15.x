@@ -28,7 +28,7 @@
  
     void func_70296_d();
  
-@@ -59,4 +64,31 @@
+@@ -59,4 +64,29 @@
  
        return false;
     }
@@ -43,8 +43,6 @@
 +   List<HumanEntity> getViewers();
 +
 +   InventoryHolder getOwner();
-+
-+   int getMaxStackSize();
 +
 +   void setMaxStackSize(int size);
 +

@@ -17,7 +17,7 @@
  
  public class BlastFurnaceTileEntity extends AbstractFurnaceTileEntity {
     public BlastFurnaceTileEntity() {
-@@ -21,7 +25,51 @@
+@@ -21,7 +25,46 @@
        return super.func_213997_a(p_213997_1_) / 2;
     }
  
@@ -56,11 +56,6 @@
 +   @Override
 +   public List<HumanEntity> getViewers() {
 +      return null;
-+   }
-+
-+   @Override
-+   public int getMaxStackSize() {
-+      return 0;
 +   }
 +
 +   @Override

@@ -17,7 +17,7 @@
  
  public class FurnaceTileEntity extends AbstractFurnaceTileEntity {
     public FurnaceTileEntity() {
-@@ -19,4 +24,46 @@
+@@ -19,4 +24,41 @@
     protected Container func_213906_a(int p_213906_1_, PlayerInventory p_213906_2_) {
        return new FurnaceContainer(p_213906_1_, p_213906_2_, this, this.field_214013_b);
     }
@@ -46,11 +46,6 @@
 +   @Override
 +   public List<HumanEntity> getViewers() {
 +      return null;
-+   }
-+
-+   @Override
-+   public int getMaxStackSize() {
-+      return 0;
 +   }
 +
 +   @Override

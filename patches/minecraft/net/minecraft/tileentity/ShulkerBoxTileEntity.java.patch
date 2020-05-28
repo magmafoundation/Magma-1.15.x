@@ -9,51 +9,49 @@
  
  public class ShulkerBoxTileEntity extends LockableLootTileEntity implements ISidedInventory, ITickableTileEntity {
     private static final int[] field_190595_a = IntStream.range(0, 27).toArray();
-@@ -211,6 +213,43 @@
+@@ -42,6 +44,41 @@
+    private DyeColor field_190602_l;
+    private boolean field_204400_o;
  
-    }
- 
-+   // CraftBukkit start
++   // CraftBukkit start - add fields and methods
++   private int maxStack = MAX_STACK;
++   public List<HumanEntity> transaction = new java.util.ArrayList<HumanEntity>();
++
 +   @Override
 +   public int func_70297_j_() {
-+      return 0;
++      return maxStack;
 +   }
 +
 +   @Override
 +   public List<ItemStack> getContents() {
-+      return null;
++      return field_190596_f;
 +   }
 +
 +   @Override
 +   public void onOpen(CraftHumanEntity who) {
-+
++      this.transaction.add(who);
 +   }
 +
 +   @Override
 +   public void onClose(CraftHumanEntity who) {
-+
++      this.transaction.remove(who);
 +   }
 +
 +   @Override
 +   public List<HumanEntity> getViewers() {
-+      return null;
-+   }
-+
-+   @Override
-+   public int getMaxStackSize() {
-+      return 0;
++      return this.transaction;
 +   }
 +
 +   @Override
 +   public void setMaxStackSize(int size) {
-+
++      this.maxStack = size;
 +   }
 +   // CraftBukkit end
 +
-    protected ITextComponent func_213907_g() {
-       return new TranslationTextComponent("container.shulkerBox");
-    }
-@@ -280,6 +319,11 @@
+    public ShulkerBoxTileEntity(@Nullable DyeColor p_i47242_1_) {
+       super(TileEntityType.field_200993_x);
+       this.field_190602_l = p_i47242_1_;
+@@ -280,6 +317,11 @@
        return new ShulkerBoxContainer(p_213906_1_, p_213906_2_, this);
     }
  
