@@ -117,12 +117,12 @@
 -      for(int j2 = j - 16; j2 <= j + 16; ++j2) {
 -         double d1 = (double)j2 + 0.5D - p_85188_1_.func_226277_ct_();
 +      for(int j2 = j - createRadius; j2 <= j + createRadius; ++j2) {  // CraftBukkit - createRadius
-+         double d1 = (double)j2 + 0.5D - entityIn.func_226277_ct_();
++         double d1 = (double)j2 + 0.5D - blockPos.func_177958_n(); // CraftBukkit - providable position
  
 -         for(int l2 = l - 16; l2 <= l + 16; ++l2) {
 -            double d2 = (double)l2 + 0.5D - p_85188_1_.func_226281_cx_();
 +         for(int l2 = l - createRadius; l2 <= l + createRadius; ++l2) {  // CraftBukkit - createRadius
-+            double d2 = (double)l2 + 0.5D - entityIn.func_226281_cx_();
++            double d2 = (double)l2 + 0.5D - blockPos.func_177952_p(); // CraftBukkit - providable position
  
              label276:
              for(int j3 = this.field_85192_a.func_72940_L() - 1; j3 >= 0; --j3) {
@@ -142,12 +142,12 @@
 -         for(int l5 = j - 16; l5 <= j + 16; ++l5) {
 -            double d3 = (double)l5 + 0.5D - p_85188_1_.func_226277_ct_();
 +         for(int l5 = j - createRadius; l5 <= j + createRadius; ++l5) {  // CraftBukkit - createRadius
-+            double d3 = (double)l5 + 0.5D - entityIn.func_226277_ct_();
++            double d3 = (double)l5 + 0.5D -  blockPos.func_177958_n(); // CraftBukkit - providable position
  
 -            for(int j6 = l - 16; j6 <= l + 16; ++j6) {
 -               double d4 = (double)j6 + 0.5D - p_85188_1_.func_226281_cx_();
 +            for(int j6 = l - createRadius; j6 <= l + createRadius; ++j6) {  // CraftBukkit - createRadius
-+               double d4 = (double)j6 + 0.5D - entityIn.func_226281_cx_();
++               double d4 = (double)j6 + 0.5D - blockPos.func_177952_p(); // CraftBukkit - providable position
  
                 label214:
                 for(int i7 = this.field_85192_a.func_72940_L() - 1; i7 >= 0; --i7) {
