@@ -1115,7 +1115,7 @@
 +   }
 +
 +   @Override
-+   protected boolean func_70610_aX() {
++   public boolean func_70610_aX() { // CraftBukkit protected->public
 +      return super.func_70610_aX() || !getBukkitEntity().isOnline();
 +   }
 +
