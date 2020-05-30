@@ -16,7 +16,7 @@
 +   // CraftBukkit start
 +   @Override
 +   public CommandSender getBukkitSender(CommandSource p0) {
-+      return null;
++      return field_184171_b.remoteConsole;
 +   }
 +   // CraftBukkit end
  }

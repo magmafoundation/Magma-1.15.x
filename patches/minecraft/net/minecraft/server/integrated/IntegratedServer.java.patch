@@ -41,24 +41,23 @@
        WorldInfo worldinfo = savehandler.func_75757_d();
        if (worldinfo == null) {
           worldinfo = new WorldInfo(this.field_71350_m, p_71247_2_);
-@@ -73,13 +78,14 @@
+@@ -73,13 +78,12 @@
  
        worldinfo.func_230145_a_(this.getServerModName(), this.func_230045_q_().isPresent());
        this.func_195560_a(savehandler.func_75765_b(), worldinfo);
 -      IChunkStatusListener ichunkstatuslistener = this.field_213220_d.create(11);
-       this.func_213194_a(savehandler, worldinfo, this.field_71350_m, ichunkstatuslistener);
+-      this.func_213194_a(savehandler, worldinfo, this.field_71350_m, ichunkstatuslistener);
++      this.func_71247_a(p_71247_1_, p_71247_2_, p_71247_3_, this.field_71350_m.func_77165_h(), this.field_71350_m.func_205391_j()); // CraftBukkit
        if (this.func_71218_a(DimensionType.field_223227_a_).func_72912_H().func_176130_y() == null) {
           this.func_147139_a(this.field_71349_l.field_71474_y.field_74318_M, true);
        }
  
 -      this.func_213186_a(ichunkstatuslistener);
-+      for (final ServerWorld worldserver : this.func_212370_w()) {
-+         this.loadInitialChunks(ichunkstatuslistener, worldserver);
-+      }
++      //this.loadInitialChunks(ichunkstatuslistener);
     }
  
     public boolean func_71197_b() throws IOException {
-@@ -91,9 +97,10 @@
+@@ -91,9 +95,10 @@
        this.func_71245_h(true);
        field_147148_h.info("Generating keypair");
        this.func_71253_a(CryptManager.func_75891_b());
@@ -70,7 +69,7 @@
     }
  
     public void func_71217_p(BooleanSupplier p_71217_1_) {
-@@ -128,6 +135,7 @@
+@@ -128,6 +133,7 @@
     }
  
     public Difficulty func_147135_j() {
@@ -78,7 +77,7 @@
        return this.field_71349_l.field_71441_e.func_72912_H().func_176130_y();
     }
  
-@@ -143,6 +151,13 @@
+@@ -143,6 +149,13 @@
        return true;
     }
  
@@ -92,7 +91,7 @@
     public File func_71238_n() {
        return this.field_71349_l.field_71412_D;
     }
-@@ -219,10 +234,11 @@
+@@ -219,10 +232,11 @@
     }
  
     public void func_71263_m(boolean p_71263_1_) {

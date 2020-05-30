@@ -48,6 +48,7 @@ import net.minecraft.nbt.ListNBT;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.PlayerList;
+import net.minecraft.util.EnumTypeAdapterFactory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.registry.MutableRegistry;
@@ -61,6 +62,7 @@ import net.minecraft.world.dimension.DimensionType;
 import net.minecraftforge.event.world.RegisterDimensionsEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.StartupQuery;
+import net.minecraftforge.fml.loading.moddiscovery.ModAnnotation.EnumHolder;
 import net.minecraftforge.fml.server.ServerModLoader;
 import net.minecraftforge.registries.ClearableRegistry;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -72,6 +74,7 @@ import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
 
 import javax.annotation.Nullable;
+import org.bukkit.generator.ChunkGenerator;
 
 public class DimensionManager
 {
@@ -86,6 +89,7 @@ public class DimensionManager
     private static final Multiset<Integer> leakedWorlds = HashMultiset.create();
     private static final Map<ResourceLocation, SavedEntry> savedEntries = new HashMap<>();
     private static volatile Set<World> playerWorlds = new HashSet<>();
+    private static ArrayList<Integer> bukkitDims = new ArrayList<Integer>(); // used to keep track of Bukkit dimensions
 
     /**
      * Register or get the existing dimension type for the given dimtype name.
@@ -233,8 +237,23 @@ public class DimensionManager
         ServerWorld overworld = getWorld(server, DimensionType.OVERWORLD, false, false);
         Validate.notNull(overworld, "Cannot Hotload Dim: Overworld is not Loaded!");
 
+        //Magma start
+        String name = "DIM" + dim;
+        org.bukkit.World.Environment env = org.bukkit.World.Environment.getEnvironment(dim.getId());
+
+        if (dim.getId() >= -1 && dim.getId() <= 1)
+        {
+            if ((dim.getId() == -1 && !server.getAllowNether()) || (dim.getId() == 1 && !server.server.getAllowEnd()))
+                return overworld;
+        } else {
+            if(org.bukkit.World.Environment.getEnvironment(dim.getId()) == null){
+                env = DimensionManager.registerBukkitDimension(dim.getId(), dim.getRegistryName().getNamespace());
+            }
+        }
+        ChunkGenerator gen = server.server.getGenerator(name);
+        // Magma end
         @SuppressWarnings("resource")
-        ServerWorld world = new ServerMultiWorld(overworld, server, server.getBackgroundExecutor(), overworld.getSaveHandler(), dim, server.getProfiler(), new NoopChunkStatusListener());
+        ServerWorld world = new ServerMultiWorld(overworld, server, server.getBackgroundExecutor(), overworld.getSaveHandler(), dim, server.getProfiler(), new NoopChunkStatusListener(), overworld.getWorldInfo(), env, gen); // CraftBukkit
         if (!server.isSinglePlayer())
             world.getWorldInfo().setGameType(server.getGameType());
         server.forgeGetWorldMap().put(dim, world);
@@ -518,5 +537,16 @@ public class DimensionManager
     {
         playerWorlds = players.getPlayers().stream().map(e -> e.world).collect(Collectors.toSet());
         return changed;
+    }
+
+    public static org.bukkit.World.Environment registerBukkitDimension(int dim, String providerName) {
+        org.bukkit.World.Environment env = org.bukkit.World.Environment.getEnvironment(dim);
+        if(env == null){
+            providerName = providerName.replace("WorldProvider","");
+
+           //env = addEnumEnvironment(dim,providerName.toUpperCase());
+//            org.bukkit.World.Environment.registerEnvironment(env);
+        }
+        return env;
     }
 }

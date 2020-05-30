@@ -88,7 +88,7 @@
  import net.minecraft.server.MinecraftServer;
  import net.minecraft.server.management.PlayerInteractionManager;
  import net.minecraft.server.management.PlayerList;
-@@ -85,40 +43,39 @@
+@@ -85,44 +43,43 @@
  import net.minecraft.tileentity.CommandBlockTileEntity;
  import net.minecraft.tileentity.SignTileEntity;
  import net.minecraft.tileentity.TileEntity;
@@ -151,6 +151,11 @@
     public ServerPlayNetHandler field_71135_a;
     public final MinecraftServer field_71133_b;
     public final PlayerInteractionManager field_71134_c;
+-   private final List<Integer> field_71130_g = Lists.newLinkedList();
++   public final List<Integer> field_71130_g = Lists.newLinkedList(); // private->public CraftBukit
+    private final PlayerAdvancements field_192042_bX;
+    private final ServerStatisticsManager field_147103_bO;
+    private float field_130068_bO = Float.MIN_VALUE;
 @@ -134,8 +91,8 @@
     private float field_71149_ch = -1.0E8F;
     private int field_71146_ci = -99999999;
