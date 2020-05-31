@@ -185,4 +185,11 @@ public interface BookMeta extends ItemMeta {
     @Override
     @NotNull
     BookMeta clone();
+
+    // Spigot start
+    public class Spigot {
+    }
+    @NotNull
+    Spigot spigot();
+    // Spigot end
 }
