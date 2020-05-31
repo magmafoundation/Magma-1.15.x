@@ -1261,6 +1261,29 @@ public interface Player extends HumanEntity, Conversable, OfflinePlayer, PluginM
         public InetSocketAddress getRawAddress() {
             throw new UnsupportedOperationException("Not supported yet.");
         }
+
+        /**
+         * Gets whether the player collides with entities
+         *
+         * @return the player's collision toggle state
+         * @deprecated see {@link LivingEntity#isCollidable()}
+         */
+        @Deprecated
+        public boolean getCollidesWithEntities() {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+        /**
+         * Sets whether the player collides with entities
+         *
+         * @param collides whether the player should collide with entities or
+         * not.
+         * @deprecated {@link LivingEntity#setCollidable(boolean)}
+         */
+        @Deprecated
+        public void setCollidesWithEntities(boolean collides) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
     }
     @NotNull
     @Override
