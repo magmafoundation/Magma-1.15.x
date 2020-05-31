@@ -1,8 +1,8 @@
-![Magma](https://i.imgur.com/zTCTCWG.png)
-
-# Magma 1.15.2
+<div align="center">
+<img src="https://i.imgur.com/zTCTCWG.png" alt="Magma logo" align="middle"></img>
 
 ![](https://img.shields.io/badge/Minecraft%20Forge-1.15.2%20--%2032.2.0%20--a39f1cb-orange.svg?style=for-the-badge) ![](https://img.shields.io/badge/Status-Unstable-red?style=for-the-badge) [![](https://img.shields.io/jenkins/build.svg?jobUrl=https%3A%2F%2Fci.hexeption.co.uk%2Fjob%2FMagma-1.15.x%2Fjob%2F1.15.x&label=CI&style=for-the-badge)](https://ci.hexeption.co.uk/job/Magma-1.15.x/job/1.15.x/)
+</div>
 
 ## About
 
@@ -39,4 +39,4 @@ You are welcome to visit Magma Discord server [here](https://discord.gg/6rkqngA)
 ## Partners
 
 <a href="https://aternos.org/en/"><img src="https://company.aternos.org/img/logotype-blue.svg" width="200"></a>
-<a href="https://songoda.com/"><img src="https://cdn2.songoda.com/branding/logo.svg" width="200"></a>
+<a href="https://songoda.com/"><img src="https://cdn2.songoda.com/branding/logo.png" width="200"></a>
