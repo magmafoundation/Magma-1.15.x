@@ -1294,6 +1294,25 @@ public interface Server extends PluginMessageRecipient {
 
     // Spigot start
     public class Spigot {
+
+        /**
+         * Sends the component to the player
+         *
+         * @param component the components to send
+         */
+        public void broadcast(@NotNull net.md_5.bungee.api.chat.BaseComponent component) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        /**
+         * Sends an array of components as a single message to the player
+         *
+         * @param components the components to send
+         */
+        public void broadcast(@NotNull net.md_5.bungee.api.chat.BaseComponent... components) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
         /**
          * Restart the server. If the server administrator has not configured restarting, the server will stop.
          */

@@ -364,6 +364,7 @@ project(':magma') {
         installer 'org.jetbrains:annotations:18.0.0'
         installer 'commons-lang:commons-lang:2.6'
         installer 'org.yaml:snakeyaml:1.25'
+        installer 'net.md-5:bungeecord-chat:1.15-SNAPSHOT'
 
         fmllauncherImplementation 'com.google.guava:guava:21.0'
         fmllauncherImplementation 'com.google.code.gson:gson:2.8.0'
