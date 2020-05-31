@@ -1,6 +1,6 @@
 --- a/net/minecraft/server/ServerPropertiesProvider.java
 +++ b/net/minecraft/server/ServerPropertiesProvider.java
-@@ -1,16 +1,18 @@
+@@ -1,7 +1,9 @@
  package net.minecraft.server;
  
 +import java.io.File;
@@ -10,15 +10,12 @@
  import net.minecraft.server.dedicated.ServerProperties;
  
  public class ServerPropertiesProvider {
-    private final Path field_219036_a;
-    private ServerProperties field_219037_b;
+@@ -10,7 +12,7 @@
  
--   public ServerPropertiesProvider(Path p_i50718_1_) {
--      this.field_219036_a = p_i50718_1_;
+    public ServerPropertiesProvider(Path p_i50718_1_) {
+       this.field_219036_a = p_i50718_1_;
 -      this.field_219037_b = ServerProperties.func_218985_a(p_i50718_1_);
-+   public ServerPropertiesProvider(OptionSet optionSet) {
-+      this.field_219036_a =  ((File) optionSet.valueOf("config")).toPath();;
-+      this.field_219037_b = ServerProperties.create(field_219036_a, optionSet);
++      this.field_219037_b = ServerProperties.func_218985_a(this.field_219036_a);
     }
  
     public ServerProperties func_219034_a() {

@@ -139,7 +139,7 @@
  
 +      net.minecraftforge.fml.server.ServerModLoader.begin(this);
        field_155771_h.info("Loading properties");
-+      this.field_71340_o.func_219033_a(properties -> ServerProperties.create(java.nio.file.Paths.get("server.properties"), options));
++      this.field_71340_o.func_219033_a(properties -> ServerProperties.func_218985_a(java.nio.file.Paths.get("server.properties")));
        ServerProperties serverproperties = this.field_71340_o.func_219034_a();
        if (this.func_71264_H()) {
           this.func_71189_e("127.0.0.1");
