@@ -749,6 +749,7 @@ public final class CraftServer implements Server {
         } catch (IOException ex) {
             logger.log(Level.WARNING, "Failed to load banned-players.json, " + ex.getMessage());
         }
+        org.spigotmc.SpigotConfig.init((File) console.options.valueOf("spigot-settings")); // Spigot
 
         for (ServerWorld world : console.getWorlds()) {
             world.getWorldInfo().setDifficulty(config.difficulty);
@@ -758,6 +759,7 @@ public final class CraftServer implements Server {
             } else {
                 world.ticksPerAnimalSpawns = this.getTicksPerAnimalSpawns();
             }
+            world.spigotConfig.init();  // Spigot
 
             if (this.getTicksPerMonsterSpawns() < 0) {
                 world.ticksPerMonsterSpawns = 1;
@@ -782,6 +784,7 @@ public final class CraftServer implements Server {
         commandMap.clearCommands();
         resetRecipes();
         reloadData();
+        org.spigotmc.SpigotConfig.registerCommands(); // Spigot
         overrideAllCommandBlockCommands = commandsConfiguration.getStringList("command-block-overrides").contains("*");
         ignoreVanillaPermissions = commandsConfiguration.getBoolean("ignore-vanilla-permissions");
 
