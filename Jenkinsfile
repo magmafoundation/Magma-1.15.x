@@ -9,6 +9,9 @@ pipeline {
     }
     stages {
         stage('Setup') {
+         agent {
+                label 'windows'
+            }
             steps {
                 withCredentials([string(credentialsId: 'DISCORD_WEBHOOK', variable: 'discordWebhook')]) {
                     //discordSend(
@@ -24,6 +27,9 @@ pipeline {
         }
 
         stage('Build') {
+          agent {
+              label 'windows'
+          }
             steps {
                 sh './gradlew setup installerJar --console=plain'
             }
