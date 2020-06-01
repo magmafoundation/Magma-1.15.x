@@ -34,7 +34,7 @@
     private boolean field_199523_e;
  
     public RecipeManager() {
-@@ -46,31 +38,62 @@
+@@ -46,31 +38,63 @@
  
     protected void func_212853_a_(Map<ResourceLocation, JsonObject> p_212853_1_, IResourceManager p_212853_2_, IProfiler p_212853_3_) {
        this.field_199523_e = false;
@@ -85,6 +85,7 @@
  
 +   // CraftBukkit start
 +   public void addRecipe(final IRecipe<?> irecipe) {
++      org.spigotmc.AsyncCatcher.catchOp("Recipe Add"); // Spigot
 +      final Map<ResourceLocation, IRecipe<?>> map = this.field_199522_d.get(irecipe.func_222127_g());
 +      if (map.containsKey(irecipe.func_199560_c())) {
 +         throw new IllegalStateException("Duplicate recipe ignored with ID " + irecipe.func_199560_c());
@@ -105,7 +106,7 @@
     }
  
     public <C extends IInventory, T extends IRecipe<C>> List<T> func_215370_b(IRecipeType<T> p_215370_1_, C p_215370_2_, World p_215370_3_) {
-@@ -82,7 +105,7 @@
+@@ -82,7 +106,7 @@
     }
  
     private <C extends IInventory, T extends IRecipe<C>> Map<ResourceLocation, IRecipe<C>> func_215366_a(IRecipeType<T> p_215366_1_) {
@@ -114,7 +115,7 @@
     }
  
     public <C extends IInventory, T extends IRecipe<C>> NonNullList<ItemStack> func_215369_c(IRecipeType<T> p_215369_1_, C p_215369_2_, World p_215369_3_) {
-@@ -128,10 +151,10 @@
+@@ -128,10 +152,10 @@
     @OnlyIn(Dist.CLIENT)
     public void func_223389_a(Iterable<IRecipe<?>> p_223389_1_) {
        this.field_199523_e = false;
@@ -127,7 +128,7 @@
           });
           IRecipe<?> irecipe = map1.put(p_223392_1_.func_199560_c(), p_223392_1_);
           if (irecipe != null) {
-@@ -140,4 +163,13 @@
+@@ -140,4 +164,13 @@
        });
        this.field_199522_d = ImmutableMap.copyOf(map);
     }

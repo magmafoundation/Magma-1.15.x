@@ -698,6 +698,7 @@ public final class CraftServer implements Server {
 
     @Override
     public boolean dispatchCommand(CommandSender sender, String commandLine) {
+        org.spigotmc.AsyncCatcher.catchOp("command dispatch"); // Spigot
         Validate.notNull(sender, "Sender cannot be null");
         Validate.notNull(commandLine, "CommandLine cannot be null");
 
