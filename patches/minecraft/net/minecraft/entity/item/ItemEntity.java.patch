@@ -37,7 +37,7 @@
     public ItemEntity(World p_i1710_1_, double p_i1710_2_, double p_i1710_4_, double p_i1710_6_, ItemStack p_i1710_8_) {
        this(p_i1710_1_, p_i1710_2_, p_i1710_4_, p_i1710_6_);
        this.func_92058_a(p_i1710_8_);
-+      this.lifespan = (p_i1710_8_.func_77973_b() == null ? 6000 : p_i1710_8_.getEntityLifespan(p_i1710_1_));
++      this.lifespan = (p_i1710_8_.func_77973_b() == null ? field_70170_p.spigotConfig.itemDespawnRate : p_i1710_8_.getEntityLifespan(p_i1710_1_)); // Spigot
     }
  
     protected boolean func_225502_at_() {
@@ -92,7 +92,7 @@
  
 -         if (!this.field_70170_p.field_72995_K && this.field_70292_b >= 6000) {
 +         ItemStack item = this.func_92059_d();
-+         if (!this.field_70170_p.field_72995_K && this.field_70292_b >= lifespan) {
++         if (!this.field_70170_p.field_72995_K && this.field_70292_b >= field_70170_p.spigotConfig.itemDespawnRate) { // Spigot
 +            // CraftBukkit start - fire ItemDespawnEvent
 +            if (org.bukkit.craftbukkit.event.CraftEventFactory.callItemDespawnEvent(this).isCancelled()) {
 +               this.field_70292_b = 0;
