@@ -1940,6 +1940,12 @@ public final class CraftServer implements Server {
 
     private final Spigot spigot = new Spigot()
     {
+
+        @Override
+        public YamlConfiguration getConfig()
+        {
+            return org.spigotmc.SpigotConfig.config;
+        }
     };
     public Spigot spigot()
     {
