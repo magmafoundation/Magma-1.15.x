@@ -189,7 +189,7 @@
           if (p_219199_5_ && !p_219199_4_) {
              ChunkHolder chunkholder = this.func_219219_b(p_219199_2_.func_201841_a());
              if (chunkholder != null) {
-@@ -779,7 +800,7 @@
+@@ -779,13 +800,24 @@
     @Nullable
     private CompoundNBT func_219178_f(ChunkPos p_219178_1_) throws IOException {
        CompoundNBT compoundnbt = this.func_227078_e_(p_219178_1_);
@@ -198,7 +198,26 @@
     }
  
     boolean func_219243_d(ChunkPos p_219243_1_) {
-@@ -919,6 +940,7 @@
+-      long i = p_219243_1_.func_201841_a();
++      // Spigot start
++      return isOutsideOfRange(p_219243_1_, false);
++   }
++
++   boolean isOutsideOfRange(ChunkPos chunkPosIn, boolean reducedRange) {
++      int chunkRange = field_219255_i.spigotConfig.mobSpawnRange;
++      chunkRange = (chunkRange > field_219255_i.spigotConfig.viewDistance) ? (byte) field_219255_i.spigotConfig.viewDistance : chunkRange;
++      chunkRange = (chunkRange > 8) ? 8 : chunkRange;
++      double blockRange = (reducedRange) ? Math.pow(chunkRange << 4, 2) : 16384.0D;
++      // Spigot end
++
++      long i = chunkPosIn.func_201841_a();
+       return !this.field_219267_u.func_223494_d(i) ? true : this.field_219271_y.func_219444_a(i).noneMatch((p_219201_1_) -> {
+-         return !p_219201_1_.func_175149_v() && func_219217_a(p_219243_1_, p_219201_1_) < 16384.0D;
++         return !p_219201_1_.func_175149_v() && func_219217_a(chunkPosIn, p_219201_1_) < blockRange; // Spigot
+       });
+    }
+ 
+@@ -919,6 +951,7 @@
     }
  
     protected void func_219210_a(Entity p_219210_1_) {
@@ -206,7 +225,7 @@
        if (!(p_219210_1_ instanceof EnderDragonPartEntity)) {
           if (!(p_219210_1_ instanceof LightningBoltEntity)) {
              EntityType<?> entitytype = p_219210_1_.func_200600_R();
-@@ -947,6 +969,7 @@
+@@ -947,6 +980,7 @@
     }
  
     protected void func_219231_b(Entity p_219231_1_) {
@@ -214,7 +233,7 @@
        if (p_219231_1_ instanceof ServerPlayerEntity) {
           ServerPlayerEntity serverplayerentity = (ServerPlayerEntity)p_219231_1_;
           this.func_219234_a(serverplayerentity, false);
-@@ -1056,15 +1079,15 @@
+@@ -1056,15 +1090,15 @@
        });
     }
  
@@ -233,7 +252,7 @@
           this.field_219403_c = p_i50468_2_;
           this.field_219404_d = p_i50468_3_;
           this.field_219405_e = SectionPos.func_218157_a(p_i50468_2_);
-@@ -1105,6 +1128,7 @@
+@@ -1105,6 +1139,7 @@
        }
  
        public void func_219399_a(ServerPlayerEntity p_219399_1_) {
@@ -241,7 +260,7 @@
           if (this.field_219406_f.remove(p_219399_1_)) {
              this.field_219402_b.func_219454_a(p_219399_1_);
           }
-@@ -1112,8 +1136,9 @@
+@@ -1112,8 +1147,9 @@
        }
  
        public void func_219400_b(ServerPlayerEntity p_219400_1_) {
@@ -252,7 +271,7 @@
              int i = Math.min(this.func_229843_b_(), (ChunkManager.this.field_219247_A - 1) * 16);
              boolean flag = vec3d.field_72450_a >= (double)(-i) && vec3d.field_72450_a <= (double)i && vec3d.field_72449_c >= (double)(-i) && vec3d.field_72449_c <= (double)i && this.field_219403_c.func_174827_a(p_219400_1_);
              if (flag) {
-@@ -1125,7 +1150,16 @@
+@@ -1125,7 +1161,16 @@
                       flag1 = ChunkManager.func_219215_b(chunkpos, p_219400_1_, false) <= ChunkManager.this.field_219247_A;
                    }
                 }
