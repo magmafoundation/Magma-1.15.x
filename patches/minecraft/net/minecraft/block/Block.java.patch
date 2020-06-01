@@ -230,7 +230,7 @@
     }
  
     public boolean func_208619_r() {
-@@ -777,13 +775,81 @@
+@@ -777,13 +775,93 @@
     }
  
     public String toString() {
@@ -310,10 +310,22 @@
 +   }
 +   /* ========================================= FORGE END ======================================*/
 +
++   // Spigot start
++   public static float range(float min, float value, float max) {
++      if (value < min) {
++         return min;
++      }
++      if (value > max) {
++         return max;
++      }
++      return value;
++   }
++   // Spigot end
++
     public static enum OffsetType {
        NONE,
        XZ,
-@@ -805,6 +871,9 @@
+@@ -805,6 +883,9 @@
        private ResourceLocation field_222381_j;
        private boolean field_226895_m_ = true;
        private boolean field_208772_j;
@@ -323,7 +335,7 @@
  
        private Properties(Material p_i48616_1_, MaterialColor p_i48616_2_) {
           this.field_200953_a = p_i48616_1_;
-@@ -837,6 +906,8 @@
+@@ -837,6 +918,8 @@
           block$properties.field_226893_j_ = p_200950_0_.func_226891_m_();
           block$properties.field_208772_j = p_200950_0_.field_208621_p;
           block$properties.field_226895_m_ = p_200950_0_.field_226888_j_;
@@ -332,7 +344,7 @@
           return block$properties;
        }
  
-@@ -901,13 +972,23 @@
+@@ -901,13 +984,23 @@
           return this;
        }
  
