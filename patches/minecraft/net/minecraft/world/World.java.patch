@@ -482,7 +482,7 @@
           this.field_147484_a.addAll(p_147448_1_);
        } else {
           for(TileEntity tileentity : p_147448_1_) {
-@@ -407,13 +647,15 @@
+@@ -407,24 +647,35 @@
     public void func_217391_K() {
        IProfiler iprofiler = this.func_217381_Z();
        iprofiler.func_76320_a("blockEntities");
@@ -499,7 +499,15 @@
        Iterator<TileEntity> iterator = this.field_175730_i.iterator();
  
        while(iterator.hasNext()) {
-@@ -422,9 +664,11 @@
+          TileEntity tileentity = iterator.next();
++         // Spigot start
++         if (tileentity == null) {
++            getServerCB().getLogger().severe("Spigot has detected a null entity and has removed it, preventing a crash");
++            iterator.remove();
++            continue;
++         }
++         // Spigot end
+          if (!tileentity.func_145837_r() && tileentity.func_145830_o()) {
              BlockPos blockpos = tileentity.func_174877_v();
              if (this.field_73020_y.func_222866_a(blockpos) && this.func_175723_af().func_177746_a(blockpos)) {
                 try {
@@ -512,7 +520,7 @@
                    if (tileentity.func_200662_C().func_223045_a(this.func_180495_p(blockpos).func_177230_c())) {
                       ((ITickableTileEntity)tileentity).func_73660_a();
                    } else {
-@@ -436,8 +680,19 @@
+@@ -436,8 +687,19 @@
                    CrashReport crashreport = CrashReport.func_85055_a(throwable, "Ticking block entity");
                    CrashReportCategory crashreportcategory = crashreport.func_85058_a("Block entity being ticked");
                    tileentity.func_145828_a(crashreportcategory);
@@ -532,7 +540,7 @@
              }
           }
  
-@@ -445,26 +700,39 @@
+@@ -445,26 +707,39 @@
              iterator.remove();
              this.field_147482_g.remove(tileentity);
              if (this.func_175667_e(tileentity.func_174877_v())) {
@@ -575,7 +583,7 @@
                 }
              }
           }
-@@ -472,17 +740,23 @@
+@@ -472,17 +747,23 @@
           this.field_147484_a.clear();
        }
  
@@ -599,7 +607,7 @@
        }
     }
  
-@@ -499,7 +773,7 @@
+@@ -499,7 +780,7 @@
              for(int l1 = k; l1 < l; ++l1) {
                 for(int i2 = i1; i2 < j1; ++i2) {
                    BlockState blockstate = this.func_180495_p(blockpos$pooledmutable.func_181079_c(k1, l1, i2));
@@ -608,7 +616,7 @@
                       boolean flag = true;
                       return flag;
                    }
-@@ -523,8 +797,8 @@
+@@ -523,8 +804,8 @@
              for(int k1 = i; k1 < j; ++k1) {
                 for(int l1 = k; l1 < l; ++l1) {
                    for(int i2 = i1; i2 < j1; ++i2) {
@@ -619,7 +627,7 @@
                          boolean flag = true;
                          return flag;
                       }
-@@ -594,6 +868,7 @@
+@@ -594,6 +875,7 @@
        if (p_217401_2_ != null) {
           explosion.func_199592_a(p_217401_2_);
        }
@@ -627,7 +635,7 @@
  
        explosion.func_77278_a();
        explosion.func_77279_a(true);
-@@ -617,23 +892,36 @@
+@@ -617,23 +899,36 @@
     }
  
     @Nullable
@@ -668,7 +676,7 @@
           }
  
           return tileentity;
-@@ -654,7 +942,15 @@
+@@ -654,7 +949,15 @@
  
     public void func_175690_a(BlockPos p_175690_1_, @Nullable TileEntity p_175690_2_) {
        if (!func_189509_E(p_175690_1_)) {
@@ -684,7 +692,7 @@
              if (this.field_147481_N) {
                 p_175690_2_.func_226984_a_(this, p_175690_1_);
                 Iterator<TileEntity> iterator = this.field_147484_a.iterator();
-@@ -669,7 +965,8 @@
+@@ -669,7 +972,8 @@
  
                 this.field_147484_a.add(p_175690_2_);
              } else {
@@ -694,7 +702,7 @@
                 this.func_175700_a(p_175690_2_);
              }
           }
-@@ -678,10 +975,12 @@
+@@ -678,10 +982,12 @@
     }
  
     public void func_175713_t(BlockPos p_175713_1_) {
@@ -708,7 +716,7 @@
        } else {
           if (tileentity != null) {
              this.field_147484_a.remove(tileentity);
-@@ -691,7 +990,7 @@
+@@ -691,7 +997,7 @@
  
           this.func_175726_f(p_175713_1_).func_177425_e(p_175713_1_);
        }
@@ -717,7 +725,7 @@
     }
  
     public boolean func_195588_v(BlockPos p_195588_1_) {
-@@ -716,9 +1015,14 @@
+@@ -716,9 +1022,14 @@
  
     public void func_72891_a(boolean p_72891_1_, boolean p_72891_2_) {
        this.func_72863_F().func_217203_a(p_72891_1_, p_72891_2_);
@@ -732,7 +740,7 @@
        if (this.field_72986_A.func_76059_o()) {
           this.field_73004_o = 1.0F;
           if (this.field_72986_A.func_76061_m()) {
-@@ -740,10 +1044,10 @@
+@@ -740,10 +1051,10 @@
     public List<Entity> func_175674_a(@Nullable Entity p_175674_1_, AxisAlignedBB p_175674_2_, @Nullable Predicate<? super Entity> p_175674_3_) {
        this.func_217381_Z().func_230035_c_("getEntities");
        List<Entity> list = Lists.newArrayList();
@@ -747,7 +755,7 @@
  
        for(int i1 = i; i1 <= j; ++i1) {
           for(int j1 = k; j1 <= l; ++j1) {
-@@ -759,10 +1063,10 @@
+@@ -759,10 +1070,10 @@
  
     public <T extends Entity> List<T> func_217394_a(@Nullable EntityType<T> p_217394_1_, AxisAlignedBB p_217394_2_, Predicate<? super T> p_217394_3_) {
        this.func_217381_Z().func_230035_c_("getEntities");
@@ -762,7 +770,7 @@
        List<T> list = Lists.newArrayList();
  
        for(int i1 = i; i1 < j; ++i1) {
-@@ -779,10 +1083,10 @@
+@@ -779,10 +1090,10 @@
  
     public <T extends Entity> List<T> func_175647_a(Class<? extends T> p_175647_1_, AxisAlignedBB p_175647_2_, @Nullable Predicate<? super T> p_175647_3_) {
        this.func_217381_Z().func_230035_c_("getEntities");
@@ -777,7 +785,7 @@
        List<T> list = Lists.newArrayList();
        AbstractChunkProvider abstractchunkprovider = this.func_72863_F();
  
-@@ -800,10 +1104,10 @@
+@@ -800,10 +1111,10 @@
  
     public <T extends Entity> List<T> func_225316_b(Class<? extends T> p_225316_1_, AxisAlignedBB p_225316_2_, @Nullable Predicate<? super T> p_225316_3_) {
        this.func_217381_Z().func_230035_c_("getLoadedEntities");
@@ -792,7 +800,7 @@
        List<T> list = Lists.newArrayList();
        AbstractChunkProvider abstractchunkprovider = this.func_72863_F();
  
-@@ -830,7 +1134,8 @@
+@@ -830,7 +1141,8 @@
     }
  
     public int func_181545_F() {
@@ -802,7 +810,7 @@
     }
  
     public World func_201672_e() {
-@@ -878,7 +1183,7 @@
+@@ -878,7 +1190,7 @@
  
     public int func_175651_c(BlockPos p_175651_1_, Direction p_175651_2_) {
        BlockState blockstate = this.func_180495_p(p_175651_1_);
@@ -811,7 +819,7 @@
     }
  
     public boolean func_175640_z(BlockPos p_175640_1_) {
-@@ -923,7 +1228,7 @@
+@@ -923,7 +1235,7 @@
     }
  
     public long func_72905_C() {
@@ -820,7 +828,7 @@
     }
  
     public long func_82737_E() {
-@@ -931,11 +1236,11 @@
+@@ -931,11 +1243,11 @@
     }
  
     public long func_72820_D() {
@@ -834,7 +842,7 @@
     }
  
     protected void func_217389_a() {
-@@ -947,7 +1252,7 @@
+@@ -947,7 +1259,7 @@
     }
  
     public BlockPos func_175694_M() {
@@ -843,7 +851,7 @@
        if (!this.func_175723_af().func_177746_a(blockpos)) {
           blockpos = this.func_205770_a(Heightmap.Type.MOTION_BLOCKING, new BlockPos(this.func_175723_af().func_177731_f(), 0.0D, this.func_175723_af().func_177721_g()));
        }
-@@ -956,10 +1261,14 @@
+@@ -956,10 +1268,14 @@
     }
  
     public void func_175652_B(BlockPos p_175652_1_) {
@@ -859,7 +867,7 @@
        return true;
     }
  
-@@ -1027,8 +1336,7 @@
+@@ -1027,8 +1343,7 @@
     }
  
     public boolean func_180502_D(BlockPos p_180502_1_) {
@@ -869,7 +877,7 @@
     }
  
     @Nullable
-@@ -1042,7 +1350,7 @@
+@@ -1042,7 +1357,7 @@
     }
  
     public int func_72940_L() {
@@ -878,7 +886,7 @@
     }
  
     public CrashReportCategory func_72914_a(CrashReport p_72914_1_) {
-@@ -1073,16 +1381,15 @@
+@@ -1073,16 +1388,15 @@
     public abstract Scoreboard func_96441_U();
  
     public void func_175666_e(BlockPos p_175666_1_, Block p_175666_2_) {
@@ -899,7 +907,7 @@
                    blockstate.func_215697_a(this, blockpos, p_175666_2_, p_175666_1_, false);
                 }
              }
-@@ -1150,4 +1457,17 @@
+@@ -1150,4 +1464,17 @@
     public BiomeManager func_225523_d_() {
        return this.field_226689_w_;
     }
