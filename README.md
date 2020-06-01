@@ -1,7 +1,7 @@
 <div align="center">
 <img src="https://i.imgur.com/zTCTCWG.png" alt="Magma logo" align="middle"></img>
 
-![](https://img.shields.io/badge/Minecraft%20Forge-1.15.2%20--%2032.2.0%20--a39f1cb-orange.svg?style=for-the-badge) ![](https://img.shields.io/badge/Status-Unstable-red?style=for-the-badge) [![](https://img.shields.io/jenkins/build.svg?jobUrl=https%3A%2F%2Fci.hexeption.co.uk%2Fjob%2FMagma-1.15.x%2Fjob%2F1.15.x&label=CI&style=for-the-badge)](https://ci.hexeption.co.uk/job/Magma-1.15.x/job/1.15.x/)
+![](https://img.shields.io/badge/Minecraft%20Forge-1.15.2%20--%2032.2.0%20--a39f1cb-orange.svg?style=for-the-badge) ![](https://img.shields.io/badge/Status-Unstable-red?style=for-the-badge) [![](https://img.shields.io/jenkins/build?jobUrl=https%3A%2F%2Fci.hexeption.dev%2Fjob%2FMagma%2520Foundation%2Fjob%2FMagma-1.15.x%2Fjob%2F1.15.x%2F&style=for-the-badge)](https://ci.hexeption.dev/job/Magma%20Foundation/job/Magma-1.15.x/job/1.15.x/)
 </div>
 
 ## About
@@ -24,7 +24,19 @@ https://github.com/Hexeption/Magma-1.15-Remaining-Patches
 Currently, no builds are available for 1.15 as we are in early development please check back later. 
 
 ### Building the sources
-Not able to be build yet, Check back soon!
+* Checkout project
+  * You can use IDE or clone from console:
+  `git clone https://github.com/magmafoundation/Magma-1.15.x.git`
+* Setup
+  * Build with Linux:
+  `bash gradlew setup`
+  * Build with Windows:
+  `gradlew.bat setup `
+* Building
+  * Build with Linux:
+  `bash gradlew setup installerJar`
+  * Build with Windows:
+  `gradlew.bat setup installerJar 
 
 ## Contribute to Magma
 
@@ -40,3 +52,4 @@ You are welcome to visit Magma Discord server [here](https://discord.gg/6rkqngA)
 
 <a href="https://aternos.org/en/"><img src="https://company.aternos.org/img/logotype-blue.svg" width="200"></a>
 <a href="https://songoda.com/"><img src="https://cdn2.songoda.com/branding/logo.png" width="200"></a>
+<a href="https://serverjars.com/"><img src="https://serverjars.com/assets/img/logo_white.svg" width="200"></a>
