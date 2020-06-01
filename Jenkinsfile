@@ -3,13 +3,15 @@
 pipeline {
     agent {
         docker { image 'openjdk:8-jdk' }
-        label 'windows'
     }
     environment {
         DISCORD_PREFIX = "Magma: ${BRANCH_NAME} #${BUILD_NUMBER}"
     }
     stages {
         stage('Setup') {
+         agent {
+                label 'windows'
+            }
             steps {
                 withCredentials([string(credentialsId: 'DISCORD_WEBHOOK', variable: 'discordWebhook')]) {
                     //discordSend(
@@ -25,6 +27,9 @@ pipeline {
         }
 
         stage('Build') {
+          agent {
+              label 'windows'
+          }
             steps {
                 sh './gradlew setup installerJar --console=plain'
             }
