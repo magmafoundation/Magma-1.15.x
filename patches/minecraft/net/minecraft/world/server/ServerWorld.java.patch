@@ -164,7 +164,7 @@
 +         else {
 +            chunkGenerator = p_217442_5_.func_186060_c();
 +         }
-+         return new ServerChunkProvider((ServerWorld)p_217442_4_, saveHandlerIn.func_75765_b(), saveHandlerIn.func_197718_i(), saveHandlerIn.func_186340_h(), executorIn, chunkGenerator, serverIn.func_184103_al().func_72395_o(), listenerIn, () -> {
++         return new ServerChunkProvider((ServerWorld)p_217442_4_, saveHandlerIn.func_75765_b(), saveHandlerIn.func_197718_i(), saveHandlerIn.func_186340_h(), executorIn, chunkGenerator, p_217442_4_.spigotConfig.viewDistance, listenerIn, () -> {
 +            return serverIn.func_71218_a(DimensionType.field_223227_a_).func_217481_x();
           });
 -      }, p_i50703_6_, false);

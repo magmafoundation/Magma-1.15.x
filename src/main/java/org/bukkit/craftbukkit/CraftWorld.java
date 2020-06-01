@@ -2086,7 +2086,7 @@ public class CraftWorld implements World {
     // Spigot start
     @Override
     public int getViewDistance() {
-        return 0; // TODO Add
+        return world.spigotConfig.viewDistance;
     }
     // Spigot end
 
