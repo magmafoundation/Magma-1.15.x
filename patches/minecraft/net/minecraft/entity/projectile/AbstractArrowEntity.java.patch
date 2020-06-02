@@ -19,7 +19,7 @@
  
  public abstract class AbstractArrowEntity extends Entity implements IProjectile {
     private static final DataParameter<Byte> field_184554_g = EntityDataManager.func_187226_a(AbstractArrowEntity.class, DataSerializers.field_187191_a);
-@@ -54,15 +59,15 @@
+@@ -54,19 +59,31 @@
     private static final DataParameter<Byte> field_213876_as = EntityDataManager.func_187226_a(AbstractArrowEntity.class, DataSerializers.field_187191_a);
     @Nullable
     private BlockState field_195056_av;
@@ -38,7 +38,23 @@
     private SoundEvent field_213877_ay = this.func_213867_k();
     private IntOpenHashSet field_213878_az;
     private List<Entity> field_213875_aA;
-@@ -160,7 +165,7 @@
+ 
++   // Spigot Start
++   @Override
++   public void inactiveTick()
++   {
++      if ( this.field_70254_i )
++      {
++         this.field_70252_j += 1;
++      }
++      super.inactiveTick();
++   }
++   // Spigot End
++
+    protected AbstractArrowEntity(EntityType<? extends AbstractArrowEntity> p_i48546_1_, World p_i48546_2_) {
+       super(p_i48546_1_, p_i48546_2_);
+    }
+@@ -160,7 +177,7 @@
  
        BlockPos blockpos = new BlockPos(this);
        BlockState blockstate = this.field_70170_p.func_180495_p(blockpos);
@@ -47,7 +63,7 @@
           VoxelShape voxelshape = blockstate.func_196952_d(this.field_70170_p, blockpos);
           if (!voxelshape.func_197766_b()) {
              Vec3d vec3d1 = this.func_213303_ch();
-@@ -218,7 +223,7 @@
+@@ -218,7 +235,7 @@
                 }
              }
  
@@ -56,7 +72,7 @@
                 this.func_184549_a(raytraceresult);
                 this.field_70160_al = true;
              }
-@@ -299,6 +304,7 @@
+@@ -299,6 +316,7 @@
     }
  
     protected void func_184549_a(RayTraceResult p_184549_1_) {
@@ -64,7 +80,7 @@
        RayTraceResult.Type raytraceresult$type = p_184549_1_.func_216346_c();
        if (raytraceresult$type == RayTraceResult.Type.ENTITY) {
           this.func_213868_a((EntityRayTraceResult)p_184549_1_);
-@@ -373,7 +379,13 @@
+@@ -373,7 +391,13 @@
        boolean flag = entity.func_200600_R() == EntityType.field_200803_q;
        int j = entity.func_223314_ad();
        if (this.func_70027_ad() && !flag) {
@@ -79,7 +95,7 @@
        }
  
        if (entity.func_70097_a(damagesource, (float)i)) {
-@@ -510,6 +522,7 @@
+@@ -510,6 +534,7 @@
  
     public void func_212361_a(@Nullable Entity p_212361_1_) {
        this.field_70250_c = p_212361_1_ == null ? null : p_212361_1_.func_110124_au();
@@ -87,7 +103,7 @@
        if (p_212361_1_ instanceof PlayerEntity) {
           this.field_70251_a = ((PlayerEntity)p_212361_1_).field_71075_bZ.field_75098_d ? AbstractArrowEntity.PickupStatus.CREATIVE_ONLY : AbstractArrowEntity.PickupStatus.ALLOWED;
        }
-@@ -523,8 +536,22 @@
+@@ -523,8 +548,22 @@
  
     public void func_70100_b_(PlayerEntity p_70100_1_) {
        if (!this.field_70170_p.field_72995_K && (this.field_70254_i || this.func_203047_q()) && this.field_70249_b <= 0) {
