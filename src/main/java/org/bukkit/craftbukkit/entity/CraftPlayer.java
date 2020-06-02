@@ -60,6 +60,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.GameType;
+import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.server.ChunkManager;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.storage.MapDecoration;
@@ -1646,6 +1647,15 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
         @Override
         public void setCollidesWithEntities(boolean collides) {
             CraftPlayer.this.setCollidable(collides);
+        }
+
+        @Override
+        public void respawn()
+        {
+            if ( getHealth() <= 0 && isOnline() )
+            {
+                server.getServer().getPlayerList().recreatePlayerEntity( getHandle(), DimensionType.OVERWORLD, false );
+            }
         }
     };
     public Player.Spigot spigot()
