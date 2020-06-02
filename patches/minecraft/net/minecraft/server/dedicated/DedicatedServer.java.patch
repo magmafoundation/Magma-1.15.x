@@ -210,14 +210,18 @@
           if (serverproperties.field_219027_u != null) {
              this.func_200252_aR().func_223585_a(GameRules.field_223620_w).func_223570_a(serverproperties.field_219027_u, this);
           }
-@@ -222,6 +306,7 @@
+@@ -222,9 +306,10 @@
              field_155771_h.info("Starting remote control listener");
              this.field_71339_n = new MainThread(this);
              this.field_71339_n.func_72602_a();
 +            this.remoteConsole = new org.bukkit.craftbukkit.command.CraftRemoteConsoleCommandSender(this.field_184115_n); // CraftBukkit
           }
  
-          if (this.func_175593_aQ() > 0L) {
+-         if (this.func_175593_aQ() > 0L) {
++         if (false && this.func_175593_aQ() > 0L) { // Spigot - disable
+             Thread thread1 = new Thread(new ServerHangWatchdog(this));
+             thread1.setUncaughtExceptionHandler(new DefaultWithNameUncaughtExceptionHandler(field_155771_h));
+             thread1.setName("Server Watchdog");
 @@ -233,7 +318,8 @@
           }
  
