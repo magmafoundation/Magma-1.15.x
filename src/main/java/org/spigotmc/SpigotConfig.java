@@ -15,6 +15,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.magmafoundation.magma.Metrics;
 
 public class SpigotConfig {
 
@@ -35,6 +36,7 @@ public class SpigotConfig {
     static int version;
     static Map<String, Command> commands;
     /*========================================================================*/
+    private static Metrics metrics;
 
     public static void init(File configFile) {
         CONFIG_FILE = configFile;
@@ -61,6 +63,10 @@ public class SpigotConfig {
     public static void registerCommands() {
         for (Map.Entry<String, Command> entry : commands.entrySet()) {
             MinecraftServer.getServer().server.getCommandMap().register(entry.getKey(), "Spigot", entry.getValue());
+        }
+        if ( metrics == null )
+        {
+            metrics = new Metrics();
         }
     }
 
