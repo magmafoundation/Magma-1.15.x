@@ -217,7 +217,7 @@
        });
     }
  
-@@ -919,6 +951,7 @@
+@@ -919,10 +951,12 @@
     }
  
     protected void func_219210_a(Entity p_219210_1_) {
@@ -225,7 +225,12 @@
        if (!(p_219210_1_ instanceof EnderDragonPartEntity)) {
           if (!(p_219210_1_ instanceof LightningBoltEntity)) {
              EntityType<?> entitytype = p_219210_1_.func_200600_R();
-@@ -947,6 +980,7 @@
+             int i = entitytype.func_220345_k() * 16;
++            i = org.spigotmc.TrackingRange.getEntityTrackingRange(p_219210_1_, i); // Spigot
+             int j = entitytype.func_220332_l();
+             if (this.field_219272_z.containsKey(p_219210_1_.func_145782_y())) {
+                throw (IllegalStateException)Util.func_229757_c_(new IllegalStateException("Entity is already tracked!"));
+@@ -947,6 +981,7 @@
     }
  
     protected void func_219231_b(Entity p_219231_1_) {
@@ -233,7 +238,7 @@
        if (p_219231_1_ instanceof ServerPlayerEntity) {
           ServerPlayerEntity serverplayerentity = (ServerPlayerEntity)p_219231_1_;
           this.func_219234_a(serverplayerentity, false);
-@@ -1056,15 +1090,15 @@
+@@ -1056,15 +1091,15 @@
        });
     }
  
@@ -252,7 +257,7 @@
           this.field_219403_c = p_i50468_2_;
           this.field_219404_d = p_i50468_3_;
           this.field_219405_e = SectionPos.func_218157_a(p_i50468_2_);
-@@ -1105,6 +1139,7 @@
+@@ -1105,6 +1140,7 @@
        }
  
        public void func_219399_a(ServerPlayerEntity p_219399_1_) {
@@ -260,7 +265,7 @@
           if (this.field_219406_f.remove(p_219399_1_)) {
              this.field_219402_b.func_219454_a(p_219399_1_);
           }
-@@ -1112,8 +1147,9 @@
+@@ -1112,8 +1148,9 @@
        }
  
        public void func_219400_b(ServerPlayerEntity p_219400_1_) {
@@ -271,7 +276,7 @@
              int i = Math.min(this.func_229843_b_(), (ChunkManager.this.field_219247_A - 1) * 16);
              boolean flag = vec3d.field_72450_a >= (double)(-i) && vec3d.field_72450_a <= (double)i && vec3d.field_72449_c >= (double)(-i) && vec3d.field_72449_c <= (double)i && this.field_219403_c.func_174827_a(p_219400_1_);
              if (flag) {
-@@ -1125,7 +1161,16 @@
+@@ -1125,7 +1162,16 @@
                       flag1 = ChunkManager.func_219215_b(chunkpos, p_219400_1_, false) <= ChunkManager.this.field_219247_A;
                    }
                 }
