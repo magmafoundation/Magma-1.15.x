@@ -486,7 +486,7 @@
 +         event.disallow(Result.KICK_BANNED, CraftChatMessage.fromComponent(itextcomponent1)); // CraftBukkit
 +      } else if (!this.func_152607_e(gameProfile)) {
 +         TranslationTextComponent chatMessage = new TranslationTextComponent("multiplayer.disconnect.not_whitelisted");
-+         event.disallow(Result.KICK_WHITELIST, CraftChatMessage.fromComponent(chatMessage));
++         event.disallow(Result.KICK_WHITELIST, org.spigotmc.SpigotConfig.whitelistMessage); // Spigot
 +      } else if (this.func_72363_f().func_152708_a(socketAddress) && !this.func_72363_f().func_152709_b(socketAddress).func_73682_e()) {
 +         IPBanEntry ipbanentry = this.field_72413_h.func_152709_b(socketAddress);
           ITextComponent itextcomponent = new TranslationTextComponent("multiplayer.disconnect.banned_ip.reason", ipbanentry.func_73686_f());
@@ -499,7 +499,7 @@
 -         return this.field_72404_b.size() >= this.field_72405_c && !this.func_183023_f(p_206258_2_) ? new TranslationTextComponent("multiplayer.disconnect.server_full") : null;
 +         event.disallow(Result.KICK_BANNED, CraftChatMessage.fromComponent(itextcomponent));
 +      } else if (this.field_72404_b.size() >= this.field_72405_c && !this.func_183023_f(gameProfile)) {
-+         event.disallow(Result.KICK_FULL, "The server is full");
++         event.disallow(PlayerLoginEvent.Result.KICK_FULL, org.spigotmc.SpigotConfig.serverFullMessage); // Spigot
        }
 +      this.craftServer.getPluginManager().callEvent(event);
 +      if (event.getResult() != Result.ALLOWED) {
