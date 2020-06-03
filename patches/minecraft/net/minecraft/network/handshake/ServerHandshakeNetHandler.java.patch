@@ -11,11 +11,16 @@
  import net.minecraft.network.NetworkManager;
  import net.minecraft.network.ProtocolType;
  import net.minecraft.network.handshake.client.CHandshakePacket;
-@@ -12,6 +17,12 @@
+@@ -9,9 +14,17 @@
+ import net.minecraft.server.MinecraftServer;
+ import net.minecraft.util.SharedConstants;
+ import net.minecraft.util.text.ITextComponent;
++import net.minecraft.util.text.StringTextComponent;
  import net.minecraft.util.text.TranslationTextComponent;
  
  public class ServerHandshakeNetHandler implements IHandshakeNetHandler {
 +
++   private static final com.google.gson.Gson gson = new com.google.gson.Gson(); // Spigot
 +   // CraftBukkit start - add fields
 +   private static final HashMap<InetAddress, Long> throttleTracker = new HashMap<InetAddress, Long>();
 +   private static int throttleCounter = 0;
@@ -24,7 +29,7 @@
     private final MinecraftServer field_147387_a;
     private final NetworkManager field_147386_b;
  
-@@ -21,19 +32,53 @@
+@@ -21,19 +34,73 @@
     }
  
     public void func_147383_a(CHandshakePacket p_147383_1_) {
@@ -76,6 +81,26 @@
              this.field_147386_b.func_150718_a(itextcomponent1);
           } else {
              this.field_147386_b.func_150719_a(new ServerLoginNetHandler(this.field_147387_a, this.field_147386_b));
++            // Spigot Start
++            if (org.spigotmc.SpigotConfig.bungee) {
++               String[] split = p_147383_1_.field_149598_b.split("\00");
++               if ( split.length == 3 || split.length == 4 ) {
++                  p_147383_1_.field_149598_b = split[0];
++                  field_147386_b.field_150743_l = new java.net.InetSocketAddress(split[1], ((java.net.InetSocketAddress) field_147386_b.func_74430_c()).getPort());
++                  field_147386_b.spoofedUUID = com.mojang.util.UUIDTypeAdapter.fromString( split[2] );
++               } else
++               {
++                  ITextComponent itextcomponent1 = new StringTextComponent("If you wish to use IP forwarding, please enable it in your BungeeCord config as well!");
++                  this.field_147386_b.func_179290_a(new SDisconnectLoginPacket(itextcomponent1));
++                  this.field_147386_b.func_150718_a(itextcomponent1);
++                  return;
++               }
++               if ( split.length == 4 )
++               {
++                  field_147386_b.spoofedProfile = gson.fromJson(split[3], com.mojang.authlib.properties.Property[].class);
++               }
++            }
++            // Spigot End
 +            ((ServerLoginNetHandler) this.field_147386_b.func_150729_e()).hostname = p_147383_1_.field_149598_b + ":" + p_147383_1_.field_149599_c; // CraftBukkit - set hostname
           }
           break;

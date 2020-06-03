@@ -469,7 +469,7 @@
 +      ServerPlayerEntity entity = new ServerPlayerEntity(this.field_72400_f, this.field_72400_f.func_71218_a(DimensionType.field_223227_a_), gameProfile,
 +          new PlayerInteractionManager(this.field_72400_f.func_71218_a(DimensionType.field_223227_a_)));
 +      Player player = entity.getBukkitEntity();
-+      PlayerLoginEvent event = new PlayerLoginEvent(player, hostName, ((InetSocketAddress) socketAddress).getAddress());
++      PlayerLoginEvent event = new PlayerLoginEvent(player, hostName, ((java.net.InetSocketAddress) socketAddress).getAddress(), ((java.net.InetSocketAddress) netHandler.field_147333_a.getRawAddress()).getAddress());
 +
 +      if (this.func_152608_h().func_152702_a(gameProfile) && !this.func_152608_h().func_152683_b(gameProfile).func_73682_e()) {
 +         ProfileBanEntry profilebanentry = this.field_72401_g.func_152683_b(gameProfile);
