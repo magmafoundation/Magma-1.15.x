@@ -32,12 +32,16 @@
     }
  
     protected void func_70227_a(RayTraceResult p_70227_1_) {
-@@ -57,11 +58,11 @@
+@@ -56,19 +57,23 @@
+       if (!this.field_70170_p.field_72995_K) {
           if (p_70227_1_.func_216346_c() == RayTraceResult.Type.ENTITY) {
              Entity entity = ((EntityRayTraceResult)p_70227_1_).func_216348_a();
++            // Spigot start
++            boolean didDamage = false;
              if (this.field_70235_a != null) {
 -               if (entity.func_70097_a(DamageSource.func_76358_a(this.field_70235_a), 8.0F)) {
-+               if (entity.func_70097_a(DamageSource.func_76356_a(this, this.field_70235_a), 8.0F)) { // CraftBukkit
++               didDamage = entity.func_70097_a(DamageSource.func_76356_a(this, field_70235_a), 8.0F);
++               if (didDamage) { // CraftBukkit
                    if (entity.func_70089_S()) {
                       this.func_174815_a(this.field_70235_a, entity);
                    } else {
@@ -46,7 +50,17 @@
                    }
                 }
              } else {
-@@ -77,13 +78,20 @@
+-               entity.func_70097_a(DamageSource.field_76376_m, 5.0F);
++               didDamage = entity.func_70097_a(DamageSource.field_76376_m, 5.0F);
+             }
+ 
+-            if (entity instanceof LivingEntity) {
++            if (didDamage && entity instanceof LivingEntity) {
++               // Spigot end
+                int i = 0;
+                if (this.field_70170_p.func_175659_aa() == Difficulty.NORMAL) {
+                   i = 10;
+@@ -77,13 +82,20 @@
                 }
  
                 if (i > 0) {
