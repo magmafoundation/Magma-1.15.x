@@ -502,7 +502,7 @@
           p_184198_1_.func_74778_a("id", s);
           this.func_189511_e(p_184198_1_);
           return true;
-@@ -1301,15 +1493,32 @@
+@@ -1301,15 +1493,33 @@
           p_189511_1_.func_218657_a("Pos", this.func_70087_a(this.func_226277_ct_(), this.func_226278_cu_(), this.func_226281_cx_()));
           Vec3d vec3d = this.func_213322_ci();
           p_189511_1_.func_218657_a("Motion", this.func_70087_a(vec3d.field_72450_a, vec3d.field_72448_b, vec3d.field_72449_c));
@@ -532,11 +532,12 @@
 +         p_189511_1_.func_74772_a("WorldUUIDLeast", ((ServerWorld) this.field_70170_p).func_217485_w().getUUID().getLeastSignificantBits());
 +         p_189511_1_.func_74772_a("WorldUUIDMost", ((ServerWorld) this.field_70170_p).func_217485_w().getUUID().getMostSignificantBits());
 +         p_189511_1_.func_74768_a("Bukkit.updateLevel", CURRENT_LEVEL);
++         p_189511_1_.func_74768_a("Spigot.ticksLived", this.field_70173_aa);
 +         // CraftBukkit end
           ITextComponent itextcomponent = this.func_200201_e();
           if (itextcomponent != null) {
              p_189511_1_.func_74778_a("CustomName", ITextComponent.Serializer.func_150696_a(itextcomponent));
-@@ -1330,6 +1539,7 @@
+@@ -1330,6 +1540,7 @@
           if (this.field_184238_ar) {
              p_189511_1_.func_74757_a("Glowing", this.field_184238_ar);
           }
@@ -544,7 +545,7 @@
  
           if (!this.field_184236_aF.isEmpty()) {
              ListNBT listnbt = new ListNBT();
-@@ -1341,6 +1551,10 @@
+@@ -1341,6 +1552,10 @@
              p_189511_1_.func_218657_a("Tags", listnbt);
           }
  
@@ -555,7 +556,7 @@
           this.func_213281_b(p_189511_1_);
           if (this.func_184207_aI()) {
              ListNBT listnbt1 = new ListNBT();
-@@ -1357,6 +1571,12 @@
+@@ -1357,6 +1572,12 @@
              }
           }
  
@@ -568,7 +569,7 @@
           return p_189511_1_;
        } catch (Throwable throwable) {
           CrashReport crashreport = CrashReport.func_85055_a(throwable, "Saving entity NBT");
-@@ -1387,7 +1607,7 @@
+@@ -1387,7 +1608,7 @@
           this.func_70050_g(p_70020_1_.func_74765_d("Air"));
           this.field_70122_E = p_70020_1_.func_74767_n("OnGround");
           if (p_70020_1_.func_74764_b("Dimension")) {
@@ -577,7 +578,7 @@
           }
  
           this.field_83001_bt = p_70020_1_.func_74767_n("Invulnerable");
-@@ -1409,6 +1629,9 @@
+@@ -1409,6 +1630,9 @@
                 this.func_174810_b(p_70020_1_.func_74767_n("Silent"));
                 this.func_189654_d(p_70020_1_.func_74767_n("NoGravity"));
                 this.func_184195_f(p_70020_1_.func_74767_n("Glowing"));
@@ -587,10 +588,12 @@
                 if (p_70020_1_.func_150297_b("Tags", 9)) {
                    this.field_184236_aF.clear();
                    ListNBT listnbt1 = p_70020_1_.func_150295_c("Tags", 8);
-@@ -1430,6 +1653,37 @@
+@@ -1430,6 +1654,39 @@
           } else {
              throw new IllegalStateException("Entity has invalid position");
           }
++
++         this.field_70173_aa = p_70020_1_.func_74762_e("Spigot.ticksLived");
 +
 +         // CraftBukkit start
 +         if (this instanceof LivingEntity) {
@@ -625,7 +628,7 @@
        } catch (Throwable throwable) {
           CrashReport crashreport = CrashReport.func_85055_a(throwable, "Loading entity NBT");
           CrashReportCategory crashreportcategory = crashreport.func_85058_a("Entity being loaded");
-@@ -1495,8 +1749,23 @@
+@@ -1495,8 +1752,23 @@
        } else if (this.field_70170_p.field_72995_K) {
           return null;
        } else {
@@ -649,7 +652,7 @@
           this.field_70170_p.func_217376_c(itementity);
           return itementity;
        }
-@@ -1540,6 +1809,7 @@
+@@ -1540,6 +1812,7 @@
  
     public void func_70098_U() {
        this.func_213317_d(Vec3d.field_186680_a);
@@ -657,7 +660,7 @@
        this.func_70071_h_();
        if (this.func_184218_aH()) {
           this.func_184187_bx().func_184232_k(this);
-@@ -1584,13 +1854,14 @@
+@@ -1584,13 +1857,14 @@
           }
        }
  
@@ -673,7 +676,7 @@
           return true;
        } else {
           return false;
-@@ -1615,32 +1886,82 @@
+@@ -1615,32 +1889,82 @@
     public void func_184210_p() {
        if (this.field_184239_as != null) {
           Entity entity = this.field_184239_as;
@@ -766,7 +769,7 @@
     }
  
     protected boolean func_184219_q(Entity p_184219_1_) {
-@@ -1698,11 +2019,19 @@
+@@ -1698,11 +2022,19 @@
        if (this.field_70170_p instanceof ServerWorld) {
           int i = this.func_82145_z();
           if (this.field_71087_bX) {
@@ -788,7 +791,7 @@
                 this.field_70170_p.func_217381_Z().func_76319_b();
              }
  
-@@ -1771,6 +2100,7 @@
+@@ -1771,6 +2103,7 @@
        return !this.func_184188_bt().isEmpty();
     }
  
@@ -796,7 +799,7 @@
     public boolean func_205710_ba() {
        return true;
     }
-@@ -1825,6 +2155,13 @@
+@@ -1825,6 +2158,13 @@
     }
  
     public void func_204711_a(boolean p_204711_1_) {
@@ -810,7 +813,7 @@
        this.func_70052_a(4, p_204711_1_);
     }
  
-@@ -1871,11 +2208,11 @@
+@@ -1871,11 +2211,11 @@
        this.func_70052_a(5, p_82142_1_);
     }
  
@@ -824,7 +827,7 @@
        byte b0 = this.field_70180_af.func_187225_a(field_184240_ax);
        if (p_70052_2_) {
           this.field_70180_af.func_187227_b(field_184240_ax, (byte)(b0 | 1 << p_70052_1_));
-@@ -1894,16 +2231,55 @@
+@@ -1894,16 +2234,55 @@
     }
  
     public void func_70050_g(int p_70050_1_) {
@@ -882,7 +885,7 @@
     }
  
     public void func_203002_i(boolean p_203002_1_) {
-@@ -1989,7 +2365,7 @@
+@@ -1989,7 +2368,7 @@
     }
  
     protected ITextComponent func_225513_by_() {
@@ -891,7 +894,7 @@
     }
  
     public boolean func_70028_i(Entity p_70028_1_) {
-@@ -2046,43 +2422,87 @@
+@@ -2046,43 +2425,87 @@
  
     @Nullable
     public Entity func_212321_a(DimensionType p_212321_1_) {
@@ -1002,7 +1005,7 @@
              if (blockpattern$portalinfo == null) {
                 return null;
              }
-@@ -2090,23 +2510,45 @@
+@@ -2090,23 +2513,45 @@
              blockpos = new BlockPos(blockpattern$portalinfo.field_222505_a);
              vec3d = blockpattern$portalinfo.field_222506_b;
              f = (float)blockpattern$portalinfo.field_222507_c;
@@ -1053,7 +1056,7 @@
        } else {
           return null;
        }
-@@ -2129,10 +2571,12 @@
+@@ -2129,10 +2574,12 @@
     }
  
     public Vec3d func_181014_aG() {
@@ -1066,7 +1069,7 @@
        return this.field_181018_ap;
     }
  
-@@ -2261,7 +2705,7 @@
+@@ -2261,7 +2708,7 @@
        Pose pose = this.func_213283_Z();
        EntitySize entitysize1 = this.func_213305_a(pose);
        this.field_213325_aI = entitysize1;
@@ -1075,7 +1078,7 @@
        if (entitysize1.field_220315_a < entitysize.field_220315_a) {
           double d0 = (double)entitysize1.field_220315_a / 2.0D;
           this.func_174826_a(new AxisAlignedBB(this.func_226277_ct_() - d0, this.func_226278_cu_(), this.func_226281_cx_() - d0, this.func_226277_ct_() + d0, this.func_226278_cu_() + (double)entitysize1.field_220316_b, this.func_226281_cx_() + d0));
-@@ -2318,7 +2762,36 @@
+@@ -2318,7 +2765,36 @@
     }
  
     public void func_174826_a(AxisAlignedBB p_174826_1_) {
@@ -1113,7 +1116,7 @@
     }
  
     protected float func_213316_a(Pose p_213316_1_, EntitySize p_213316_2_) {
-@@ -2533,7 +3006,7 @@
+@@ -2533,7 +3009,7 @@
        return SoundCategory.NEUTRAL;
     }
  
@@ -1122,7 +1125,7 @@
        return 1;
     }
  
-@@ -2713,6 +3186,7 @@
+@@ -2713,6 +3189,7 @@
        this.field_70165_t = p_226288_1_;
        this.field_70163_u = p_226288_3_;
        this.field_70161_v = p_226288_5_;
@@ -1130,7 +1133,7 @@
     }
  
     public void func_70623_bb() {
-@@ -2726,4 +3200,69 @@
+@@ -2726,4 +3203,69 @@
     public interface IMoveCallback {
        void accept(Entity p_accept_1_, double p_accept_2_, double p_accept_4_, double p_accept_6_);
     }
