@@ -1,0 +1,27 @@
+--- a/net/minecraft/network/play/server/SChatPacket.java
++++ b/net/minecraft/network/play/server/SChatPacket.java
+@@ -35,7 +35,23 @@
+       p_148840_1_.writeByte(this.field_179842_b.func_192583_a());
+    }
+ 
+-   public void func_148833_a(IClientPlayNetHandler p_148833_1_) {
++   // Spigot Start
++   private static final java.util.concurrent.ExecutorService executors = java.util.concurrent.Executors.newCachedThreadPool(
++       new com.google.common.util.concurrent.ThreadFactoryBuilder().setDaemon( true ).setNameFormat( "Async Chat Thread - #%d" ).build() );
++   public void func_148833_a(final IClientPlayNetHandler p_148833_1_) {
++      if ( !this.field_179842_b.name().startsWith("/") )
++      {
++         executors.submit( new Runnable()
++         {
++            @Override
++            public void run()
++            {
++               p_148833_1_.func_147251_a( SChatPacket.this );
++            }
++         } );
++         return;
++      }
++      // Spigot End
+       p_148833_1_.func_147251_a(this);
+    }
+ 
