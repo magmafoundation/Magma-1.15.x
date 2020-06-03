@@ -220,4 +220,11 @@ public class SpigotWorldConfig {
         log( "Zombie Aggressive Towards Villager: " + zombieAggressiveTowardsVillager );
     }
 
+    public boolean nerfSpawnerMobs;
+    private void nerfSpawnerMobs()
+    {
+        nerfSpawnerMobs = getBoolean( "nerf-spawner-mobs", false );
+        log( "Nerfing mobs spawned from spawners: " + nerfSpawnerMobs );
+    }
+
 }
