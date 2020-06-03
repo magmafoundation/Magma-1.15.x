@@ -126,8 +126,9 @@
 +   public File field_71308_o; // private final->public CraftBukkit
     private final List<Runnable> field_71322_p = Lists.newArrayList();
     private final DebugProfiler field_71304_b = new DebugProfiler(this::func_71259_af);
-    private final NetworkSystem field_147144_o;
+-   private final NetworkSystem field_147144_o;
 -   protected final IChunkStatusListenerFactory field_213220_d;
++   private NetworkSystem field_147144_o; // Spigot
 +   public final IChunkStatusListenerFactory field_213220_d; // protected->public CraftBukkit
     private final ServerStatusResponse field_147147_p = new ServerStatusResponse();
     private final Random field_147146_q = new Random();
@@ -198,8 +199,9 @@
        this.field_152365_W = p_i50590_7_;
        this.field_152366_X = p_i50590_8_;
 -      this.field_71308_o = p_i50590_1_;
+-      this.field_147144_o = new NetworkSystem(this);
 +      // this.anvilFile = p_i50590_1_; // CraftBukkit
-       this.field_147144_o = new NetworkSystem(this);
++      // this.networkSystem = new NetworkSystem(this); // Spigot
        this.field_213220_d = p_i50590_9_;
 -      this.field_71310_m = new SaveFormat(p_i50590_1_.toPath(), p_i50590_1_.toPath().resolve("../backups"), p_i50590_3_);
 -      this.field_184112_s = p_i50590_3_;
@@ -978,6 +980,15 @@
     }
  
     public void func_145747_a(ITextComponent p_145747_1_) {
+@@ -1290,7 +1468,7 @@
+ 
+    @Nullable
+    public NetworkSystem func_147137_ag() {
+-      return this.field_147144_o;
++      return this.field_147144_o == null ? this.field_147144_o = new NetworkSystem(this) : this.field_147144_o;
+    }
+ 
+    @OnlyIn(Dist.CLIENT)
 @@ -1396,6 +1574,10 @@
     public FunctionManager func_193030_aL() {
        return this.field_200258_al;
