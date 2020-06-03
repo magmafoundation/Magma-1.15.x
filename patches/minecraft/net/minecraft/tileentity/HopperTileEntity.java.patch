@@ -208,7 +208,12 @@
                 }
              }
  
-@@ -325,7 +425,7 @@
+@@ -321,11 +421,12 @@
+    public static IInventory func_145893_b(World p_145893_0_, double p_145893_1_, double p_145893_3_, double p_145893_5_) {
+       IInventory iinventory = null;
+       BlockPos blockpos = new BlockPos(p_145893_1_, p_145893_3_, p_145893_5_);
++      if ( !p_145893_0_.func_175667_e( blockpos ) ) return null; // Spigot
+       BlockState blockstate = p_145893_0_.func_180495_p(blockpos);
        Block block = blockstate.func_177230_c();
        if (block instanceof ISidedInventoryProvider) {
           iinventory = ((ISidedInventoryProvider)block).func_219966_a(blockstate, p_145893_0_, blockpos);
@@ -217,7 +222,7 @@
           TileEntity tileentity = p_145893_0_.func_175625_s(blockpos);
           if (tileentity instanceof IInventory) {
              iinventory = (IInventory)tileentity;
-@@ -404,4 +504,13 @@
+@@ -404,4 +505,13 @@
     protected Container func_213906_a(int p_213906_1_, PlayerInventory p_213906_2_) {
        return new HopperContainer(p_213906_1_, p_213906_2_, this);
     }
