@@ -263,4 +263,10 @@ public class SpigotConfig {
             } ) );
     }
 
+    public static boolean silentCommandBlocks;
+    private static void silentCommandBlocks()
+    {
+        silentCommandBlocks = getBoolean( "commands.silent-commandblock-console", false );
+    }
+
 }

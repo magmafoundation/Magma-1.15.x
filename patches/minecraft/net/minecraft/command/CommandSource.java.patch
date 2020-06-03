@@ -53,7 +53,7 @@
     public Vec3d func_197036_d() {
        return this.field_197042_d;
     }
-@@ -189,7 +205,7 @@
+@@ -189,13 +205,13 @@
        ITextComponent itextcomponent = (new TranslationTextComponent("chat.type.admin", this.func_197019_b(), p_197020_1_)).func_211709_a(new TextFormatting[]{TextFormatting.GRAY, TextFormatting.ITALIC});
        if (this.field_197047_i.func_200252_aR().func_223586_b(GameRules.field_223611_n)) {
           for(ServerPlayerEntity serverplayerentity : this.field_197047_i.func_184103_al().func_181057_v()) {
@@ -62,6 +62,13 @@
                 serverplayerentity.func_145747_a(itextcomponent);
              }
           }
+       }
+ 
+-      if (this.field_197041_c != this.field_197047_i && this.field_197047_i.func_200252_aR().func_223586_b(GameRules.field_223608_k)) {
++      if (this.field_197041_c != this.field_197047_i && this.field_197047_i.func_200252_aR().func_223586_b(GameRules.field_223608_k) && !org.spigotmc.SpigotConfig.silentCommandBlocks) { // Spigot
+          this.field_197047_i.func_145747_a(itextcomponent);
+       }
+ 
 @@ -234,4 +250,10 @@
     public CompletableFuture<Suggestions> func_197009_a(CommandContext<ISuggestionProvider> p_197009_1_, SuggestionsBuilder p_197009_2_) {
        return null;
