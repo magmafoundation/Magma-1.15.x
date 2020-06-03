@@ -1410,8 +1410,8 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
             throw new IllegalStateException("Cannot set scoreboard yet");
         }
         if (connection.isDisconnected()) {
-            throw new IllegalStateException("Cannot set scoreboard for invalid CraftPlayer");
-        }
+            // throw new IllegalStateException("Cannot set scoreboard for invalid CraftPlayer"); // Spigot - remove this as Mojang's semi asynchronous Netty implementation can lead to races
+        } 
 
         this.server.getScoreboardManager().setPlayerBoard(this, scoreboard);
     }
