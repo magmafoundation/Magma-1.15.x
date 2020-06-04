@@ -207,7 +207,7 @@
 +   public class LoginHandler {
 +      public void fireEvents() throws Exception {
 +         String playerName = field_147337_i.getName();
-+         java.net.InetAddress address = ((java.net.InetSocketAddress) field_147333_a.func_150729_e()).getAddress();
++         java.net.InetAddress address = ((java.net.InetSocketAddress) field_147333_a.func_74430_c()).getAddress();
 +         java.util.UUID uniqueId = field_147337_i.getId();
 +         final org.bukkit.craftbukkit.CraftServer server = ServerLoginNetHandler.this.field_147327_f.server;
 +         AsyncPlayerPreLoginEvent asyncEvent = new AsyncPlayerPreLoginEvent(playerName, address, uniqueId);

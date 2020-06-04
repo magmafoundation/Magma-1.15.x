@@ -48,7 +48,7 @@
        p_73076_1_.func_77147_a(this.field_73090_b.field_71075_bZ);
        this.field_73090_b.func_71016_p();
 -      this.field_73090_b.field_71133_b.func_184103_al().func_148540_a(new SPlayerListItemPacket(SPlayerListItemPacket.Action.UPDATE_GAME_MODE, this.field_73090_b));
-+      this.field_73090_b.field_71133_b.func_184103_al().sendAll(new SPlayerListItemPacket(SPlayerListItemPacket.Action.UPDATE_GAME_MODE, new ServerPlayerEntity[] {this.field_73090_b}),this.field_73090_b.getBukkitEntity()); // CraftBukkit
++      this.field_73090_b.field_71133_b.func_184103_al().sendAll(new SPlayerListItemPacket(SPlayerListItemPacket.Action.UPDATE_GAME_MODE, this.field_73090_b), this.field_73090_b); // CraftBukkit
        this.field_73092_a.func_72854_c();
     }
  

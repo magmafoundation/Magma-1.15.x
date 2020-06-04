@@ -201,7 +201,7 @@
 +      // CraftBukkit end
 +
 +      // CraftBukkit start - sendAll above replaced with this loop
-+      SPlayerListItemPacket packet = new SPlayerListItemPacket(Action.ADD_PLAYER, p_72355_2_);
++      SPlayerListItemPacket packet = new SPlayerListItemPacket(Action.ADD_PLAYER, new ServerPlayerEntity[] { p_72355_2_ });
 +
 +      for (int i = 0; i < this.field_72404_b.size(); ++i) {
           p_72355_2_.field_71135_a.func_147359_a(new SPlayerListItemPacket(SPlayerListItemPacket.Action.ADD_PLAYER, this.field_72404_b.get(i)));
@@ -423,8 +423,8 @@
  
 -      this.func_148540_a(new SPlayerListItemPacket(SPlayerListItemPacket.Action.REMOVE_PLAYER, p_72367_1_));
 +      // CraftBukkit start
-+      SPlayerListItemPacket packet = new SPlayerListItemPacket(Action.REMOVE_PLAYER, playerIn);
-+      for (int i = 0; i < field_72404_b.size(); i++) {
++      SPlayerListItemPacket packet = new SPlayerListItemPacket(Action.REMOVE_PLAYER, new ServerPlayerEntity[] { playerIn });
++      for (int i = 0; i < field_72404_b.size(); ++i) {
 +         ServerPlayerEntity entityplayer2 = (ServerPlayerEntity) this.field_72404_b.get(i);
 +         if (entityplayer2.getBukkitEntity().canSee(playerIn.getBukkitEntity())) {
 +            entityplayer2.field_71135_a.func_147359_a(packet);
@@ -746,7 +746,7 @@
     }
  
 +   // CraftBukkit start - add a world/entity limited version
-+   public void sendAll(IPacket packetIn, HumanEntity entityhuman) {
++   public void sendAll(IPacket packetIn, PlayerEntity entityhuman) {
 +      for (int i = 0; i < this.field_72404_b.size(); ++i) {
 +         ServerPlayerEntity entityplayer = this.field_72404_b.get(i);
 +         if (entityhuman != null && entityhuman instanceof ServerPlayerEntity && !entityplayer.getBukkitEntity().canSee(((ServerPlayerEntity)entityhuman).getBukkitEntity())) {
