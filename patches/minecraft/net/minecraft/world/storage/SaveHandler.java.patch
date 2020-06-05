@@ -61,7 +61,35 @@
        } catch (Exception var5) {
           field_215773_b.warn("Failed to save player data for {}", (Object)p_75753_1_.func_200200_C_().getString());
        }
-@@ -162,13 +169,39 @@
+@@ -154,21 +161,67 @@
+ 
+       try {
+          File file1 = new File(this.field_215775_d, p_75752_1_.func_189512_bd() + ".dat");
++         // Spigot Start
++         boolean usingWrongFile = false;
++         if ( !file1.exists() )
++         {
++            file1 = new File( this.field_215775_d, UUID.nameUUIDFromBytes( ( "OfflinePlayer:" + p_75752_1_.func_200200_C_() ).getBytes( "UTF-8" ) ).toString() + ".dat");
++            if ( file1.exists() )
++            {
++               usingWrongFile = true;
++               org.bukkit.Bukkit.getServer().getLogger().warning( "Using offline mode UUID file for player " + p_75752_1_.func_200200_C_() + " as it is the only copy we can find." );
++            }
++         }
++         // Spigot End
++
+          if (file1.exists() && file1.isFile()) {
+             compoundnbt = CompressedStreamTools.func_74796_a(new FileInputStream(file1));
+          }
++
++         // Spigot Start
++         if ( usingWrongFile )
++         {
++            file1.renameTo( new File( file1.getPath() + ".offline-read" ) );
++         }
++         // Spigot End
+       } catch (Exception var4) {
+          field_215773_b.warn("Failed to load player data for {}", (Object)p_75752_1_.func_200200_C_().getString());
        }
  
        if (compoundnbt != null) {
@@ -101,7 +129,7 @@
     public String[] func_215771_d() {
        String[] astring = this.field_215775_d.list();
        if (astring == null) {
-@@ -191,4 +224,82 @@
+@@ -191,4 +244,82 @@
     public DataFixer func_197718_i() {
        return this.field_215772_a;
     }
