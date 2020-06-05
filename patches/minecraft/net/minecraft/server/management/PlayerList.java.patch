@@ -483,7 +483,7 @@
 -         return new TranslationTextComponent("multiplayer.disconnect.not_whitelisted");
 -      } else if (this.field_72413_h.func_152708_a(p_206258_1_)) {
 -         IPBanEntry ipbanentry = this.field_72413_h.func_152709_b(p_206258_1_);
-+         event.disallow(Result.KICK_BANNED, CraftChatMessage.fromComponent(itextcomponent1)); // CraftBukkit
++         if(!profilebanentry.func_73682_e()) event.disallow(Result.KICK_BANNED, CraftChatMessage.fromComponent(itextcomponent1)); // CraftBukkit // Spigot
 +      } else if (!this.func_152607_e(gameProfile)) {
 +         TranslationTextComponent chatMessage = new TranslationTextComponent("multiplayer.disconnect.not_whitelisted");
 +         event.disallow(Result.KICK_WHITELIST, org.spigotmc.SpigotConfig.whitelistMessage); // Spigot
