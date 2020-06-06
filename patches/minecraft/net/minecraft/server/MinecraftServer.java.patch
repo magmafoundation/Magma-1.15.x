@@ -902,7 +902,7 @@
  
        this.field_71304_b.func_76319_b();
     }
-@@ -864,34 +1090,17 @@
+@@ -864,39 +1090,31 @@
     }
  
     public static void main(String[] p_main_0_) {
@@ -941,7 +941,22 @@
              field_147145_h.info("Initialized '" + path.toAbsolutePath().toString() + "' and '" + path1.toAbsolutePath().toString() + "'");
              return;
           }
-@@ -904,33 +1113,47 @@
+ 
+-         if (!servereula.func_154346_a()) {
++         // Spigot Start
++         boolean eulaAgreed = Boolean.getBoolean( "com.mojang.eula.agree" );
++         if ( eulaAgreed )
++         {
++            System.err.println( "You have used the Spigot command line EULA agreement flag." );
++            System.err.println( "By using this setting you are indicating your agreement to Mojang's EULA (https://account.mojang.com/documents/minecraft_eula)." );
++            System.err.println( "If you do not agree to the above EULA please stop your server and remove this flag immediately." );
++         }
++         // Spigot End
++         if (!servereula.func_154346_a() && eulaAgreed) { // Spigot
+             field_147145_h.info("You need to agree to the EULA in order to run the server. Go to eula.txt for more info.");
+             return;
+          }
+@@ -904,33 +1122,47 @@
           CrashReport.func_230188_h_();
           Bootstrap.func_151354_b();
           Bootstrap.func_218821_c();
@@ -1003,7 +1018,7 @@
        } catch (Exception exception) {
           field_147145_h.fatal("Failed to start the minecraft server", (Throwable)exception);
        }
-@@ -950,7 +1173,9 @@
+@@ -950,7 +1182,9 @@
     }
  
     public void func_71256_s() {
@@ -1014,7 +1029,7 @@
     }
  
     @OnlyIn(Dist.CLIENT)
-@@ -971,7 +1196,7 @@
+@@ -971,7 +1205,7 @@
     }
  
     public ServerWorld func_71218_a(DimensionType p_71218_1_) {
@@ -1023,7 +1038,7 @@
     }
  
     public Iterable<ServerWorld> func_212370_w() {
-@@ -1010,7 +1235,7 @@
+@@ -1010,7 +1244,7 @@
     }
  
     public String getServerModName() {
@@ -1032,7 +1047,7 @@
     }
  
     public CrashReport func_71230_b(CrashReport p_71230_1_) {
-@@ -1048,7 +1273,7 @@
+@@ -1048,7 +1282,7 @@
     public abstract Optional<String> func_230045_q_();
  
     public boolean func_175578_N() {
@@ -1041,7 +1056,7 @@
     }
  
     public void func_145747_a(ITextComponent p_145747_1_) {
-@@ -1290,7 +1515,7 @@
+@@ -1290,7 +1524,7 @@
  
     @Nullable
     public NetworkSystem func_147137_ag() {
@@ -1050,7 +1065,7 @@
     }
  
     @OnlyIn(Dist.CLIENT)
-@@ -1396,6 +1621,10 @@
+@@ -1396,6 +1630,10 @@
     public FunctionManager func_193030_aL() {
        return this.field_200258_al;
     }
@@ -1061,7 +1076,7 @@
  
     public void func_193031_aM() {
        if (!this.func_213162_bc()) {
-@@ -1567,6 +1796,31 @@
+@@ -1567,6 +1805,31 @@
  
     public abstract boolean func_213199_b(GameProfile p_213199_1_);
  
@@ -1093,7 +1108,7 @@
     public void func_223711_a(Path p_223711_1_) throws IOException {
        Path path = p_223711_1_.resolve("levels");
  
-@@ -1609,8 +1863,8 @@
+@@ -1609,8 +1872,8 @@
           final List<String> list = Lists.newArrayList();
           final GameRules gamerules = this.func_200252_aR();
           GameRules.func_223590_a(new GameRules.IRuleEntryVisitor() {
@@ -1104,7 +1119,7 @@
              }
           });
  
-@@ -1651,4 +1905,16 @@
+@@ -1651,4 +1914,16 @@
     private void func_229737_ba_() {
        Block.field_176229_d.forEach(BlockState::func_215692_c);
     }
