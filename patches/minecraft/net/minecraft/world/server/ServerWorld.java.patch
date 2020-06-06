@@ -706,7 +706,7 @@
        this.field_147483_b.addAll(p_217466_1_.func_177434_r().values());
        ClassInheritanceMultiMap<Entity>[] aclassinheritancemultimap = p_217466_1_.func_177429_s();
        int i = aclassinheritancemultimap.length;
-@@ -925,12 +1064,25 @@
+@@ -925,12 +1064,48 @@
  
     }
  
@@ -716,6 +716,29 @@
 +   }
 +   public void removeEntityComplete(Entity p_217484_1_, boolean keepData) {
 +      org.spigotmc.AsyncCatcher.catchOp("entity unregister"); // Spigot
++      // Spigot start
++      if ( p_217484_1_ instanceof PlayerEntity )
++      {
++         this.func_73046_m().field_71305_c.values().stream().map( ServerWorld::func_72912_H ).forEach( (worldData) ->
++         {
++            for (Object o : worldData.field_186348_N.values() )
++            {
++               if ( o instanceof MapData )
++               {
++                  MapData map = (MapData) o;
++                  map.field_76196_g.remove( (PlayerEntity) p_217484_1_ );
++                  for ( Iterator<MapData.MapInfo> iter = (Iterator<MapData.MapInfo>) map.field_76196_g.iterator(); iter.hasNext(); )
++                  {
++                     if ( iter.next().field_76211_a == p_217484_1_ )
++                     {
++                        iter.remove();
++                     }
++                  }
++               }
++            }
++         } );
++      }
++      // Spigot end
 +      // Spigot Start
 +      if (p_217484_1_.getBukkitEntity() instanceof org.bukkit.inventory.InventoryHolder) {
 +         for (org.bukkit.entity.HumanEntity h : Lists.newArrayList(((org.bukkit.inventory.InventoryHolder) p_217484_1_.getBukkitEntity()).getInventory().getViewers())) {
@@ -733,7 +756,7 @@
  
        this.field_175741_N.remove(p_217484_1_.func_110124_au());
        this.func_72863_F().func_217226_b(p_217484_1_);
-@@ -944,9 +1096,11 @@
+@@ -944,9 +1119,11 @@
           this.field_217495_I.remove(((MobEntity)p_217484_1_).func_70661_as());
        }
  
@@ -745,7 +768,7 @@
        if (this.field_217492_a) {
           this.field_217499_z.add(p_217465_1_);
        } else {
-@@ -964,15 +1118,19 @@
+@@ -964,15 +1141,19 @@
           }
        }
  
@@ -766,7 +789,7 @@
        }
     }
  
-@@ -985,16 +1143,31 @@
+@@ -985,16 +1166,31 @@
     }
  
     public void func_217434_e(ServerPlayerEntity p_217434_1_) {
@@ -802,7 +825,7 @@
     public void func_175715_c(int p_175715_1_, BlockPos p_175715_2_, int p_175715_3_) {
        for(ServerPlayerEntity serverplayerentity : this.field_73061_a.func_184103_al().func_181057_v()) {
           if (serverplayerentity != null && serverplayerentity.field_70170_p == this && serverplayerentity.func_145782_y() != p_175715_1_) {
-@@ -1010,10 +1183,20 @@
+@@ -1010,10 +1206,20 @@
     }
  
     public void func_184148_a(@Nullable PlayerEntity p_184148_1_, double p_184148_2_, double p_184148_4_, double p_184148_6_, SoundEvent p_184148_8_, SoundCategory p_184148_9_, float p_184148_10_, float p_184148_11_) {
@@ -823,7 +846,7 @@
        this.field_73061_a.func_184103_al().func_148543_a(p_217384_1_, p_217384_2_.func_226277_ct_(), p_217384_2_.func_226278_cu_(), p_217384_2_.func_226281_cx_(), p_217384_5_ > 1.0F ? (double)(16.0F * p_217384_5_) : 16.0D, this.field_73011_w.func_186058_p(), new SSpawnMovingSoundEffectPacket(p_217384_3_, p_217384_4_, p_217384_2_, p_217384_5_, p_217384_6_));
     }
  
-@@ -1049,6 +1232,7 @@
+@@ -1049,6 +1255,7 @@
  
     public Explosion func_217401_a(@Nullable Entity p_217401_1_, @Nullable DamageSource p_217401_2_, double p_217401_3_, double p_217401_5_, double p_217401_7_, float p_217401_9_, boolean p_217401_10_, Explosion.Mode p_217401_11_) {
        Explosion explosion = new Explosion(this, p_217401_1_, p_217401_3_, p_217401_5_, p_217401_7_, p_217401_9_, p_217401_10_, p_217401_11_);
@@ -831,7 +854,7 @@
        if (p_217401_2_ != null) {
           explosion.func_199592_a(p_217401_2_);
        }
-@@ -1188,7 +1372,13 @@
+@@ -1188,7 +1395,13 @@
     @Nullable
     public MapData func_217406_a(String p_217406_1_) {
        return this.func_73046_m().func_71218_a(DimensionType.field_223227_a_).func_217481_x().func_215753_b(() -> {
@@ -846,7 +869,7 @@
        }, p_217406_1_);
     }
  
-@@ -1377,4 +1567,20 @@
+@@ -1377,4 +1590,20 @@
           return p_229854_1_.func_175898_b(p_229855_1_.func_180328_a());
        });
     }
