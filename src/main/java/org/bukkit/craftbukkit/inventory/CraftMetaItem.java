@@ -36,17 +36,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.BlockItem;
-import net.minecraft.nbt.INBT;
-import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.CompressedStreamTools;
+import net.minecraft.nbt.INBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.nbt.StringNBT;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TextFormatting;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.Validate;
 import org.apache.commons.lang3.EnumUtils;
@@ -79,6 +79,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.Repairable;
 import org.bukkit.inventory.meta.tags.CustomItemTagContainer;
 import org.bukkit.persistence.PersistentDataContainer;
+import org.spigotmc.ValidateUtils;
 
 /**
  * Children must include the following:
@@ -327,7 +328,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
 
             if (display.contains(NAME.NBT)) {
                 try {
-                    displayName = ITextComponent.Serializer.fromJson(display.getString(NAME.NBT));
+                    displayName = ITextComponent.Serializer.fromJson(ValidateUtils.limit(display.getString(NAME.NBT), 1024)); // Spigot
                 } catch (JsonParseException ex) {
                     // Ignore (stripped like Vanilla)
                 }
@@ -335,7 +336,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
 
             if (display.contains(LOCNAME.NBT)) {
                 try {
-                    locName = ITextComponent.Serializer.fromJson(display.getString(LOCNAME.NBT));
+                    locName = ITextComponent.Serializer.fromJson(ValidateUtils.limit(display.getString(NAME.NBT), 1024)); // Spigot
                 } catch (JsonParseException ex) {
                     // Ignore (stripped like Vanilla)
                 }
@@ -346,7 +347,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
                 lore = new ArrayList<ITextComponent>(list.size());
 
                 for (int index = 0; index < list.size(); index++) {
-                    String line = list.getString(index);
+                    String line = ValidateUtils.limit(list.getString(index), 8192); // Spigot
                     try {
                         lore.add(ITextComponent.Serializer.fromJson(line));
                     } catch (JsonParseException ex) {

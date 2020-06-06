@@ -1,5 +1,7 @@
 package org.bukkit.craftbukkit.inventory;
 
+import static org.spigotmc.ValidateUtils.limit;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap.Builder;
 import java.util.ArrayList;
@@ -54,11 +56,11 @@ public class CraftMetaBook extends CraftMetaItem implements BookMeta {
         super(tag);
 
         if (tag.contains(BOOK_TITLE.NBT)) {
-            this.title = tag.getString(BOOK_TITLE.NBT);
+            this.title =  limit( tag.getString(BOOK_TITLE.NBT), 1024 ); // Spigot
         }
 
         if (tag.contains(BOOK_AUTHOR.NBT)) {
-            this.author = tag.getString(BOOK_AUTHOR.NBT);
+            this.author = limit( tag.getString(BOOK_AUTHOR.NBT), 1024 ); // Spigot
         }
 
         boolean resolved = false;
