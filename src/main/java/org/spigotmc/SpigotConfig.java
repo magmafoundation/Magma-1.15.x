@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -305,5 +307,18 @@ public class SpigotConfig {
     private static void movedTooQuicklyMultiplier()
     {
         movedTooQuicklyMultiplier = getDouble( "settings.moved-too-quickly-multiplier", 10.0D );
+    }
+
+    public static double maxHealth = 2048;
+    public static double movementSpeed = 2048;
+    public static double attackDamage = 2048;
+    private static void attributeMaxes()
+    {
+        maxHealth = getDouble( "settings.attribute.maxHealth.max", maxHealth );
+        ( (RangedAttribute) SharedMonsterAttributes.MAX_HEALTH ).maximumValue = maxHealth;
+        movementSpeed = getDouble( "settings.attribute.movementSpeed.max", movementSpeed );
+        ( (RangedAttribute) SharedMonsterAttributes.MOVEMENT_SPEED ).maximumValue = movementSpeed;
+        attackDamage = getDouble( "settings.attribute.attackDamage.max", attackDamage );
+        ( (RangedAttribute) SharedMonsterAttributes.ATTACK_DAMAGE ).maximumValue = attackDamage;
     }
 }
