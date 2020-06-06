@@ -628,7 +628,21 @@
                 serverworld1.close();
              } catch (IOException ioexception) {
                 field_147145_h.error("Exception closing the level", (Throwable)ioexception);
-@@ -602,23 +718,47 @@
+@@ -576,6 +692,13 @@
+          this.field_71307_n.func_76470_e();
+       }
+ 
++      // Spigot start
++      if (org.spigotmc.SpigotConfig.saveUserCacheOnStopOnly) {
++         field_147145_h.info("Saving usercache.json");
++         this.field_152366_X.func_152658_c();
++      }
++      // Spigot end
++
+    }
+ 
+    public String func_71211_k() {
+@@ -602,23 +725,47 @@
  
     }
  
@@ -678,7 +692,7 @@
                 this.field_211151_aa += 50L;
                 if (this.field_71295_T) {
                    this.field_71295_T = false;
-@@ -636,11 +776,23 @@
+@@ -636,11 +783,23 @@
                 this.field_71304_b.func_219897_b();
                 this.field_71296_Q = true;
              }
@@ -702,7 +716,7 @@
           CrashReport crashreport;
           if (throwable1 instanceof ReportedException) {
              crashreport = this.func_71230_b(((ReportedException)throwable1).func_71575_a());
-@@ -655,6 +807,7 @@
+@@ -655,6 +814,7 @@
              field_147145_h.error("We were unable to save this crash report to disk.");
           }
  
@@ -710,7 +724,7 @@
           this.func_71228_a(crashreport);
        } finally {
           try {
-@@ -663,6 +816,14 @@
+@@ -663,6 +823,14 @@
           } catch (Throwable throwable) {
              field_147145_h.error("Exception stopping the server", throwable);
           } finally {
@@ -725,7 +739,7 @@
              this.func_71240_o();
           }
  
-@@ -671,9 +832,14 @@
+@@ -671,9 +839,14 @@
     }
  
     private boolean func_212379_aT() {
@@ -741,7 +755,7 @@
     protected void func_213202_o() {
        this.func_213160_bf();
        this.func_213161_c(() -> {
-@@ -681,7 +847,7 @@
+@@ -681,7 +854,7 @@
        });
     }
  
@@ -750,7 +764,7 @@
        return new TickDelayedTask(this.field_71315_w, p_212875_1_);
     }
  
-@@ -763,7 +929,9 @@
+@@ -763,7 +936,9 @@
     }
  
     protected void func_71217_p(BooleanSupplier p_71217_1_) {
@@ -760,7 +774,7 @@
        ++this.field_71315_w;
        this.func_71190_q(p_71217_1_);
        if (i - this.field_147142_T >= 5000000000L) {
-@@ -778,15 +946,18 @@
+@@ -778,15 +953,18 @@
  
           Collections.shuffle(Arrays.asList(agameprofile));
           this.field_147147_p.func_151318_b().func_151330_a(agameprofile);
@@ -780,7 +794,7 @@
        }
  
        this.field_71304_b.func_76320_a("snooper");
-@@ -805,52 +976,100 @@
+@@ -805,52 +983,100 @@
        long i1 = Util.func_211178_c();
        this.field_213215_ap.func_181747_a(i1 - i);
        this.field_71304_b.func_76319_b();
@@ -888,7 +902,7 @@
  
        this.field_71304_b.func_76319_b();
     }
-@@ -864,34 +1083,17 @@
+@@ -864,34 +1090,17 @@
     }
  
     public static void main(String[] p_main_0_) {
@@ -927,7 +941,7 @@
              field_147145_h.info("Initialized '" + path.toAbsolutePath().toString() + "' and '" + path1.toAbsolutePath().toString() + "'");
              return;
           }
-@@ -904,33 +1106,47 @@
+@@ -904,33 +1113,47 @@
           CrashReport.func_230188_h_();
           Bootstrap.func_151354_b();
           Bootstrap.func_218821_c();
@@ -989,7 +1003,7 @@
        } catch (Exception exception) {
           field_147145_h.fatal("Failed to start the minecraft server", (Throwable)exception);
        }
-@@ -950,7 +1166,9 @@
+@@ -950,7 +1173,9 @@
     }
  
     public void func_71256_s() {
@@ -1000,7 +1014,7 @@
     }
  
     @OnlyIn(Dist.CLIENT)
-@@ -971,7 +1189,7 @@
+@@ -971,7 +1196,7 @@
     }
  
     public ServerWorld func_71218_a(DimensionType p_71218_1_) {
@@ -1009,7 +1023,7 @@
     }
  
     public Iterable<ServerWorld> func_212370_w() {
-@@ -1010,7 +1228,7 @@
+@@ -1010,7 +1235,7 @@
     }
  
     public String getServerModName() {
@@ -1018,7 +1032,7 @@
     }
  
     public CrashReport func_71230_b(CrashReport p_71230_1_) {
-@@ -1048,7 +1266,7 @@
+@@ -1048,7 +1273,7 @@
     public abstract Optional<String> func_230045_q_();
  
     public boolean func_175578_N() {
@@ -1027,7 +1041,7 @@
     }
  
     public void func_145747_a(ITextComponent p_145747_1_) {
-@@ -1290,7 +1508,7 @@
+@@ -1290,7 +1515,7 @@
  
     @Nullable
     public NetworkSystem func_147137_ag() {
@@ -1036,7 +1050,7 @@
     }
  
     @OnlyIn(Dist.CLIENT)
-@@ -1396,6 +1614,10 @@
+@@ -1396,6 +1621,10 @@
     public FunctionManager func_193030_aL() {
        return this.field_200258_al;
     }
@@ -1047,7 +1061,7 @@
  
     public void func_193031_aM() {
        if (!this.func_213162_bc()) {
-@@ -1567,6 +1789,31 @@
+@@ -1567,6 +1796,31 @@
  
     public abstract boolean func_213199_b(GameProfile p_213199_1_);
  
@@ -1079,7 +1093,7 @@
     public void func_223711_a(Path p_223711_1_) throws IOException {
        Path path = p_223711_1_.resolve("levels");
  
-@@ -1609,8 +1856,8 @@
+@@ -1609,8 +1863,8 @@
           final List<String> list = Lists.newArrayList();
           final GameRules gamerules = this.func_200252_aR();
           GameRules.func_223590_a(new GameRules.IRuleEntryVisitor() {
@@ -1090,7 +1104,7 @@
              }
           });
  
-@@ -1651,4 +1898,16 @@
+@@ -1651,4 +1905,16 @@
     private void func_229737_ba_() {
        Block.field_176229_d.forEach(BlockState::func_215692_c);
     }

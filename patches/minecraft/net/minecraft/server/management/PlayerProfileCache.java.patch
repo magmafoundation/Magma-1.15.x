@@ -21,7 +21,16 @@
     private final GameProfileRepository field_187323_g;
     protected final Gson field_152660_b;
     private final File field_152665_g;
-@@ -144,7 +146,7 @@
+@@ -125,7 +127,7 @@
+       this.field_152661_c.put(p_152651_1_.getName().toLowerCase(Locale.ROOT), playerprofilecache$profileentry1);
+       this.field_152662_d.put(uuid, playerprofilecache$profileentry1);
+       this.field_152663_e.addFirst(p_152651_1_);
+-      this.func_152658_c();
++      if( !org.spigotmc.SpigotConfig.saveUserCacheOnStopOnly ) this.func_152658_c();  // Spigot - skip saving if disabled
+    }
+ 
+    @Nullable
+@@ -144,14 +146,14 @@
           this.field_152663_e.remove(gameprofile);
           this.field_152663_e.addFirst(gameprofile);
        } else {
@@ -30,6 +39,14 @@
           if (gameprofile1 != null) {
              this.func_152649_a(gameprofile1);
              playerprofilecache$profileentry = this.field_152661_c.get(s);
+          }
+       }
+ 
+-      this.func_152658_c();
++      if( !org.spigotmc.SpigotConfig.saveUserCacheOnStopOnly ) this.func_152658_c(); // Spigot - skip saving if disabled
+       return playerprofilecache$profileentry == null ? null : playerprofilecache$profileentry.func_152668_a();
+    }
+ 
 @@ -199,7 +201,7 @@
     }
  
