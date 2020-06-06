@@ -6,6 +6,7 @@ import java.lang.management.ThreadInfo;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.World;
 import org.bukkit.Bukkit;
 
 public class WatchdogThread extends Thread {
@@ -58,6 +59,13 @@ public class WatchdogThread extends Thread {
                 log.log(Level.SEVERE, "If you are unsure or still think this is a Spigot bug, please report to https://www.spigotmc.org/");
                 log.log(Level.SEVERE, "Be sure to include ALL relevant console errors and Minecraft crash reports");
                 log.log(Level.SEVERE, "Spigot version: " + Bukkit.getServer().getVersion());
+                //
+                if ( World.lastPhysicsProblem != null )
+                {
+                    log.log( Level.SEVERE, "------------------------------" );
+                    log.log( Level.SEVERE, "During the run of the server, a physics stackoverflow was supressed" );
+                    log.log( Level.SEVERE, "near " + World.lastPhysicsProblem );
+                }
                 //
                 log.log(Level.SEVERE, "------------------------------");
                 log.log(Level.SEVERE, "Server thread dump (Look for plugins here before reporting to Spigot!):");
