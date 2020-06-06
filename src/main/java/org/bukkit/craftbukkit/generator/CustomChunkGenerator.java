@@ -251,4 +251,10 @@ public class CustomChunkGenerator extends InternalChunkGenerator<GenerationSetti
     public int getMaxHeight() {
         return delegate.getMaxHeight();
     }
+
+    // Spigot start
+    public ServerWorld getWorld() {
+        return world;
+    }
+    // Spigot end
 }

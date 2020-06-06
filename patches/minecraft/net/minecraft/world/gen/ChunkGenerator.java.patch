@@ -30,3 +30,14 @@
     }
  
     public abstract int func_222529_a(int p_222529_1_, int p_222529_2_, Heightmap.Type p_222529_3_);
+@@ -208,4 +222,10 @@
+    public int func_222531_c(int p_222531_1_, int p_222531_2_, Heightmap.Type p_222531_3_) {
+       return this.func_222529_a(p_222531_1_, p_222531_2_, p_222531_3_) - 1;
+    }
++
++   // Spigot start
++   public World getWorld() {
++      return this.field_222540_a.func_201672_e();
++   }
++   // Spigot end
+ }
