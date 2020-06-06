@@ -47,7 +47,19 @@
        return playerprofilecache$profileentry == null ? null : playerprofilecache$profileentry.func_152668_a();
     }
  
-@@ -199,7 +201,7 @@
+@@ -190,6 +192,11 @@
+          }
+       } catch (FileNotFoundException var9) {
+          ;
++         // Spigot Start
++      } catch (com.google.gson.JsonSyntaxException ex) {
++         UserList.field_152693_a.warn( "Usercache.json is corrupted or has bad formatting. Deleting it to prevent further issues." );
++         this.field_152665_g.delete();
++         // Spigot End
+       } catch (JsonParseException var10) {
+          ;
+       } finally {
+@@ -199,7 +206,7 @@
     }
  
     public void func_152658_c() {
