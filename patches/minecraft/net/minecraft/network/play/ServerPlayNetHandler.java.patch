@@ -326,7 +326,12 @@
                 field_147370_c.warn("{} (vehicle of {}) moved too quickly! {},{},{}", entity.func_200200_C_().getString(), this.field_147369_b.func_200200_C_().getString(), d6, d7, d8);
                 this.field_147371_a.func_179290_a(new SMoveVehiclePacket(entity));
                 return;
-@@ -334,15 +378,76 @@
+@@ -330,19 +374,80 @@
+             d8 = d5 - entity.func_226281_cx_();
+             d10 = d6 * d6 + d7 * d7 + d8 * d8;
+             boolean flag1 = false;
+-            if (d10 > 0.0625D) {
++            if (d10 > org.spigotmc.SpigotConfig.movedWronglyThreshold) { // Spigot
                 flag1 = true;
                 field_147370_c.warn("{} moved wrongly!", (Object)entity.func_200200_C_().getString());
              }
@@ -529,6 +534,15 @@
                             field_147370_c.warn("{} moved too quickly! {},{},{}", this.field_147369_b.func_200200_C_().getString(), d7, d8, d9);
                             this.func_147364_a(this.field_147369_b.func_226277_ct_(), this.field_147369_b.func_226278_cu_(), this.field_147369_b.func_226281_cx_(), this.field_147369_b.field_70177_z, this.field_147369_b.field_70125_A);
                             return;
+@@ -743,7 +887,7 @@
+                      d9 = d6 - this.field_147369_b.func_226281_cx_();
+                      d11 = d7 * d7 + d8 * d8 + d9 * d9;
+                      boolean flag = false;
+-                     if (!this.field_147369_b.func_184850_K() && d11 > 0.0625D && !this.field_147369_b.func_70608_bn() && !this.field_147369_b.field_71134_c.func_73083_d() && this.field_147369_b.field_71134_c.func_73081_b() != GameType.SPECTATOR) {
++                     if (!this.field_147369_b.func_184850_K() && d11 > org.spigotmc.SpigotConfig.movedWronglyThreshold && !this.field_147369_b.func_70608_bn() && !this.field_147369_b.field_71134_c.func_73083_d() && this.field_147369_b.field_71134_c.func_73081_b() != GameType.SPECTATOR) { // Spigot
+                         flag = true;
+                         field_147370_c.warn("{} moved wrongly!", (Object)this.field_147369_b.func_200200_C_().getString());
+                      }
 @@ -758,7 +902,61 @@
                          }
                       }
