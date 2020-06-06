@@ -44,6 +44,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import jline.console.ConsoleReader;
+import net.md_5.bungee.api.chat.BaseComponent;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.block.Block;
 import net.minecraft.command.CommandSource;
@@ -1983,6 +1984,21 @@ public final class CraftServer implements Server {
         public void restart() {
             org.spigotmc.RestartCommand.restart();
         }
+
+        @Override
+        public void broadcast(BaseComponent component) {
+            for (Player player : getOnlinePlayers()) {
+                player.spigot().sendMessage(component);
+            }
+        }
+
+        @Override
+        public void broadcast(BaseComponent... components) {
+            for (Player player : getOnlinePlayers()) {
+                player.spigot().sendMessage(components);
+            }
+        }
+
     };
     public Spigot spigot()
     {

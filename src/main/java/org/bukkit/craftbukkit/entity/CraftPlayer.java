@@ -23,6 +23,7 @@ import java.util.WeakHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Nullable;
+import net.md_5.bungee.api.chat.BaseComponent;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.advancements.PlayerAdvancements;
 import net.minecraft.entity.Entity;
@@ -56,6 +57,7 @@ import net.minecraft.tileentity.SignTileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.ChatType;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -1682,6 +1684,34 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
             }
             return java.util.Collections.unmodifiableSet( ret );
         }
+
+        @Override
+        public void sendMessage(BaseComponent component) {
+            sendMessage( new BaseComponent[] { component } );
+        }
+        @Override
+        public void sendMessage(BaseComponent... components) {
+            if ( getHandle().connection == null ) return;
+            SChatPacket packet = new SChatPacket(null, ChatType.SYSTEM);
+            packet.components = components;
+            getHandle().connection.sendPacket(packet);
+        }
+        @Override
+        public void sendMessage(net.md_5.bungee.api.ChatMessageType position, BaseComponent component) {
+            sendMessage( position, new BaseComponent[] { component } );
+        }
+        @Override
+        public void sendMessage(net.md_5.bungee.api.ChatMessageType position, BaseComponent... components) {
+            if ( getHandle().connection == null ) return;
+            SChatPacket packet = new SChatPacket(null, ChatType.byId((byte) position.ordinal()));
+            // Action bar doesn't render colours, replace colours with legacy section symbols
+            if (position == net.md_5.bungee.api.ChatMessageType.ACTION_BAR) {
+                components = new BaseComponent[]{new net.md_5.bungee.api.chat.TextComponent(BaseComponent.toLegacyText(components))};
+            }
+            packet.components = components;
+            getHandle().connection.sendPacket(packet);
+        }
+
     };
     public Player.Spigot spigot()
     {

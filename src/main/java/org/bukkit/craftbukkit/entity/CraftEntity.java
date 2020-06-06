@@ -6,6 +6,7 @@ import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import net.md_5.bungee.api.chat.BaseComponent;
 import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.Entity;
@@ -163,6 +164,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.util.BoundingBox;
 import org.bukkit.util.NumberConversions;
 import org.bukkit.util.Vector;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class CraftEntity implements org.bukkit.entity.Entity {
     private static PermissibleBase perm;
@@ -982,6 +984,14 @@ public abstract class CraftEntity implements org.bukkit.entity.Entity {
     // Spigot start
     private final Spigot spigot = new Spigot()
     {
+
+        @Override
+        public void sendMessage(BaseComponent component) {
+        }
+
+        @Override
+        public void sendMessage(BaseComponent... components) {
+        }
     };
     public Spigot spigot()
     {
