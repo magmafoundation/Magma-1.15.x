@@ -252,7 +252,7 @@
        return func_216963_a(this.field_217006_g, p_75145_1_, Blocks.field_150381_bn);
     }
  
-@@ -262,9 +352,8 @@
+@@ -262,11 +352,14 @@
                 return ItemStack.field_190927_a;
              }
  
@@ -262,5 +262,12 @@
 +            if (itemstack1.func_77942_o()) { // Forge: Fix MC-17431
 +               ((Slot)this.field_75151_b.get(0)).func_75215_d(itemstack1.func_77979_a(1));
              } else if (!itemstack1.func_190926_b()) {
-                this.field_75151_b.get(0).func_75215_d(new ItemStack(itemstack1.func_77973_b()));
+-               this.field_75151_b.get(0).func_75215_d(new ItemStack(itemstack1.func_77973_b()));
++               // Spigot start
++               ItemStack clone = itemstack1.func_77946_l();
++               clone.func_190920_e(1);
++               ((Slot) this.field_75151_b.get(0)).func_75215_d(clone);
++               // Spigot end
                 itemstack1.func_190918_g(1);
+             }
+          }
