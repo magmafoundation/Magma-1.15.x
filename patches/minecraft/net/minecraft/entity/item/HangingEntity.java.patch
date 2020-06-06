@@ -47,7 +47,7 @@
        Validate.notNull(p_174859_1_);
        Validate.isTrue(p_174859_1_.func_176740_k().func_176722_c());
        this.field_174860_b = p_174859_1_;
-@@ -53,36 +55,47 @@
+@@ -53,43 +55,69 @@
  
     protected void func_174856_o() {
        if (this.field_174860_b != null) {
@@ -121,8 +121,9 @@
        return p_190202_1_ % 32 == 0 ? 0.5D : 0.0D;
     }
  
-@@ -90,6 +103,21 @@
-       if (this.field_70520_f++ == 100 && !this.field_70170_p.field_72995_K) {
+    public void func_70071_h_() {
+-      if (this.field_70520_f++ == 100 && !this.field_70170_p.field_72995_K) {
++      if (this.field_70520_f++ == this.field_70170_p.spigotConfig.hangingTickFrequency && !this.field_70170_p.field_72995_K) { // Spigot
           this.field_70520_f = 0;
           if (!this.field_70128_L && !this.func_70518_d()) {
 +            // CraftBukkit start - fire break events
