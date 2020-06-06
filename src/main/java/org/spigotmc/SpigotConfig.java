@@ -283,4 +283,10 @@ public class SpigotConfig {
             Arrays.asList( "setblock", "summon", "testforblock", "tellraw" ) ) );
     }
 
+    public static int userCacheCap;
+    private static void userCacheCap()
+    {
+        userCacheCap = getInt( "settings.user-cache-size", 1000 );
+    }
+
 }
