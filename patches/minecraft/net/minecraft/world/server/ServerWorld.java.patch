@@ -691,7 +691,7 @@
           this.func_217465_m(p_217440_1_);
           return true;
        }
-@@ -906,6 +1037,15 @@
+@@ -906,8 +1037,17 @@
     }
  
     public void func_217466_a(Chunk p_217466_1_) {
@@ -705,8 +705,11 @@
 +      }
 +      // Spigot End
        this.field_147483_b.addAll(p_217466_1_.func_177434_r().values());
-       ClassInheritanceMultiMap<Entity>[] aclassinheritancemultimap = p_217466_1_.func_177429_s();
+-      ClassInheritanceMultiMap<Entity>[] aclassinheritancemultimap = p_217466_1_.func_177429_s();
++      List<Entity>[] aclassinheritancemultimap = p_217466_1_.getEntityLists(); // Spigot
        int i = aclassinheritancemultimap.length;
+ 
+       for(int j = 0; j < i; ++j) {
 @@ -925,12 +1065,48 @@
  
     }
