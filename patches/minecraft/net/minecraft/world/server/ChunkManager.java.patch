@@ -78,7 +78,7 @@
     private final Long2ObjectLinkedOpenHashMap<ChunkHolder> field_219253_g = new Long2ObjectLinkedOpenHashMap<>();
     private final LongSet field_219254_h = new LongOpenHashSet();
     private final ServerWorld field_219255_i;
-@@ -109,16 +90,42 @@
+@@ -109,16 +90,44 @@
     private final ChunkTaskPriorityQueueSorter field_219263_q;
     private final ITaskExecutor<ChunkTaskPriorityQueueSorter.FunctionEntry<Runnable>> field_219264_r;
     private final ITaskExecutor<ChunkTaskPriorityQueueSorter.FunctionEntry<Runnable>> field_219265_s;
@@ -95,6 +95,8 @@
     private final Queue<Runnable> field_223181_A = Queues.newConcurrentLinkedQueue();
     private int field_219247_A;
  
++   private static final double UNLOAD_QUEUE_RESIZE_FACTOR = 0.96; // Spigot
++
 +   // CraftBukkit start - recursion-safe executor for Chunk loadCallback() and unloadCallback()
 +   public final CallbackExecutor callbackExecutor = new CallbackExecutor();
 +
@@ -124,7 +126,7 @@
     public ChunkManager(ServerWorld p_i51538_1_, File p_i51538_2_, DataFixer p_i51538_3_, TemplateManager p_i51538_4_, Executor p_i51538_5_, ThreadTaskExecutor<Runnable> p_i51538_6_, IChunkLightProvider p_i51538_7_, ChunkGenerator<?> p_i51538_8_, IChunkStatusListener p_i51538_9_, Supplier<DimensionSavedDataManager> p_i51538_10_, int p_i51538_11_) {
        super(new File(p_i51538_1_.func_201675_m().func_186058_p().func_212679_a(p_i51538_2_), "region"), p_i51538_3_);
        this.field_219269_w = p_i51538_4_;
-@@ -368,6 +375,7 @@
+@@ -368,6 +377,7 @@
        iprofiler.func_219895_b("chunk_unload");
        if (!this.field_219255_i.func_217402_u()) {
           this.func_223155_b(p_219204_1_);
@@ -132,7 +134,37 @@
        }
  
        iprofiler.func_76319_b();
-@@ -404,6 +412,7 @@
+@@ -376,16 +386,27 @@
+    private void func_223155_b(BooleanSupplier p_223155_1_) {
+       LongIterator longiterator = this.field_219261_o.iterator();
+ 
+-      for(int i = 0; longiterator.hasNext() && (p_223155_1_.getAsBoolean() || i < 200 || this.field_219261_o.size() > 2000); longiterator.remove()) {
++      // Spigot start
++      org.spigotmc.SlackActivityAccountant activityAccountant = this.field_219255_i.func_73046_m().slackActivityAccountant;
++      activityAccountant.startActivity(0.5);
++      int targetSize = (int) (this.field_219261_o.size() * UNLOAD_QUEUE_RESIZE_FACTOR);
++      // Spigot end
++      while (longiterator.hasNext()) { // Spigot
+          long j = longiterator.nextLong();
++         longiterator.remove(); // Spigot
+          ChunkHolder chunkholder = this.field_219251_e.remove(j);
+          if (chunkholder != null) {
+             this.field_219253_g.put(j, chunkholder);
+             this.field_219262_p = true;
+-            ++i;
++            // Spigot start
++            if (!p_223155_1_.getAsBoolean() && this.field_219261_o.size() <= targetSize && activityAccountant.activityTimeIsExhausted()) {
++               break;
++            }
++            // Spigot end
+             this.func_219212_a(j, chunkholder);
+          }
+       }
++      activityAccountant.endActivity(); // Spigot
+ 
+       Runnable runnable;
+       while((p_223155_1_.getAsBoolean() || this.field_223181_A.size() > 2000) && (runnable = this.field_223181_A.poll()) != null) {
+@@ -404,6 +425,7 @@
              if (this.field_219253_g.remove(p_219212_1_, p_219212_3_) && p_219185_5_ != null) {
                 if (p_219185_5_ instanceof Chunk) {
                    ((Chunk)p_219185_5_).func_177417_c(false);
@@ -140,7 +172,7 @@
                 }
  
                 this.func_219229_a(p_219185_5_);
-@@ -482,6 +491,7 @@
+@@ -482,6 +504,7 @@
                 if (flag) {
                    IChunk ichunk = ChunkSerializer.func_222656_a(this.field_219255_i, this.field_219269_w, this.field_219260_n, p_223172_1_, compoundnbt);
                    ichunk.func_177432_b(this.field_219255_i.func_82737_E());
@@ -148,7 +180,7 @@
                    return Either.left(ichunk);
                 }
  
-@@ -576,12 +586,19 @@
+@@ -576,12 +599,19 @@
                 chunk.func_177417_c(true);
                 this.field_219255_i.func_147448_a(chunk.func_177434_r().values());
                 List<Entity> list = null;
@@ -170,7 +202,7 @@
                          if (list == null) {
                             list = Lists.newArrayList(entity);
                          } else {
-@@ -594,6 +611,7 @@
+@@ -594,6 +624,7 @@
                 if (list != null) {
                    list.forEach(chunk::func_76622_b);
                 }
@@ -178,7 +210,7 @@
              }
  
              return chunk;
-@@ -679,6 +697,8 @@
+@@ -679,6 +710,8 @@
  
              this.field_219255_i.func_217381_Z().func_230035_c_("chunkSave");
              CompoundNBT compoundnbt1 = ChunkSerializer.func_222645_a(this.field_219255_i, p_219229_1_);
@@ -187,7 +219,7 @@
              this.func_219100_a(chunkpos, compoundnbt1);
              return true;
           } catch (Exception exception) {
-@@ -711,6 +731,7 @@
+@@ -711,6 +744,7 @@
  
     protected void func_219199_a(ServerPlayerEntity p_219199_1_, ChunkPos p_219199_2_, IPacket<?>[] p_219199_3_, boolean p_219199_4_, boolean p_219199_5_) {
        if (p_219199_1_.field_70170_p == this.field_219255_i) {
@@ -195,7 +227,7 @@
           if (p_219199_5_ && !p_219199_4_) {
              ChunkHolder chunkholder = this.func_219219_b(p_219199_2_.func_201841_a());
              if (chunkholder != null) {
-@@ -753,7 +774,7 @@
+@@ -753,7 +787,7 @@
              return p_225407_0_ instanceof Chunk ? Optional.of((Chunk)p_225407_0_) : Optional.empty();
           });
           csvwriter.func_225426_a(chunkpos.field_77276_a, chunkpos.field_77275_b, chunkholder.func_219299_i(), optional.isPresent(), optional.map(IChunk::func_201589_g).orElse((ChunkStatus)null), optional1.map(Chunk::func_217321_u).orElse((ChunkHolder.LocationType)null), func_225402_a(chunkholder.func_223492_c()), func_225402_a(chunkholder.func_219296_a()), func_225402_a(chunkholder.func_219297_b()), this.field_219267_u.func_225413_c(entry.getLongKey()), !this.func_219243_d(chunkpos), optional1.map((p_225401_0_) -> {
@@ -204,7 +236,7 @@
           }).orElse(0), optional1.map((p_225405_0_) -> {
              return p_225405_0_.func_177434_r().size();
           }).orElse(0));
-@@ -779,13 +800,24 @@
+@@ -779,13 +813,24 @@
     @Nullable
     private CompoundNBT func_219178_f(ChunkPos p_219178_1_) throws IOException {
        CompoundNBT compoundnbt = this.func_227078_e_(p_219178_1_);
@@ -232,7 +264,7 @@
        });
     }
  
-@@ -919,10 +951,12 @@
+@@ -919,10 +964,12 @@
     }
  
     protected void func_219210_a(Entity p_219210_1_) {
@@ -245,7 +277,7 @@
              int j = entitytype.func_220332_l();
              if (this.field_219272_z.containsKey(p_219210_1_.func_145782_y())) {
                 throw (IllegalStateException)Util.func_229757_c_(new IllegalStateException("Entity is already tracked!"));
-@@ -947,6 +981,7 @@
+@@ -947,6 +994,7 @@
     }
  
     protected void func_219231_b(Entity p_219231_1_) {
@@ -253,7 +285,7 @@
        if (p_219231_1_ instanceof ServerPlayerEntity) {
           ServerPlayerEntity serverplayerentity = (ServerPlayerEntity)p_219231_1_;
           this.func_219234_a(serverplayerentity, false);
-@@ -1056,15 +1091,15 @@
+@@ -1056,15 +1104,15 @@
        });
     }
  
@@ -272,7 +304,7 @@
           this.field_219403_c = p_i50468_2_;
           this.field_219404_d = p_i50468_3_;
           this.field_219405_e = SectionPos.func_218157_a(p_i50468_2_);
-@@ -1105,6 +1140,7 @@
+@@ -1105,6 +1153,7 @@
        }
  
        public void func_219399_a(ServerPlayerEntity p_219399_1_) {
@@ -280,7 +312,7 @@
           if (this.field_219406_f.remove(p_219399_1_)) {
              this.field_219402_b.func_219454_a(p_219399_1_);
           }
-@@ -1112,8 +1148,9 @@
+@@ -1112,8 +1161,9 @@
        }
  
        public void func_219400_b(ServerPlayerEntity p_219400_1_) {
@@ -291,7 +323,7 @@
              int i = Math.min(this.func_229843_b_(), (ChunkManager.this.field_219247_A - 1) * 16);
              boolean flag = vec3d.field_72450_a >= (double)(-i) && vec3d.field_72450_a <= (double)i && vec3d.field_72449_c >= (double)(-i) && vec3d.field_72449_c <= (double)i && this.field_219403_c.func_174827_a(p_219400_1_);
              if (flag) {
-@@ -1125,7 +1162,16 @@
+@@ -1125,7 +1175,16 @@
                       flag1 = ChunkManager.func_219215_b(chunkpos, p_219400_1_, false) <= ChunkManager.this.field_219247_A;
                    }
                 }
