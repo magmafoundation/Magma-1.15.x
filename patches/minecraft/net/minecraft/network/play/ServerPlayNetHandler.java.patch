@@ -900,7 +900,7 @@
        }
  
 +      // CraftBukkit start
-+      if (p_211148_1_ == null) {
++      if (p_211148_1_ == null || this.processedDisconnect) { // Spigot
 +         return;
 +      } else if (p_211148_1_ instanceof SSpawnPositionPacket) {
 +         SSpawnPositionPacket packet6 = (SSpawnPositionPacket) p_211148_1_;

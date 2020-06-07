@@ -79,7 +79,15 @@
        (new Bootstrap()).group(field_179296_e.func_179281_c()).handler(new ChannelInitializer<Channel>() {
           protected void initChannel(Channel p_initChannel_1_) throws Exception {
              p_initChannel_1_.pipeline().addLast("packet_handler", networkmanager);
-@@ -376,6 +392,14 @@
+@@ -361,6 +377,7 @@
+             } else if (this.func_150729_e() != null) {
+                this.func_150729_e().func_147231_a(new TranslationTextComponent("multiplayer.disconnect.generic"));
+             }
++            this.field_150745_j.clear(); // Free up packet queue.
+          }
+ 
+       }
+@@ -376,6 +393,14 @@
        return this.field_211397_t;
     }
  
@@ -94,7 +102,7 @@
     static class QueuedPacket {
        private final IPacket<?> field_150774_a;
        @Nullable
-@@ -386,4 +410,11 @@
+@@ -386,4 +411,11 @@
           this.field_201049_b = p_i48604_2_;
        }
     }
