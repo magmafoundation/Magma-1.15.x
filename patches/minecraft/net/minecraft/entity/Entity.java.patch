@@ -895,7 +895,7 @@
     }
  
     public boolean func_70028_i(Entity p_70028_1_) {
-@@ -2046,43 +2426,87 @@
+@@ -2046,43 +2426,89 @@
  
     @Nullable
     public Entity func_212321_a(DimensionType p_212321_1_) {
@@ -983,8 +983,10 @@
 -            double d4 = Math.min(-2.9999872E7D, serverworld1.func_175723_af().func_177736_c() + 16.0D);
 -            double d5 = Math.min(2.9999872E7D, serverworld1.func_175723_af().func_177728_d() - 16.0D);
 -            double d6 = Math.min(2.9999872E7D, serverworld1.func_175723_af().func_177733_e() - 16.0D);
-+               double d3 = Math.min(-2.9999872E7D, serverworld1.get().func_175723_af().func_177726_b() + 16.0D);
-+               double d4 = Math.min(-2.9999872E7D, serverworld1.get().func_175723_af().func_177736_c() + 16.0D);
++               // Spigot start - SPIGOT-5677, MC-114796: Fix portals generating outside world border
++               double d3 = Math.max(-2.9999872E7D, serverworld1.get().func_175723_af().func_177726_b() + 16.0D);
++               double d4 = Math.max(-2.9999872E7D, serverworld1.get().func_175723_af().func_177736_c() + 16.0D);
++               // Spigot end
 +               double d5 = Math.min(2.9999872E7D, serverworld1.get().func_175723_af().func_177728_d() - 16.0D);
 +               double d6 = Math.min(2.9999872E7D, serverworld1.get().func_175723_af().func_177733_e() - 16.0D);
              d0 = MathHelper.func_151237_a(d0, d3, d5);
@@ -1006,7 +1008,7 @@
              if (blockpattern$portalinfo == null) {
                 return null;
              }
-@@ -2090,23 +2514,45 @@
+@@ -2090,23 +2516,45 @@
              blockpos = new BlockPos(blockpattern$portalinfo.field_222505_a);
              vec3d = blockpattern$portalinfo.field_222506_b;
              f = (float)blockpattern$portalinfo.field_222507_c;
@@ -1057,7 +1059,7 @@
        } else {
           return null;
        }
-@@ -2129,10 +2575,12 @@
+@@ -2129,10 +2577,12 @@
     }
  
     public Vec3d func_181014_aG() {
@@ -1070,7 +1072,7 @@
        return this.field_181018_ap;
     }
  
-@@ -2261,7 +2709,7 @@
+@@ -2261,7 +2711,7 @@
        Pose pose = this.func_213283_Z();
        EntitySize entitysize1 = this.func_213305_a(pose);
        this.field_213325_aI = entitysize1;
@@ -1079,7 +1081,7 @@
        if (entitysize1.field_220315_a < entitysize.field_220315_a) {
           double d0 = (double)entitysize1.field_220315_a / 2.0D;
           this.func_174826_a(new AxisAlignedBB(this.func_226277_ct_() - d0, this.func_226278_cu_(), this.func_226281_cx_() - d0, this.func_226277_ct_() + d0, this.func_226278_cu_() + (double)entitysize1.field_220316_b, this.func_226281_cx_() + d0));
-@@ -2318,7 +2766,36 @@
+@@ -2318,7 +2768,36 @@
     }
  
     public void func_174826_a(AxisAlignedBB p_174826_1_) {
@@ -1117,7 +1119,7 @@
     }
  
     protected float func_213316_a(Pose p_213316_1_, EntitySize p_213316_2_) {
-@@ -2533,7 +3010,7 @@
+@@ -2533,7 +3012,7 @@
        return SoundCategory.NEUTRAL;
     }
  
@@ -1126,7 +1128,7 @@
        return 1;
     }
  
-@@ -2713,6 +3190,7 @@
+@@ -2713,6 +3192,7 @@
        this.field_70165_t = p_226288_1_;
        this.field_70163_u = p_226288_3_;
        this.field_70161_v = p_226288_5_;
@@ -1134,7 +1136,7 @@
     }
  
     public void func_70623_bb() {
-@@ -2726,4 +3204,69 @@
+@@ -2726,4 +3206,69 @@
     public interface IMoveCallback {
        void accept(Entity p_accept_1_, double p_accept_2_, double p_accept_4_, double p_accept_6_);
     }
