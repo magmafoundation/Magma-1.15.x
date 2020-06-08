@@ -204,7 +204,7 @@
 +
 +      // CraftBukkit start
 +      this.displayName = this.func_146103_bH().getName();
-+      this.canPickUpLoot = true;
++      this.canPickUpLootMagma = true;
 +      this.maxHealthCache = this.func_110138_aP();
     }
  

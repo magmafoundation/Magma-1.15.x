@@ -204,7 +204,7 @@
 +   public ArrayList<org.bukkit.inventory.ItemStack> drops = new ArrayList<org.bukkit.inventory.ItemStack>();
 +   public org.bukkit.craftbukkit.attribute.CraftAttributeMap craftAttributes;
 +   public boolean collides = true;
-+   public boolean canPickUpLoot;
++   public boolean canPickUpLootMagma; // TODO: fix
 +   private boolean isTickingEffects = false;
 +   private List<ProcessableEffect> effectsToProcess = Lists.newArrayList();
 +

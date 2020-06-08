@@ -15,7 +15,7 @@ pipeline {
                             title: "${DISCORD_PREFIX} Started",
                             successful: true,
                             result: 'ABORTED', //White border
-                            thumbnail: "https://img.hexeption.co.uk/Magma_Block.png",
+                            thumbnail: "https://i.imgur.com/NqnOifl.png",
                             webhookURL: "${discordWebhook}"
                     )
                 }
@@ -32,14 +32,14 @@ pipeline {
     post {
         always {
             script {
-                archiveArtifacts artifacts: 'projects/magma/build/libs/*', fingerprint: true, onlyIfSuccessful: true, allowEmptyArchive: true
+                archiveArtifacts artifacts: 'projects/magma/build/libs/*-installer.jar', fingerprint: true, onlyIfSuccessful: true, allowEmptyArchive: true
                 withCredentials([string(credentialsId: 'DISCORD_WEBHOOK', variable: 'discordWebhook')]) {
                    discordSend(
                            title: "Finished ${currentBuild.currentResult}",
                            description: '```\n' + getChanges(currentBuild) + '\n```',
                            successful: currentBuild.resultIsBetterOrEqualTo("SUCCESS"),
                            result: currentBuild.currentResult,
-                           thumbnail: "https://img.hexeption.co.uk/Magma_Block.png",
+                           thumbnail: "https://i.imgur.com/NqnOifl.png",
                            webhookURL: "${discordWebhook}"
                    )
                 }
