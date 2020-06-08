@@ -15,8 +15,8 @@ We hope to eliminate all issues with craftbukkit forge servers. In the end, we e
 ## Progress
 Patches so far
 - [x] CraftBukkit
-- [ ] Spigot
-- [ ] Paper
+- [x] Spigot
+- [x] Paper
 
 https://github.com/Hexeption/Magma-1.15-Remaining-Patches
 
