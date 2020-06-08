@@ -19,6 +19,18 @@
 
 package net.minecraftforge.common;
 
+import com.google.common.collect.HashMultiset;
+import com.google.common.collect.Lists;
+import com.google.common.collect.MapMaker;
+import com.google.common.collect.Multiset;
+import io.netty.buffer.Unpooled;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.IntIterator;
+import it.unimi.dsi.fastutil.ints.IntLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,51 +41,32 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
-
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import it.unimi.dsi.fastutil.ints.IntLinkedOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Lists;
-import com.google.common.collect.MapMaker;
-import com.google.common.collect.Multiset;
-
-import io.netty.buffer.Unpooled;
+import javax.annotation.Nullable;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.PlayerList;
-import net.minecraft.util.EnumTypeAdapterFactory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.registry.MutableRegistry;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.IBiomeMagnifier;
 import net.minecraft.world.chunk.ChunkStatus;
 import net.minecraft.world.chunk.listener.IChunkStatusListener;
+import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.server.ServerMultiWorld;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraft.world.dimension.DimensionType;
 import net.minecraftforge.event.world.RegisterDimensionsEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.StartupQuery;
-import net.minecraftforge.fml.loading.moddiscovery.ModAnnotation.EnumHolder;
 import net.minecraftforge.fml.server.ServerModLoader;
 import net.minecraftforge.registries.ClearableRegistry;
 import net.minecraftforge.registries.ForgeRegistries;
-
 import org.apache.commons.lang3.Validate;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
-
-import javax.annotation.Nullable;
 import org.bukkit.generator.ChunkGenerator;
 
 public class DimensionManager
@@ -544,9 +537,28 @@ public class DimensionManager
         if(env == null){
             providerName = providerName.replace("WorldProvider","");
 
-           //env = addEnumEnvironment(dim,providerName.toUpperCase());
-//            org.bukkit.World.Environment.registerEnvironment(env);
+            org.bukkit.World.Environment.registerEnvironment(env);
         }
         return env;
+    }
+
+    public static void addBukkitDimension(int dim)
+    {
+        if (!bukkitDims.contains(dim))
+            bukkitDims.add(dim);
+    }
+
+    public static void removeBukkitDimension(int dim) {
+        if (bukkitDims.contains(dim)) {
+            bukkitDims.remove(bukkitDims.indexOf(dim));
+        }
+    }
+
+    public static ArrayList<Integer> getBukkitDimensionIDs() {
+        return bukkitDims;
+    }
+
+    public static boolean isBukkitDimension(int dim) {
+        return bukkitDims.contains(dim);
     }
 }

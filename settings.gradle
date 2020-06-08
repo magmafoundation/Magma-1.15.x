@@ -2,8 +2,8 @@ rootProject.name = 'Magma'
 
 include ':mcp'
 include ':clean'
-include ':magma'
+include ':forge'
 
 project(":mcp").projectDir = file("projects/mcp")
 project(":clean").projectDir = file("projects/clean")
-project(":magma").projectDir = file("projects/magma")
+project(":forge").projectDir = file("projects/magma")

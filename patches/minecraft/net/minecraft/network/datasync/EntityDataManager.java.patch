@@ -82,7 +82,7 @@
  
 -      return dataentry;
 +  */
-+      return (EntityDataManager.DataEntry) this.field_187234_c.get(p_187219_1_.func_187156_b());
++      return (DataEntry<T>) this.field_187234_c.get(p_187219_1_.func_187155_a());
     }
  
     public <T> T func_187225_a(DataParameter<T> p_187225_1_) {

@@ -8,6 +8,7 @@ buildscript {
             name 'maven_central'
             url 'https://repo.maven.apache.org/maven2/'
         }
+        maven { url "https://repo.hexeption.dev/repository/magma/" }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:3.+'
@@ -112,7 +113,7 @@ project(':clean') {
     }
 }
 
-project(':magma') {
+project(':forge') {
     evaluationDependsOn(':clean')
     apply plugin: 'java-library'
     apply plugin: 'maven-publish'
@@ -167,6 +168,7 @@ project(':magma') {
             url 'https://repo.maven.apache.org/maven2/'
         }
         maven { url "https://hub.spigotmc.org/nexus/content/groups/public" }
+        maven { url "https://repo.hexeption.dev/repository/magma/" }
     }
 
     ext {
@@ -364,7 +366,7 @@ project(':magma') {
         installer 'org.jetbrains:annotations:18.0.0'
         installer 'commons-lang:commons-lang:2.6'
         installer 'org.yaml:snakeyaml:1.25'
-        installer 'net.md-5:bungeecord-chat:1.15-SNAPSHOT'
+        installer 'net.md-5:bungeecord-chat:1.15'
 
         fmllauncherImplementation 'com.google.guava:guava:21.0'
         fmllauncherImplementation 'com.google.code.gson:gson:2.8.0'
@@ -840,7 +842,7 @@ project(':magma') {
         classifier = 'installer'
         extension = 'jar' //Needs to be Zip task to not override Manifest, so set extension
         destinationDir = file('build/libs')
-        from(rootProject.file('/installer_logo.png')) {
+        from(rootProject.file('/magma-logo.png')) {
             rename{'big_logo.png'}
         }
         from(rootProject.file('/src/main/resources/url.png'))
@@ -870,7 +872,7 @@ project(':magma') {
                 JAR_SIGNER != null && t.state.failure == null
             }
             def jarsigner = JAR_SIGNER == null ? [:] : JAR_SIGNER
-            alias = 'forge'
+            alias = 'magma'
             storePass = jarsigner.storepass
             keyPass = jarsigner.keypass
             keyStore = jarsigner.keystore
@@ -1004,7 +1006,7 @@ def artifactTree(project, artifact) {
 
 def getArtifacts(project, config, classifiers) {
     def ret = [:]
-    config.resolvedConfiguration.resolvedArtifacts.each {
+   config.resolvedConfiguration.resolvedArtifacts.each {
         def art = [
             group: it.moduleVersion.id.group,
             name: it.moduleVersion.id.name,
@@ -1023,6 +1025,9 @@ def getArtifacts(project, config, classifiers) {
         def url = "https://libraries.minecraft.net/${path}"
         if (!checkExists(url)) {
             url = "https://files.minecraftforge.net/maven/${path}"
+            if (!checkExists(url)) { // Checks if not in the forge repo then use magma repo
+                url = "https://repo.hexeption.dev/repository/magma/${path}"
+            }
         }
         //TODO remove when Mojang launcher is updated
         if (!classifiers && art.classifier != null) { //Mojang launcher doesn't currently support classifiers, so... move it to part of the version, and force the extension to 'jar'
@@ -1074,6 +1079,6 @@ def getClasspath(project, libs, artifact) {
 //evaluationDependsOnChildren()
 task setup() {
     dependsOn ':clean:extractMapped'
-    dependsOn ':magma:extractMapped' //These must be strings so that we can do lazy resolution. Else we need evaluationDependsOnChildren above
+    dependsOn ':forge:extractMapped' //These must be strings so that we can do lazy resolution. Else we need evaluationDependsOnChildren above
 }
 
