@@ -76,10 +76,10 @@ public final class CraftMagicNumbers implements UnsafeValues {
     }
 
     // ========================================================================
-    private static final Map<Block, Material> BLOCK_MATERIAL = new HashMap<>();
-    private static final Map<Item, Material> ITEM_MATERIAL = new HashMap<>();
-    private static final Map<Material, Item> MATERIAL_ITEM = new HashMap<>();
-    private static final Map<Material, Block> MATERIAL_BLOCK = new HashMap<>();
+    public static Map<Block, Material> BLOCK_MATERIAL = new HashMap<>(); //Magma
+    public static Map<Item, Material> ITEM_MATERIAL = new HashMap<>(); //Magma
+    public static Map<Material, Item> MATERIAL_ITEM = new HashMap<>(); //Magma
+    public static Map<Material, Block> MATERIAL_BLOCK = new HashMap<>(); //Magma
 
     static {
         for (Block block : Registry.BLOCK) {

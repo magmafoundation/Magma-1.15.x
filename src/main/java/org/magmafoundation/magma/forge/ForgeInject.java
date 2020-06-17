@@ -11,6 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.entity.CraftCustomEntity;
+import org.bukkit.craftbukkit.util.CraftMagicNumbers;
 import org.bukkit.entity.EntityType;
 import org.magmafoundation.magma.util.EnumHelper;
 
@@ -40,6 +41,8 @@ public class ForgeInject {
                 String materialName = key.toString().toUpperCase().replaceAll("(:|\\s)", "_").replaceAll("\\W", "");
                 Material material = Material
                     .addMaterial(EnumHelper.addEnum(Material.class, materialName, new Class[]{Integer.TYPE, Integer.TYPE}, new Object[]{Item.getIdFromItem(item), item.getMaxStackSize()}));
+                CraftMagicNumbers.ITEM_MATERIAL.put(item, material);
+                CraftMagicNumbers.MATERIAL_ITEM.put(material, item);
                 if (material != null) {
                     LOGGER.info(String.format("Injected new Forge item material %s.", material.name()));
                 } else {
@@ -50,16 +53,14 @@ public class ForgeInject {
     }
 
     private static void addForgeBlocks() {
-        for (Material material : Material.values()) {
-            if (material.getId() < 256)
-                Material.addMaterial(material);
-        }
         for (Map.Entry<ResourceLocation, Block> entry : ForgeRegistries.BLOCKS.getEntries()) {
             ResourceLocation key = entry.getKey();
             Block block = entry.getValue();
             if (!key.getNamespace().equals("minecraft")) {
                 String materialName = key.toString().toUpperCase().replaceAll("(:|\\s)", "_").replaceAll("\\W", "");
                 Material material = Material.addMaterial(EnumHelper.addEnum(Material.class, materialName, new Class[]{Integer.TYPE}, new Object[]{Item.getIdFromItem(block.asItem())}));
+                CraftMagicNumbers.BLOCK_MATERIAL.put(block, material);
+                CraftMagicNumbers.MATERIAL_BLOCK.put(material, block);
                 if (material != null) {
                     LOGGER.info(String.format("Injected new Forge block material %s.", material.name()));
                 } else {
