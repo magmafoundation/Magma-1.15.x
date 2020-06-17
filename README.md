@@ -16,12 +16,16 @@ We hope to eliminate all issues with craftbukkit forge servers. In the end, we e
 Patches so far
 - [x] CraftBukkit
 - [x] Spigot
-- [x] Paper
+- [ ] Paper
 
 https://github.com/Hexeption/Magma-1.15-Remaining-Patches
 
-## Downloads 
-Currently, no builds are available for 1.15 as we are in early development please check back later. 
+## Downloads & Install
+1. Download and install [Java 8](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=hotspot) 
+2. Download the installer from [here](https://ci.hexeption.dev/job/Magma%20Foundation/job/Magma-1.15.x/job/1.15.x/lastSuccessfulBuild/)
+3. Install the server using the Gui and selecting Server or use the terminal 
+`java -jar forge-1.15.2-31.2.0-installer.jar --installServer`
+4. Now launch it using `java -jar forge-1.15.2-31.2.0.jar`
 
 ### Building the sources
 * Checkout project
