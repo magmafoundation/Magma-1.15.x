@@ -11,12 +11,23 @@ import java.io.InputStream;
 import java.net.JarURLConnection;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.net.URLConnection;
 import java.net.URLStreamHandlerFactory;
 import java.security.CodeSigner;
 import java.security.CodeSource;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
+import java.util.jar.Manifest;
+import net.minecraft.server.MinecraftServer;
+import net.minecraftforge.fml.loading.FMLLoader;
 import org.apache.commons.io.IOUtils;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -79,7 +90,7 @@ public class DelegateURLClassLoder extends URLClassLoader {
                 try {
                     result = super.findClass(name);
                 } catch (ClassNotFoundException e) {
-//                    result = ((LaunchClassLoader) MinecraftServer.getServerInstance().getClass().getClassLoader()).findClass(name);
+                    result =  FMLLoader.getLaunchClassLoader().getLoadedClass(name);
                 }
             }
             if (result == null) {

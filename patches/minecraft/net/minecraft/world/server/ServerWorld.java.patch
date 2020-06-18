@@ -604,7 +604,7 @@
     }
  
     protected void func_73042_a() throws SessionLockException {
-@@ -809,7 +916,7 @@
+@@ -809,21 +916,39 @@
              }
           }
  
@@ -613,9 +613,15 @@
           if (entityclassification != EntityClassification.MISC && this.func_72863_F().func_223435_b(entity)) {
              object2intmap.mergeInt(entityclassification, 1, Integer::sum);
           }
-@@ -817,13 +924,25 @@
+       }
     }
  
++   // Magma - NMS
++   public boolean registerEntity(Entity entityIn) {
++      // CraftBukkit start
++      return this.addEntity0(entityIn, CreatureSpawnEvent.SpawnReason.DEFAULT);
++   }
++
     public boolean func_217376_c(Entity p_217376_1_) {
 -      return this.func_72838_d(p_217376_1_);
 +      // CraftBukkit start
@@ -641,7 +647,7 @@
     public void func_217460_e(Entity p_217460_1_) {
        boolean flag = p_217460_1_.field_98038_p;
        p_217460_1_.field_98038_p = true;
-@@ -851,6 +970,7 @@
+@@ -851,6 +976,7 @@
     }
  
     private void func_217448_f(ServerPlayerEntity p_217448_1_) {
@@ -649,7 +655,7 @@
        Entity entity = this.field_175741_N.get(p_217448_1_.func_110124_au());
        if (entity != null) {
           field_147491_a.warn("Force-added player with duplicate UUID {}", (Object)p_217448_1_.func_110124_au().toString());
-@@ -869,18 +989,25 @@
+@@ -869,18 +995,25 @@
     }
  
     private boolean func_72838_d(Entity p_72838_1_) {
@@ -681,7 +687,7 @@
              return true;
           }
        }
-@@ -890,6 +1017,7 @@
+@@ -890,6 +1023,7 @@
        if (this.func_217478_l(p_217440_1_)) {
           return false;
        } else {
@@ -689,7 +695,7 @@
           this.func_217465_m(p_217440_1_);
           return true;
        }
-@@ -906,8 +1034,17 @@
+@@ -906,8 +1040,17 @@
     }
  
     public void func_217466_a(Chunk p_217466_1_) {
@@ -708,7 +714,7 @@
        int i = aclassinheritancemultimap.length;
  
        for(int j = 0; j < i; ++j) {
-@@ -925,12 +1062,48 @@
+@@ -925,12 +1068,48 @@
  
     }
  
@@ -758,7 +764,7 @@
  
        this.field_175741_N.remove(p_217484_1_.func_110124_au());
        this.func_72863_F().func_217226_b(p_217484_1_);
-@@ -944,9 +1117,11 @@
+@@ -944,9 +1123,11 @@
           this.field_217495_I.remove(((MobEntity)p_217484_1_).func_70661_as());
        }
  
@@ -770,7 +776,7 @@
        if (this.field_217492_a) {
           this.field_217499_z.add(p_217465_1_);
        } else {
-@@ -964,15 +1139,19 @@
+@@ -964,15 +1145,19 @@
           }
        }
  
@@ -791,7 +797,7 @@
        }
     }
  
-@@ -985,16 +1164,31 @@
+@@ -985,16 +1170,31 @@
     }
  
     public void func_217434_e(ServerPlayerEntity p_217434_1_) {
@@ -827,7 +833,7 @@
     public void func_175715_c(int p_175715_1_, BlockPos p_175715_2_, int p_175715_3_) {
        for(ServerPlayerEntity serverplayerentity : this.field_73061_a.func_184103_al().func_181057_v()) {
           if (serverplayerentity != null && serverplayerentity.field_70170_p == this && serverplayerentity.func_145782_y() != p_175715_1_) {
-@@ -1010,10 +1204,20 @@
+@@ -1010,10 +1210,20 @@
     }
  
     public void func_184148_a(@Nullable PlayerEntity p_184148_1_, double p_184148_2_, double p_184148_4_, double p_184148_6_, SoundEvent p_184148_8_, SoundCategory p_184148_9_, float p_184148_10_, float p_184148_11_) {
@@ -848,7 +854,7 @@
        this.field_73061_a.func_184103_al().func_148543_a(p_217384_1_, p_217384_2_.func_226277_ct_(), p_217384_2_.func_226278_cu_(), p_217384_2_.func_226281_cx_(), p_217384_5_ > 1.0F ? (double)(16.0F * p_217384_5_) : 16.0D, this.field_73011_w.func_186058_p(), new SSpawnMovingSoundEffectPacket(p_217384_3_, p_217384_4_, p_217384_2_, p_217384_5_, p_217384_6_));
     }
  
-@@ -1049,6 +1253,7 @@
+@@ -1049,6 +1259,7 @@
  
     public Explosion func_217401_a(@Nullable Entity p_217401_1_, @Nullable DamageSource p_217401_2_, double p_217401_3_, double p_217401_5_, double p_217401_7_, float p_217401_9_, boolean p_217401_10_, Explosion.Mode p_217401_11_) {
        Explosion explosion = new Explosion(this, p_217401_1_, p_217401_3_, p_217401_5_, p_217401_7_, p_217401_9_, p_217401_10_, p_217401_11_);
@@ -856,7 +862,7 @@
        if (p_217401_2_ != null) {
           explosion.func_199592_a(p_217401_2_);
        }
-@@ -1188,7 +1393,13 @@
+@@ -1188,7 +1399,13 @@
     @Nullable
     public MapData func_217406_a(String p_217406_1_) {
        return this.func_73046_m().func_71218_a(DimensionType.field_223227_a_).func_217481_x().func_215753_b(() -> {
@@ -871,7 +877,7 @@
        }, p_217406_1_);
     }
  
-@@ -1377,4 +1588,20 @@
+@@ -1377,4 +1594,20 @@
           return p_229854_1_.func_175898_b(p_229855_1_.func_180328_a());
        });
     }
