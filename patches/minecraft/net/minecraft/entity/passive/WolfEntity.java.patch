@@ -62,7 +62,7 @@
 +   // CraftBukkit - add overriden version
 +   @Override
 +   public boolean setAttackTarget(LivingEntity entitylivingbaseIn, TargetReason reason, boolean fireEvent) {
-+      if (!setAttackTarget(entitylivingbaseIn, reason, fireEvent)) {
++      if (!super.setAttackTarget(entitylivingbaseIn, reason, fireEvent)) {
 +         return false;
 +      }
 +      entitylivingbaseIn = func_70638_az();
