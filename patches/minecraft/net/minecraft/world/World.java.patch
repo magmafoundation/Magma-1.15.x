@@ -58,11 +58,11 @@
  import org.apache.logging.log4j.LogManager;
  import org.apache.logging.log4j.Logger;
 +import org.bukkit.Bukkit;
-+import org.bukkit.craftbukkit.CraftServer;
-+import org.bukkit.craftbukkit.CraftWorld;
-+import org.bukkit.craftbukkit.SpigotTimings;
-+import org.bukkit.craftbukkit.block.CapturedBlockState;
-+import org.bukkit.craftbukkit.block.data.CraftBlockData;
++import org.bukkit.craftbukkit.v1_15_R1.CraftServer;
++import org.bukkit.craftbukkit.v1_15_R1.CraftWorld;
++import org.bukkit.craftbukkit.v1_15_R1.SpigotTimings;
++import org.bukkit.craftbukkit.v1_15_R1.block.CapturedBlockState;
++import org.bukkit.craftbukkit.v1_15_R1.block.data.CraftBlockData;
 +import org.bukkit.event.block.BlockPhysicsEvent;
  
 -public abstract class World implements IWorld, AutoCloseable {

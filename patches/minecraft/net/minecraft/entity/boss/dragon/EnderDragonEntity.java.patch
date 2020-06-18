@@ -15,7 +15,7 @@
  import net.minecraft.entity.boss.dragon.phase.IPhase;
  import net.minecraft.entity.boss.dragon.phase.PhaseManager;
  import net.minecraft.entity.boss.dragon.phase.PhaseType;
-@@ -20,36 +14,49 @@
+@@ -20,36 +14,45 @@
  import net.minecraft.entity.item.ExperienceOrbEntity;
  import net.minecraft.entity.monster.IMob;
  import net.minecraft.entity.player.PlayerEntity;
@@ -25,7 +25,6 @@
  import net.minecraft.network.datasync.DataParameter;
  import net.minecraft.network.datasync.DataSerializers;
  import net.minecraft.network.datasync.EntityDataManager;
-+import net.minecraft.network.play.server.SPlayEntityEffectPacket;
 +import net.minecraft.network.play.server.SPlaySoundEventPacket;
  import net.minecraft.particles.ParticleTypes;
  import net.minecraft.pathfinding.Path;
@@ -56,22 +55,19 @@
  import net.minecraft.world.gen.feature.EndPodiumFeature;
 +import net.minecraft.world.server.ServerWorld;
 +import net.minecraft.world.storage.loot.LootContext;
-+import net.minecraft.world.storage.loot.LootParameter;
 +import net.minecraft.world.storage.loot.LootParameters;
-+import net.minecraft.world.storage.loot.LootTable;
-+import net.minecraft.world.storage.loot.LootTable.Builder;
  import net.minecraftforge.api.distmarker.Dist;
  import net.minecraftforge.api.distmarker.OnlyIn;
  import org.apache.logging.log4j.LogManager;
  import org.apache.logging.log4j.Logger;
-+import org.bukkit.craftbukkit.block.CraftBlock;
++import org.bukkit.craftbukkit.v1_15_R1.block.CraftBlock;
 +import org.bukkit.event.entity.EntityExplodeEvent;
 +import org.bukkit.event.entity.EntityRegainHealthEvent;
 +import org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason;
  
  public class EnderDragonEntity extends MobEntity implements IMob {
     private static final Logger field_184675_bH = LogManager.getLogger();
-@@ -57,7 +64,7 @@
+@@ -57,7 +60,7 @@
     private static final EntityPredicate field_213405_bO = (new EntityPredicate()).func_221013_a(64.0D);
     public final double[][] field_70979_e = new double[64][3];
     public int field_70976_f = -1;
@@ -80,7 +76,7 @@
     public final EnderDragonPartEntity field_70986_h;
     private final EnderDragonPartEntity field_184673_bv;
     private final EnderDragonPartEntity field_70987_i;
-@@ -82,6 +89,8 @@
+@@ -82,6 +85,8 @@
     private final int[] field_184681_bN = new int[24];
     private final PathHeap field_184682_bO = new PathHeap();
  
@@ -89,7 +85,7 @@
     public EnderDragonEntity(EntityType<? extends EnderDragonEntity> p_i50230_1_, World p_i50230_2_) {
        super(EntityType.field_200802_p, p_i50230_2_);
        this.field_70986_h = new EnderDragonPartEntity(this, "head", 1.0F, 1.0F);
-@@ -337,7 +346,14 @@
+@@ -337,7 +342,14 @@
           if (this.field_70992_bH.field_70128_L) {
              this.field_70992_bH = null;
           } else if (this.field_70173_aa % 10 == 0 && this.func_110143_aJ() < this.func_110138_aP()) {
@@ -105,7 +101,7 @@
           }
        }
  
-@@ -402,15 +418,22 @@
+@@ -402,15 +414,22 @@
        boolean flag = false;
        boolean flag1 = false;
  
@@ -131,7 +127,7 @@
                    } else {
                       flag = true;
                    }
-@@ -419,6 +442,44 @@
+@@ -419,6 +438,44 @@
           }
        }
  
@@ -176,7 +172,7 @@
        if (flag1) {
           BlockPos blockpos1 = new BlockPos(i + this.field_70146_Z.nextInt(l - i + 1), j + this.field_70146_Z.nextInt(i1 - j + 1), k + this.field_70146_Z.nextInt(j1 - k + 1));
           this.field_70170_p.func_217379_c(2008, blockpos1, 0);
-@@ -507,7 +568,25 @@
+@@ -507,7 +564,25 @@
           }
  
           if (this.field_70995_bG == 1) {

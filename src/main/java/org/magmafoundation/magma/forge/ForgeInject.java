@@ -10,8 +10,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.entity.CraftCustomEntity;
-import org.bukkit.craftbukkit.util.CraftMagicNumbers;
+import org.bukkit.craftbukkit.v1_15_R1.entity.CraftCustomEntity;
+import org.bukkit.craftbukkit.v1_15_R1.util.CraftMagicNumbers;
 import org.bukkit.entity.EntityType;
 import org.magmafoundation.magma.util.EnumHelper;
 

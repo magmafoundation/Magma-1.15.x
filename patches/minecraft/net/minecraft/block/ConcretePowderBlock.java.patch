@@ -4,8 +4,8 @@
  import net.minecraft.world.IBlockReader;
  import net.minecraft.world.IWorld;
  import net.minecraft.world.World;
-+import org.bukkit.craftbukkit.block.CraftBlockState;
-+import org.bukkit.craftbukkit.event.CraftEventFactory;
++import org.bukkit.craftbukkit.v1_15_R1.block.CraftBlockState;
++import org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory;
 +import org.bukkit.event.block.BlockFormEvent;
  
  public class ConcretePowderBlock extends FallingBlock {

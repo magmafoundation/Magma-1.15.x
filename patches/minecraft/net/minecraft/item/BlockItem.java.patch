@@ -1,16 +1,24 @@
 --- a/net/minecraft/item/BlockItem.java
 +++ b/net/minecraft/item/BlockItem.java
-@@ -25,6 +25,9 @@
+@@ -17,7 +17,6 @@
+ import net.minecraft.tileentity.TileEntity;
+ import net.minecraft.util.ActionResultType;
+ import net.minecraft.util.NonNullList;
+-import net.minecraft.util.SoundCategory;
+ import net.minecraft.util.SoundEvent;
+ import net.minecraft.util.math.BlockPos;
+ import net.minecraft.util.math.shapes.ISelectionContext;
+@@ -25,6 +24,9 @@
  import net.minecraft.world.World;
  import net.minecraftforge.api.distmarker.Dist;
  import net.minecraftforge.api.distmarker.OnlyIn;
-+import org.bukkit.craftbukkit.block.CraftBlock;
-+import org.bukkit.craftbukkit.block.data.CraftBlockData;
++import org.bukkit.craftbukkit.v1_15_R1.block.CraftBlock;
++import org.bukkit.craftbukkit.v1_15_R1.block.data.CraftBlockData;
 +import org.bukkit.event.block.BlockCanBuildEvent;
  
  public class BlockItem extends Item {
     @Deprecated
-@@ -69,8 +72,8 @@
+@@ -69,8 +71,8 @@
                    }
                 }
  
@@ -21,7 +29,7 @@
                 itemstack.func_190918_g(1);
                 return ActionResultType.SUCCESS;
              }
-@@ -78,10 +81,16 @@
+@@ -78,10 +80,16 @@
        }
     }
  
@@ -38,7 +46,7 @@
     @Nullable
     public BlockItemUseContext func_219984_b(BlockItemUseContext p_219984_1_) {
        return p_219984_1_;
-@@ -103,14 +112,8 @@
+@@ -103,14 +111,8 @@
        if (compoundnbt != null) {
           CompoundNBT compoundnbt1 = compoundnbt.func_74775_l("BlockStateTag");
           StateContainer<Block, BlockState> statecontainer = p_219985_4_.func_177230_c().func_176194_O();
@@ -55,7 +63,7 @@
        }
  
        if (blockstate != p_219985_4_) {
-@@ -120,6 +123,21 @@
+@@ -120,6 +122,21 @@
        return blockstate;
     }
  
@@ -77,7 +85,7 @@
     private static <T extends Comparable<T>> BlockState func_219988_a(BlockState p_219988_0_, IProperty<T> p_219988_1_, String p_219988_2_) {
        return p_219988_1_.func_185929_b(p_219988_2_).map((p_219986_2_) -> {
           return p_219988_0_.func_206870_a(p_219988_1_, p_219986_2_);
-@@ -129,7 +147,13 @@
+@@ -129,7 +146,13 @@
     protected boolean func_195944_a(BlockItemUseContext p_195944_1_, BlockState p_195944_2_) {
        PlayerEntity playerentity = p_195944_1_.func_195999_j();
        ISelectionContext iselectioncontext = playerentity == null ? ISelectionContext.func_216377_a() : ISelectionContext.func_216374_a(playerentity);
@@ -92,7 +100,7 @@
     }
  
     protected boolean func_219987_d() {
-@@ -149,7 +173,7 @@
+@@ -149,7 +172,7 @@
           if (compoundnbt != null) {
              TileEntity tileentity = p_179224_0_.func_175625_s(p_179224_2_);
              if (tileentity != null) {
@@ -101,7 +109,7 @@
                    return false;
                 }
  
-@@ -189,10 +213,18 @@
+@@ -189,10 +212,18 @@
     }
  
     public Block func_179223_d() {

@@ -64,7 +64,7 @@
  import net.minecraft.world.server.ServerWorld;
  import net.minecraftforge.api.distmarker.Dist;
  import net.minecraftforge.api.distmarker.OnlyIn;
-+import org.bukkit.craftbukkit.event.CraftEventFactory;
++import org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory;
 +import org.bukkit.event.entity.CreatureSpawnEvent;
 +import org.bukkit.event.entity.EntityTargetEvent.TargetReason;
  
@@ -116,7 +116,7 @@
                 int i = blockstate.func_177229_b(SweetBerryBushBlock.field_220125_a);
                 blockstate.func_206870_a(SweetBerryBushBlock.field_220125_a, Integer.valueOf(1));
 +               // CraftBukkit start - call EntityChangeBlockEvent
-+               if (org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(FoxEntity.this, this.field_179494_b, blockstate.func_206870_a(SweetBerryBushBlock.field_220125_a, Integer.valueOf(1))).isCancelled()) {
++               if (org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory.callEntityChangeBlockEvent(FoxEntity.this, this.field_179494_b, blockstate.func_206870_a(SweetBerryBushBlock.field_220125_a, Integer.valueOf(1))).isCancelled()) {
 +                  return;
 +               }
 +               // CraftBukkit end
@@ -129,7 +129,7 @@
  
 +            // CraftBukkit start - call EntityBreedEvent
 +            int experience = this.field_75390_d.func_70681_au().nextInt(7) + 1;
-+            org.bukkit.event.entity.EntityBreedEvent entityBreedEvent = org.bukkit.craftbukkit.event.CraftEventFactory.callEntityBreedEvent(foxentity, field_75390_d, field_75391_e, serverplayerentity2, this.field_75390_d.breedItem, experience);
++            org.bukkit.event.entity.EntityBreedEvent entityBreedEvent = org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory.callEntityBreedEvent(foxentity, field_75390_d, field_75391_e, serverplayerentity2, this.field_75390_d.breedItem, experience);
 +            if (entityBreedEvent.isCancelled()) {
 +               return;
 +            }

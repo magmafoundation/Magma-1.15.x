@@ -1,6 +1,10 @@
 --- a/net/minecraft/entity/monster/EndermanEntity.java
 +++ b/net/minecraft/entity/monster/EndermanEntity.java
-@@ -51,6 +51,7 @@
+@@ -47,10 +47,10 @@
+ import net.minecraft.util.math.MathHelper;
+ import net.minecraft.util.math.RayTraceContext;
+ import net.minecraft.util.math.Vec3d;
+-import net.minecraft.world.GameRules;
  import net.minecraft.world.IWorld;
  import net.minecraft.world.IWorldReader;
  import net.minecraft.world.World;
@@ -8,7 +12,7 @@
  
  public class EndermanEntity extends MonsterEntity {
     private static final UUID field_110192_bp = UUID.fromString("020E0DFB-87AE-4653-9556-831010E291A0");
-@@ -93,9 +94,19 @@
+@@ -93,9 +93,19 @@
     }
  
     public void func_70624_b(@Nullable LivingEntity p_70624_1_) {
@@ -30,7 +34,7 @@
           this.field_184721_by = 0;
           this.field_70180_af.func_187227_b(field_184719_bw, false);
           this.field_70180_af.func_187227_b(field_226535_bx_, false);
-@@ -108,6 +119,7 @@
+@@ -108,6 +118,7 @@
           }
        }
  
@@ -38,7 +42,7 @@
     }
  
     protected void func_70088_a() {
-@@ -234,7 +246,9 @@
+@@ -234,7 +245,9 @@
        boolean flag = blockstate.func_185904_a().func_76230_c();
        boolean flag1 = blockstate.func_204520_s().func_206884_a(FluidTags.field_206959_a);
        if (flag && !flag1) {
@@ -49,7 +53,7 @@
           if (flag2) {
              this.field_70170_p.func_184148_a((PlayerEntity)null, this.field_70169_q, this.field_70167_r, this.field_70166_s, SoundEvents.field_187534_aX, this.func_184176_by(), 1.0F, 1.0F);
              this.func_184185_a(SoundEvents.field_187534_aX, 1.0F, 1.0F);
-@@ -390,7 +404,7 @@
+@@ -390,7 +403,7 @@
        public boolean func_75250_a() {
           if (this.field_179475_a.func_195405_dq() == null) {
              return false;
@@ -58,7 +62,7 @@
              return false;
           } else {
              return this.field_179475_a.func_70681_au().nextInt(2000) == 0;
-@@ -408,15 +422,19 @@
+@@ -408,15 +421,19 @@
           BlockPos blockpos1 = blockpos.func_177977_b();
           BlockState blockstate1 = iworld.func_180495_p(blockpos1);
           BlockState blockstate2 = this.field_179475_a.func_195405_dq();
@@ -67,7 +71,7 @@
 -            this.field_179475_a.func_195406_b((BlockState)null);
 +         if (blockstate2 != null && this.func_220836_a(iworld, blockpos, blockstate2, blockstate, blockstate1, blockpos1)  && !net.minecraftforge.event.ForgeEventFactory.onBlockPlace(field_179475_a, new net.minecraftforge.common.util.BlockSnapshot(iworld, blockpos, blockstate1), net.minecraft.util.Direction.UP)) {
 +            // CraftBukkit start - Place event
-+            if (!org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(this.field_179475_a, blockpos, blockstate).isCancelled()) {
++            if (!org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory.callEntityChangeBlockEvent(this.field_179475_a, blockpos, blockstate).isCancelled()) {
 +               iworld.func_180501_a(blockpos, blockstate2, 3);
 +               this.field_179475_a.func_195406_b((BlockState) null);
 +            }
@@ -82,7 +86,7 @@
        }
     }
  
-@@ -458,7 +476,7 @@
+@@ -458,7 +475,7 @@
        public boolean func_75250_a() {
           if (this.field_179473_a.func_195405_dq() != null) {
              return false;

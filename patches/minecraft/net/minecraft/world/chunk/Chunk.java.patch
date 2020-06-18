@@ -22,7 +22,14 @@
  import net.minecraft.crash.CrashReport;
  import net.minecraft.crash.CrashReportCategory;
  import net.minecraft.crash.ReportedException;
-@@ -41,11 +37,7 @@
+@@ -34,18 +30,13 @@
+ import net.minecraft.nbt.CompoundNBT;
+ import net.minecraft.network.PacketBuffer;
+ import net.minecraft.tileentity.TileEntity;
+-import net.minecraft.util.ClassInheritanceMultiMap;
+ import net.minecraft.util.math.AxisAlignedBB;
+ import net.minecraft.util.math.BlockPos;
+ import net.minecraft.util.math.ChunkPos;
  import net.minecraft.util.math.MathHelper;
  import net.minecraft.util.palette.UpgradeData;
  import net.minecraft.util.registry.Registry;
@@ -35,11 +42,12 @@
  import net.minecraft.world.biome.BiomeContainer;
  import net.minecraft.world.gen.DebugChunkGenerator;
  import net.minecraft.world.gen.Heightmap;
-@@ -57,19 +49,20 @@
+@@ -57,19 +48,21 @@
  import net.minecraftforge.api.distmarker.OnlyIn;
  import org.apache.logging.log4j.LogManager;
  import org.apache.logging.log4j.Logger;
-+import org.bukkit.craftbukkit.util.UnsafeList;
++import org.bukkit.craftbukkit.v1_15_R1.CraftChunk;
++import org.bukkit.craftbukkit.v1_15_R1.util.UnsafeList;
  
 -public class Chunk implements IChunk {
 +public class Chunk extends net.minecraftforge.common.capabilities.CapabilityProvider<Chunk> implements IChunk, net.minecraftforge.common.extensions.IForgeChunk {
@@ -87,7 +95,7 @@
 -
 +      this.gatherCapabilities();
 +      // CraftBukkit start
-+      this.bukkitChunk = new org.bukkit.craftbukkit.CraftChunk(this);
++      this.bukkitChunk = new CraftChunk(this);
     }
  
 +    public org.bukkit.Chunk bukkitChunk;

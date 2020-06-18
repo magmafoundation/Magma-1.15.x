@@ -11,7 +11,7 @@
  import net.minecraft.util.math.BlockPos;
  import net.minecraft.world.IBlockReader;
  import net.minecraft.world.World;
-+import org.bukkit.craftbukkit.inventory.CraftItemStack;
++import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftItemStack;
 +import org.bukkit.event.inventory.InventoryMoveItemEvent;
  
  public class DropperBlock extends DispenserBlock {
@@ -44,7 +44,7 @@
 +               org.bukkit.inventory.Inventory destinationInventory;
 +               // Have to special case large chests as they work oddly
 +               if (iinventory instanceof DoubleInventory) {
-+                  destinationInventory = new org.bukkit.craftbukkit.inventory.CraftInventoryDoubleChest((DoubleInventory) iinventory);
++                  destinationInventory = new org.bukkit.craftbukkit.v1_15_R1.inventory.CraftInventoryDoubleChest((DoubleInventory) iinventory);
 +               } else {
 +                  destinationInventory = iinventory.getOwner().getInventory();
 +               }

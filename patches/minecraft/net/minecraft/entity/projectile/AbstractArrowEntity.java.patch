@@ -13,7 +13,7 @@
  import net.minecraftforge.api.distmarker.Dist;
  import net.minecraftforge.api.distmarker.OnlyIn;
 +import org.bukkit.Bukkit;
-+import org.bukkit.craftbukkit.event.CraftEventFactory;
++import org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory;
 +import org.bukkit.event.entity.EntityCombustByEntityEvent;
 +import org.bukkit.event.player.PlayerPickupArrowEvent;
  
@@ -119,7 +119,7 @@
 +         ItemStack itemStack = this.func_184550_j();
 +         if(this.field_70251_a == PickupStatus.ALLOWED && !itemStack.func_190926_b() && p_70100_1_.field_71071_by.canHold(itemStack) >0){
 +            ItemEntity item = new ItemEntity(this.field_70170_p, this.func_226277_ct_(), this.func_226278_cu_(), this.func_226281_cx_(), itemStack);
-+            PlayerPickupArrowEvent event = new PlayerPickupArrowEvent((org.bukkit.entity.Player) p_70100_1_.getBukkitEntity(), new org.bukkit.craftbukkit.entity.CraftItem(this.field_70170_p.getServerCB(), this, item), (org.bukkit.entity.AbstractArrow) this.getBukkitEntity());
++            PlayerPickupArrowEvent event = new PlayerPickupArrowEvent((org.bukkit.entity.Player) p_70100_1_.getBukkitEntity(), new org.bukkit.craftbukkit.v1_15_R1.entity.CraftItem(this.field_70170_p.getServerCB(), this, item), (org.bukkit.entity.AbstractArrow) this.getBukkitEntity());
 +            this.field_70170_p.getServerCB().getPluginManager().callEvent(event);
 +
 +            if(event.isCancelled()){

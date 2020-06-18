@@ -33,9 +33,9 @@
  import net.minecraft.world.server.ServerWorld;
  import net.minecraftforge.api.distmarker.Dist;
  import net.minecraftforge.api.distmarker.OnlyIn;
-+import org.bukkit.craftbukkit.CraftEquipmentSlot;
-+import org.bukkit.craftbukkit.event.CraftEventFactory;
-+import org.bukkit.craftbukkit.inventory.CraftItemStack;
++import org.bukkit.craftbukkit.v1_15_R1.CraftEquipmentSlot;
++import org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory;
++import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftItemStack;
 +import org.bukkit.entity.ArmorStand;
 +import org.bukkit.entity.Player;
 +import org.bukkit.event.player.PlayerArmorStandManipulateEvent;
@@ -113,7 +113,7 @@
           if (DamageSource.field_76380_i.equals(p_70097_1_)) {
 -            this.func_70106_y();
 +            // CraftBukkit start
-+            if (org.bukkit.craftbukkit.event.CraftEventFactory.handleNonLivingEntityDamageEvent(this, p_70097_1_, p_70097_2_)) {
++            if (org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory.handleNonLivingEntityDamageEvent(this, p_70097_1_, p_70097_2_)) {
 +               return false;
 +            }
 +            // CraftBukkit end
@@ -122,7 +122,7 @@
 -         } else if (!this.func_180431_b(p_70097_1_) && !this.field_175436_h && !this.func_181026_s()) {
 +         } else if (!this.func_180431_b(p_70097_1_) && (true || !this.field_175436_h) && !this.func_181026_s()) { // CraftBukkit
 +            // CraftBukkit start
-+            if (org.bukkit.craftbukkit.event.CraftEventFactory.handleNonLivingEntityDamageEvent(this, p_70097_1_, p_70097_2_,true, this.field_175436_h)) {
++            if (org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory.handleNonLivingEntityDamageEvent(this, p_70097_1_, p_70097_2_,true, this.field_175436_h)) {
 +               return false;
 +            }
 +            // CraftBukkit end

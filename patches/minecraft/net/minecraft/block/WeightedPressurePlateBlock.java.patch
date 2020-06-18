@@ -20,7 +20,7 @@
 +         Entity entity = (Entity) iterator.next();
 +         org.bukkit.event.Cancellable cancellable;
 +         if (entity instanceof PlayerEntity) {
-+            cancellable = org.bukkit.craftbukkit.event.CraftEventFactory.callPlayerInteractEvent((PlayerEntity) entity, org.bukkit.event.block.Action.PHYSICAL, p_180669_2_, null, null, null);
++            cancellable = org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory.callPlayerInteractEvent((PlayerEntity) entity, org.bukkit.event.block.Action.PHYSICAL, p_180669_2_, null, null, null);
 +         } else {
 +            cancellable = new EntityInteractEvent(entity.getBukkitEntity(), p_180669_1_.getWorldCB().getBlockAt(p_180669_2_.func_177958_n(), p_180669_2_.func_177956_o(), p_180669_2_.func_177952_p()));
 +            p_180669_1_.getServerCB().getPluginManager().callEvent((EntityInteractEvent) cancellable);

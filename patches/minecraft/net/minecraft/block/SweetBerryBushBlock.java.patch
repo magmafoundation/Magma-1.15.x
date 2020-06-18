@@ -4,8 +4,8 @@
  import net.minecraft.world.IBlockReader;
  import net.minecraft.world.World;
  import net.minecraft.world.server.ServerWorld;
-+import org.bukkit.craftbukkit.block.CraftBlock;
-+import org.bukkit.craftbukkit.event.CraftEventFactory;
++import org.bukkit.craftbukkit.v1_15_R1.block.CraftBlock;
++import org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory;
  
  public class SweetBerryBushBlock extends BushBlock implements IGrowable {
     public static final IntegerProperty field_220125_a = BlockStateProperties.field_208168_U;

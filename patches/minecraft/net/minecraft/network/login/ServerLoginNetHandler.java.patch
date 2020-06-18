@@ -1,6 +1,6 @@
 --- a/net/minecraft/network/login/ServerLoginNetHandler.java
 +++ b/net/minecraft/network/login/ServerLoginNetHandler.java
-@@ -27,10 +27,14 @@
+@@ -27,10 +27,15 @@
  import net.minecraft.util.CryptManager;
  import net.minecraft.util.DefaultUncaughtExceptionHandler;
  import net.minecraft.util.text.ITextComponent;
@@ -9,13 +9,14 @@
  import org.apache.commons.lang3.Validate;
  import org.apache.logging.log4j.LogManager;
  import org.apache.logging.log4j.Logger;
-+import org.bukkit.craftbukkit.util.Waitable;
++import org.bukkit.craftbukkit.v1_15_R1.util.Waitable;
++import org.bukkit.craftbukkit.v1_15_R1.CraftServer;
 +import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 +import org.bukkit.event.player.PlayerPreLoginEvent;
  
  public class ServerLoginNetHandler implements IServerLoginNetHandler {
     private static final AtomicInteger field_147331_b = new AtomicInteger(0);
-@@ -45,6 +49,7 @@
+@@ -45,6 +50,7 @@
     private final String field_147334_j = "";
     private SecretKey field_147335_k;
     private ServerPlayerEntity field_181025_l;
@@ -23,7 +24,7 @@
  
     public ServerLoginNetHandler(MinecraftServer p_i45298_1_, NetworkManager p_i45298_2_) {
        this.field_147327_f = p_i45298_1_;
-@@ -53,7 +58,13 @@
+@@ -53,7 +59,13 @@
     }
  
     public void func_73660_a() {
@@ -38,7 +39,7 @@
           this.func_147326_c();
        } else if (this.field_147328_g == ServerLoginNetHandler.State.DELAY_ACCEPT) {
           ServerPlayerEntity serverplayerentity = this.field_147327_f.func_184103_al().func_177451_a(this.field_147337_i.getId());
-@@ -70,6 +81,21 @@
+@@ -70,6 +82,21 @@
  
     }
  
@@ -60,7 +61,7 @@
     public NetworkManager func_147298_b() {
        return this.field_147333_a;
     }
-@@ -85,14 +111,43 @@
+@@ -85,14 +112,43 @@
  
     }
  
@@ -109,7 +110,7 @@
        } else {
           this.field_147328_g = ServerLoginNetHandler.State.ACCEPTED;
           if (this.field_147327_f.func_175577_aI() >= 0 && !this.field_147333_a.func_150731_c()) {
-@@ -105,9 +160,9 @@
+@@ -105,9 +161,9 @@
           ServerPlayerEntity serverplayerentity = this.field_147327_f.func_184103_al().func_177451_a(this.field_147337_i.getId());
           if (serverplayerentity != null) {
              this.field_147328_g = ServerLoginNetHandler.State.DELAY_ACCEPT;
@@ -121,7 +122,7 @@
           }
        }
  
-@@ -128,7 +183,21 @@
+@@ -128,7 +184,21 @@
           this.field_147328_g = ServerLoginNetHandler.State.KEY;
           this.field_147333_a.func_179290_a(new SEncryptionRequestPacket("", this.field_147327_f.func_71250_E().getPublic(), this.field_147330_e));
        } else {
@@ -144,7 +145,7 @@
        }
  
     }
-@@ -142,20 +211,24 @@
+@@ -142,20 +212,24 @@
           this.field_147335_k = p_147315_1_.func_149300_a(privatekey);
           this.field_147328_g = ServerLoginNetHandler.State.AUTHENTICATING;
           this.field_147333_a.func_150727_a(this.field_147335_k);
@@ -174,7 +175,7 @@
                    } else {
                       ServerLoginNetHandler.this.func_194026_b(new TranslationTextComponent("multiplayer.disconnect.unverified_username"));
                       ServerLoginNetHandler.field_147332_c.error("Username '{}' tried to join with an invalid session", (Object)gameprofile.getName());
-@@ -164,17 +237,22 @@
+@@ -164,17 +238,22 @@
                    if (ServerLoginNetHandler.this.field_147327_f.func_71264_H()) {
                       ServerLoginNetHandler.field_147332_c.warn("Authentication servers are down but will let them in anyway!");
                       ServerLoginNetHandler.this.field_147337_i = ServerLoginNetHandler.this.func_152506_a(gameprofile);
@@ -199,7 +200,7 @@
                 SocketAddress socketaddress = ServerLoginNetHandler.this.field_147333_a.func_74430_c();
                 return ServerLoginNetHandler.this.field_147327_f.func_190518_ac() && socketaddress instanceof InetSocketAddress ? ((InetSocketAddress)socketaddress).getAddress() : null;
              }
-@@ -184,7 +262,46 @@
+@@ -184,7 +263,46 @@
        }
     }
  
@@ -209,7 +210,7 @@
 +         String playerName = field_147337_i.getName();
 +         java.net.InetAddress address = ((java.net.InetSocketAddress) field_147333_a.func_74430_c()).getAddress();
 +         java.util.UUID uniqueId = field_147337_i.getId();
-+         final org.bukkit.craftbukkit.CraftServer server = ServerLoginNetHandler.this.field_147327_f.server;
++         final CraftServer server = ServerLoginNetHandler.this.field_147327_f.server;
 +         AsyncPlayerPreLoginEvent asyncEvent = new AsyncPlayerPreLoginEvent(playerName, address, uniqueId);
 +         server.getPluginManager().callEvent(asyncEvent);
 +         if (PlayerPreLoginEvent.getHandlerList().getRegisteredListeners().length != 0) {

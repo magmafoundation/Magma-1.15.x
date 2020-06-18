@@ -1,11 +1,13 @@
 --- a/net/minecraft/entity/passive/SnowGolemEntity.java
 +++ b/net/minecraft/entity/passive/SnowGolemEntity.java
-@@ -32,8 +32,11 @@
+@@ -30,10 +30,12 @@
+ import net.minecraft.util.SoundEvents;
+ import net.minecraft.util.math.BlockPos;
  import net.minecraft.util.math.MathHelper;
- import net.minecraft.world.GameRules;
+-import net.minecraft.world.GameRules;
  import net.minecraft.world.World;
-+import org.bukkit.craftbukkit.entity.CraftEntity;
-+import org.bukkit.craftbukkit.event.CraftEventFactory;
++import org.bukkit.craftbukkit.v1_15_R1.entity.CraftEntity;
++import org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory;
 +import org.bukkit.event.player.PlayerShearEntityEvent;
  
 -public class SnowGolemEntity extends GolemEntity implements IRangedAttackMob {
@@ -13,7 +15,7 @@
     private static final DataParameter<Byte> field_184749_a = EntityDataManager.func_187226_a(SnowGolemEntity.class, DataSerializers.field_187191_a);
  
     public SnowGolemEntity(EntityType<? extends SnowGolemEntity> p_i50244_1_, World p_i50244_2_) {
-@@ -85,10 +88,10 @@
+@@ -85,10 +87,10 @@
           }
  
           if (this.field_70170_p.func_226691_t_(new BlockPos(i, 0, k)).func_225486_c(new BlockPos(i, j, k)) > 1.0F) {
@@ -26,7 +28,7 @@
              return;
           }
  
-@@ -99,8 +102,8 @@
+@@ -99,8 +101,8 @@
              j = MathHelper.func_76128_c(this.func_226278_cu_());
              k = MathHelper.func_76128_c(this.func_226281_cx_() + (double)((float)(l / 2 % 2 * 2 - 1) * 0.25F));
              BlockPos blockpos = new BlockPos(i, j, k);
@@ -37,7 +39,7 @@
              }
           }
        }
-@@ -125,8 +128,15 @@
+@@ -125,8 +127,15 @@
  
     protected boolean func_184645_a(PlayerEntity p_184645_1_, Hand p_184645_2_) {
        ItemStack itemstack = p_184645_1_.func_184586_b(p_184645_2_);
@@ -54,7 +56,7 @@
              this.func_184747_a(false);
              itemstack.func_222118_a(1, p_184645_1_, (p_213622_1_) -> {
                 p_213622_1_.func_213334_d(p_184645_2_);
-@@ -167,4 +177,15 @@
+@@ -167,4 +176,15 @@
     protected SoundEvent func_184615_bR() {
        return SoundEvents.field_187801_fC;
     }

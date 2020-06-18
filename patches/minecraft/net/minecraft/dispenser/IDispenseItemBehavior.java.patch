@@ -21,22 +21,21 @@
  import net.minecraft.entity.EntityType;
  import net.minecraft.entity.IProjectile;
  import net.minecraft.entity.LivingEntity;
-@@ -60,6 +52,14 @@
+@@ -60,6 +52,13 @@
  import net.minecraft.util.math.BlockRayTraceResult;
  import net.minecraft.world.IWorld;
  import net.minecraft.world.World;
 +import org.bukkit.Location;
 +import org.bukkit.TreeType;
-+import org.bukkit.craftbukkit.event.CraftEventFactory;
-+import org.bukkit.craftbukkit.inventory.CraftItemStack;
-+import org.bukkit.craftbukkit.inventory.util.CraftTileInventoryConverter.Dispenser;
-+import org.bukkit.craftbukkit.util.DummyGeneratorAccess;
++import org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory;
++import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftItemStack;
++import org.bukkit.craftbukkit.v1_15_R1.util.DummyGeneratorAccess;
 +import org.bukkit.event.block.BlockDispenseEvent;
 +import org.bukkit.event.world.StructureGrowEvent;
  
  public interface IDispenseItemBehavior {
     IDispenseItemBehavior field_223216_a_ = (p_210297_0_, p_210297_1_) -> {
-@@ -162,8 +162,34 @@
+@@ -162,8 +161,34 @@
           public ItemStack func_82487_b(IBlockSource p_82487_1_, ItemStack p_82487_2_) {
              Direction direction = p_82487_1_.func_189992_e().func_177229_b(DispenserBlock.field_176441_a);
              EntityType<?> entitytype = ((SpawnEggItem)p_82487_2_.func_77973_b()).func_208076_b(p_82487_2_.func_77978_p());
@@ -72,7 +71,7 @@
              return p_82487_2_;
           }
        };
-@@ -177,11 +203,36 @@
+@@ -177,11 +202,36 @@
              Direction direction = p_82487_1_.func_189992_e().func_177229_b(DispenserBlock.field_176441_a);
              BlockPos blockpos = p_82487_1_.func_180699_d().func_177972_a(direction);
              World world = p_82487_1_.func_197524_h();
@@ -110,7 +109,7 @@
              return p_82487_2_;
           }
        });
-@@ -194,10 +245,37 @@
+@@ -194,10 +244,37 @@
              double d3 = p_82487_1_.func_82615_a() + d0;
              double d4 = (double)((float)p_82487_1_.func_180699_d().func_177956_o() + 0.2F);
              double d5 = p_82487_1_.func_82616_c() + d2;
@@ -149,7 +148,7 @@
              return p_82487_2_;
           }
  
-@@ -217,10 +295,34 @@
+@@ -217,10 +294,34 @@
              double d3 = random.nextGaussian() * 0.05D + (double)direction.func_82601_c();
              double d4 = random.nextGaussian() * 0.05D + (double)direction.func_96559_d();
              double d5 = random.nextGaussian() * 0.05D + (double)direction.func_82599_e();
@@ -181,14 +180,14 @@
 +            }
 +            SmallFireballEntity entitysmallfireball = new SmallFireballEntity(world, d0, d1, d2, event.getVelocity().getX(), event.getVelocity().getY(), event.getVelocity().getZ());
 +            entitysmallfireball.func_213898_b(itemstack1);
-+            entitysmallfireball.projectileSource = new org.bukkit.craftbukkit.projectiles.CraftBlockProjectileSource((DispenserTileEntity) p_82487_1_.func_150835_j());
++            entitysmallfireball.projectileSource = new org.bukkit.craftbukkit.v1_15_R1.projectiles.CraftBlockProjectileSource((DispenserTileEntity) p_82487_1_.func_150835_j());
 +            world.func_217376_c(entitysmallfireball);
 +            // stack.shrink(1); // Handled during event processing
 +            // CraftBukkit end
              return p_82487_2_;
           }
  
-@@ -241,9 +343,49 @@
+@@ -241,9 +342,49 @@
              BucketItem bucketitem = (BucketItem)p_82487_2_.func_77973_b();
              BlockPos blockpos = p_82487_1_.func_180699_d().func_177972_a(p_82487_1_.func_189992_e().func_177229_b(DispenserBlock.field_176441_a));
              World world = p_82487_1_.func_197524_h();
@@ -239,7 +238,7 @@
              } else {
                 return this.field_218406_b.dispense(p_82487_1_, p_82487_2_);
              }
-@@ -264,11 +406,34 @@
+@@ -264,11 +405,34 @@
              BlockState blockstate = iworld.func_180495_p(blockpos);
              Block block = blockstate.func_177230_c();
              if (block instanceof IBucketPickupHandler) {
@@ -275,7 +274,7 @@
                    p_82487_2_.func_190918_g(1);
                    if (p_82487_2_.func_190926_b()) {
                       return new ItemStack(item);
-@@ -288,15 +453,42 @@
+@@ -288,15 +452,42 @@
        DispenserBlock.func_199774_a(Items.field_151033_d, new OptionalDispenseBehavior() {
           protected ItemStack func_82487_b(IBlockSource p_82487_1_, ItemStack p_82487_2_) {
              World world = p_82487_1_.func_197524_h();
@@ -307,7 +306,7 @@
              if (FlintAndSteelItem.func_219996_a(blockstate, world, blockpos)) {
 -               world.func_175656_a(blockpos, Blocks.field_150480_ab.func_176223_P());
 +               // CraftBukkit start - Ignition by dispensing flint and steel
-+               if (!org.bukkit.craftbukkit.event.CraftEventFactory.callBlockIgniteEvent(world, blockpos, p_82487_1_.func_180699_d()).isCancelled()) {
++               if (!org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory.callBlockIgniteEvent(world, blockpos, p_82487_1_.func_180699_d()).isCancelled()) {
 +                  world.func_175656_a(blockpos, Blocks.field_150480_ab.func_176223_P());
 +               }
 +               // CraftBukkit end
@@ -321,7 +320,7 @@
                 world.func_217377_a(blockpos, false);
              } else {
                 this.field_218407_b = false;
-@@ -314,12 +506,56 @@
+@@ -314,12 +505,56 @@
              this.field_218407_b = true;
              World world = p_82487_1_.func_197524_h();
              BlockPos blockpos = p_82487_1_.func_180699_d().func_177972_a(p_82487_1_.func_189992_e().func_177229_b(DispenserBlock.field_176441_a));
@@ -378,7 +377,7 @@
              return p_82487_2_;
           }
        });
-@@ -327,10 +563,36 @@
+@@ -327,10 +562,36 @@
           protected ItemStack func_82487_b(IBlockSource p_82487_1_, ItemStack p_82487_2_) {
              World world = p_82487_1_.func_197524_h();
              BlockPos blockpos = p_82487_1_.func_180699_d().func_177972_a(p_82487_1_.func_189992_e().func_177229_b(DispenserBlock.field_176441_a));
@@ -417,7 +416,7 @@
              return p_82487_2_;
           }
        });
-@@ -350,6 +612,28 @@
+@@ -350,6 +611,28 @@
              World world = p_82487_1_.func_197524_h();
              Direction direction = p_82487_1_.func_189992_e().func_177229_b(DispenserBlock.field_176441_a);
              BlockPos blockpos = p_82487_1_.func_180699_d().func_177972_a(direction);
@@ -446,7 +445,7 @@
              if (world.func_175623_d(blockpos) && WitherSkeletonSkullBlock.func_196299_b(world, blockpos, p_82487_2_)) {
                 world.func_180501_a(blockpos, Blocks.field_196705_eO.func_176223_P().func_206870_a(SkullBlock.field_196294_a, Integer.valueOf(direction.func_176740_k() == Direction.Axis.Y ? 0 : direction.func_176734_d().func_176736_b() * 4)), 3);
                 TileEntity tileentity = world.func_175625_s(blockpos);
-@@ -371,6 +655,28 @@
+@@ -371,6 +654,28 @@
              World world = p_82487_1_.func_197524_h();
              BlockPos blockpos = p_82487_1_.func_180699_d().func_177972_a(p_82487_1_.func_189992_e().func_177229_b(DispenserBlock.field_176441_a));
              CarvedPumpkinBlock carvedpumpkinblock = (CarvedPumpkinBlock)Blocks.field_196625_cS;
@@ -475,7 +474,7 @@
              if (world.func_175623_d(blockpos) && carvedpumpkinblock.func_196354_a(world, blockpos)) {
                 if (!world.field_72995_K) {
                    world.func_180501_a(blockpos, carvedpumpkinblock.func_176223_P(), 3);
-@@ -413,6 +719,28 @@
+@@ -413,6 +718,28 @@
              BlockPos blockpos = p_82487_1_.func_180699_d().func_177972_a(p_82487_1_.func_189992_e().func_177229_b(DispenserBlock.field_176441_a));
              BlockState blockstate = iworld.func_180495_p(blockpos);
              Block block = blockstate.func_177230_c();
@@ -504,7 +503,7 @@
              if (block.func_203417_a(BlockTags.field_226151_aa_) && blockstate.func_177229_b(BeehiveBlock.field_226873_c_) >= 5) {
                 ((BeehiveBlock)blockstate.func_177230_c()).func_226877_a_(iworld.func_201672_e(), blockstate, blockpos, (PlayerEntity)null, BeehiveTileEntity.State.BEE_RELEASED);
                 this.field_218407_b = true;
-@@ -426,15 +754,50 @@
+@@ -426,15 +753,50 @@
           }
        });
        DispenserBlock.func_199774_a(Items.field_151097_aZ.func_199767_j(), new OptionalDispenseBehavior() {

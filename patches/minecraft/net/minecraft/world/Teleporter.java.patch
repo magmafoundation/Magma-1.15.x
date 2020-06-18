@@ -12,7 +12,7 @@
  import net.minecraft.village.PointOfInterestType;
  import net.minecraft.world.server.ServerWorld;
  import net.minecraft.world.server.TicketType;
-+import org.bukkit.craftbukkit.util.BlockStateListPopulator;
++import org.bukkit.craftbukkit.v1_15_R1.util.BlockStateListPopulator;
 +import org.bukkit.event.world.PortalCreateEvent;
  
 -public class Teleporter {

@@ -1,17 +1,21 @@
 --- a/net/minecraft/entity/monster/CreeperEntity.java
 +++ b/net/minecraft/entity/monster/CreeperEntity.java
-@@ -36,6 +36,10 @@
+@@ -32,10 +32,13 @@
+ import net.minecraft.util.SoundEvents;
+ import net.minecraft.util.math.MathHelper;
+ import net.minecraft.world.Explosion;
+-import net.minecraft.world.GameRules;
  import net.minecraft.world.World;
  import net.minecraftforge.api.distmarker.Dist;
  import net.minecraftforge.api.distmarker.OnlyIn;
-+import org.bukkit.craftbukkit.event.CraftEventFactory;
++import org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory;
 +import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 +import org.bukkit.event.entity.CreeperPowerEvent;
 +import org.bukkit.event.entity.ExplosionPrimeEvent;
  
  @OnlyIn(
     value = Dist.CLIENT,
-@@ -47,8 +51,8 @@
+@@ -47,8 +50,8 @@
     private static final DataParameter<Boolean> field_184715_c = EntityDataManager.func_187226_a(CreeperEntity.class, DataSerializers.field_187198_h);
     private int field_70834_e;
     private int field_70833_d;
@@ -22,7 +26,7 @@
     private int field_175494_bm;
  
     public CreeperEntity(EntityType<? extends CreeperEntity> p_i50213_1_, World p_i50213_2_) {
-@@ -192,9 +196,18 @@
+@@ -192,9 +195,18 @@
  
     public void func_70077_a(LightningBoltEntity p_70077_1_) {
        super.func_70077_a(p_70077_1_);
@@ -42,7 +46,7 @@
     protected boolean func_184645_a(PlayerEntity p_184645_1_, Hand p_184645_2_) {
        ItemStack itemstack = p_184645_1_.func_184586_b(p_184645_2_);
        if (itemstack.func_77973_b() == Items.field_151033_d) {
-@@ -212,14 +225,22 @@
+@@ -212,14 +224,22 @@
        }
     }
  
@@ -71,7 +75,7 @@
        }
  
     }
-@@ -228,6 +249,7 @@
+@@ -228,6 +248,7 @@
        Collection<EffectInstance> collection = this.func_70651_bq();
        if (!collection.isEmpty()) {
           AreaEffectCloudEntity areaeffectcloudentity = new AreaEffectCloudEntity(this.field_70170_p, this.func_226277_ct_(), this.func_226278_cu_(), this.func_226281_cx_());
@@ -79,7 +83,7 @@
           areaeffectcloudentity.func_184483_a(2.5F);
           areaeffectcloudentity.func_184495_b(-0.5F);
           areaeffectcloudentity.func_184485_d(10);
-@@ -238,7 +260,7 @@
+@@ -238,7 +259,7 @@
              areaeffectcloudentity.func_184496_a(new EffectInstance(effectinstance));
           }
  

@@ -4,10 +4,10 @@
  import org.apache.commons.lang3.StringUtils;
  import org.apache.logging.log4j.LogManager;
  import org.apache.logging.log4j.Logger;
-+import org.bukkit.craftbukkit.event.CraftEventFactory;
-+import org.bukkit.craftbukkit.inventory.CraftInventory;
-+import org.bukkit.craftbukkit.inventory.CraftInventoryAnvil;
-+import org.bukkit.craftbukkit.inventory.CraftInventoryView;
++import org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory;
++import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftInventory;
++import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftInventoryAnvil;
++import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftInventoryView;
 +import org.bukkit.inventory.InventoryView;
  
  public class RepairContainer extends Container {

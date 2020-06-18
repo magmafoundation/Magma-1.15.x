@@ -48,17 +48,25 @@
  import net.minecraft.entity.player.PlayerEntity;
  import net.minecraft.fluid.Fluid;
  import net.minecraft.item.ItemStack;
-@@ -79,6 +53,9 @@
+@@ -63,7 +37,6 @@
+ import net.minecraft.tags.Tag;
+ import net.minecraft.tileentity.BeehiveTileEntity;
+ import net.minecraft.tileentity.TileEntity;
+-import net.minecraft.tileentity.TileEntityType;
+ import net.minecraft.util.DamageSource;
+ import net.minecraft.util.SoundEvent;
+ import net.minecraft.util.SoundEvents;
+@@ -79,6 +52,9 @@
  import net.minecraft.world.server.ServerWorld;
  import net.minecraftforge.api.distmarker.Dist;
  import net.minecraftforge.api.distmarker.OnlyIn;
-+import org.bukkit.craftbukkit.event.CraftEventFactory;
++import org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory;
 +import org.bukkit.event.entity.EntityPotionEffectEvent.Cause;
 +import org.bukkit.event.entity.EntityTargetEvent.TargetReason;
  
  public class BeeEntity extends AnimalEntity implements IFlyingAnimal {
     private static final DataParameter<Byte> field_226374_bw_ = EntityDataManager.func_187226_a(BeeEntity.class, DataSerializers.field_187191_a);
-@@ -88,14 +65,14 @@
+@@ -88,14 +64,14 @@
     private float field_226361_bA_;
     private int field_226362_bB_;
     private int field_226363_bC_;
@@ -75,7 +83,7 @@
     private BeeEntity.PollinateGoal field_226370_bJ_;
     private BeeEntity.FindBeehiveGoal field_226371_bK_;
     private BeeEntity.FindFlowerGoal field_226372_bL_;
-@@ -209,12 +186,12 @@
+@@ -209,12 +185,12 @@
              }
  
              if (i > 0) {
@@ -90,7 +98,7 @@
           this.func_184185_a(SoundEvents.field_226128_ac_, 1.0F, 1.0F);
        }
  
-@@ -366,11 +343,11 @@
+@@ -366,11 +342,11 @@
        return this.func_226418_eL_() > 0;
     }
  
@@ -104,7 +112,7 @@
        this.field_70180_af.func_187227_b(field_226375_bx_, p_226453_1_);
     }
  
-@@ -438,7 +415,7 @@
+@@ -438,7 +414,7 @@
           return false;
        } else {
           TileEntity tileentity = this.field_70170_p.func_175625_s(this.field_226369_bI_);
@@ -113,7 +121,7 @@
        }
     }
  
-@@ -446,7 +423,7 @@
+@@ -446,7 +422,7 @@
        return this.func_226456_v_(8);
     }
  
@@ -122,7 +130,7 @@
        if (p_226447_1_) {
           this.func_226426_eu_();
        }
-@@ -458,7 +435,7 @@
+@@ -458,7 +434,7 @@
        return this.func_226456_v_(4);
     }
  
@@ -131,7 +139,7 @@
        this.func_226404_d_(4, p_226449_1_);
     }
  
-@@ -580,12 +557,17 @@
+@@ -580,12 +556,17 @@
           return false;
        } else {
           Entity entity = p_70097_1_.func_76346_g();
@@ -151,7 +159,7 @@
        }
     }
  
-@@ -608,7 +590,7 @@
+@@ -608,7 +589,7 @@
  
        protected void func_220793_a(MobEntity p_220793_1_, LivingEntity p_220793_2_) {
           if (p_220793_1_ instanceof BeeEntity && this.field_75299_d.func_70685_l(p_220793_2_) && ((BeeEntity)p_220793_1_).func_226391_a_(p_220793_2_)) {
@@ -160,7 +168,7 @@
           }
  
        }
-@@ -884,7 +866,7 @@
+@@ -884,7 +865,7 @@
                       }
                    }
  

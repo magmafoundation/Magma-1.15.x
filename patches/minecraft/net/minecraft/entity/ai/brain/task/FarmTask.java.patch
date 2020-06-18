@@ -19,7 +19,7 @@
  import net.minecraft.util.math.BlockPosWrapper;
 -import net.minecraft.world.GameRules;
  import net.minecraft.world.server.ServerWorld;
-+import org.bukkit.craftbukkit.event.CraftEventFactory;
++import org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory;
  
  public class FarmTask extends Task<VillagerEntity> {
     @Nullable
@@ -69,7 +69,7 @@
                       flag = true;
 +                  } else if (itemstack.func_77973_b() instanceof net.minecraftforge.common.IPlantable) {
 +                     if (((net.minecraftforge.common.IPlantable)itemstack.func_77973_b()).getPlantType(p_212833_1_, field_220422_a) == net.minecraftforge.common.PlantType.Crop) {
-+                        if(!org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(p_212833_2_, this.field_220422_a, ((net.minecraftforge.common.IPlantable)itemstack.func_77973_b()).getPlant(p_212833_1_, field_220422_a)).isCancelled()){
++                        if(!org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory.callEntityChangeBlockEvent(p_212833_2_, this.field_220422_a, ((net.minecraftforge.common.IPlantable)itemstack.func_77973_b()).getPlant(p_212833_1_, field_220422_a)).isCancelled()){
 +                           p_212833_1_.func_180501_a(field_220422_a, ((net.minecraftforge.common.IPlantable)itemstack.func_77973_b()).getPlant(p_212833_1_, field_220422_a), 3);
 +                        }else {
 +                           flag = false;
@@ -78,7 +78,7 @@
 +                     }
                    }
 +
-+                  if (planted != null && !org.bukkit.craftbukkit.event.CraftEventFactory.callEntityChangeBlockEvent(p_212833_2_, this.field_220422_a, planted.func_176223_P()).isCancelled()) {
++                  if (planted != null && !org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory.callEntityChangeBlockEvent(p_212833_2_, this.field_220422_a, planted.func_176223_P()).isCancelled()) {
 +                     p_212833_1_.func_180501_a(field_220422_a, planted.func_176223_P(), 3);
 +                  } else {
 +                     flag = false;

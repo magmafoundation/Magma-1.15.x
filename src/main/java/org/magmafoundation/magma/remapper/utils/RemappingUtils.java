@@ -26,7 +26,6 @@ import org.objectweb.asm.Type;
 import org.objectweb.asm.commons.ClassRemapper;
 import org.objectweb.asm.commons.Remapper;
 import org.objectweb.asm.tree.ClassNode;
-import sun.reflect.Reflection;
 
 /**
  * RemappingUtils

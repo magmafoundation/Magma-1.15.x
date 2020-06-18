@@ -116,10 +116,10 @@
 +import net.minecraftforge.common.ForgeHooks;
  import org.apache.commons.lang3.tuple.Pair;
 +import org.bukkit.Location;
-+import org.bukkit.craftbukkit.SpigotTimings;
-+import org.bukkit.craftbukkit.attribute.CraftAttributeMap;
-+import org.bukkit.craftbukkit.event.CraftEventFactory;
-+import org.bukkit.craftbukkit.inventory.CraftItemStack;
++import org.bukkit.craftbukkit.v1_15_R1.SpigotTimings;
++import org.bukkit.craftbukkit.v1_15_R1.attribute.CraftAttributeMap;
++import org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory;
++import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftItemStack;
 +import org.bukkit.entity.Player;
 +import org.bukkit.event.entity.*;
 +import org.bukkit.event.entity.EntityDamageEvent.DamageModifier;
@@ -202,7 +202,7 @@
 +   public int maxAirTicks = 300;
 +   public boolean forceDrops;
 +   public ArrayList<org.bukkit.inventory.ItemStack> drops = new ArrayList<org.bukkit.inventory.ItemStack>();
-+   public org.bukkit.craftbukkit.attribute.CraftAttributeMap craftAttributes;
++   public org.bukkit.craftbukkit.v1_15_R1.attribute.CraftAttributeMap craftAttributes;
 +   public boolean collides = true;
 +   public boolean canPickUpLootMagma; // TODO: fix
 +   private boolean isTickingEffects = false;
@@ -532,7 +532,7 @@
     public void func_70606_j(float p_70606_1_) {
 +      // CraftBukkit start - Handle scaled health
 +      if (this instanceof ServerPlayerEntity) {
-+         org.bukkit.craftbukkit.entity.CraftPlayer player = ((ServerPlayerEntity) this).getBukkitEntity();
++         org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer player = ((ServerPlayerEntity) this).getBukkitEntity();
 +         // Squeeze
 +         if (p_70606_1_ < 0.0F) {
 +            player.setRealHealth(0.0D);

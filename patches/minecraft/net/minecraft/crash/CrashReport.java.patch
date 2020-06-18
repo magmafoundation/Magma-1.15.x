@@ -4,7 +4,7 @@
  import org.apache.commons.lang3.ArrayUtils;
  import org.apache.logging.log4j.LogManager;
  import org.apache.logging.log4j.Logger;
-+import org.bukkit.craftbukkit.CraftCrashReport;
++import org.bukkit.craftbukkit.v1_15_R1.CraftCrashReport;
  
  public class CrashReport {
     private static final Logger field_147150_a = LogManager.getLogger();

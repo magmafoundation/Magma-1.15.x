@@ -26,12 +26,11 @@ import net.minecraft.entity.projectile.FireballEntity;
 import net.minecraft.entity.projectile.ThrowableEntity;
 import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.ClassInheritanceMultiMap;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
-import org.bukkit.craftbukkit.SpigotTimings;
+import org.bukkit.craftbukkit.v1_15_R1.SpigotTimings;
 
 public class ActivationRange {
 
