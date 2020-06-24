@@ -9,16 +9,3 @@
  
  public class WoodType {
     private static final Set<WoodType> field_227044_g_ = new ObjectArraySet<>();
-@@ -23,10 +25,12 @@
-       return p_227047_0_;
-    }
- 
-+   @OnlyIn(Dist.CLIENT)
-    public static Stream<WoodType> func_227046_a_() {
-       return field_227044_g_.stream();
-    }
- 
-+   @OnlyIn(Dist.CLIENT)
-    public String func_227048_b_() {
-       return this.field_227045_h_;
-    }
