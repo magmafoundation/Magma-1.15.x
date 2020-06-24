@@ -39,7 +39,7 @@
     }
  
     private boolean func_98279_f() {
-@@ -128,15 +129,35 @@
+@@ -128,15 +129,36 @@
                    entity.func_70012_b(entity.func_226277_ct_(), entity.func_226278_cu_(), entity.func_226281_cx_(), world.field_73012_v.nextFloat() * 360.0F, 0.0F);
                    if (entity instanceof MobEntity) {
                       MobEntity mobentity = (MobEntity)entity;
@@ -49,6 +49,7 @@
                       }
  
                       if (this.field_98282_f.func_185277_b().func_186856_d() == 1 && this.field_98282_f.func_185277_b().func_150297_b("id", 8)) {
++                        if (!net.minecraftforge.event.ForgeEventFactory.doSpecialSpawn(mobentity, world, (float)entity.func_226277_ct_(), (float)entity.func_226278_cu_(), (float)entity.func_226281_cx_(), this, SpawnReason.SPAWNER))
                          ((MobEntity)entity).func_213386_a(world, world.func_175649_E(new BlockPos(entity)), SpawnReason.SPAWNER, (ILivingEntityData)null, (CompoundNBT)null);
                       }
 +
@@ -76,7 +77,7 @@
                    this.func_221409_a(entity);
                    world.func_217379_c(2004, blockpos, 0);
                    if (entity instanceof MobEntity) {
-@@ -156,7 +177,7 @@
+@@ -156,7 +178,7 @@
     }
  
     private void func_221409_a(Entity p_221409_1_) {
@@ -85,7 +86,7 @@
           for(Entity entity : p_221409_1_.func_184188_bt()) {
              this.func_221409_a(entity);
           }
-@@ -285,4 +306,9 @@
+@@ -285,4 +307,9 @@
     public double func_177223_e() {
        return this.field_98284_d;
     }

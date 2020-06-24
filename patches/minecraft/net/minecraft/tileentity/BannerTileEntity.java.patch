@@ -24,3 +24,11 @@
        this.field_175122_h = null;
        this.field_175119_g = true;
     }
+@@ -158,6 +163,7 @@
+       }
+    }
+ 
++   @OnlyIn(Dist.CLIENT)
+    public ItemStack func_190615_l(BlockState p_190615_1_) {
+       ItemStack itemstack = new ItemStack(BannerBlock.func_196287_a(this.func_195533_l(() -> {
+          return p_190615_1_;

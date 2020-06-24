@@ -17,24 +17,19 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-package net.minecraftforge.client.model.generators;
+package net.minecraftforge.client;
 
-import javax.annotation.Nonnull;
-import net.minecraft.data.DataGenerator;
+import com.mojang.blaze3d.matrix.MatrixStack;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.world.ClientWorld;
 
 /**
- * Stub class to extend for item model data providers, eliminates some
- * boilerplate constructor parameters.
+ * Call {@link net.minecraft.world.dimension.Dimension#setCloudRenderer} with an implementation of this
+ * to override all cloud rendering with your own.
  */
-public abstract class ItemModelProvider extends ModelProvider<ItemModelBuilder> {
-
-    public ItemModelProvider(DataGenerator generator, String modid, ExistingFileHelper existingFileHelper) {
-        super(generator, modid, ITEM_FOLDER, ItemModelBuilder::new, existingFileHelper);
-    }
-
-    @Nonnull
+public interface CloudRenderHandler extends IRenderHandler {
     @Override
-    public String getName() {
-        return "Item Models: " + modid;
-    }
+    default void render(int ticks, float partialTicks, ClientWorld world, Minecraft mc) {}
+
+    void render(int ticks, float partialTicks, MatrixStack matrixStack, ClientWorld world, Minecraft mc);
 }
