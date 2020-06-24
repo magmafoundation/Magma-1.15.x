@@ -9,11 +9,15 @@ buildscript {
             url 'https://repo.maven.apache.org/maven2/'
         }
         maven { url "https://repo.hexeption.dev/repository/magma/" }
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:3.+'
         classpath 'org.ow2.asm:asm:7.2'
         classpath 'org.ow2.asm:asm-tree:7.2'
+        classpath "gradle.plugin.net.nemerosa:versioning:2.14.0"
     }
 }
 
@@ -120,7 +124,8 @@ project(':forge') {
     apply plugin: 'eclipse'
     apply plugin: 'net.minecraftforge.gradle.patcher'
     apply plugin: 'de.undercouch.download'
-    
+    apply plugin: 'net.nemerosa.versioning'
+
     compileJava.sourceCompatibility = compileJava.targetCompatibility = sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
     group = 'net.minecraftforge'
 
@@ -180,9 +185,10 @@ project(':forge') {
         SPECIAL_SOURCE = 'net.md-5:SpecialSource:1.8.5'
         VERSION_JSON = project(':mcp').file('build/mcp/downloadJson/version.json')
         BINPATCH_TOOL = 'net.minecraftforge:binarypatcher:1.0.12:fatjar'
+        FORGE_VERSION = '31.2.23'
     }
 
-    version = '1.15.2-31.2.23'
+    version = "1.15.2-$FORGE_VERSION-$versioning.info.build"
     println('Forge Version: ' + version)
 
     patcher {
@@ -210,7 +216,7 @@ project(':forge') {
                 environment 'MCP_VERSION', MCP_VERSION
                 environment 'FORGE_GROUP', project.group
                 environment 'FORGE_SPEC', SPEC_VERSION
-                environment 'FORGE_VERSION', project.version.substring(MC_VERSION.length() + 1).toString()
+                environment 'FORGE_VERSION', FORGE_VERSION
                 environment 'LAUNCHER_VERSION', SPEC_VERSION
                 property 'org.lwjgl.system.SharedLibraryExtractDirectory', 'lwjgl_dll'
 
@@ -232,7 +238,7 @@ project(':forge') {
                 environment 'MCP_VERSION', MCP_VERSION
                 environment 'FORGE_GROUP', project.group
                 environment 'FORGE_SPEC', SPEC_VERSION
-                environment 'FORGE_VERSION', project.version.substring(MC_VERSION.length() + 1).toString()
+                environment 'FORGE_VERSION', FORGE_VERSION
                 environment 'LAUNCHER_VERSION', SPEC_VERSION
 
                 ideaModule "${rootProject.name}.${project.name}.userdev"
@@ -253,7 +259,7 @@ project(':forge') {
                 environment 'MCP_VERSION', MCP_VERSION
                 environment 'FORGE_GROUP', project.group
                 environment 'FORGE_SPEC', SPEC_VERSION
-                environment 'FORGE_VERSION', project.version.substring(MC_VERSION.length() + 1).toString()
+                environment 'FORGE_VERSION', FORGE_VERSION
                 environment 'LAUNCHER_VERSION', SPEC_VERSION
 
                 ideaModule "${rootProject.name}.${project.name}.userdev"
@@ -321,6 +327,13 @@ project(':forge') {
                 'Implementation-Title':     project.group,
                 'Implementation-Version':   project.version.substring(MC_VERSION.length() + 1),
                 'Implementation-Vendor':    'Forge Development LLC'
+            ] as LinkedHashMap,
+            'org/magmafoundation/magma/': [
+                    'Specification-Title':      'Magma Development Limited',
+                    'Specification-Vendor':     'Magma Development Limited',
+                    'Implementation-Title':     "Magma",
+                    'Implementation-Version':   project.version,
+                    'Implementation-Vendor':    'Magma Development Limited'
             ] as LinkedHashMap
         ]
     }
@@ -906,7 +919,7 @@ project(':forge') {
                 environment 'MCP_VERSION', "${MCP_VERSION}"
                 environment 'MOD_CLASSES', '{source_roots}'
                 environment 'MCP_MAPPINGS', '{mcp_mappings}'
-                environment 'FORGE_VERSION', "${project.version.substring(MC_VERSION.length() + 1)}"
+                environment 'FORGE_VERSION', FORGE_VERSION
             }
 
             server {
@@ -919,7 +932,7 @@ project(':forge') {
                 environment 'MCP_VERSION', "${MCP_VERSION}"
                 environment 'MOD_CLASSES', '{source_roots}'
                 environment 'MCP_MAPPINGS', '{mcp_mappings}'
-                environment 'FORGE_VERSION', "${project.version.substring(MC_VERSION.length() + 1)}"
+                environment 'FORGE_VERSION', FORGE_VERSION
             }
 
             data {
@@ -932,7 +945,7 @@ project(':forge') {
                 environment 'MCP_VERSION', "${MCP_VERSION}"
                 environment 'MOD_CLASSES', '{source_roots}'
                 environment 'MCP_MAPPINGS', '{mcp_mappings}'
-                environment 'FORGE_VERSION', "${project.version.substring(MC_VERSION.length() + 1)}"
+                environment 'FORGE_VERSION', FORGE_VERSION
             }
         }
     }
