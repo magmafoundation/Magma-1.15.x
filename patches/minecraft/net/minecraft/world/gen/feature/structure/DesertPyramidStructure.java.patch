@@ -8,7 +8,19 @@
  import net.minecraft.world.biome.Biome;
  import net.minecraft.world.gen.ChunkGenerator;
  import net.minecraft.world.gen.feature.NoFeatureConfig;
-@@ -25,8 +26,10 @@
+@@ -13,6 +14,11 @@
+       super(p_i49888_1_);
+    }
+ 
++   @Override
++   protected int func_202382_c() {
++      return 0; // Default
++   }
++
+    public String func_143025_a() {
+       return "Desert_Pyramid";
+    }
+@@ -25,8 +31,10 @@
        return DesertPyramidStructure.Start::new;
     }
  

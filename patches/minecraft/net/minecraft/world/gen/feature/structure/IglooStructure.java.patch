@@ -8,7 +8,19 @@
  import net.minecraft.world.biome.Biome;
  import net.minecraft.world.gen.ChunkGenerator;
  import net.minecraft.world.gen.feature.Feature;
-@@ -28,8 +29,10 @@
+@@ -16,6 +17,11 @@
+       super(p_i51491_1_);
+    }
+ 
++   @Override
++   protected int func_202382_c() {
++      return 0; // Default
++   }
++
+    public String func_143025_a() {
+       return "Igloo";
+    }
+@@ -28,8 +34,10 @@
        return IglooStructure.Start::new;
     }
  

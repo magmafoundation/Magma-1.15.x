@@ -13,14 +13,16 @@
        int k1 = i1 / i;
        int l1 = j1 / i;
 -      ((SharedSeedRandom)p_211744_2_).func_202427_a(p_211744_1_.func_202089_c(), k1, l1, this.func_202382_c());
-+      ((SharedSeedRandom)p_211744_2_).func_202427_a(p_211744_1_.func_202089_c(), k1, l1, this.getSeedModifier(p_211744_1_.getWorld()));
++      ((SharedSeedRandom) p_211744_2_).func_202427_a(p_211744_1_.func_202089_c(), k1, l1, this.func_202382_c() == 0 ? this.getSeedModifier(p_211744_1_.getWorld()) : this.func_202382_c());
        k1 = k1 * i;
        l1 = l1 * i;
        k1 = k1 + p_211744_2_.nextInt(i - j);
-@@ -45,5 +46,5 @@
+@@ -45,5 +46,8 @@
        return p_211745_1_.func_201496_a_().func_211731_i();
     }
  
--   protected abstract int func_202382_c();
++   // Magma - Default forge support
+    protected abstract int func_202382_c();
++
 +   protected abstract int getSeedModifier(World world); // Spigot
  }
