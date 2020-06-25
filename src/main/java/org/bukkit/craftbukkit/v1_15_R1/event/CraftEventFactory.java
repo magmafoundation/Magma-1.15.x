@@ -894,6 +894,8 @@ public class CraftEventFactory {
             cause = DamageCause.DRYOUT;
         } else if (source == DamageSource.GENERIC) {
             cause = DamageCause.CUSTOM;
+        } else if (source == DamageSource.LIGHTNING_BOLT){
+            cause = DamageCause.LIGHTNING;
         }
 
         if (cause != null) {
