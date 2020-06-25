@@ -89,7 +89,7 @@
 -                     }
 -                  }
 +                  // CraftBukkit start
-+                  affected.put((org.bukkit.entity.LivingEntity) p_213888_2_.getBukkitEntity(), d1);
++                  affected.put((org.bukkit.entity.LivingEntity) livingentity.getBukkitEntity(), d1);
                 }
              }
           }
