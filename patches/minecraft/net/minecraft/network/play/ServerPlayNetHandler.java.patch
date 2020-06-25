@@ -265,7 +265,7 @@
 +      if (this.processedDisconnect) {
 +         return;
 +      }
-+      String leaveMessage = TextFormatting.YELLOW + this.field_147369_b.func_195047_I_() + " left the game.";
++      String leaveMessage = TextFormatting.YELLOW + this.field_147369_b.func_200200_C_().func_150254_d() + " left the game.";
 +      PlayerKickEvent event = new PlayerKickEvent(this.craftServer.getPlayer(this.field_147369_b), message, leaveMessage);
 +      if (this.craftServer.getServer().func_71278_l()) {
 +         this.craftServer.getPluginManager().callEvent(event);
