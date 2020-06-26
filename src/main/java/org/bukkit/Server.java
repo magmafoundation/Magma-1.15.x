@@ -1324,7 +1324,28 @@ public interface Server extends PluginMessageRecipient {
         public org.bukkit.configuration.file.YamlConfiguration getConfig() {
             throw new UnsupportedOperationException("Not supported yet.");
         }
+
+        // Paper start
+        @NotNull
+        public org.bukkit.configuration.file.YamlConfiguration getBukkitConfig()
+        {
+            throw new UnsupportedOperationException( "Not supported yet." );
+        }
+
+        @NotNull
+        public org.bukkit.configuration.file.YamlConfiguration getSpigotConfig()
+        {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @NotNull
+        public org.bukkit.configuration.file.YamlConfiguration getPaperConfig()
+        {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+        // Paper end
     }
+
     @NotNull
     Spigot spigot();
     // Spigot end

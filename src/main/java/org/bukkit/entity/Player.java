@@ -1328,6 +1328,11 @@ public interface Player extends HumanEntity, Conversable, OfflinePlayer, PluginM
             throw new UnsupportedOperationException("Not supported yet.");
         }
 
+        public int getPing()
+        {
+            throw new UnsupportedOperationException( "Not supported yet." );
+        }
+
     }
     @NotNull
     @Override

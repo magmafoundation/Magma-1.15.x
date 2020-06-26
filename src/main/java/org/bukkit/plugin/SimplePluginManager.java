@@ -29,7 +29,6 @@ import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.PluginCommandYamlParser;
 import org.bukkit.command.SimpleCommandMap;
-import org.bukkit.command.defaults.TimingsCommand;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
@@ -359,7 +358,6 @@ public final class SimplePluginManager implements PluginManager {
             }
         }
 
-        org.bukkit.command.defaults.TimingsCommand.timingStart = System.nanoTime(); // Spigot
         return result.toArray(new Plugin[result.size()]);
     }
 
@@ -398,9 +396,9 @@ public final class SimplePluginManager implements PluginManager {
 
         if (result != null) {
             plugins.add(result);
-            lookupNames.put(result.getDescription().getName(), result);
+            lookupNames.put(result.getDescription().getName().toLowerCase(java.util.Locale.ENGLISH), result); // Paper
             for (String provided : result.getDescription().getProvides()) {
-                lookupNames.putIfAbsent(provided, result);
+                lookupNames.putIfAbsent(provided.toLowerCase(java.util.Locale.ENGLISH), result); // Paper
             }
         }
 
@@ -429,7 +427,7 @@ public final class SimplePluginManager implements PluginManager {
     @Override
     @Nullable
     public synchronized Plugin getPlugin(@NotNull String name) {
-        return lookupNames.get(name.replace(' ', '_'));
+        return lookupNames.get(name.replace(' ', '_').toLowerCase(java.util.Locale.ENGLISH)); // Paper
     }
 
     @Override
@@ -647,7 +645,8 @@ public final class SimplePluginManager implements PluginManager {
             throw new IllegalPluginAccessException("Plugin attempted to register " + event + " while not enabled");
         }
 
-        if (useTimings) {
+        executor = new co.aikar.timings.TimedEventExecutor(executor, plugin, null, event); // Paper
+        if (false) { // Spigot - RL handles useTimings check now // Paper
             getEventListeners(event).register(new TimedRegisteredListener(listener, executor, priority, plugin, ignoreCancelled));
         } else {
             getEventListeners(event).register(new RegisteredListener(listener, executor, priority, plugin, ignoreCancelled));
@@ -861,7 +860,7 @@ public final class SimplePluginManager implements PluginManager {
 
     @Override
     public boolean useTimings() {
-        return useTimings;
+        return co.aikar.timings.Timings.isTimingsEnabled(); // Spigot
     }
 
     /**
@@ -870,6 +869,6 @@ public final class SimplePluginManager implements PluginManager {
      * @param use True if per event timing code should be used
      */
     public void useTimings(boolean use) {
-        useTimings = use;
+        co.aikar.timings.Timings.setTimingsEnabled(use); // Paper
     }
 }
