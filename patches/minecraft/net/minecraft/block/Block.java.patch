@@ -1,6 +1,15 @@
 --- a/net/minecraft/block/Block.java
 +++ b/net/minecraft/block/Block.java
-@@ -23,12 +23,7 @@
+@@ -13,6 +13,8 @@
+ import net.minecraft.block.material.MaterialColor;
+ import net.minecraft.block.material.PushReaction;
+ import net.minecraft.client.util.ITooltipFlag;
++import net.minecraft.enchantment.EnchantmentHelper;
++import net.minecraft.enchantment.Enchantments;
+ import net.minecraft.entity.Entity;
+ import net.minecraft.entity.EntityType;
+ import net.minecraft.entity.LivingEntity;
+@@ -23,12 +25,7 @@
  import net.minecraft.fluid.Fluids;
  import net.minecraft.fluid.IFluidState;
  import net.minecraft.inventory.container.INamedContainerProvider;
@@ -14,7 +23,7 @@
  import net.minecraft.network.DebugPacketSender;
  import net.minecraft.pathfinding.PathType;
  import net.minecraft.state.StateContainer;
-@@ -37,16 +32,7 @@
+@@ -37,16 +34,7 @@
  import net.minecraft.tags.FluidTags;
  import net.minecraft.tags.Tag;
  import net.minecraft.tileentity.TileEntity;
@@ -32,7 +41,7 @@
  import net.minecraft.util.math.BlockPos;
  import net.minecraft.util.math.BlockRayTraceResult;
  import net.minecraft.util.math.MathHelper;
-@@ -58,26 +44,18 @@
+@@ -58,26 +46,19 @@
  import net.minecraft.util.registry.Registry;
  import net.minecraft.util.text.ITextComponent;
  import net.minecraft.util.text.TranslationTextComponent;
@@ -52,6 +61,7 @@
 +import net.minecraft.world.storage.loot.*;
  import net.minecraftforge.api.distmarker.Dist;
  import net.minecraftforge.api.distmarker.OnlyIn;
++import net.minecraftforge.common.extensions.IForgeBlock;
  import org.apache.logging.log4j.LogManager;
  import org.apache.logging.log4j.Logger;
  
@@ -64,7 +74,7 @@
     private static final Direction[] field_212556_a = new Direction[]{Direction.WEST, Direction.EAST, Direction.NORTH, Direction.SOUTH, Direction.DOWN, Direction.UP};
     private static final LoadingCache<VoxelShape, Boolean> field_223006_b = CacheBuilder.newBuilder().maximumSize(512L).weakKeys().build(new CacheLoader<VoxelShape, Boolean>() {
        public Boolean load(VoxelShape p_load_1_) {
-@@ -90,7 +68,7 @@
+@@ -90,7 +71,7 @@
     protected final float field_149782_v;
     protected final float field_149781_w;
     protected final boolean field_149789_z;
@@ -73,7 +83,7 @@
     protected final Material field_149764_J;
     protected final MaterialColor field_181083_K;
     private final float field_149765_K;
-@@ -151,7 +129,7 @@
+@@ -151,7 +132,7 @@
  
     @Deprecated
     public boolean func_220067_a(BlockState p_220067_1_, IBlockReader p_220067_2_, BlockPos p_220067_3_, EntityType<?> p_220067_4_) {
@@ -82,7 +92,7 @@
     }
  
     @Deprecated
-@@ -246,6 +224,10 @@
+@@ -246,6 +227,10 @@
        this.field_149781_w = p_i48440_1_.field_200958_f;
        this.field_149782_v = p_i48440_1_.field_200959_g;
        this.field_149789_z = p_i48440_1_.field_200960_h;
@@ -93,7 +103,7 @@
        this.field_149765_K = p_i48440_1_.field_200961_i;
        this.field_226886_f_ = p_i48440_1_.field_226893_j_;
        this.field_226887_g_ = p_i48440_1_.field_226894_k_;
-@@ -297,7 +279,7 @@
+@@ -297,7 +282,7 @@
  
     @Deprecated
     public boolean func_196253_a(BlockState p_196253_1_, BlockItemUseContext p_196253_2_) {
@@ -102,7 +112,7 @@
     }
  
     @Deprecated
-@@ -314,8 +296,9 @@
+@@ -314,8 +299,9 @@
        return this.field_149789_z;
     }
  
@@ -113,7 +123,7 @@
     }
  
     @Deprecated
-@@ -467,14 +450,15 @@
+@@ -467,14 +453,15 @@
  
     @Deprecated
     public void func_220082_b(BlockState p_220082_1_, World p_220082_2_, BlockPos p_220082_3_, BlockState p_220082_4_, boolean p_220082_5_) {
@@ -131,7 +141,7 @@
     }
  
     @Deprecated
-@@ -483,8 +467,8 @@
+@@ -483,8 +470,8 @@
        if (f == -1.0F) {
           return 0.0F;
        } else {
@@ -142,7 +152,7 @@
        }
     }
  
-@@ -494,8 +478,7 @@
+@@ -494,8 +481,7 @@
  
     public ResourceLocation func_220068_i() {
        if (this.field_220085_g == null) {
@@ -152,7 +162,7 @@
        }
  
        return this.field_220085_g;
-@@ -555,19 +538,31 @@
+@@ -555,19 +541,33 @@
     }
  
     public static void func_180635_a(World p_180635_0_, BlockPos p_180635_1_, ItemStack p_180635_2_) {
@@ -177,7 +187,9 @@
  
 +   // CraftBukkit start
 +   public int getExpDrop(BlockState blockState, World world, BlockPos blockposition, ItemStack itemstack) {
-+      return 0;
++      int silkTouch = EnchantmentHelper.func_77506_a(Enchantments.field_185306_r, itemstack);
++      int fortune = EnchantmentHelper.func_77506_a(Enchantments.field_185308_t, itemstack);
++      return ((IForgeBlock) this).getExpDrop(blockState, world, blockposition, fortune, silkTouch);
 +   }
 +   // CraftBukkit end
 +
@@ -187,7 +199,7 @@
           while(p_180637_3_ > 0) {
              int i = ExperienceOrbEntity.func_70527_a(p_180637_3_);
              p_180637_3_ -= i;
-@@ -577,6 +572,7 @@
+@@ -577,6 +577,7 @@
  
     }
  
@@ -195,7 +207,7 @@
     public float func_149638_a() {
        return this.field_149781_w;
     }
-@@ -675,6 +671,7 @@
+@@ -675,6 +676,7 @@
        p_176216_2_.func_213317_d(p_176216_2_.func_213322_ci().func_216372_d(1.0D, 0.0D, 1.0D));
     }
  
@@ -203,7 +215,7 @@
     public ItemStack func_185473_a(IBlockReader p_185473_1_, BlockPos p_185473_2_, BlockState p_185473_3_) {
        return new ItemStack(this);
     }
-@@ -688,6 +685,7 @@
+@@ -688,6 +690,7 @@
        return Fluids.field_204541_a.func_207188_f();
     }
  
@@ -211,7 +223,7 @@
     public float func_208618_m() {
        return this.field_149765_K;
     }
-@@ -716,6 +714,7 @@
+@@ -716,6 +719,7 @@
     public void func_176224_k(World p_176224_1_, BlockPos p_176224_2_) {
     }
  
@@ -219,7 +231,7 @@
     public boolean func_149659_a(Explosion p_149659_1_) {
        return true;
     }
-@@ -760,6 +759,7 @@
+@@ -760,6 +764,7 @@
        }
     }
  
@@ -227,7 +239,7 @@
     public SoundType func_220072_p(BlockState p_220072_1_) {
        return this.field_149762_H;
     }
-@@ -769,7 +769,7 @@
+@@ -769,7 +774,7 @@
           this.field_220086_i = Item.func_150898_a(this);
        }
  
@@ -236,7 +248,7 @@
     }
  
     public boolean func_208619_r() {
-@@ -777,13 +777,93 @@
+@@ -777,13 +782,93 @@
     }
  
     public String toString() {
@@ -331,7 +343,7 @@
     public static enum OffsetType {
        NONE,
        XZ,
-@@ -805,6 +885,9 @@
+@@ -805,6 +890,9 @@
        private ResourceLocation field_222381_j;
        private boolean field_226895_m_ = true;
        private boolean field_208772_j;
@@ -341,7 +353,7 @@
  
        private Properties(Material p_i48616_1_, MaterialColor p_i48616_2_) {
           this.field_200953_a = p_i48616_1_;
-@@ -837,6 +920,8 @@
+@@ -837,6 +925,8 @@
           block$properties.field_226893_j_ = p_200950_0_.func_226891_m_();
           block$properties.field_208772_j = p_200950_0_.field_208621_p;
           block$properties.field_226895_m_ = p_200950_0_.field_226888_j_;
@@ -350,7 +362,7 @@
           return block$properties;
        }
  
-@@ -901,13 +986,23 @@
+@@ -901,13 +991,23 @@
           return this;
        }
  
