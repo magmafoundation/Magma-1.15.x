@@ -199,6 +199,8 @@ import org.magmafoundation.magma.Magma;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.error.MarkedYAMLException;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.world.WorldEvent;
 
 public final class CraftServer implements Server {
     private final String serverName = "Magma";
@@ -1043,6 +1045,7 @@ public final class CraftServer implements Server {
             getLogger().log(Level.SEVERE, null, ex);
         }
 
+        MinecraftForge.EVENT_BUS.post(new WorldEvent.Unload(handle));
         worlds.remove(world.getName().toLowerCase(java.util.Locale.ENGLISH));
         console.worlds.remove(handle.getDimension().getType());
         return true;

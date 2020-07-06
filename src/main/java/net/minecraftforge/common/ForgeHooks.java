@@ -151,12 +151,14 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.ForgeRegistry;
 import net.minecraftforge.registries.GameData;
 import net.minecraftforge.registries.IRegistryDelegate;
+import net.minecraftforge.common.util.FakePlayer;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
 import org.apache.logging.log4j.util.TriConsumer;
+import org.magmafoundation.magma.captures.MagmaCaptures;
 
 public class ForgeHooks
 {
@@ -444,14 +446,14 @@ public class ForgeHooks
     }
 
     @Nullable
-    public static ITextComponent onServerChatEvent(ServerPlayNetHandler net, String raw, ITextComponent comp)
-    {
+    public static ITextComponent onServerChatEvent(ServerPlayNetHandler net, String raw, ITextComponent comp) {
         ServerChatEvent event = new ServerChatEvent(net.player, raw, comp);
-        if (MinecraftForge.EVENT_BUS.post(event))
-        {
-            return null;
+        synchronized (ServerChatEvent.class) {
+            if (MinecraftForge.EVENT_BUS.post(event)) {
+                return null;
+            }
+            return event.getComponent();
         }
-        return event.getComponent();
     }
 
 
@@ -556,7 +558,7 @@ public class ForgeHooks
         }
 
         // Tell client the block is gone immediately then process events
-        if (world.getTileEntity(pos) == null)
+        if (world.getTileEntity(pos) == null && !(entityPlayer instanceof FakePlayer))
         {
             entityPlayer.connection.sendPacket(new SChangeBlockPacket(DUMMY_WORLD, pos));
         }
@@ -568,7 +570,7 @@ public class ForgeHooks
         MinecraftForge.EVENT_BUS.post(event);
 
         // Handle if the event is canceled
-        if (event.isCanceled())
+        if (event.isCanceled() && !(entityPlayer instanceof FakePlayer))
         {
             // Let the client know the block still exists
             entityPlayer.connection.sendPacket(new SChangeBlockPacket(world, pos));
@@ -589,6 +591,7 @@ public class ForgeHooks
 
     public static ActionResultType onPlaceItemIntoWorld(@Nonnull ItemUseContext context)
     {
+        MagmaCaptures.capturePlaceEventHand(context.getHand());
         ItemStack itemstack = context.getItem();
         World world = context.getWorld();
 
@@ -673,6 +676,7 @@ public class ForgeHooks
                 }
                 player.addStat(Stats.ITEM_USED.get(item));
             }
+            MagmaCaptures.getPlaceEventHand(Hand.MAIN_HAND);
         }
         world.capturedBlockSnapshots.clear();
 
