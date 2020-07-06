@@ -76,16 +76,24 @@
     public final EnderDragonPartEntity field_70986_h;
     private final EnderDragonPartEntity field_184673_bv;
     private final EnderDragonPartEntity field_70987_i;
-@@ -82,6 +85,8 @@
+@@ -82,6 +85,16 @@
     private final int[] field_184681_bN = new int[24];
     private final PathHeap field_184682_bO = new PathHeap();
  
++   public final int getDeathTicks() {
++      return this.field_70995_bG;
++   }
++   public final void setDeathTicks(final int value) {
++      this.field_70995_bG = value;
++   }
++   // Paper
++
 +   private Explosion explosionSource = new Explosion(null, this, Double.NaN, Double.NaN, Double.NaN, Float.NaN, true, Mode.DESTROY); // CraftBukkit - reusable source for CraftTNTPrimed.getSource()
 +
     public EnderDragonEntity(EntityType<? extends EnderDragonEntity> p_i50230_1_, World p_i50230_2_) {
        super(EntityType.field_200802_p, p_i50230_2_);
        this.field_70986_h = new EnderDragonPartEntity(this, "head", 1.0F, 1.0F);
-@@ -337,7 +342,14 @@
+@@ -337,7 +350,14 @@
           if (this.field_70992_bH.field_70128_L) {
              this.field_70992_bH = null;
           } else if (this.field_70173_aa % 10 == 0 && this.func_110143_aJ() < this.func_110138_aP()) {
@@ -101,7 +109,7 @@
           }
        }
  
-@@ -402,15 +414,22 @@
+@@ -402,15 +422,22 @@
        boolean flag = false;
        boolean flag1 = false;
  
@@ -127,7 +135,7 @@
                    } else {
                       flag = true;
                    }
-@@ -419,6 +438,44 @@
+@@ -419,6 +446,44 @@
           }
        }
  
@@ -172,7 +180,7 @@
        if (flag1) {
           BlockPos blockpos1 = new BlockPos(i + this.field_70146_Z.nextInt(l - i + 1), j + this.field_70146_Z.nextInt(i1 - j + 1), k + this.field_70146_Z.nextInt(j1 - k + 1));
           this.field_70170_p.func_217379_c(2008, blockpos1, 0);
-@@ -507,7 +564,25 @@
+@@ -507,7 +572,25 @@
           }
  
           if (this.field_70995_bG == 1) {
@@ -198,4 +206,20 @@
 +            // CraftBukkit end
           }
        }
+ 
+@@ -712,6 +795,7 @@
+    public void func_213281_b(CompoundNBT p_213281_1_) {
+       super.func_213281_b(p_213281_1_);
+       p_213281_1_.func_74768_a("DragonPhase", this.field_184677_bJ.func_188756_a().func_188652_i().func_188740_b());
++      p_213281_1_.func_74768_a("Paper.DeathTick", this.getDeathTicks());// Paper
+    }
+ 
+    public void func_70037_a(CompoundNBT p_70037_1_) {
+@@ -719,6 +803,7 @@
+       if (p_70037_1_.func_74764_b("DragonPhase")) {
+          this.field_184677_bJ.func_188758_a(PhaseType.func_188738_a(p_70037_1_.func_74762_e("DragonPhase")));
+       }
++      this.setDeathTicks(p_70037_1_.func_74762_e("Paper.DeathTick")); // Paper
+ 
+    }
  
