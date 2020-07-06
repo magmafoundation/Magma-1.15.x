@@ -14,4 +14,13 @@ logoFile="forge_logo.png"
     description='''
     Forge, a broad compatibility API.
     '''
+
+[[mods]]
+    modId="magma"
+    version="${file.jarVersion}"
+    displayName="Magma"
+    authors="Hexeption"
+    description='''
+    This is a Forge + Bukkit port server mod
+    '''
     
