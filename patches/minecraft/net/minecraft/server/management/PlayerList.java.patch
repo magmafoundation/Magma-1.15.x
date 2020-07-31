@@ -342,8 +342,8 @@
     }
  
     protected void func_72391_b(ServerPlayerEntity p_72391_1_) {
-+      if (!p_72391_1_.getBukkitEntity().isPersistent())
-+         return; // CraftBukkit
++//      if (!playerIn.getBukkitEntity().isPersistent())
++//         return; // CraftBukkit
 +      if (p_72391_1_.field_71135_a == null)
 +         return;
        this.field_72412_k.func_75753_a(p_72391_1_);

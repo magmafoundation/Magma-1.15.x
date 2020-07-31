@@ -92,6 +92,24 @@
           return t;
        }
     }
+@@ -410,7 +443,7 @@
+    }
+ 
+    public static Optional<Entity> func_220330_a(CompoundNBT p_220330_0_, World p_220330_1_) {
+-      return Util.func_215077_a(func_220347_a(p_220330_0_).map((p_220337_1_) -> {
++         return Util.func_215077_a(func_220347_a(p_220330_0_).map((p_220337_1_) -> {
+          return p_220337_1_.func_200721_a(p_220330_1_);
+       }), (p_220329_1_) -> {
+          p_220329_1_.func_70020_e(p_220330_0_);
+@@ -440,7 +473,7 @@
+ 
+    @Nullable
+    public static Entity func_220335_a(CompoundNBT p_220335_0_, World p_220335_1_, Function<Entity, Entity> p_220335_2_) {
+-      return func_220343_b(p_220335_0_, p_220335_1_).map(p_220335_2_).map((p_220346_3_) -> {
++        return func_220343_b(p_220335_0_, p_220335_1_).map(p_220335_2_).map((p_220346_3_) -> {
+          if (p_220335_0_.func_150297_b("Passengers", 9)) {
+             ListNBT listnbt = p_220335_0_.func_150295_c("Passengers", 10);
+ 
 @@ -466,6 +499,9 @@
     }
  
