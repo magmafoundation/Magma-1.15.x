@@ -86,7 +86,7 @@
 +      return getBukkitEntity();
 +   }
 +
-+   public boolean persist;
++   public boolean persist = true;
 +   public boolean valid;
 +   public ProjectileSource projectileSource;
 +   public boolean forceExplosionKnockback;
@@ -501,7 +501,7 @@
     public boolean func_184198_c(CompoundNBT p_184198_1_) {
        String s = this.func_70022_Q();
 -      if (!this.field_70128_L && s != null) {
-+      if ( !this.field_70128_L && s != null) {
++      if (this.persist && !this.field_70128_L && s != null) { // CraftBukkit - persist flag
           p_184198_1_.func_74778_a("id", s);
           this.func_189511_e(p_184198_1_);
           return true;

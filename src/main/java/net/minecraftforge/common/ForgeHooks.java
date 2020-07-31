@@ -158,7 +158,6 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
 import org.apache.logging.log4j.util.TriConsumer;
-import org.magmafoundation.magma.captures.MagmaCaptures;
 
 public class ForgeHooks
 {
@@ -591,7 +590,6 @@ public class ForgeHooks
 
     public static ActionResultType onPlaceItemIntoWorld(@Nonnull ItemUseContext context)
     {
-        MagmaCaptures.capturePlaceEventHand(context.getHand());
         ItemStack itemstack = context.getItem();
         World world = context.getWorld();
 
@@ -676,7 +674,6 @@ public class ForgeHooks
                 }
                 player.addStat(Stats.ITEM_USED.get(item));
             }
-            MagmaCaptures.getPlaceEventHand(Hand.MAIN_HAND);
         }
         world.capturedBlockSnapshots.clear();
 
