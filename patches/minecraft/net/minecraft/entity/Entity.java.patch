@@ -897,7 +897,7 @@
     }
  
     public boolean func_70028_i(Entity p_70028_1_) {
-@@ -2046,43 +2428,89 @@
+@@ -2046,67 +2428,133 @@
  
     @Nullable
     public Entity func_212321_a(DimensionType p_212321_1_) {
@@ -913,7 +913,9 @@
 +   @Nullable
 +   public Entity changeDimension(DimensionType destination, net.minecraftforge.common.util.ITeleporter teleporter, BlockPos location) {
 +      // CraftBukkit end
-+      if (!net.minecraftforge.common.ForgeHooks.onTravelToDimension(this, destination)) return null;
++      if (!net.minecraftforge.common.ForgeHooks.onTravelToDimension(this, destination)) {
++         return null;
++      }
        if (!this.field_70170_p.field_72995_K && !this.field_70128_L) {
           this.field_70170_p.func_217381_Z().func_76320_a("changeDimension");
           MinecraftServer minecraftserver = this.func_184102_h();
@@ -931,36 +933,14 @@
 +         //this.detach();
 +         // CraftBukkit end
           this.field_70170_p.func_217381_Z().func_76320_a("reposition");
-+         Entity transportedEntity = teleporter.placeEntity(this, serverworld, serverworld1.get(), this.field_70177_z, spawnPortal -> { //Forge: Start vanilla logic
-          Vec3d vec3d = this.func_213322_ci();
-          float f = 0.0F;
+-         Vec3d vec3d = this.func_213322_ci();
+-         float f = 0.0F;
 -         BlockPos blockpos;
 -         if (dimensiontype == DimensionType.field_223229_c_ && p_212321_1_ == DimensionType.field_223227_a_) {
 -            blockpos = serverworld1.func_205770_a(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, serverworld1.func_175694_M());
 -         } else if (p_212321_1_ == DimensionType.field_223229_c_) {
 -            blockpos = serverworld1.func_180504_m();
-+            BlockPos blockpos = location; // CraftBukkit
-+            if (blockpos == null) { // CraftBukkit
-+               if (dimensiontype.getType() == DimensionType.field_223229_c_ && dimensiontype == DimensionType.field_223227_a_) { // CraftBukkit
-+                  // CraftBukkit start
-+                  EntityPortalEvent event = CraftEventFactory.callEntityPortalEvent(this, serverworld1.get(), serverworld1.get().func_205770_a(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, serverworld1.get().func_180504_m()), 0);
-+                  if (event == null) {
-+                     return null;
-+                  }
-+                  serverworld1.set(((CraftWorld) event.getTo().getWorld()).getHandle());
-+                  blockpos = new BlockPos(event.getTo().getX(), event.getTo().getY(), event.getTo().getZ());
-+                  // CraftBukkit end
-+               } else if (dimensiontype.getType() == DimensionType.field_223229_c_) { // CraftBukkit
-+                  // CraftBukkit start
-+                  EntityPortalEvent event = CraftEventFactory.callEntityPortalEvent(this, serverworld1.get(), serverworld1.get().func_180504_m() != null ? serverworld1.get().func_180504_m() : serverworld1.get().func_175694_M(), 0);
-+                  if (event == null) {
-+                     return null;
-+                  }
-+                  serverworld1.set(((CraftWorld) event.getTo().getWorld()).getHandle());
-+                  blockpos = new BlockPos(event.getTo().getX(), event.getTo().getY(), event.getTo().getZ());
-+                  // CraftBukkit end
-+               }
-          } else {
+-         } else {
 -            double d0 = this.func_226277_ct_();
 -            double d1 = this.func_226281_cx_();
 -            double d2 = 8.0D;
@@ -970,85 +950,122 @@
 -            } else if (dimensiontype == DimensionType.field_223228_b_ && p_212321_1_ == DimensionType.field_223227_a_) {
 -               d0 *= 8.0D;
 -               d1 *= 8.0D;
--            }
-+               double d0 = this.func_226277_ct_();
-+               double d1 = this.func_226281_cx_();
-+               if (dimensiontype.getType() == DimensionType.field_223227_a_ && dimensiontype.getType() == DimensionType.field_223228_b_) { // CraftBukkit
-+                  d0 /= 8.0;
-+                  d1 /= 8.0;
-+               } else if (dimensiontype.getType() == DimensionType.field_223228_b_ && dimensiontype.getType() == DimensionType.field_223227_a_) {
-+                  d0 *= 8.0;
-+                  d1 *= 8.0;
++         Entity transportedEntity = teleporter.placeEntity(this, serverworld, serverworld1.get(), this.field_70177_z, spawnPortal -> { //Forge: Start vanilla logic
++            Vec3d vec3d = this.func_213322_ci();
++            float f = 0.0F;
++            BlockPos blockpos = location; // CraftBukkit
++            if (blockpos == null) { // CraftBukkit
++               if (dimensiontype.getType() == DimensionType.field_223229_c_ && dimensiontype == DimensionType.field_223227_a_) { // CraftBukkit
++                  // CraftBukkit start
++                  EntityPortalEvent event = CraftEventFactory
++                      .callEntityPortalEvent(this, serverworld1.get(), serverworld1.get().func_205770_a(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, serverworld1.get().func_180504_m()), 0);
++                  if (event == null) {
++                     return null;
++                  }
++                  serverworld1.set(((CraftWorld) event.getTo().getWorld()).getHandle());
++                  blockpos = new BlockPos(event.getTo().getX(), event.getTo().getY(), event.getTo().getZ());
++                  // CraftBukkit end
++               } else if (dimensiontype.getType() == DimensionType.field_223229_c_) { // CraftBukkit
++                  // CraftBukkit start
++                  EntityPortalEvent event = CraftEventFactory
++                      .callEntityPortalEvent(this, serverworld1.get(), serverworld1.get().func_180504_m() != null ? serverworld1.get().func_180504_m() : serverworld1.get().func_175694_M(),
++                          0);
++                  if (event == null) {
++                     return null;
++                  }
++                  serverworld1.set(((CraftWorld) event.getTo().getWorld()).getHandle());
++                  blockpos = new BlockPos(event.getTo().getX(), event.getTo().getY(), event.getTo().getZ());
++                  // CraftBukkit end
++               } else {
++                  double d0 = this.func_226277_ct_();
++                  double d1 = this.func_226281_cx_();
++                  double d2 = 8.0D;
++                  if (dimensiontype.getType() == DimensionType.field_223227_a_ && dimensiontype.getType() == DimensionType.field_223228_b_) { // CraftBukkit
++                     d0 /= 8.0;
++                     d1 /= 8.0;
++                  } else if (dimensiontype.getType() == DimensionType.field_223228_b_ && dimensiontype.getType() == DimensionType.field_223227_a_) {
++                     d0 *= 8.0;
++                     d1 *= 8.0;
++                  }
++
++                  // Spigot start - SPIGOT-5677, MC-114796: Fix portals generating outside world border
++                  double d3 = Math.max(-2.9999872E7D, serverworld1.get().func_175723_af().func_177726_b() + 16.0D);
++                  double d4 = Math.max(-2.9999872E7D, serverworld1.get().func_175723_af().func_177736_c() + 16.0D);
++                  // Spigot end
++                  double d5 = Math.min(2.9999872E7D, serverworld1.get().func_175723_af().func_177728_d() - 16.0D);
++                  double d6 = Math.min(2.9999872E7D, serverworld1.get().func_175723_af().func_177733_e() - 16.0D);
++                  d0 = MathHelper.func_151237_a(d0, d3, d5);
++                  d1 = MathHelper.func_151237_a(d1, d4, d6);
++                  Vec3d vec3d1 = this.func_181014_aG();
++                  blockpos = new BlockPos(d0, this.func_226278_cu_(), d1);
++                  // CraftBukkit start
++                  EntityPortalEvent event = CraftEventFactory.callEntityPortalEvent(this, serverworld1.get(), blockpos, 128);
++                  if (event == null) {
++                     return null;
++                  }
++                  serverworld1.set(((CraftWorld) event.getTo().getWorld()).getHandle());
++                  blockpos = new BlockPos(event.getTo().getX(), event.getTo().getY(), event.getTo().getZ());
++                  int searchRadius = event.getSearchRadius();
++                  // CraftBukkit end
++                  BlockPattern.PortalInfo blockpattern$portalinfo = serverworld1.get().func_85176_s()
++                      .placeInExistingPortal(blockpos, vec3d, this.func_181012_aH(), vec3d1.field_72450_a, vec3d1.field_72448_b, this instanceof PlayerEntity, searchRadius); // CraftBukkit - search radius
++                  if (blockpattern$portalinfo == null) {
++                     return null;
++                  }
++
++                  blockpos = new BlockPos(blockpattern$portalinfo.field_222505_a);
++                  vec3d = blockpattern$portalinfo.field_222506_b;
++                  f = (float) blockpattern$portalinfo.field_222507_c;
 +               }
+             }
++            // CraftBukkit
++            this.field_71093_bK = dimensiontype;
++            this.func_213319_R();
++            // CraftBukkit end
  
 -            double d3 = Math.min(-2.9999872E7D, serverworld1.func_175723_af().func_177726_b() + 16.0D);
 -            double d4 = Math.min(-2.9999872E7D, serverworld1.func_175723_af().func_177736_c() + 16.0D);
 -            double d5 = Math.min(2.9999872E7D, serverworld1.func_175723_af().func_177728_d() - 16.0D);
 -            double d6 = Math.min(2.9999872E7D, serverworld1.func_175723_af().func_177733_e() - 16.0D);
-+               // Spigot start - SPIGOT-5677, MC-114796: Fix portals generating outside world border
-+               double d3 = Math.max(-2.9999872E7D, serverworld1.get().func_175723_af().func_177726_b() + 16.0D);
-+               double d4 = Math.max(-2.9999872E7D, serverworld1.get().func_175723_af().func_177736_c() + 16.0D);
-+               // Spigot end
-+               double d5 = Math.min(2.9999872E7D, serverworld1.get().func_175723_af().func_177728_d() - 16.0D);
-+               double d6 = Math.min(2.9999872E7D, serverworld1.get().func_175723_af().func_177733_e() - 16.0D);
-             d0 = MathHelper.func_151237_a(d0, d3, d5);
-             d1 = MathHelper.func_151237_a(d1, d4, d6);
-             Vec3d vec3d1 = this.func_181014_aG();
-             blockpos = new BlockPos(d0, this.func_226278_cu_(), d1);
+-            d0 = MathHelper.func_151237_a(d0, d3, d5);
+-            d1 = MathHelper.func_151237_a(d1, d4, d6);
+-            Vec3d vec3d1 = this.func_181014_aG();
+-            blockpos = new BlockPos(d0, this.func_226278_cu_(), d1);
 -            BlockPattern.PortalInfo blockpattern$portalinfo = serverworld1.func_85176_s().func_222272_a(blockpos, vec3d, this.func_181012_aH(), vec3d1.field_72450_a, vec3d1.field_72448_b, this instanceof PlayerEntity);
-+               // CraftBukkit start
-+               EntityPortalEvent event = CraftEventFactory.callEntityPortalEvent(this, serverworld1.get(), blockpos, 128);
-+               if (event == null) {
-+                  return null;
+-            if (blockpattern$portalinfo == null) {
+-               return null;
++            this.field_70170_p.func_217381_Z().func_219895_b("reloading");
++            Entity entity = this.func_200600_R().func_200721_a(serverworld1.get());
++            if (entity != null) {
++               entity.func_180432_n(this);
++               entity.func_174828_a(blockpos, entity.field_70177_z + f, entity.field_70125_A);
++               entity.func_213317_d(vec3d);
++               serverworld1.get().func_217460_e(entity);
++               // CraftBukkit start - Forward the CraftEntity to the new entity
++               this.getBukkitEntity().setHandle(entity);
++               entity.bukkitEntity = this.getBukkitEntity();
++               if (this instanceof MobEntity) {
++                  ((MobEntity) this).func_110160_i(true, false); // Unleash to prevent duping of leads.
++                  // CraftBukkit end
 +               }
-+               serverworld1.set(((CraftWorld) event.getTo().getWorld()).getHandle());
-+               blockpos = new BlockPos(event.getTo().getX(), event.getTo().getY(), event.getTo().getZ());
-+               int searchRadius = event.getSearchRadius();
-+               // CraftBukkit end
-+            if (spawnPortal) {
-+                  BlockPattern.PortalInfo blockpattern$portalinfo = serverworld1.get().func_85176_s().placeInExistingPortal(blockpos, vec3d, this.func_181012_aH(), vec3d1.field_72450_a, vec3d1.field_72448_b, this instanceof PlayerEntity, searchRadius); // CraftBukkit - search radius
-             if (blockpattern$portalinfo == null) {
-                return null;
              }
-@@ -2090,23 +2518,45 @@
-             blockpos = new BlockPos(blockpattern$portalinfo.field_222505_a);
-             vec3d = blockpattern$portalinfo.field_222506_b;
-             f = (float)blockpattern$portalinfo.field_222507_c;
-+            }
-          }
-+         // CraftBukkit
-+         this.field_71093_bK = dimensiontype;
-+         this.func_213319_R();
-+         // CraftBukkit end
-+         // CraftBukkit
-+         this.field_71093_bK = dimensiontype;
-+         this.func_213319_R();
-+         // CraftBukkit end
-+         // CraftBukkit
-+         this.field_71093_bK = dimensiontype;
-+         this.func_213319_R();
-+         // CraftBukkit end
- 
-          this.field_70170_p.func_217381_Z().func_219895_b("reloading");
--         Entity entity = this.func_200600_R().func_200721_a(serverworld1);
-+         Entity entity = this.func_200600_R().func_200721_a(serverworld1.get());
-          if (entity != null) {
-             entity.func_180432_n(this);
-             entity.func_174828_a(blockpos, entity.field_70177_z + f, entity.field_70125_A);
-             entity.func_213317_d(vec3d);
--            serverworld1.func_217460_e(entity);
-+            serverworld1.get().func_217460_e(entity);
-+            // CraftBukkit start - Forward the CraftEntity to the new entity
-+            this.getBukkitEntity().setHandle(entity);
-+            entity.bukkitEntity = this.getBukkitEntity();
-+            if (this instanceof MobEntity) {
-+               ((MobEntity) this).func_110160_i(true, false); // Unleash to prevent duping of leads.
-+               // CraftBukkit end
-+            }
-          }
 +            return entity;
-+         });//Forge: End vanilla logic
++         });
  
+-            blockpos = new BlockPos(blockpattern$portalinfo.field_222505_a);
+-            vec3d = blockpattern$portalinfo.field_222506_b;
+-            f = (float)blockpattern$portalinfo.field_222507_c;
+-         }
+-
+-         this.field_70170_p.func_217381_Z().func_219895_b("reloading");
+-         Entity entity = this.func_200600_R().func_200721_a(serverworld1);
+-         if (entity != null) {
+-            entity.func_180432_n(this);
+-            entity.func_174828_a(blockpos, entity.field_70177_z + f, entity.field_70125_A);
+-            entity.func_213317_d(vec3d);
+-            serverworld1.func_217460_e(entity);
+-         }
+-
 -         this.field_70128_L = true;
 +         this.remove(false);
           this.field_70170_p.func_217381_Z().func_76319_b();
@@ -1058,10 +1075,11 @@
           this.field_70170_p.func_217381_Z().func_76319_b();
 -         return entity;
 +         return transportedEntity;
++
        } else {
           return null;
        }
-@@ -2129,10 +2579,12 @@
+@@ -2129,10 +2577,12 @@
     }
  
     public Vec3d func_181014_aG() {
@@ -1074,7 +1092,7 @@
        return this.field_181018_ap;
     }
  
-@@ -2261,7 +2713,7 @@
+@@ -2261,7 +2711,7 @@
        Pose pose = this.func_213283_Z();
        EntitySize entitysize1 = this.func_213305_a(pose);
        this.field_213325_aI = entitysize1;
@@ -1083,7 +1101,7 @@
        if (entitysize1.field_220315_a < entitysize.field_220315_a) {
           double d0 = (double)entitysize1.field_220315_a / 2.0D;
           this.func_174826_a(new AxisAlignedBB(this.func_226277_ct_() - d0, this.func_226278_cu_(), this.func_226281_cx_() - d0, this.func_226277_ct_() + d0, this.func_226278_cu_() + (double)entitysize1.field_220316_b, this.func_226281_cx_() + d0));
-@@ -2318,7 +2770,36 @@
+@@ -2318,7 +2768,36 @@
     }
  
     public void func_174826_a(AxisAlignedBB p_174826_1_) {
@@ -1121,7 +1139,7 @@
     }
  
     protected float func_213316_a(Pose p_213316_1_, EntitySize p_213316_2_) {
-@@ -2533,7 +3014,7 @@
+@@ -2533,7 +3012,7 @@
        return SoundCategory.NEUTRAL;
     }
  
@@ -1130,7 +1148,7 @@
        return 1;
     }
  
-@@ -2713,6 +3194,7 @@
+@@ -2713,6 +3192,7 @@
        this.field_70165_t = p_226288_1_;
        this.field_70163_u = p_226288_3_;
        this.field_70161_v = p_226288_5_;
@@ -1138,7 +1156,7 @@
     }
  
     public void func_70623_bb() {
-@@ -2726,4 +3208,69 @@
+@@ -2726,4 +3206,69 @@
     public interface IMoveCallback {
        void accept(Entity p_accept_1_, double p_accept_2_, double p_accept_4_, double p_accept_6_);
     }
