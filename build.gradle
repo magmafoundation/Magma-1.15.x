@@ -41,6 +41,7 @@ plugins {
     id 'org.ajoberstar.grgit' version '3.1.1'
     id 'de.undercouch.download' version '3.3.0'
     id 'com.github.ben-manes.versions' version '0.22.0'
+    id 'net.minecrell.licenser' version '0.4'
 }
 apply plugin: 'eclipse'
 
@@ -125,6 +126,7 @@ project(':forge') {
     apply plugin: 'net.minecraftforge.gradle.patcher'
     apply plugin: 'de.undercouch.download'
     apply plugin: 'net.nemerosa.versioning'
+    apply plugin: 'net.minecrell.licenser'
 
     compileJava.sourceCompatibility = compileJava.targetCompatibility = sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
     group = 'net.minecraftforge'
@@ -946,6 +948,21 @@ project(':forge') {
                 environment 'MOD_CLASSES', '{source_roots}'
                 environment 'MCP_MAPPINGS', '{mcp_mappings}'
                 environment 'FORGE_VERSION', FORGE_VERSION
+            }
+        }
+    }
+
+    license {
+        header = file("$rootDir/LICENSE-header.txt")
+
+        include 'org/magmafoundation/'
+
+        tasks {
+            main {
+                files = files("$rootDir/src/main/java")
+            }
+            test {
+                files = files("$rootDir/src/test/java")
             }
         }
     }
