@@ -184,7 +184,7 @@
 +   public boolean sentListPacket = false;
 +   public Integer clientViewDistance;
 +   public long timeOffset;
-+   public boolean relativeTime;
++   public boolean relativeTime = true;
 +   public WeatherType weather;
 +   private float pluginRainPosition;
 +   private float pluginRainPositionPrevious;
