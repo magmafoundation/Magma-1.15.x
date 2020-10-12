@@ -439,6 +439,7 @@
 +   }
 +   // CraftBukkit stop
 +
+\ No newline at end of file
     public static enum Type {
        RIDEABLE,
        CHEST,

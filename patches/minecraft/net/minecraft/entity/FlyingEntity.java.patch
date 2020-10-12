@@ -16,6 +16,7 @@
           if (this.field_70122_E) {
 -            f = this.field_70170_p.func_180495_p(new BlockPos(this.func_226277_ct_(), this.func_226278_cu_() - 1.0D, this.func_226281_cx_())).func_177230_c().func_208618_m() * 0.91F;
 +            f = this.field_70170_p.func_180495_p(ground).getSlipperiness(this.field_70170_p, ground, this) * 0.91F;
+\ No newline at end of file
           }
  
           this.func_213309_a(this.field_70122_E ? 0.1F * f1 : 0.02F, p_213352_1_);

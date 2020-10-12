@@ -7,6 +7,7 @@
 -         return random.nextFloat() <= f1;
 +         // CraftBukkit - <= to < to allow for plugins to completely disable block drops from explosions
 +         return random.nextFloat() < f1;
+\ No newline at end of file
        } else {
           return true;
        }

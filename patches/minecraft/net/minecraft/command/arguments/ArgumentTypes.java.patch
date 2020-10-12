@@ -1,0 +1,25 @@
+--- a/net/minecraft/command/arguments/ArgumentTypes.java
++++ b/net/minecraft/command/arguments/ArgumentTypes.java
+@@ -18,6 +18,8 @@
+ import net.minecraft.test.TestTypeArgument;
+ import net.minecraft.util.ResourceLocation;
+ import net.minecraft.util.SharedConstants;
++import net.minecraftforge.server.command.EnumArgument;
++import net.minecraftforge.server.command.ModIdArgument;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+@@ -77,6 +79,12 @@
+       func_218136_a("entity_summon", EntitySummonArgument.class, new ArgumentSerializer<>(EntitySummonArgument::func_211366_a));
+       func_218136_a("dimension", DimensionArgument.class, new ArgumentSerializer<>(DimensionArgument::func_212595_a));
+       func_218136_a("time", TimeArgument.class, new ArgumentSerializer<>(TimeArgument::func_218091_a));
++
++      //Magma start
++      func_218136_a("mod_id", ModIdArgument.class, new ArgumentSerializer<>(ModIdArgument::new));
++      func_218136_a("enum_argument", EnumArgument.class, new ArgumentSerializer<>(EnumArgument::new));
++      //Magma end
++
+\ No newline at end of file
+       if (SharedConstants.field_206244_b) {
+          func_218136_a("test_argument", TestArgArgument.class, new ArgumentSerializer<>(TestArgArgument::func_229665_a_));
+          func_218136_a("test_class", TestTypeArgument.class, new ArgumentSerializer<>(TestTypeArgument::func_229611_a_));

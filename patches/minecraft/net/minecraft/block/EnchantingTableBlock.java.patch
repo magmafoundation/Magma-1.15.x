@@ -6,6 +6,7 @@
                    BlockPos blockpos = p_180655_3_.func_177982_a(i, k, j);
 -                  if (p_180655_2_.func_180495_p(blockpos).func_177230_c() == Blocks.field_150342_X) {
 +                  if (p_180655_2_.func_180495_p(blockpos).getEnchantPowerBonus(p_180655_2_, p_180655_3_) > 0) {
+\ No newline at end of file
                       if (!p_180655_2_.func_175623_d(p_180655_3_.func_177982_a(i / 2, 0, j / 2))) {
                          break;
                       }

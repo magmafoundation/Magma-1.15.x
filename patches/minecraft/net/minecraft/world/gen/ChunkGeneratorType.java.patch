@@ -6,6 +6,7 @@
  
 -public class ChunkGeneratorType<C extends GenerationSettings, T extends ChunkGenerator<C>> implements IChunkGeneratorFactory<C, T> {
 +public class ChunkGeneratorType<C extends GenerationSettings, T extends ChunkGenerator<C>> extends net.minecraftforge.registries.ForgeRegistryEntry<ChunkGeneratorType<?, ?>> implements IChunkGeneratorFactory<C, T> {
+\ No newline at end of file
     public static final ChunkGeneratorType<OverworldGenSettings, OverworldChunkGenerator> field_206911_b = func_212676_a("surface", OverworldChunkGenerator::new, OverworldGenSettings::new, true);
     public static final ChunkGeneratorType<NetherGenSettings, NetherChunkGenerator> field_206912_c = func_212676_a("caves", NetherChunkGenerator::new, NetherGenSettings::new, true);
     public static final ChunkGeneratorType<EndGenerationSettings, EndChunkGenerator> field_206913_d = func_212676_a("floating_islands", EndChunkGenerator::new, EndGenerationSettings::new, true);

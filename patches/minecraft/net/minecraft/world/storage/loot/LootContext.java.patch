@@ -23,6 +23,7 @@
 +         this.field_186475_b = context.field_186498_a;
 +      }
 +
+\ No newline at end of file
        public LootContext.Builder func_216023_a(Random p_216023_1_) {
           this.field_216027_d = p_216023_1_;
           return this;

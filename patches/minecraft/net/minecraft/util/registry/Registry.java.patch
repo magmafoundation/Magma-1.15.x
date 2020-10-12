@@ -177,6 +177,7 @@
 +      return Registry.<T, DefaultedRegistry<T>>func_222939_a(name, net.minecraftforge.registries.GameData.<T>getWrapperDefaulted(cls), def);
 +   }
 +
+\ No newline at end of file
     static {
        field_218376_a.entrySet().forEach((p_229397_0_) -> {
           if (p_229397_0_.getValue().get() == null) {

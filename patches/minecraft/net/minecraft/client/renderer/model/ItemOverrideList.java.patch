@@ -24,4 +24,5 @@
 +   public com.google.common.collect.ImmutableList<ItemOverride> getOverrides() {
 +      return com.google.common.collect.ImmutableList.copyOf(field_188023_b);
 +   }
+\ No newline at end of file
  }

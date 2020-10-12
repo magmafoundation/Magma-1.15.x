@@ -14,6 +14,7 @@
        ItemStack itemstack = this.func_213896_l();
 -      return itemstack.func_190926_b() ? new ItemStack(Items.field_151059_bz) : itemstack;
 +      return itemstack.func_190926_b() ? new ItemStack(Items.field_151059_bz) : itemstack;  // CraftBukkit - SPIGOT-5474 probably came from bugged earlier versions
+\ No newline at end of file
     }
  
     protected void func_70088_a() {

@@ -6,6 +6,7 @@
  
 +      ItemStack stack = this.field_110296_bG.func_70301_a(1);
 +      if (func_190682_f(stack)) stack.onHorseArmorTick(field_70170_p, this);
+\ No newline at end of file
     }
  
     protected SoundEvent func_184639_G() {

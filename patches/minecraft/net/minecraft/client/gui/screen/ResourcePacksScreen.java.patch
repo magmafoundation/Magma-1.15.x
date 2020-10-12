@@ -12,6 +12,7 @@
  
 +         java.util.Collection<ClientResourcePackInfo> enabledList = resourcepacklist.func_198980_d();
 +         enabledList.removeIf(net.minecraft.resources.ResourcePackInfo::isHidden); // Forge: Hide some resource packs from the UI entirely
+\ No newline at end of file
           for(ClientResourcePackInfo clientresourcepackinfo1 : Lists.reverse(Lists.newArrayList(resourcepacklist.func_198980_d()))) {
              this.field_146967_r.func_214365_a(new AbstractResourcePackList.ResourcePackEntry(this.field_146967_r, this, clientresourcepackinfo1));
           }

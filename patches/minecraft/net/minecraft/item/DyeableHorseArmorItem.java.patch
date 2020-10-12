@@ -7,4 +7,5 @@
 +   public DyeableHorseArmorItem(int p_i50047_1_, net.minecraft.util.ResourceLocation texture, Item.Properties p_i50047_3_) {
 +      super(p_i50047_1_, texture, p_i50047_3_);
 +   }
+\ No newline at end of file
  }

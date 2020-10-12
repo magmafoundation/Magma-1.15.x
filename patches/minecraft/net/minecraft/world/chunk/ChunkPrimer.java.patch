@@ -13,6 +13,7 @@
              BlockState blockstate = chunksection.func_222629_a(i & 15, j & 15, k & 15, p_177436_2_);
 -            if (this.field_201658_f.func_209003_a(ChunkStatus.field_222613_i) && p_177436_2_ != blockstate && (p_177436_2_.func_200016_a(this, p_177436_1_) != blockstate.func_200016_a(this, p_177436_1_) || p_177436_2_.func_185906_d() != blockstate.func_185906_d() || p_177436_2_.func_215691_g() || blockstate.func_215691_g())) {
 +            if (this.field_201658_f.func_209003_a(ChunkStatus.field_222613_i) && p_177436_2_ != blockstate && (p_177436_2_.func_200016_a(this, p_177436_1_) != blockstate.func_200016_a(this, p_177436_1_) || p_177436_2_.getLightValue(this, p_177436_1_) != blockstate.getLightValue(this, p_177436_1_) || p_177436_2_.func_215691_g() || blockstate.func_215691_g())) {
+\ No newline at end of file
                 WorldLightManager worldlightmanager = this.func_217307_e();
                 worldlightmanager.func_215568_a(p_177436_1_);
              }

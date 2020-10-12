@@ -6,6 +6,7 @@
           BlockPos blockpos = this.func_225561_a_(p_212245_3_, p_212245_4_, p_212245_5_);
 -         if (p_212245_1_.func_175623_d(blockpos) && blockpos.func_177956_o() < 255 && blockstate.func_196955_c(p_212245_1_, blockpos) && this.func_225559_a_(p_212245_1_, blockpos, p_212245_5_)) {
 +         if (p_212245_1_.func_175623_d(blockpos) && blockpos.func_177956_o() < p_212245_1_.getMaxHeight() - 1 && blockstate.func_196955_c(p_212245_1_, blockpos) && this.func_225559_a_(p_212245_1_, blockpos, p_212245_5_)) {
+\ No newline at end of file
              p_212245_1_.func_180501_a(blockpos, blockstate, 2);
              ++i;
           }

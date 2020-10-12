@@ -78,6 +78,7 @@
 +                  // Fix a race condition where a NetworkManager could be unregistered just before connection.
 +                  if (networkmanager.preparing) continue;
 +                  // Spigot End
+\ No newline at end of file
                    iterator.remove();
                    networkmanager.func_179293_l();
                 }

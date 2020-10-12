@@ -17,6 +17,7 @@
 +      return this.func_175707_a(center.func_177982_a(-range, -range, -range), center.func_177982_a(range, range, range));
 +   }
 +
+\ No newline at end of file
     @Deprecated
     default boolean func_175707_a(BlockPos p_175707_1_, BlockPos p_175707_2_) {
        return this.func_217344_a(p_175707_1_.func_177958_n(), p_175707_1_.func_177956_o(), p_175707_1_.func_177952_p(), p_175707_2_.func_177958_n(), p_175707_2_.func_177956_o(), p_175707_2_.func_177952_p());

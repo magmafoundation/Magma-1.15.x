@@ -13,6 +13,7 @@
        EntitySelectorParser entityselectorparser = new EntitySelectorParser(p_parse_1_);
 -      EntitySelector entityselector = entityselectorparser.func_201345_m();
 +      EntitySelector entityselector = entityselectorparser.parse(overridePermissions); // CraftBukkit
+\ No newline at end of file
        if (entityselector.func_197346_a() > 1 && this.field_197103_f) {
           if (this.field_197104_g) {
              p_parse_1_.setCursor(0);

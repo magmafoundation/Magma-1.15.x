@@ -60,6 +60,7 @@
 +               this.func_82236_f(false);
 +            }
 +            // CraftBukkit End - Call BatToggleSleepEvent
+\ No newline at end of file
           }
  
           return super.func_70097_a(p_70097_1_, p_70097_2_);

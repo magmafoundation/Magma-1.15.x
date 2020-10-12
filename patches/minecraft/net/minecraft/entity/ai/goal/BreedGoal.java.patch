@@ -65,6 +65,7 @@
 +               this.field_75394_a.func_217376_c(new ExperienceOrbEntity(this.field_75394_a, this.field_75390_d.func_226277_ct_(), this.field_75390_d.func_226278_cu_(), this.field_75390_d.func_226281_cx_(), experience));
 +            }
 +            // CraftBukkit end
+\ No newline at end of file
           }
  
        }

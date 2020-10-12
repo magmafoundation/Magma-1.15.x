@@ -46,6 +46,7 @@
 +            }
 +         }
 +         // CraftBukkit end
+\ No newline at end of file
           p_196527_1_.func_180501_a(p_196527_2_, p_196527_0_.func_206870_a(field_196528_a, Boolean.valueOf(true)), 3);
        }
  

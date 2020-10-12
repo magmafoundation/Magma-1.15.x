@@ -29,6 +29,7 @@
 +         net.minecraftforge.fml.ModLoader.get().runDataGenerator(mods, path, inputs, existingPacks, flag2, flag1, flag3, flag4, flag5, isFlat);
 +         if (mods.contains("minecraft") || mods.isEmpty())
 +            func_200264_a(isFlat ? path : path.resolve("minecraft"), inputs, flag1, flag2, flag3, flag4, flag5).func_200392_c();
+\ No newline at end of file
        } else {
           optionparser.printHelpOn(System.out);
        }

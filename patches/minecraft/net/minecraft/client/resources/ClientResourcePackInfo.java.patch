@@ -27,6 +27,7 @@
 +
 +   public ClientResourcePackInfo(String p_i48114_1_, boolean p_i48114_2_, Supplier<IResourcePack> p_i48114_3_, ITextComponent p_i48114_4_, ITextComponent p_i48114_5_, PackCompatibility p_i48114_6_, ResourcePackInfo.Priority p_i48114_7_, boolean p_i48114_8_, @Nullable NativeImage p_i48114_9_, boolean hidden) {
 +      super(p_i48114_1_, p_i48114_2_, p_i48114_3_, p_i48114_4_, p_i48114_5_, p_i48114_6_, p_i48114_7_, p_i48114_8_, hidden);
+\ No newline at end of file
        this.field_195809_a = p_i48114_9_;
     }
  

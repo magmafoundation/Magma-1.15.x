@@ -32,6 +32,7 @@
 +      int shift = (p_177482_1_ & 1) << 2;
 +      this.field_76585_a[i] = (byte) (this.field_76585_a[i] & ~(15 << shift) | (p_177482_2_ & 15) << shift);
 +      // Spigot end
+\ No newline at end of file
     }
  
     private boolean func_177479_b(int p_177479_1_) {

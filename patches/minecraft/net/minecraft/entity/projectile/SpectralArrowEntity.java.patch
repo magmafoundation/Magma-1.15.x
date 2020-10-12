@@ -18,6 +18,7 @@
        EffectInstance effectinstance = new EffectInstance(Effects.field_188423_x, this.field_184562_f, 0);
 -      p_184548_1_.func_195064_c(effectinstance);
 +      p_184548_1_.addPotionEffect(effectinstance, Cause.ARROW); // CraftBukkit
+\ No newline at end of file
     }
  
     public void func_70037_a(CompoundNBT p_70037_1_) {

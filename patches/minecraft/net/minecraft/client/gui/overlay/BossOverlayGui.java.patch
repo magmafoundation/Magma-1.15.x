@@ -18,6 +18,7 @@
 +            }
 +            j += event.getIncrement();
 +            net.minecraftforge.client.ForgeHooksClient.bossBarRenderPost(this.field_184059_f.func_228018_at_());
+\ No newline at end of file
              if (j >= this.field_184059_f.func_228018_at_().func_198087_p() / 3) {
                 break;
              }

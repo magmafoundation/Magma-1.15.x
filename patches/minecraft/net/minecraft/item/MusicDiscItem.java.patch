@@ -55,5 +55,6 @@
     public SoundEvent func_185075_h() {
 -      return this.field_185076_b;
 +      return this.soundSupplier.get();
+\ No newline at end of file
     }
  }

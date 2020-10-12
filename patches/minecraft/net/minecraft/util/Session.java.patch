@@ -46,6 +46,7 @@
 +      return properties != null;
 +   }
 +
+\ No newline at end of file
     @OnlyIn(Dist.CLIENT)
     public static enum Type {
        LEGACY("legacy"),

@@ -17,4 +17,5 @@
 +   public static Rarity create(String name, TextFormatting p_i48837_3_) {
 +      throw new IllegalStateException("Enum not extended");
 +   }
+\ No newline at end of file
  }

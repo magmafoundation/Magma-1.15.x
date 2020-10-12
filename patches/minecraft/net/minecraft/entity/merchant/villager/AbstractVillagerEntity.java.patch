@@ -38,6 +38,7 @@
 +               p_213717_1_.add(CraftMerchantRecipe.fromBukkit(event.getRecipe()).toMinecraft());
 +            }
 +            // CraftBukkit end
+\ No newline at end of file
           }
        }
  

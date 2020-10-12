@@ -14,6 +14,7 @@
     public void func_75249_e() {
 -      this.field_75305_a.func_70624_b(this.field_75304_b);
 +      this.field_75305_a.setAttackTarget(this.field_75304_b, TargetReason.DEFEND_VILLAGE, true); // CraftBukkit - reason
+\ No newline at end of file
        super.func_75249_e();
     }
  }

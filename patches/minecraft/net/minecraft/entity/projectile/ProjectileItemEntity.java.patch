@@ -16,6 +16,7 @@
  
 -   protected ItemStack func_213882_k() {
 +   public ItemStack func_213882_k() { // protected->public CraftBukkit
+\ No newline at end of file
        return this.func_184212_Q().func_187225_a(field_213886_e);
     }
  

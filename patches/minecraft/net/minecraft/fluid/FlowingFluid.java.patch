@@ -66,6 +66,7 @@
 +            }
 +            p_207191_1_.func_180501_a(p_207191_2_, ((CraftBlockData)event.getNewData()).getState(), 2);
 +            // CraftBukkit end
+\ No newline at end of file
              p_207191_1_.func_205219_F_().func_205360_a(p_207191_2_, ifluidstate.func_206886_c(), i);
              p_207191_1_.func_195593_d(p_207191_2_, blockstate.func_177230_c());
           }

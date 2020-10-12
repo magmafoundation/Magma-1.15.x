@@ -9,6 +9,7 @@
 +                     return ActionResultType.FAIL;
 +                  }
 +                  // CraftBukkit end
+\ No newline at end of file
                    world.func_217376_c(armorstandentity);
                    world.func_184148_a((PlayerEntity)null, armorstandentity.func_226277_ct_(), armorstandentity.func_226278_cu_(), armorstandentity.func_226281_cx_(), SoundEvents.field_187710_m, SoundCategory.BLOCKS, 0.75F, 0.8F);
                 }

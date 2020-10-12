@@ -22,6 +22,7 @@
 +            if (enchantment == null) {
 +               java.util.Collections.addAll(list, "", TextFormatting.RED + I18n.func_135052_a("forge.container.enchant.limitedEnchantability"));
 +            } else if (!flag) {
+\ No newline at end of file
                 list.add("");
                 if (this.minecraft.field_71439_g.field_71068_ca < k) {
                    list.add(TextFormatting.RED + I18n.func_135052_a("container.enchant.level.requirement", (this.field_147002_h).field_75167_g[j]));

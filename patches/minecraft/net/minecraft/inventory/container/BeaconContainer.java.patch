@@ -96,6 +96,7 @@
 -         Item item = p_75214_1_.func_77973_b();
 -         return item == Items.field_151166_bC || item == Items.field_151045_i || item == Items.field_151043_k || item == Items.field_151042_j;
 +         return p_75214_1_.isBeaconPayment();
+\ No newline at end of file
        }
  
        public int func_75219_a() {

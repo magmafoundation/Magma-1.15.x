@@ -123,6 +123,7 @@
 +    */
 +   protected boolean spawnCustomParticles() { return false; }
 +
+\ No newline at end of file
     static class AttackGoal extends Goal {
        private final SlimeEntity field_179466_a;
        private int field_179465_b;

@@ -107,6 +107,7 @@
 +      return this.field_229322_z_;
 +   }
 +
+\ No newline at end of file
     @OnlyIn(Dist.CLIENT)
     static class ModelListWrapper {
        private final List<IUnbakedModel> field_225339_a;

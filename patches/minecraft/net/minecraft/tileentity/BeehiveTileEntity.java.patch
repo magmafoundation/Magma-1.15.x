@@ -125,6 +125,7 @@
           p_189515_1_.func_218657_a("FlowerPos", NBTUtil.func_186859_a(this.field_226959_b_));
        }
 +      p_189515_1_.func_74768_a("Bukkit.MaxEntities", this.maxBees); // CraftBukkit
+\ No newline at end of file
  
        return p_189515_1_;
     }

@@ -6,6 +6,7 @@
     private String field_149530_a;
 -   private int field_149528_b;
 +   public int field_149528_b; // CraftBukkit private->public
+\ No newline at end of file
     private ChatVisibility field_149529_c;
     private boolean field_149526_d;
     private int field_179711_e;

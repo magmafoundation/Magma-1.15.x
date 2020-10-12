@@ -45,6 +45,7 @@
        p_210326_0_.suggest("@s", new TranslationTextComponent("argument.entity.selector.self"));
        p_210326_0_.suggest("@e", new TranslationTextComponent("argument.entity.selector.allEntities"));
 +      net.minecraftforge.common.command.EntitySelectorManager.fillSelectorSuggestions(p_210326_0_);
+\ No newline at end of file
     }
  
     private CompletableFuture<Suggestions> func_201981_b(SuggestionsBuilder p_201981_1_, Consumer<SuggestionsBuilder> p_201981_2_) {

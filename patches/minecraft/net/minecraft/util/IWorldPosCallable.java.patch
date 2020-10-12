@@ -36,6 +36,7 @@
 +         }
 +         // CraftBukkit end
 +
+\ No newline at end of file
           public <T> Optional<T> func_221484_a(BiFunction<World, BlockPos, T> p_221484_1_) {
              return Optional.of(p_221484_1_.apply(p_221488_0_, p_221488_1_));
           }

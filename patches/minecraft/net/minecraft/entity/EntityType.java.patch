@@ -214,6 +214,7 @@
  
 -         return new EntityType<>(this.field_200709_a, this.field_220324_b, this.field_200710_b, this.field_200711_c, this.field_220325_e, this.field_225436_f, this.field_220326_f);
 +         return new EntityType<>(this.field_200709_a, this.field_220324_b, this.field_200710_b, this.field_200711_c, this.field_220325_e, this.field_225436_f, this.field_220326_f, velocityUpdateSupplier, trackingRangeSupplier, updateIntervalSupplier, customClientFactory);
+\ No newline at end of file
        }
     }
  

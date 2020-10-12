@@ -7,6 +7,7 @@
 +import net.minecraft.client.renderer.chunk.ChunkRenderDispatcher.ChunkRender;
  
 +
+\ No newline at end of file
  @OnlyIn(Dist.CLIENT)
  public class ViewFrustum {
     protected final WorldRenderer field_178169_a;

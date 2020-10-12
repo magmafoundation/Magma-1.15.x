@@ -67,6 +67,7 @@
           for(AdvancementTabGui advancementtabgui : this.field_191947_i.values()) {
 -            if (advancementtabgui.func_195627_a(p_191937_3_, p_191937_4_, (double)p_191937_1_, (double)p_191937_2_)) {
 +            if (advancementtabgui.getPage() == tabPage && advancementtabgui.func_195627_a(p_191937_3_, p_191937_4_, (double)p_191937_1_, (double)p_191937_2_)) {
+\ No newline at end of file
                 this.renderTooltip(advancementtabgui.func_191795_d(), p_191937_1_, p_191937_2_);
              }
           }

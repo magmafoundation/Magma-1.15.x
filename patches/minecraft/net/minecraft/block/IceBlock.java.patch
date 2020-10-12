@@ -17,6 +17,7 @@
 +         return;
 +      }
 +      // CraftBukkit end
+\ No newline at end of file
        if (p_196454_2_.field_73011_w.func_177500_n()) {
           p_196454_2_.func_217377_a(p_196454_3_, false);
        } else {

@@ -26,4 +26,5 @@
 +   public boolean func_77557_a(Item p_77557_1_) {
 +      return this.delegate == null ? false : this.delegate.test(p_77557_1_);
 +   }
+\ No newline at end of file
  }

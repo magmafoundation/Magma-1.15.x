@@ -504,4 +504,5 @@
 +   public SearchTreeManager getSearchTreeManager() {
 +      return this.field_193995_ae;
 +   }
+\ No newline at end of file
  }

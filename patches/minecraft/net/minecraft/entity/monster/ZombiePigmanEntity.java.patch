@@ -50,6 +50,7 @@
           if (p_220793_1_ instanceof ZombiePigmanEntity && this.field_75299_d.func_70685_l(p_220793_2_) && ((ZombiePigmanEntity)p_220793_1_).func_226547_i_(p_220793_2_)) {
 -            p_220793_1_.func_70624_b(p_220793_2_);
 +            p_220793_1_.setAttackTarget(p_220793_2_, TargetReason.TARGET_ATTACKED_NEARBY_ENTITY, true); // CraftBukkit
+\ No newline at end of file
           }
  
        }

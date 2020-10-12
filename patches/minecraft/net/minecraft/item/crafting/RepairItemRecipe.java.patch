@@ -33,6 +33,7 @@
 +            int k = itemstack3.func_77958_k() - itemstack4.func_77952_i();
 +            int l = j + k + itemstack3.func_77958_k() * 5 / 100;
 +            int i1 = itemstack3.func_77958_k() - l;
+\ No newline at end of file
              if (i1 < 0) {
                 i1 = 0;
              }

@@ -23,6 +23,7 @@
        for(EffectInstance effectinstance : p_214078_3_) {
 +         effectinstance.renderInventoryEffect(this, p_214078_1_, i, this.getBlitOffset());
 +         if (!effectinstance.shouldRenderInvText()) { i += p_214078_2_; continue; }
+\ No newline at end of file
           String s = I18n.func_135052_a(effectinstance.func_188419_a().func_76393_a());
           if (effectinstance.func_76458_c() >= 1 && effectinstance.func_76458_c() <= 9) {
              s = s + ' ' + I18n.func_135052_a("enchantment.level." + (effectinstance.func_76458_c() + 1));

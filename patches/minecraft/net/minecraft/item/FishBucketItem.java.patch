@@ -29,4 +29,5 @@
 +   protected EntityType<?> getFishType() {
 +       return fishTypeSupplier.get();
 +   }
+\ No newline at end of file
  }

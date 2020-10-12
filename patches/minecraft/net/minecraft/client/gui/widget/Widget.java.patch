@@ -41,4 +41,5 @@
 +   public void clearFGColor() {
 +      this.packedFGColor = UNSET_FG_COLOR;
 +   }
+\ No newline at end of file
  }

@@ -31,4 +31,5 @@
 +
 +   // Forge start
 +   public VertexFormat getVertexFormat() { return this.field_179011_q; }
+\ No newline at end of file
  }

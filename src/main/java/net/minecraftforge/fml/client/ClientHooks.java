@@ -73,6 +73,7 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.forgespi.language.IModInfo;
 import net.minecraftforge.fml.packs.ModFileResourcePack;
 import net.minecraftforge.registries.GameData;
+import org.magmafoundation.magma.configuration.MagmaConfig;
 
 public class ClientHooks
 {
@@ -136,7 +137,7 @@ public class ClientHooks
         String tooltip;
         if (target.forgeData == null)
             return;
-        switch (target.forgeData.type) {
+        switch (MagmaConfig.instance.serverBrandType.getValues()) {
             case "FML":
                 if (target.forgeData.isCompatible) {
                     idx = 0;

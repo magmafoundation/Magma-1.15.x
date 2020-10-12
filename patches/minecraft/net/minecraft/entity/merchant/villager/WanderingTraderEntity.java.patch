@@ -40,6 +40,7 @@
 +   }
 +   // CraftBukkit end
 +
+\ No newline at end of file
     public void func_213728_s(int p_213728_1_) {
        this.field_213737_bB = p_213728_1_;
     }

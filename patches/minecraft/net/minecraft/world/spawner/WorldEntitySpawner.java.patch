@@ -97,6 +97,7 @@
                             ilivingentitydata = mobentity.func_213386_a(p_77191_0_, p_77191_0_.func_175649_E(new BlockPos(mobentity)), SpawnReason.CHUNK_GENERATION, ilivingentitydata, (CompoundNBT)null);
 -                           p_77191_0_.func_217376_c(mobentity);
 +                           p_77191_0_.addEntity(mobentity, org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason.CHUNK_GEN); // CraftBukkit
+\ No newline at end of file
                             flag = true;
                          }
                       }

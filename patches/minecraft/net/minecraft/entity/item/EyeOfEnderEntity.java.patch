@@ -14,6 +14,7 @@
 +   public double field_70222_d; // private->public CraftBukkit
 +   public int field_70223_e; // private->public CraftBukkit
 +   public boolean field_70221_f; // private->public CraftBukkit
+\ No newline at end of file
  
     public EyeOfEnderEntity(EntityType<? extends EyeOfEnderEntity> p_i50169_1_, World p_i50169_2_) {
        super(p_i50169_1_, p_i50169_2_);

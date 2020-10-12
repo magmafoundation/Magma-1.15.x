@@ -8,6 +8,7 @@
 +      return field_199907_d;
 +   }
 +
+\ No newline at end of file
     private static Tag<Item> func_199901_a(String p_199901_0_) {
        return new ItemTags.Wrapper(new ResourceLocation(p_199901_0_));
     }

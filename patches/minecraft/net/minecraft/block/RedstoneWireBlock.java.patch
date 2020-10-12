@@ -101,6 +101,7 @@
        } else {
 -         return p_176343_0_.func_185897_m() && p_176343_1_ != null;
 +         return p_176343_0_.canConnectRedstone(world, pos, p_176343_1_) && p_176343_1_ != null;
+\ No newline at end of file
        }
     }
  

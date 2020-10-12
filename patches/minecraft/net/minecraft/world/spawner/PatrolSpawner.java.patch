@@ -6,6 +6,7 @@
              patrollerentity.func_213386_a(p_222695_1_, p_222695_1_.func_175649_E(p_222695_2_), SpawnReason.PATROL, (ILivingEntityData)null, (CompoundNBT)null);
 -            p_222695_1_.func_217376_c(patrollerentity);
 +            p_222695_1_.addEntity(patrollerentity, org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason.PATROL); // CraftBukkit
+\ No newline at end of file
              return true;
           } else {
              return false;

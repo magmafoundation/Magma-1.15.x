@@ -68,6 +68,7 @@
        public Food func_221453_d() {
 -         return new Food(this.field_221458_a, this.field_221459_b, this.field_221460_c, this.field_221461_d, this.field_221462_e, this.field_221463_f);
 +         return new Food(this);
+\ No newline at end of file
        }
     }
  }

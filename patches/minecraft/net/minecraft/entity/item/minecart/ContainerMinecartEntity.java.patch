@@ -130,4 +130,5 @@
 +   public void dropContentsWhenDead(boolean value) {
 +      this.field_94112_b = value;
 +   }
+\ No newline at end of file
  }

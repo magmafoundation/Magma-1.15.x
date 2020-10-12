@@ -25,6 +25,7 @@
 +            this.field_152695_c.renameTo(backup);
 +            this.field_152695_c.delete();
 +            // Spigot End
+\ No newline at end of file
           } finally {
              IOUtils.closeQuietly((Reader)bufferedreader);
           }

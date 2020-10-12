@@ -64,6 +64,7 @@
 +            blockList.updateList();
 +            // CraftBukkit end
 +
+\ No newline at end of file
              for(ServerPlayerEntity serverplayerentity1 : p_196358_1_.func_217357_a(ServerPlayerEntity.class, irongolementity.func_174813_aQ().func_186662_g(5.0D))) {
                 CriteriaTriggers.field_192133_m.func_192229_a(serverplayerentity1, irongolementity);
              }

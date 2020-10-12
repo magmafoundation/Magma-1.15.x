@@ -37,4 +37,5 @@
 +      return super.func_212245_a(generatoraccess, chunkgenerator, random, blockposition, fc);
 +   }
 +   // CraftBukkit end
+\ No newline at end of file
  }

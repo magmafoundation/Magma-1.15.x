@@ -15,6 +15,7 @@
           BlockPos blockpos = p_180655_3_.func_177977_b();
 -         if (func_185759_i(p_180655_2_.func_180495_p(blockpos))) {
 +         if (p_180655_2_.func_175623_d(blockpos) || func_185759_i(p_180655_2_.func_180495_p(blockpos))) {
+\ No newline at end of file
              double d0 = (double)p_180655_3_.func_177958_n() + (double)p_180655_4_.nextFloat();
              double d1 = (double)p_180655_3_.func_177956_o() - 0.05D;
              double d2 = (double)p_180655_3_.func_177952_p() + (double)p_180655_4_.nextFloat();

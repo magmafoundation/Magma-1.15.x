@@ -14,6 +14,7 @@
  import net.minecraft.util.text.TranslationTextComponent;
 +import org.bukkit.craftbukkit.v1_15_R1.entity.CraftHumanEntity;
 +import org.bukkit.entity.HumanEntity;
+\ No newline at end of file
  
  public class FurnaceTileEntity extends AbstractFurnaceTileEntity {
     public FurnaceTileEntity() {

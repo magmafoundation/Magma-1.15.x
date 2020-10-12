@@ -63,6 +63,7 @@
 +            p_77659_1_.func_184148_a((PlayerEntity)null, p_77659_2_.func_226277_ct_(), p_77659_2_.func_226278_cu_(), p_77659_2_.func_226281_cx_(), SoundEvents.field_187612_G, SoundCategory.NEUTRAL, 0.5F, 0.4F / (field_77697_d.nextFloat() * 0.4F + 0.8F));
 +            p_77659_1_.func_217376_c(entityfishinghook);
 +            // CraftBukkit end
+\ No newline at end of file
           }
  
           p_77659_2_.func_71029_a(Stats.field_75929_E.func_199076_b(this));

@@ -25,5 +25,6 @@
 +   public void close() throws java.io.IOException {
 +      super.close();
 +      this.delegate.func_175723_af().removeListener(this.borderListener); // Unlink ourselves, to prevent world leak.
+\ No newline at end of file
     }
  }

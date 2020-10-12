@@ -62,6 +62,7 @@
 +                     if (net.minecraftforge.client.ForgeHooksClient.onGuiCharTypedPre(this.field_197972_a.field_71462_r, c0, p_197963_4_)) return;
 +                     if (iguieventlistener.charTyped(c0, p_197963_4_)) return;
 +                     net.minecraftforge.client.ForgeHooksClient.onGuiCharTypedPost(this.field_197972_a.field_71462_r, c0, p_197963_4_);
+\ No newline at end of file
                    }, "charTyped event handler", iguieventlistener.getClass().getCanonicalName());
                 }
              }

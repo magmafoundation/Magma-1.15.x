@@ -268,6 +268,7 @@
 +               clone.func_190920_e(1);
 +               ((Slot) this.field_75151_b.get(0)).func_75215_d(clone);
 +               // Spigot end
+\ No newline at end of file
                 itemstack1.func_190918_g(1);
              }
           }

@@ -23,4 +23,5 @@
 +   public CompoundNBT serializeNBT() {
 +      return func_189551_b(new CompoundNBT());
 +   }
+\ No newline at end of file
  }

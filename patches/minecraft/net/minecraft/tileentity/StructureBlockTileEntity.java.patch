@@ -29,6 +29,7 @@
 +   public boolean field_189729_p = true; // private->public CraftBukkit
 +   public float field_189730_q = 1.0F; // private->public CraftBukkit
 +   public long field_189731_r; // private->public CraftBukkit
+\ No newline at end of file
  
     public StructureBlockTileEntity() {
        super(TileEntityType.field_200990_u);

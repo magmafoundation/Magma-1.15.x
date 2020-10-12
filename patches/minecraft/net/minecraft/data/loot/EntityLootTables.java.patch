@@ -44,6 +44,7 @@
 +      return !field_222944_b.contains(entitytype) && entitytype.func_220339_d() == EntityClassification.MISC; 
 +   }
 +
+\ No newline at end of file
     protected void func_218582_a(EntityType<?> p_218582_1_, LootTable.Builder p_218582_2_) {
        this.func_218585_a(p_218582_1_.func_220348_g(), p_218582_2_);
     }

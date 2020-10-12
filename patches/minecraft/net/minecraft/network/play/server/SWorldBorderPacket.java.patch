@@ -18,6 +18,7 @@
 +      this.field_179794_c = p_i46921_1_.func_177731_f() * (p_i46921_1_.world != null &&(p_i46921_1_.world.field_73011_w instanceof NetherDimension) ? 8 : 1);
 +      this.field_179791_d = p_i46921_1_.func_177721_g() * (p_i46921_1_.world != null &&(p_i46921_1_.world.field_73011_w instanceof NetherDimension) ? 8 : 1);
 +      // CraftBukkit end
+\ No newline at end of file
        this.field_179789_f = p_i46921_1_.func_177741_h();
        this.field_179792_e = p_i46921_1_.func_177751_j();
        this.field_179790_g = p_i46921_1_.func_177732_i();

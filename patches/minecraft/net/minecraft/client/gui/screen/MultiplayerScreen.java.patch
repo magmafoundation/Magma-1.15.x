@@ -9,6 +9,7 @@
 +      this.minecraft.func_147108_a(this.field_146798_g);
 +   }
 +
+\ No newline at end of file
     public ServerPinger func_146789_i() {
        return this.field_146797_f;
     }

@@ -89,6 +89,7 @@
 +      return ret;
 +   }
 +
+\ No newline at end of file
     public static enum Type {
        RED("red", Blocks.field_150337_Q.func_176223_P()),
        BROWN("brown", Blocks.field_150338_P.func_176223_P());

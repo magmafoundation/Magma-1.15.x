@@ -52,6 +52,7 @@
 +      return entityInfo;
 +   }
 +
+\ No newline at end of file
     protected abstract IStructureProcessorType func_215192_a();
  
     protected abstract <T> Dynamic<T> func_215193_a(DynamicOps<T> p_215193_1_);

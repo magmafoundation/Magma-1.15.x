@@ -27,6 +27,7 @@
  
 -      this.field_76579_a.func_72912_H().func_186345_a(DimensionType.field_223229_c_, compoundnbt);
 +      this.field_76579_a.func_72912_H().func_186345_a(this.field_76579_a.func_201675_m().func_186058_p(), compoundnbt);
+\ No newline at end of file
     }
  
     public void func_186059_r() {

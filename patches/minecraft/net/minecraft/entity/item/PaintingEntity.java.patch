@@ -8,6 +8,7 @@
 +      List<PaintingType> list = Lists.newArrayList(PaintingType.field_200843_b);
 +      this.field_70522_e = list.get(this.field_70146_Z.nextInt(list.size()));
 +      // CraftBukkit end
+\ No newline at end of file
     }
  
     public PaintingEntity(World p_i45849_1_, BlockPos p_i45849_2_, Direction p_i45849_3_) {

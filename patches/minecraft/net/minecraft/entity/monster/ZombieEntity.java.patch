@@ -180,6 +180,7 @@
                 chickenentity1.func_152117_i(true);
 -               p_213386_1_.func_217376_c(chickenentity1);
 +               p_213386_1_.addEntity(chickenentity1, CreatureSpawnEvent.SpawnReason.MOUNT); // CraftBukkit
+\ No newline at end of file
                 this.func_184220_m(chickenentity1);
              }
           }

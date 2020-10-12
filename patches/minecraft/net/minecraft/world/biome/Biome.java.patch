@@ -101,6 +101,7 @@
 +      }
 +   }
 +
+\ No newline at end of file
     public static enum TempCategory {
        OCEAN("ocean"),
        COLD("cold"),

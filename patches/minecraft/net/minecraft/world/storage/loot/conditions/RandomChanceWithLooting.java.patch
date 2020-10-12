@@ -15,6 +15,7 @@
        }
 -
 +      // CraftBukkit end
+\ No newline at end of file
        return p_test_1_.func_216032_b().nextFloat() < this.field_186627_a + (float)i * this.field_186628_b;
     }
  

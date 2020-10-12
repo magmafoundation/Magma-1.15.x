@@ -7,6 +7,7 @@
 -      field_192091_a.info("Loaded {} advancements", (int)this.field_192092_b.size());
 +      net.minecraftforge.common.AdvancementLoadFix.buildSortedTrees(this.field_192093_c);
 +//      LOGGER.info("Loaded {} advancements", (int)this.advancements.size()); // CraftBukkit - moved to AdvancementDataWorld#reload
+\ No newline at end of file
     }
  
     @OnlyIn(Dist.CLIENT)

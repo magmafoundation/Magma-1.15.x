@@ -34,6 +34,7 @@
 +         return;
 +      }
 +      // CraftBukkit end
+\ No newline at end of file
        DoubleBlockHalf doubleblockhalf = p_176208_3_.func_177229_b(field_176492_b);
        BlockPos blockpos = doubleblockhalf == DoubleBlockHalf.LOWER ? p_176208_2_.func_177984_a() : p_176208_2_.func_177977_b();
        BlockState blockstate = p_176208_1_.func_180495_p(blockpos);

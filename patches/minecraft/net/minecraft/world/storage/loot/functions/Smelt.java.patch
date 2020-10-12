@@ -6,6 +6,7 @@
                 ItemStack itemstack1 = itemstack.func_77946_l();
 -               itemstack1.func_190920_e(p_215859_1_.func_190916_E());
 +               itemstack1.func_190920_e(p_215859_1_.func_190916_E() * itemstack.func_190916_E()); //Forge: Support smelting returning multiple
+\ No newline at end of file
                 return itemstack1;
              }
           }

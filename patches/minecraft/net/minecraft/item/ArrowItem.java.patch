@@ -9,4 +9,5 @@
 +      int enchant = net.minecraft.enchantment.EnchantmentHelper.func_77506_a(net.minecraft.enchantment.Enchantments.field_185312_x, bow);
 +      return enchant <= 0 ? false : this.getClass() == ArrowItem.class;
 +   }
+\ No newline at end of file
  }

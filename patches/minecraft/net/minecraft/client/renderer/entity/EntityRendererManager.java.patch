@@ -25,4 +25,5 @@
 +   public Map<String, PlayerRenderer> getSkinMap() {
 +      return (Map<String, PlayerRenderer>) java.util.Collections.unmodifiableMap(field_178636_l);
 +   }
+\ No newline at end of file
  }

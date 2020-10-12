@@ -116,6 +116,7 @@
        random.setSeed(42L);
 -      func_228803_a_(p_228804_1_, p_228804_2_, p_228804_5_, p_228804_6_, p_228804_7_, p_228804_4_.func_200117_a(p_228804_3_, (Direction)null, random), p_228804_8_, p_228804_9_);
 +      func_228803_a_(p_228804_1_, p_228804_2_, p_228804_5_, p_228804_6_, p_228804_7_, p_228804_4_.getQuads(p_228804_3_, (Direction)null, random, modelData), p_228804_8_, p_228804_9_);
+\ No newline at end of file
     }
  
     private static void func_228803_a_(MatrixStack.Entry p_228803_0_, IVertexBuilder p_228803_1_, float p_228803_2_, float p_228803_3_, float p_228803_4_, List<BakedQuad> p_228803_5_, int p_228803_6_, int p_228803_7_) {

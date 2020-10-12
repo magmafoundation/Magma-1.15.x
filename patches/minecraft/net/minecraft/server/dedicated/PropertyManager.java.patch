@@ -42,6 +42,7 @@
     private String func_218976_c(String p_218976_1_) {
 -      return (String)this.field_73672_b.get(p_218976_1_);
 +      return (String)this.field_73672_b.getProperty(p_218976_1_);
+\ No newline at end of file
     }
  
     @Nullable

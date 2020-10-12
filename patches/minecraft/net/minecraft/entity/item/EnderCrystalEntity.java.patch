@@ -42,6 +42,7 @@
 +               }
                 this.field_70170_p.func_217385_a((Entity)null, this.func_226277_ct_(), this.func_226278_cu_(), this.func_226281_cx_(), 6.0F, Explosion.Mode.DESTROY);
 +               // CraftBukkit end
+\ No newline at end of file
              }
  
              this.func_184519_a(p_70097_1_);

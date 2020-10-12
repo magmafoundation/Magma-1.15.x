@@ -102,6 +102,7 @@
 +            }
 +            // Spigot End
 +            ((ServerLoginNetHandler) this.field_147386_b.func_150729_e()).hostname = p_147383_1_.field_149598_b + ":" + p_147383_1_.field_149599_c; // CraftBukkit - set hostname
+\ No newline at end of file
           }
           break;
        case STATUS:

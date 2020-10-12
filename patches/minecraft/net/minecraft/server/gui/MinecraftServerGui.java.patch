@@ -29,6 +29,7 @@
           try {
 -            document.insertString(document.getLength(), p_164247_3_, (AttributeSet)null);
 +            document.insertString(document.getLength(), ANSI.matcher(p_164247_3_).replaceAll(""), (AttributeSet)null); // CraftBukkit
+\ No newline at end of file
           } catch (BadLocationException var8) {
              ;
           }

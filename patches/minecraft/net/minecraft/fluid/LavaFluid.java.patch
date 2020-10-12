@@ -45,6 +45,7 @@
 +                  return;
 +               }
 +               // CraftBukkit end
+\ No newline at end of file
              }
  
              this.func_205581_a(p_205574_1_, p_205574_2_);

@@ -49,4 +49,5 @@
 +   public float getToughness() {
 +      return this.field_189415_e;
 +   }
+\ No newline at end of file
  }

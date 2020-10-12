@@ -491,4 +491,5 @@
 +   public World getWorldForge() {
 +      return func_177412_p();
 +   }
+\ No newline at end of file
  }

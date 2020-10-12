@@ -108,5 +108,6 @@
        }
 +      @Override public int hashCode() { return java.util.Objects.hashCode(this.field_200163_a); }
 +      @Override public boolean equals(Object o) { return o == this || (o instanceof Tag.TagEntry && java.util.Objects.equals(this.field_200163_a, ((Tag.TagEntry) o).field_200163_a)); }
+\ No newline at end of file
     }
  }

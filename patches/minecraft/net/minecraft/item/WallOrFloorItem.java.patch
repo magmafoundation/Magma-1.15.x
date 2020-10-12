@@ -9,4 +9,5 @@
 +      super.removeFromBlockToItemMap(blockToItemMap, itemIn);
 +      blockToItemMap.remove(this.field_195947_b);
 +   }
+\ No newline at end of file
  }

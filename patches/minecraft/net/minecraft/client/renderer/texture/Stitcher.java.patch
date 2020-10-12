@@ -37,6 +37,7 @@
        public String toString() {
 -         return "Holder{width=" + this.field_94204_c + ", height=" + this.field_94201_d + '}';
 +         return "Holder{width=" + this.field_94204_c + ", height=" + this.field_94201_d + ", name=" + this.field_229213_a_.func_229248_a_() + '}';
+\ No newline at end of file
        }
     }
  

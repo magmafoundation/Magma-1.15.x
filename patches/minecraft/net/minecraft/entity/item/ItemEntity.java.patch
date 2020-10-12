@@ -296,6 +296,7 @@
        this.func_174871_r();
 -      this.field_70292_b = 5999;
 +      this.field_70292_b = func_92059_d().getEntityLifespan(field_70170_p) - 1;
+\ No newline at end of file
     }
  
     public IPacket<?> func_213297_N() {

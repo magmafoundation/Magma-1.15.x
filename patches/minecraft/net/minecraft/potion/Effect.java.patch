@@ -55,6 +55,7 @@
        } else {
 -         p_76394_1_.func_70691_i((float)Math.max(4 << p_76394_2_, 0));
 +         p_76394_1_.heal((float)Math.max(4 << p_76394_2_, 0), EntityRegainHealthEvent.RegainReason.MAGIC); // CraftBukkit
+\ No newline at end of file
        }
  
     }

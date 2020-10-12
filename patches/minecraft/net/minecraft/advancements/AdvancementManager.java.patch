@@ -30,6 +30,7 @@
 +               field_192782_a.info("Skipping loading advancement {} as it's conditions were not met", p_223387_1_);
 +               return;
 +            }
+\ No newline at end of file
              map.put(p_223387_1_, advancement$builder);
           } catch (IllegalArgumentException | JsonParseException jsonparseexception) {
              field_192782_a.error("Parsing error loading custom advancement {}: {}", p_223387_1_, jsonparseexception.getMessage());

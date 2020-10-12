@@ -29,6 +29,7 @@
 +
 +         boolean flag = blockRedstoneEvent.getNewCurrent() > 0;
 +         // CraftBukkit end
+\ No newline at end of file
           if (flag != p_220069_1_.func_177229_b(field_176519_b)) {
              this.func_196426_b(p_220069_2_, p_220069_3_, flag);
           }

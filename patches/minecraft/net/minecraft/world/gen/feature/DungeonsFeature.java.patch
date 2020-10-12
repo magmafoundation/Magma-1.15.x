@@ -6,5 +6,6 @@
     private EntityType<?> func_201043_a(Random p_201043_1_) {
 -      return field_175916_b[p_201043_1_.nextInt(field_175916_b.length)];
 +      return net.minecraftforge.common.DungeonHooks.getRandomDungeonMob(p_201043_1_);
+\ No newline at end of file
     }
  }

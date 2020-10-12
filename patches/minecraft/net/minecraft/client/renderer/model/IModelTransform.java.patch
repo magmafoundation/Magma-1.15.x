@@ -6,6 +6,7 @@
  @OnlyIn(Dist.CLIENT)
 -public interface IModelTransform {
 +public interface IModelTransform extends net.minecraftforge.client.extensions.IForgeModelTransform {
+\ No newline at end of file
     default TransformationMatrix func_225615_b_() {
        return TransformationMatrix.func_227983_a_();
     }

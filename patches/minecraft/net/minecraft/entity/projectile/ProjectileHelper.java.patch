@@ -6,6 +6,7 @@
              if (d1 < d0 || d0 == 0.0D) {
 -               if (entity1.func_184208_bv() == p_221273_0_.func_184208_bv()) {
 +               if (entity1.func_184208_bv() == p_221273_0_.func_184208_bv() && !entity1.canRiderInteract()) {
+\ No newline at end of file
                    if (d0 == 0.0D) {
                       entity = entity1;
                       vec3d = vec3d1;

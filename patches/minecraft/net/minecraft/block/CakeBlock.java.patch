@@ -32,6 +32,7 @@
 +         ((ServerPlayerEntity) p_226911_4_).getBukkitEntity().sendHealthUpdate();
 +         // CraftBukkit end
 +
+\ No newline at end of file
           int i = p_226911_3_.func_177229_b(field_176589_a);
           if (i < 6) {
              p_226911_1_.func_180501_a(p_226911_2_, p_226911_3_.func_206870_a(field_176589_a, Integer.valueOf(i + 1)), 3);

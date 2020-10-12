@@ -37,4 +37,5 @@
 +   private BlockState getModelState() {
 +       return stateSupplier.get();
 +   }
+\ No newline at end of file
  }

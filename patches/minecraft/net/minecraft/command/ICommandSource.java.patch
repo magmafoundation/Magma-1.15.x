@@ -28,4 +28,5 @@
     boolean func_195041_r_();
 +
 +   CommandSender getBukkitSender(final CommandSource p0); // CraftBukkit
+\ No newline at end of file
  }

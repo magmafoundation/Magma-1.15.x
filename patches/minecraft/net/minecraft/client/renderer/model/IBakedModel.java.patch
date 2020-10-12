@@ -23,6 +23,7 @@
 +   /**@deprecated Forge: Use {@link net.minecraftforge.client.extensions.IForgeBakedModel#handlePerspective(net.minecraft.client.renderer.model.ItemCameraTransforms.TransformType, com.mojang.blaze3d.matrix.MatrixStack)} instead */
 +   @Deprecated
 +   default ItemCameraTransforms func_177552_f() { return ItemCameraTransforms.field_178357_a; }
+\ No newline at end of file
  
     ItemOverrideList func_188617_f();
  }

@@ -79,4 +79,5 @@
 +      return this.field_197041_c.getBukkitSender(this);
 +   }
 +   // CraftBukkit end
+\ No newline at end of file
  }

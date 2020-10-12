@@ -12,6 +12,7 @@
 +         net.minecraftforge.common.crafting.IShapedRecipe shapedrecipe = (net.minecraftforge.common.crafting.IShapedRecipe)p_201501_4_;
 +         i = shapedrecipe.getRecipeWidth();
 +         j = shapedrecipe.getRecipeHeight();
+\ No newline at end of file
        }
  
        int k1 = 0;

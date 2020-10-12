@@ -6,6 +6,7 @@
           String s = p_225649_1_.readUTF();
 -         p_225649_3_.func_152450_a((long)(16 * s.length()));
 +         p_225649_3_.readUTF(s);
+\ No newline at end of file
           return StringNBT.func_229705_a_(s);
        }
  

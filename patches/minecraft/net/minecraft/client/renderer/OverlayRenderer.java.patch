@@ -43,6 +43,7 @@
           if (blockstate.func_185901_i() != BlockRenderType.INVISIBLE && blockstate.func_215696_m(p_230018_0_.field_70170_p, blockpos$mutable)) {
 -            return blockstate;
 +            return org.apache.commons.lang3.tuple.Pair.of(blockstate, blockpos$mutable.func_185334_h());
+\ No newline at end of file
           }
        }
  

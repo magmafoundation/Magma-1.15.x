@@ -11,6 +11,7 @@
 +   public int getLeft() { return this.x0; }
 +   public int getRight() { return this.x1; }
 +
+\ No newline at end of file
     @OnlyIn(Dist.CLIENT)
     public abstract static class AbstractListEntry<E extends AbstractList.AbstractListEntry<E>> implements IGuiEventListener {
        @Deprecated

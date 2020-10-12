@@ -345,4 +345,5 @@
 +      return console;
 +   }
 +   // CraftBukkit end
+\ No newline at end of file
  }

@@ -36,6 +36,7 @@
 +               return ActionResultType.PASS;
 +            }
 +            // CraftBukkit end
+\ No newline at end of file
              this.func_219995_a(world, blockpos);
              world.func_175656_a(blockpos, ((FireBlock)Blocks.field_150480_ab).func_196448_a(world, blockpos));
              flag = true;

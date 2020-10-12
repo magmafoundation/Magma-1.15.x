@@ -40,6 +40,7 @@
 +      return false;
 +   }
 +
+\ No newline at end of file
     public boolean func_220067_a(BlockState p_220067_1_, IBlockReader p_220067_2_, BlockPos p_220067_3_, EntityType<?> p_220067_4_) {
        return false;
     }

@@ -25,6 +25,7 @@
 +         }
 +         // CraftBukkit end
 +
+\ No newline at end of file
           if (p_220069_1_.func_177229_b(field_176465_b) != flag) {
              p_220069_2_.func_180501_a(p_220069_3_, p_220069_1_.func_206870_a(field_176465_b, Boolean.valueOf(flag)).func_206870_a(field_176466_a, Boolean.valueOf(flag)), 2);
              if (p_220069_1_.func_177229_b(field_176466_a) != flag) {

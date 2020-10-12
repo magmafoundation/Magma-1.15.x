@@ -35,4 +35,5 @@
 +         forgeFluidAttributes = createAttributes();
 +      return forgeFluidAttributes;
 +   }
+\ No newline at end of file
  }

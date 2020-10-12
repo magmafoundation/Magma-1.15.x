@@ -7,5 +7,6 @@
 -@OnlyIn(Dist.CLIENT)
  public interface IChestLid {
 +   @OnlyIn(Dist.CLIENT)
+\ No newline at end of file
     float func_195480_a(float p_195480_1_);
  }

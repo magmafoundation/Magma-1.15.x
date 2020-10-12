@@ -14,6 +14,7 @@
     }
  
 +   @Deprecated //Forge: Use more sensitive version.
+\ No newline at end of file
     default float func_210200_l() {
        return this.func_206886_c().func_210195_d();
     }

@@ -45,4 +45,5 @@
 +       this.backgroundPair = Pair.of(atlas, sprite);
 +       return this;
 +   }
+\ No newline at end of file
  }

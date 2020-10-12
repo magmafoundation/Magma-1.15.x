@@ -65,4 +65,5 @@
 +         state.func_215697_a((World)world, pos, world.func_180495_p(neighbor).func_177230_c(), neighbor, false);
 +      }
 +   }
+\ No newline at end of file
  }

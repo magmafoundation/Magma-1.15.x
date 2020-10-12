@@ -89,6 +89,7 @@
  
 -         this.field_70170_p.func_217376_c(areaeffectcloudentity);
 +         this.field_70170_p.addEntity(areaeffectcloudentity, SpawnReason.EXPLOSION); // CraftBukkit - reason
+\ No newline at end of file
        }
  
     }

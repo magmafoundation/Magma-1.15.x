@@ -25,6 +25,7 @@
 +            blockpos = new BlockPos(event.getToBlock().getX(), event.getToBlock().getX(), event.getToBlock().getX());
 +            // CraftBukkit end
 +
+\ No newline at end of file
              if (p_196443_2_.field_72995_K) {
                 for(int j = 0; j < 128; ++j) {
                    double d0 = p_196443_2_.field_73012_v.nextDouble();

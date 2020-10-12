@@ -83,6 +83,7 @@
 +                  listnbt.remove(20);
 +               }
 +               // CraftBukkit end
+\ No newline at end of file
              } else {
                 listnbt = new ListNBT();
                 compoundnbt.func_218657_a("Patterns", listnbt);

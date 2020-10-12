@@ -6,6 +6,7 @@
     private BlockPos field_179828_a;
 -   private BlockState field_197686_b;
 +   public BlockState field_197686_b; // private->public CraftBukkit
+\ No newline at end of file
  
     public SChangeBlockPacket() {
     }

@@ -51,6 +51,7 @@
 +      return this.func_175926_c(world, pos, height) && this.validSoil(world, pos, config.getSapling());
 +   }
 +
+\ No newline at end of file
     protected void func_227255_a_(IWorldGenerationReader p_227255_1_, Random p_227255_2_, BlockPos p_227255_3_, int p_227255_4_, Set<BlockPos> p_227255_5_, MutableBoundingBox p_227255_6_, BaseTreeFeatureConfig p_227255_7_) {
        int i = p_227255_4_ * p_227255_4_;
  

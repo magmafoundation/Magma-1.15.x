@@ -20,6 +20,7 @@
     public static final TicketType<ChunkPos> field_219494_g = func_223183_a("unknown", Comparator.comparingLong(ChunkPos::func_201841_a), 1);
 +   public static final TicketType<Unit> PLUGIN = func_219484_a("plugin", (a, b) -> 0); // CraftBukkit
 +   public static final TicketType<Plugin> PLUGIN_TICKET = func_219484_a("plugin_ticket", (plugin1, plugin2) -> plugin1.getClass().getName().compareTo(plugin2.getClass().getName())); // CraftBukkit
+\ No newline at end of file
  
     public static <T> TicketType<T> func_219484_a(String p_219484_0_, Comparator<T> p_219484_1_) {
        return new TicketType<>(p_219484_0_, p_219484_1_, 0L);

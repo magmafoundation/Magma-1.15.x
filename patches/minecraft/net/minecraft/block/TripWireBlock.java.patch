@@ -43,6 +43,7 @@
 +      }
 +      // CraftBukkit end
 +
+\ No newline at end of file
        if (flag1 != flag) {
           blockstate = blockstate.func_206870_a(field_176293_a, Boolean.valueOf(flag1));
           p_176288_1_.func_180501_a(p_176288_2_, blockstate, 3);

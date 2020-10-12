@@ -17,6 +17,7 @@
 -         ResourceLocation resourcelocation = new ResourceLocation("shaders/program/" + p_216542_2_ + p_216542_1_.func_148063_b());
 +         ResourceLocation rl = ResourceLocation.func_208304_a(p_216542_2_);
 +         ResourceLocation resourcelocation = new ResourceLocation(rl.func_110624_b(), "shaders/program/" + rl.func_110623_a() + p_216542_1_.func_148063_b());
+\ No newline at end of file
           IResource iresource = p_216542_0_.func_199002_a(resourcelocation);
  
           try {

@@ -65,6 +65,7 @@
     public void func_152658_c() {
 -      String s = this.field_152660_b.toJson(this.func_152656_a(1000));
 +      String s = this.field_152660_b.toJson(this.func_152656_a(SpigotConfig.userCacheCap));
+\ No newline at end of file
        BufferedWriter bufferedwriter = null;
  
        try {

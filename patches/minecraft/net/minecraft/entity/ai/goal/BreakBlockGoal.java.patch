@@ -37,6 +37,7 @@
 +               return;
 +            }
 +            // CraftBukkit end
+\ No newline at end of file
              world.func_217377_a(blockpos1, false);
              if (!world.field_72995_K) {
                 for(int i = 0; i < 20; ++i) {

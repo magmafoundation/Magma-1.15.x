@@ -15,4 +15,5 @@
 +   public net.minecraft.util.math.BlockPos getPos() {
 +      return pos;
 +   }
+\ No newline at end of file
  }

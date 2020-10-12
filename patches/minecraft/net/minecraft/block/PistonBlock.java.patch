@@ -152,6 +152,7 @@
 +       return state.func_177229_b(field_176320_b) ? state : super.rotate(state, world, pos, direction);
 +   }
 +
+\ No newline at end of file
     public BlockState func_185471_a(BlockState p_185471_1_, Mirror p_185471_2_) {
        return p_185471_1_.func_185907_a(p_185471_2_.func_185800_a(p_185471_1_.func_177229_b(field_176387_N)));
     }

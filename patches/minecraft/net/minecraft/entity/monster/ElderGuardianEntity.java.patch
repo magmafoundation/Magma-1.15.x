@@ -14,6 +14,7 @@
                 serverplayerentity.field_71135_a.func_147359_a(new SChangeGameStatePacket(10, 0.0F));
 -               serverplayerentity.func_195064_c(new EffectInstance(effect, 6000, 2));
 +               serverplayerentity.addPotionEffect(new EffectInstance(effect, 6000, 2), Cause.ATTACK); // CraftBukkit
+\ No newline at end of file
              }
           }
        }

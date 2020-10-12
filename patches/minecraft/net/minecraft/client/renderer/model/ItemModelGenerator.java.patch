@@ -5,6 +5,7 @@
        BlockModel blockmodel = new BlockModel((ResourceLocation)null, list, map, false, p_209579_2_.func_230176_c_(), p_209579_2_.func_181682_g(), p_209579_2_.func_187966_f());
        blockmodel.field_178317_b = p_209579_2_.field_178317_b;
 +      blockmodel.customData.copyFrom(p_209579_2_.customData);
+\ No newline at end of file
        return blockmodel;
     }
  

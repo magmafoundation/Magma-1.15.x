@@ -178,6 +178,7 @@
              if (blockstate.func_177229_b(field_176591_a) < 3) {
 -               p_176224_1_.func_180501_a(p_176224_2_, blockstate.func_177231_a(field_176591_a), 2);
 +               this.func_176590_a(p_176224_1_, p_176224_2_, blockstate.func_177231_a(field_176591_a), 2); // CraftBukkit
+\ No newline at end of file
              }
  
           }

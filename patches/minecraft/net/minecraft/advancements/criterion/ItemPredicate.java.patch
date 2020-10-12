@@ -33,6 +33,7 @@
 +      return unmod_predicates;
 +   }
 +
+\ No newline at end of file
     public static class Builder {
        private final List<EnchantmentPredicate> field_200312_a = Lists.newArrayList();
        private final List<EnchantmentPredicate> field_226657_b_ = Lists.newArrayList();

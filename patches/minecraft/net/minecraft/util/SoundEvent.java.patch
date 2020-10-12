@@ -6,6 +6,7 @@
  
 -public class SoundEvent {
 +public class SoundEvent extends net.minecraftforge.registries.ForgeRegistryEntry<SoundEvent> {
+\ No newline at end of file
     private final ResourceLocation field_187506_b;
  
     public SoundEvent(ResourceLocation p_i46834_1_) {

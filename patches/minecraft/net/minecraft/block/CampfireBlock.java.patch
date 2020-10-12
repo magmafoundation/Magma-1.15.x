@@ -44,6 +44,7 @@
 +               }
 +               // CraftBukkit end
 +
+\ No newline at end of file
                 p_220066_1_.func_180501_a(blockpos, p_220066_2_.func_206870_a(BlockStateProperties.field_208190_q, Boolean.valueOf(true)), 11);
              }
           }

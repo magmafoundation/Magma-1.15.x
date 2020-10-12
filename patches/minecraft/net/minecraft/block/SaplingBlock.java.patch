@@ -60,6 +60,7 @@
           p_226942_1_.func_180501_a(p_226942_2_, p_226942_3_.func_177231_a(field_176479_b), 4);
        } else {
 +         if (!net.minecraftforge.event.ForgeEventFactory.saplingGrowTree(p_226942_1_, p_226942_4_, p_226942_2_)) return;
+\ No newline at end of file
           this.field_196387_c.func_225545_a_(p_226942_1_, p_226942_1_.func_72863_F().func_201711_g(), p_226942_2_, p_226942_3_, p_226942_4_);
        }
  

@@ -32,6 +32,7 @@
  
 -      protected abstract void func_223553_a(String p_223553_1_);
 +      public abstract void func_223553_a(String p_223553_1_);
+\ No newline at end of file
  
        protected abstract String func_223552_b();
  

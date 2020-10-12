@@ -40,6 +40,7 @@
        public TreeFeatureConfig func_225568_b_() {
 -         return new TreeFeatureConfig(this.field_227377_a_, this.field_227378_b_, this.field_227339_c_, this.field_227340_d_, this.field_227341_e_, this.field_227342_f_, this.field_227343_g_, this.field_227344_h_, this.field_227345_i_, this.field_227346_j_, this.field_227347_k_, this.field_227348_l_, this.field_227349_m_, this.field_227350_n_, this.field_227351_o_);
 +         return new TreeFeatureConfig(this.field_227377_a_, this.field_227378_b_, this.field_227339_c_, this.field_227340_d_, this.field_227341_e_, this.field_227342_f_, this.field_227343_g_, this.field_227344_h_, this.field_227345_i_, this.field_227346_j_, this.field_227347_k_, this.field_227348_l_, this.field_227349_m_, this.field_227350_n_, this.field_227351_o_).setSapling(this.sapling);
+\ No newline at end of file
        }
     }
  }

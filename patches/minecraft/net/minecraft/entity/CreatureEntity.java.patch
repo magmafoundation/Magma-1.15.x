@@ -22,6 +22,7 @@
           this.func_142017_o(f);
           if (f > 10.0F) {
 +            this.field_70170_p.getServerCB().getPluginManager().callEvent(new EntityUnleashEvent(this.getBukkitEntity(), UnleashReason.DISTANCE)); // CraftBukkit
+\ No newline at end of file
              this.func_110160_i(true, true);
              this.field_70714_bg.func_220880_a(Goal.Flag.MOVE);
           } else if (f > 6.0F) {

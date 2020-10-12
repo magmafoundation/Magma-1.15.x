@@ -10,5 +10,6 @@
  
        this.field_75228_b = 0;
 +      net.minecraftforge.fml.hooks.BasicEventHooks.firePlayerSmeltedEvent(this.field_75229_a, p_75208_1_);
+\ No newline at end of file
     }
  }

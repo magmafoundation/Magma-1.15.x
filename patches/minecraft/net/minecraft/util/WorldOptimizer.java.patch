@@ -9,6 +9,7 @@
                             return this.field_219960_q;
 -                        }, compoundnbt);
 +                        }, compoundnbt, chunkpos, null); // CraftBukkit
+\ No newline at end of file
                          CompoundNBT compoundnbt2 = compoundnbt1.func_74775_l("Level");
                          ChunkPos chunkpos1 = new ChunkPos(compoundnbt2.func_74762_e("xPos"), compoundnbt2.func_74762_e("zPos"));
                          if (!chunkpos1.equals(chunkpos)) {

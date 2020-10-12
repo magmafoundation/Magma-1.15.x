@@ -13,6 +13,7 @@
 +      this.min = p_i45648_2_;
 +      this.max = p_i45648_3_;
 +      // CraftBukkit end
+\ No newline at end of file
        if (p_i45648_2_ < 0) {
           throw new IllegalArgumentException("Min value of " + p_i45648_1_ + " must be 0 or greater");
        } else if (p_i45648_3_ <= p_i45648_2_) {

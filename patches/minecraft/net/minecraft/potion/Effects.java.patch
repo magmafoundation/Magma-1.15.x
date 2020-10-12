@@ -20,6 +20,7 @@
 +   }
 +   // CraftBukkit end
 +
+\ No newline at end of file
     private static Effect func_220308_a(int p_220308_0_, String p_220308_1_, Effect p_220308_2_) {
        return Registry.func_218343_a(Registry.field_212631_t, p_220308_0_, p_220308_1_, p_220308_2_);
     }

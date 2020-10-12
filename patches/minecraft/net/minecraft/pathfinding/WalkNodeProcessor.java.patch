@@ -30,6 +30,7 @@
        Material material = blockstate.func_185904_a();
 -      if (blockstate.func_196958_f()) {
 +      if (blockstate.isAir(p_189553_0_, blockpos)) {
+\ No newline at end of file
           return PathNodeType.OPEN;
        } else if (!block.func_203417_a(BlockTags.field_212185_E) && block != Blocks.field_196651_dG) {
           if (block == Blocks.field_150480_ab) {

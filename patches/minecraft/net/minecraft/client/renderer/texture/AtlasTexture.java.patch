@@ -23,6 +23,7 @@
 -      int k1;
 +      int k1 = p_229220_4_;
 +      if (false) // FORGE: do not lower the mipmap level
+\ No newline at end of file
        if (j1 < p_229220_4_) {
           field_147635_d.warn("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", this.field_229214_j_, p_229220_4_, j1, i1);
           k1 = j1;

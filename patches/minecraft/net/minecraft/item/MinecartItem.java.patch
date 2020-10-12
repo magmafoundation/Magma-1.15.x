@@ -98,6 +98,7 @@
 +            }
 +            // CraftBukkit end
 +            if (!world.func_217376_c(abstractminecartentity)) return ActionResultType.PASS; // CraftBukkit
+\ No newline at end of file
           }
  
           itemstack.func_190918_g(1);

@@ -23,6 +23,7 @@
 +      this.type = dimensionType;
 +   }
 +
+\ No newline at end of file
     public int func_76088_k() {
        return this.field_76115_a.func_76088_k();
     }

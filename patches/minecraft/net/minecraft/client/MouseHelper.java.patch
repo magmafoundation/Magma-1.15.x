@@ -88,6 +88,7 @@
 +      return this.field_198049_n;
 +   }
 +
+\ No newline at end of file
     public void func_198021_g() {
        this.field_198043_h = true;
     }

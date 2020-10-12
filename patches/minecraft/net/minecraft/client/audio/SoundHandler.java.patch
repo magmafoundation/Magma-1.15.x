@@ -9,6 +9,7 @@
 +      return net.minecraftforge.resource.VanillaResourceType.SOUNDS;
 +   }
 +
+\ No newline at end of file
     public String func_215293_f() {
        return this.field_147694_f.func_217932_f();
     }

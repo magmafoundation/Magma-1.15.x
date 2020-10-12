@@ -51,6 +51,7 @@
 +            brain.func_218205_a(MemoryModuleType.field_220951_l, new EntityPosWrapper(entity));
 +         }
 +      }
+\ No newline at end of file
     }
  
     private boolean func_220532_a(LivingEntity p_220532_1_) {

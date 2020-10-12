@@ -6,6 +6,7 @@
           BlockPos blockpos = optional.get();
 -         this.func_214584_a(p_225557_1_, blockpos.func_177977_b());
 +         this.setDirtAt(p_225557_1_, blockpos.func_177977_b(), blockpos);
+\ No newline at end of file
           Direction direction = Direction.Plane.HORIZONTAL.func_179518_a(p_225557_2_);
           int l = i - p_225557_2_.nextInt(4) - 1;
           int i1 = 3 - p_225557_2_.nextInt(3);

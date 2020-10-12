@@ -159,6 +159,7 @@
 +   }
 +   // CraftBukkit end
 +
+\ No newline at end of file
     static enum WaveMember {
        VINDICATOR(EntityType.field_200758_ax, new int[]{0, 0, 2, 0, 1, 4, 2, 5}),
        EVOKER(EntityType.field_200806_t, new int[]{0, 0, 0, 0, 0, 1, 1, 2}),

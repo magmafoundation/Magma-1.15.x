@@ -45,6 +45,7 @@
 -      world.func_217376_c(boatentity);
 -      p_82487_2_.func_190918_g(1);
 +      if (!world.func_217376_c(boatentity)) p_82487_2_.func_190918_g(1); // CraftBukkit
+\ No newline at end of file
        return p_82487_2_;
     }
  

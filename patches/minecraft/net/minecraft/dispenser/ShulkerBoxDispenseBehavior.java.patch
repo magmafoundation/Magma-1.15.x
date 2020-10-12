@@ -38,6 +38,7 @@
 +         }
 +         // CraftBukkit end
 +
+\ No newline at end of file
           this.field_218407_b = ((BlockItem)item).func_195942_a(new DirectionalPlaceContext(p_82487_1_.func_197524_h(), blockpos, direction, p_82487_2_, direction1)) == ActionResultType.SUCCESS;
        }
  

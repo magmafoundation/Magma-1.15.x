@@ -11,6 +11,7 @@
 +      return state.func_206870_a(field_176387_N, mirrorIn.func_185803_b(state.func_177229_b(field_176387_N)));
 +   }
 +
+\ No newline at end of file
     public BlockState func_196258_a(BlockItemUseContext p_196258_1_) {
        return this.func_176223_P().func_206870_a(field_176387_N, p_196258_1_.func_196000_l());
     }

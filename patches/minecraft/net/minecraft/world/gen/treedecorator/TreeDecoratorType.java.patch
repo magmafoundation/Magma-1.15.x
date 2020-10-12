@@ -6,6 +6,7 @@
  
 -public class TreeDecoratorType<P extends TreeDecorator> {
 +public class TreeDecoratorType<P extends TreeDecorator> extends net.minecraftforge.registries.ForgeRegistryEntry<TreeDecoratorType<?>> {
+\ No newline at end of file
     public static final TreeDecoratorType<TrunkVineTreeDecorator> field_227425_a_ = func_227432_a_("trunk_vine", TrunkVineTreeDecorator::new);
     public static final TreeDecoratorType<LeaveVineTreeDecorator> field_227426_b_ = func_227432_a_("leave_vine", LeaveVineTreeDecorator::new);
     public static final TreeDecoratorType<CocoaTreeDecorator> field_227427_c_ = func_227432_a_("cocoa", CocoaTreeDecorator::new);

@@ -12,4 +12,5 @@
 +      // 2. From the pause menu, in which case exit back to game
 +      this.minecraft.func_147108_a(this.field_146441_g instanceof IngameMenuScreen ? null : this.field_146441_g);
 +   }
+\ No newline at end of file
  }

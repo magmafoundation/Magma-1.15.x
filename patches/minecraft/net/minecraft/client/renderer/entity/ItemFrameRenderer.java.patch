@@ -34,6 +34,7 @@
              this.field_177074_h.func_229110_a_(itemstack, ItemCameraTransforms.TransformType.FIXED, p_225623_6_, OverlayTexture.field_229196_a_, p_225623_4_, p_225623_5_);
           }
 +         }
+\ No newline at end of file
        }
  
        p_225623_4_.func_227865_b_();

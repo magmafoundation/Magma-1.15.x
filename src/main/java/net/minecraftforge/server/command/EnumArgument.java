@@ -37,8 +37,13 @@ public class EnumArgument<T extends Enum<T>> implements ArgumentType<T> {
     public static <R extends Enum<R>> EnumArgument<R> enumArgument(Class<R> enumClass) {
         return new EnumArgument<>(enumClass);
     }
+
     private EnumArgument(final Class<T> enumClass) {
         this.enumClass = enumClass;
+    }
+
+    public EnumArgument(){
+        this.enumClass = null;
     }
 
     @Override

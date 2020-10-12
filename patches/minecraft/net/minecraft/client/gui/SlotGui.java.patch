@@ -35,4 +35,5 @@
 +      buffer.func_225582_a_((double)this.x0, (double)this.y0, 0.0D).func_225583_a_(this.x0 / scale, (this.y0 + (int)this.yo) / scale).func_225586_a_(32, 32, 32, 255).func_181675_d();
 +      tessellator.func_78381_a();
 +   }
+\ No newline at end of file
  }

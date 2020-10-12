@@ -6,6 +6,7 @@
        try (IResource iresource = p_195413_1_.func_199002_a(new ResourceLocation(s))) {
 -         NativeImage nativeimage = NativeImage.func_195713_a(iresource.func_199027_b());
 +         NativeImage nativeimage = net.minecraftforge.client.MinecraftForgeClient.getImageLayer(new ResourceLocation(s), p_195413_1_);
+\ No newline at end of file
  
           while(iterator.hasNext()) {
              String s1 = iterator.next();

@@ -10,6 +10,7 @@
 +         if (hill != null) {
 +            l = Registry.field_212624_m.func_148757_b(hill);
 +         } else if (i == field_202799_f) {
+\ No newline at end of file
              l = field_202800_g;
           } else if (i == field_202803_j) {
              l = field_202804_k;

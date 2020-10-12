@@ -29,6 +29,7 @@
  
 -   public PointOfInterestType(String p_i225712_1_, Set<BlockState> p_i225712_2_, int p_i225712_3_, int p_i225712_4_) {
 +   private PointOfInterestType(String p_i225712_1_, Set<BlockState> p_i225712_2_, int p_i225712_3_, int p_i225712_4_) {
+\ No newline at end of file
        this.field_221074_v = p_i225712_1_;
        this.field_221075_w = ImmutableSet.copyOf(p_i225712_2_);
        this.field_221076_x = p_i225712_3_;

@@ -30,6 +30,7 @@
 +   protected int getSeedModifier(World world) {
 +      return  world.spigotConfig.iglooSeed;
 +      // Spigot end
+\ No newline at end of file
     }
  
     public static class Start extends StructureStart {

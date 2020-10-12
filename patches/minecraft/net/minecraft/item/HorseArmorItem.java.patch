@@ -22,6 +22,7 @@
     public ResourceLocation func_219976_d() {
 -      return new ResourceLocation(this.field_219979_b);
 +      return texture;
+\ No newline at end of file
     }
  
     public int func_219977_e() {

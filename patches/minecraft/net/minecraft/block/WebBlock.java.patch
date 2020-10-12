@@ -6,6 +6,7 @@
  
 -public class WebBlock extends Block {
 +public class WebBlock extends Block implements net.minecraftforge.common.IShearable {
+\ No newline at end of file
     public WebBlock(Block.Properties p_i48296_1_) {
        super(p_i48296_1_);
     }

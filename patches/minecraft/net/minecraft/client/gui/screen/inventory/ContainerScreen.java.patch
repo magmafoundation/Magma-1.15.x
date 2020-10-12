@@ -162,4 +162,5 @@
 +   public int getSlotColor(int index) {
 +      return slotColor;
 +   }
+\ No newline at end of file
  }

@@ -8,4 +8,5 @@
 +   // FORGE START
 +
 +   public abstract int queuedUpdateSize();
+\ No newline at end of file
  }

@@ -22,6 +22,7 @@
  
     private void func_194081_a(SRecipeBookPacket.State p_194081_1_, ServerPlayerEntity p_194081_2_, List<ResourceLocation> p_194081_3_) {
 +      if (p_194081_2_.field_71135_a == null) return; // SPIGOT-4478 during PlayerLoginEvent
+\ No newline at end of file
        p_194081_2_.field_71135_a.func_147359_a(new SRecipeBookPacket(p_194081_1_, p_194081_3_, Collections.emptyList(), this.field_192818_b, this.field_192819_c, this.field_202885_e, this.field_202886_f));
     }
  

@@ -14,6 +14,7 @@
           silverfishentity.func_70012_b((double)p_220062_3_.func_177958_n() + 0.5D, (double)p_220062_3_.func_177956_o(), (double)p_220062_3_.func_177952_p() + 0.5D, 0.0F, 0.0F);
 -         p_220062_2_.func_217376_c(silverfishentity);
 +         p_220062_2_.addEntity(silverfishentity, SpawnReason.SILVERFISH_BLOCK); // CraftBukkit - add SpawnReason
+\ No newline at end of file
           silverfishentity.func_70656_aK();
        }
  

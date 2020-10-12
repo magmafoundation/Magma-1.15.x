@@ -244,6 +244,7 @@
 +
     public void func_209526_a(CCustomPayloadLoginPacket p_209526_1_) {
 +      if (!net.minecraftforge.fml.network.NetworkHooks.onCustomPayload(p_209526_1_, this.field_147333_a))
+\ No newline at end of file
        this.func_194026_b(new TranslationTextComponent("multiplayer.disconnect.unexpected_query_response"));
     }
  

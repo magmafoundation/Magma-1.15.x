@@ -949,4 +949,5 @@
 +      return maxEntityRadius;
 +   }
 +
+\ No newline at end of file
  }

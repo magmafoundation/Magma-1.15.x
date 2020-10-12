@@ -12,6 +12,7 @@
 +         }
 +      });
 +      // CraftBukkit end
+\ No newline at end of file
        p_210891_0_.addFixer(new CustomNameStringToComponentEntity(schema47, false));
        p_210891_0_.addFixer(new CustomNameStringToComponentItem(schema47, false));
        p_210891_0_.addFixer(new CustomNameStringToComponentFixTileEntity(schema47, false));

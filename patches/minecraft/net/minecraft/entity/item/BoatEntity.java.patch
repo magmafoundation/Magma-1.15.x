@@ -184,6 +184,7 @@
 +      return false;
 +   }
 +
+\ No newline at end of file
     public static enum Status {
        IN_WATER,
        UNDER_WATER,

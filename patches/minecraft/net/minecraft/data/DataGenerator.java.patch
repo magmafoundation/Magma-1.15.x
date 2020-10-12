@@ -37,6 +37,7 @@
 +      this.field_200394_b.add(value);
 +   }
 +
+\ No newline at end of file
     static {
        Bootstrap.func_151354_b();
     }

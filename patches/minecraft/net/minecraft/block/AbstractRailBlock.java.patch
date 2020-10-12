@@ -93,4 +93,5 @@
 +    * @param pos Block's position in world
 +    */
 +   public void onMinecartPass(BlockState state, World world, BlockPos pos, net.minecraft.entity.item.minecart.AbstractMinecartEntity cart) { }
+\ No newline at end of file
  }

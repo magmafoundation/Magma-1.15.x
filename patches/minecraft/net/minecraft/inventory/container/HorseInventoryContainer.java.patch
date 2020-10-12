@@ -38,6 +38,7 @@
 +   }
 +   // CraftBukkit end
 +
+\ No newline at end of file
     public boolean func_75145_c(PlayerEntity p_75145_1_) {
        return this.field_111243_a.func_70300_a(p_75145_1_) && this.field_111242_f.func_70089_S() && this.field_111242_f.func_70032_d(p_75145_1_) < 8.0F;
     }

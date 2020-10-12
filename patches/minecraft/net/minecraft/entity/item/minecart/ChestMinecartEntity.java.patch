@@ -20,6 +20,7 @@
 +import org.bukkit.craftbukkit.v1_15_R1.entity.CraftHumanEntity;
 +import org.bukkit.entity.HumanEntity;
 +import org.bukkit.inventory.InventoryHolder;
+\ No newline at end of file
  
  public class ChestMinecartEntity extends ContainerMinecartEntity {
     public ChestMinecartEntity(EntityType<? extends ChestMinecartEntity> p_i50124_1_, World p_i50124_2_) {

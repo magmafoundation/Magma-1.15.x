@@ -162,4 +162,5 @@
 +   public void setMaximumCost(int value) {
 +      this.field_82854_e.func_221494_a(value);
 +   }
+\ No newline at end of file
  }

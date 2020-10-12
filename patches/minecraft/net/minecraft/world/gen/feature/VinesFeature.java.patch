@@ -6,6 +6,7 @@
  
 -      for(int i = p_212245_4_.func_177956_o(); i < 256; ++i) {
 +      for(int i = p_212245_4_.func_177956_o(); i < p_212245_1_.func_201672_e().func_201675_m().getHeight(); ++i) {
+\ No newline at end of file
           blockpos$mutable.func_189533_g(p_212245_4_);
           blockpos$mutable.func_196234_d(p_212245_3_.nextInt(4) - p_212245_3_.nextInt(4), 0, p_212245_3_.nextInt(4) - p_212245_3_.nextInt(4));
           blockpos$mutable.func_185336_p(i);

@@ -31,5 +31,6 @@
 +         return (org.bukkit.craftbukkit.v1_15_R1.entity.CraftMinecartCommand) MinecartCommandBlockEntity.this.getBukkitEntity();
 +      }
 +      // CraftBukkit end
+\ No newline at end of file
     }
  }

@@ -84,6 +84,7 @@
 -         Item item = p_75243_0_.func_77973_b();
 -         return item == Items.field_151068_bn || item == Items.field_185155_bH || item == Items.field_185156_bI || item == Items.field_151069_bo;
 +         return net.minecraftforge.common.brewing.BrewingRecipeRegistry.isValidInput(p_75243_0_);
+\ No newline at end of file
        }
     }
  }

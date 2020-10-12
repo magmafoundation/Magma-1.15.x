@@ -237,4 +237,5 @@
 +      return this.field_215775_d;
 +   }
 +   // CraftBukkit end
+\ No newline at end of file
  }

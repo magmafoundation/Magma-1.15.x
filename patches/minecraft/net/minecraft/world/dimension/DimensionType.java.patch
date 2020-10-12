@@ -120,4 +120,5 @@
 +      return (type == null) ? this : type;
 +   }
 +   // CraftBukkit end
+\ No newline at end of file
  }

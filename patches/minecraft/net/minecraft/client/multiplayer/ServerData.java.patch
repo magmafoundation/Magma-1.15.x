@@ -5,6 +5,7 @@
     private String field_147411_m;
     private boolean field_181042_l;
 +   public net.minecraftforge.fml.client.ExtendedServerListData forgeData = null;
+\ No newline at end of file
  
     public ServerData(String p_i46420_1_, String p_i46420_2_, boolean p_i46420_3_) {
        this.field_78847_a = p_i46420_1_;

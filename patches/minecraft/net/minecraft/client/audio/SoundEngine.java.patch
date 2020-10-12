@@ -44,6 +44,7 @@
                                p_217935_1_.func_216433_a(p_217928_1_);
                                p_217935_1_.func_216438_c();
 +                              net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new net.minecraftforge.client.event.sound.PlayStreamingSourceEvent(this, isound, p_217935_1_));
+\ No newline at end of file
                             });
                          });
                       }

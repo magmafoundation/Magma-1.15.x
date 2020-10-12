@@ -52,6 +52,7 @@
  
 -      if (railshape == RailShape.EAST_WEST) {
 +      if (railshape == RailShape.EAST_WEST && canMakeSlopes) {
+\ No newline at end of file
           if (AbstractRailBlock.func_208488_a(this.field_196920_a, blockpos3.func_177984_a())) {
              railshape = RailShape.ASCENDING_EAST;
           }

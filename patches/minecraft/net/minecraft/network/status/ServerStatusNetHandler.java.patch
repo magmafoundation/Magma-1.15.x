@@ -124,6 +124,7 @@
 +         this.field_147313_b.func_179290_a(new SServerInfoPacket(ping));
 +      }
 +      // CraftBukkit end
+\ No newline at end of file
     }
  
     public void func_147311_a(CPingPacket p_147311_1_) {

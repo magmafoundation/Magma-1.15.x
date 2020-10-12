@@ -27,6 +27,7 @@
     private static String func_152448_b(DataInput p_152448_0_, NBTSizeTracker p_152448_1_) throws IOException {
 -      return p_152448_0_.readUTF();
 +      return p_152448_1_.readUTF(p_152448_0_.readUTF());
+\ No newline at end of file
     }
  
     private static INBT func_229680_b_(INBTType<?> p_229680_0_, String p_229680_1_, DataInput p_229680_2_, int p_229680_3_, NBTSizeTracker p_229680_4_) {

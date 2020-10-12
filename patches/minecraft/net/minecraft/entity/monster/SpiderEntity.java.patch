@@ -38,6 +38,7 @@
           if (effect != null) {
 -            this.func_195064_c(new EffectInstance(effect, Integer.MAX_VALUE));
 +            this.addPotionEffect(new EffectInstance(effect, Integer.MAX_VALUE), Cause.SPIDER_SPAWN); // CraftBukkit
+\ No newline at end of file
           }
        }
  

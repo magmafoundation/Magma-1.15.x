@@ -55,6 +55,7 @@
           } else if (flag1) {
 -            this.field_148280_d.setMessage(TextFormatting.RED + this.field_148280_d.getMessage());
 +            this.field_148280_d.setMessage((keyCodeModifierConflict ? TextFormatting.GOLD : TextFormatting.RED) + this.field_148280_d.getMessage());
+\ No newline at end of file
           }
  
           this.field_148280_d.render(p_render_6_, p_render_7_, p_render_9_);

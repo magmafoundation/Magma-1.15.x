@@ -13,6 +13,7 @@
  
     public void func_209521_a(SCustomPayloadLoginPacket p_209521_1_) {
 +      if (net.minecraftforge.fml.network.NetworkHooks.onCustomPayload(p_209521_1_, this.field_147393_d)) return;
+\ No newline at end of file
        this.field_209525_d.accept(new TranslationTextComponent("connect.negotiating"));
        this.field_147393_d.func_179290_a(new CCustomPayloadLoginPacket(p_209521_1_.func_209918_a(), (PacketBuffer)null));
     }

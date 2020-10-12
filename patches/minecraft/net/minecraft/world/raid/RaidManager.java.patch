@@ -45,6 +45,7 @@
 +                  this.field_215175_a.put(raid.func_221325_u(), raid);
 +               }
 +               // CraftBukkit end
+\ No newline at end of file
                 raid.func_221309_a(p_215170_1_);
                 p_215170_1_.field_71135_a.func_147359_a(new SEntityStatusPacket(p_215170_1_, (byte)43));
                 if (!raid.func_221297_c()) {

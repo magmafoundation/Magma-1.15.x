@@ -33,6 +33,7 @@
              for(AbstractRaiderEntity abstractraiderentity : this.field_220853_c.field_70170_p.func_217374_a(AbstractRaiderEntity.class, this.field_220851_a, this.field_220853_c, this.field_220853_c.func_174813_aQ().func_72314_b(8.0D, 8.0D, 8.0D))) {
 -               abstractraiderentity.func_70624_b(livingentity);
 +               abstractraiderentity.setAttackTarget(livingentity, TargetReason.FOLLOW_LEADER, true); // CraftBukkit
+\ No newline at end of file
                 abstractraiderentity.func_213395_q(true);
              }
  

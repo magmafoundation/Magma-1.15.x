@@ -84,6 +84,7 @@
 +
 +      return true;
 +      // CraftBukkit end
+\ No newline at end of file
     }
  
     protected void func_82485_a(IBlockSource p_82485_1_) {

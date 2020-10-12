@@ -15,6 +15,7 @@
  
 -   public BiomeProviderType(Function<C, T> p_i225746_1_, Function<WorldInfo, C> p_i225746_2_) {
 +   private BiomeProviderType(Function<C, T> p_i225746_1_, Function<WorldInfo, C> p_i225746_2_) {
+\ No newline at end of file
        this.field_205465_g = p_i225746_1_;
        this.field_205466_h = p_i225746_2_;
     }

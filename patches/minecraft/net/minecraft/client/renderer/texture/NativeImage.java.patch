@@ -24,6 +24,7 @@
           throw new IllegalArgumentException(String.format("no luminance or alpha in %s", this.field_211680_b));
 -      } else if (p_211675_1_ <= this.field_195719_a && p_211675_2_ <= this.field_195720_b) {
 +      } else if (p_211675_1_ >= 0 && p_211675_2_ >= 0 && p_211675_1_ < this.field_195719_a && p_211675_2_ < this.field_195720_b) { //Fix MC-162953 bounds checks in `NativeImage`
+\ No newline at end of file
           int i = (p_211675_1_ + p_211675_2_ * this.field_195719_a) * this.field_211680_b.func_211651_a() + this.field_211680_b.func_211647_v() / 8;
           return MemoryUtil.memGetByte(this.field_195722_d + (long)i);
        } else {

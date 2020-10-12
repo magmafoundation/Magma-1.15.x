@@ -36,4 +36,5 @@
 +         return VanillaPack.class.getResourceAsStream(resource);
 +      }
 +   }
+\ No newline at end of file
  }

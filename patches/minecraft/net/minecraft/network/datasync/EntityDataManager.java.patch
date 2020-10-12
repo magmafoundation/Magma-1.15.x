@@ -167,6 +167,7 @@
  
 -      this.field_187235_d.readLock().unlock();
 +//      this.lock.readLock().unlock(); // Spigot - not required
+\ No newline at end of file
     }
  
     public static class DataEntry<T> {

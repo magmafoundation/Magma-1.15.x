@@ -65,6 +65,7 @@
     public void func_196262_a(BlockState p_196262_1_, World p_196262_2_, BlockPos p_196262_3_, Entity p_196262_4_) {
 -      if (p_196262_4_ instanceof RavagerEntity && p_196262_2_.func_82736_K().func_223586_b(GameRules.field_223599_b)) {
 +      if (p_196262_4_ instanceof RavagerEntity && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(p_196262_2_, p_196262_4_) && !CraftEventFactory.callEntityChangeBlockEvent(p_196262_4_, p_196262_3_, Blocks.field_150350_a.func_176223_P(), !p_196262_2_.func_82736_K().func_223586_b(GameRules.field_223599_b)).isCancelled()) { // CraftBukkit
+\ No newline at end of file
           p_196262_2_.func_225521_a_(p_196262_3_, true, p_196262_4_);
        }
  

@@ -23,6 +23,7 @@
 +                  return ActionResultType.FAIL;
 +               }
 +               // CraftBukkit end
+\ No newline at end of file
                 hangingentity.func_184523_o();
                 world.func_217376_c(hangingentity);
              }
