@@ -14,6 +14,7 @@
        public void func_75249_e() {
 -         VexEntity.this.func_70624_b(VexEntity.this.field_190665_b.func_70638_az());
 +         VexEntity.this.setAttackTarget(VexEntity.this.field_190665_b.func_70638_az(), TargetReason.OWNER_ATTACKED_TARGET, true); // CraftBukkit
+\ No newline at end of file
           super.func_75249_e();
        }
     }

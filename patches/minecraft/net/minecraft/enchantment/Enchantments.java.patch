@@ -22,6 +22,7 @@
 +   }
 +   // CraftBukkit end
 +
+\ No newline at end of file
     private static Enchantment func_222191_a(String p_222191_0_, Enchantment p_222191_1_) {
        return Registry.func_218325_a(Registry.field_212628_q, p_222191_0_, p_222191_1_);
     }

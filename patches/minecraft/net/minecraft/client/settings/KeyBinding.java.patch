@@ -198,6 +198,7 @@
 +   }
 +   /****************** Forge End *****************************/
 +
+\ No newline at end of file
     public void func_225593_a_(boolean p_225593_1_) {
        this.field_74513_e = p_225593_1_;
     }

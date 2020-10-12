@@ -106,6 +106,7 @@
 -         return Optional.empty();
 -      }
 +      return EntityType.func_220330_a(p_215382_1_, p_215382_0_.func_201672_e());
+\ No newline at end of file
     }
  
     public BlockPos func_186257_a(Rotation p_186257_1_) {

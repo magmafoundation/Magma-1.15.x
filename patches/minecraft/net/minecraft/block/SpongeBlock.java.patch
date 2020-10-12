@@ -99,6 +99,7 @@
 +      }
 +      // CraftBukkit end
 +
+\ No newline at end of file
        return i > 0;
     }
  }

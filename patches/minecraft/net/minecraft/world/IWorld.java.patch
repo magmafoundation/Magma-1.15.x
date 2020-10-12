@@ -17,6 +17,7 @@
     default int func_72853_d() {
 -      return this.func_201675_m().func_76559_b(this.func_72912_H().func_76073_f());
 +      return this.func_201675_m().func_76559_b(this.func_201672_e().func_72820_D());
+\ No newline at end of file
     }
  
     ITickList<Block> func_205220_G_();

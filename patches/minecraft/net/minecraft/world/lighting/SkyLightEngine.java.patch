@@ -11,4 +11,5 @@
 +   public int queuedUpdateSize() {
 +      return 0;
 +   }
+\ No newline at end of file
  }

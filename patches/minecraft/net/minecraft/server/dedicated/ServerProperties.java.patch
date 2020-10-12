@@ -20,6 +20,7 @@
     }
  
 +
+\ No newline at end of file
     protected ServerProperties func_212857_b_(Properties p_212857_1_) {
        return new ServerProperties(p_212857_1_);
     }

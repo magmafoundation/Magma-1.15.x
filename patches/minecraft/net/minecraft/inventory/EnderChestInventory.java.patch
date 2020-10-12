@@ -27,6 +27,7 @@
        super(27);
 +      this.owner = owner;
 +      // CraftBukkit end
+\ No newline at end of file
     }
  
     public void func_146031_a(EnderChestTileEntity p_146031_1_) {

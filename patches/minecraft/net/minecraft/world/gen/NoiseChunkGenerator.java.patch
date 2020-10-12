@@ -8,6 +8,7 @@
 -                              blockpos$mutable.func_181079_c(j3, j2, i4);
 +                           blockpos$mutable.func_181079_c(j3, j2, i4);
 +                           if (blockstate.getLightValue(chunkprimer, blockpos$mutable) != 0) {
+\ No newline at end of file
                                chunkprimer.func_201637_h(blockpos$mutable);
                             }
  

@@ -68,6 +68,7 @@
              this.field_183503_M.render(p_render_1_, p_render_2_, p_render_3_);
           }
 +         modUpdateNotification.render(p_render_1_, p_render_2_, p_render_3_);
+\ No newline at end of file
  
        }
     }

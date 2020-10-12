@@ -20,6 +20,7 @@
              lightningboltentity.func_204809_d(entity1 instanceof ServerPlayerEntity ? (ServerPlayerEntity)entity1 : null);
 -            ((ServerWorld)this.field_70170_p).func_217468_a(lightningboltentity);
 +            ((ServerWorld)this.field_70170_p).strikeLightning(lightningboltentity, Cause.TRIDENT); // CraftBukkit
+\ No newline at end of file
              soundevent = SoundEvents.field_203275_iq;
              f1 = 5.0F;
           }

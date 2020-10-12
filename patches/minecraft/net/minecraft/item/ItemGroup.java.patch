@@ -89,4 +89,5 @@
 +      field_78032_a[index] = newGroup;
 +      return index;
 +   }
+\ No newline at end of file
  }

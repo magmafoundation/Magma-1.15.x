@@ -26,6 +26,7 @@
 +         }
 +         // CraftBukkit end
 +
+\ No newline at end of file
           while(i > 0) {
              int j = ExperienceOrbEntity.func_70527_a(i);
              i -= j;

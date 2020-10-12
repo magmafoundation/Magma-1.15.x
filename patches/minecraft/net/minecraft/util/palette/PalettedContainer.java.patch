@@ -38,6 +38,7 @@
 +      int regSize = MathHelper.func_151241_e(this.field_205523_d.func_186804_a());
 +      if (this.field_186022_c == field_205521_b && this.field_186024_e != regSize) // Resize bits to fit registry.
 +         this.onResize(regSize, field_205526_g);
+\ No newline at end of file
     }
  
     public void func_186009_b(PacketBuffer p_186009_1_) {

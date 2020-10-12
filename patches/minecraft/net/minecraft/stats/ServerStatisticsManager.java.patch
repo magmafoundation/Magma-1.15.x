@@ -27,6 +27,7 @@
  
     public void func_150873_a(PlayerEntity p_150873_1_, Stat<?> p_150873_2_, int p_150873_3_) {
 +      if ( org.spigotmc.SpigotConfig.disableStatSaving ) return; // Spigot
+\ No newline at end of file
        super.func_150873_a(p_150873_1_, p_150873_2_, p_150873_3_);
        this.field_150888_e.add(p_150873_2_);
     }

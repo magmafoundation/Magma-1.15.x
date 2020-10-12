@@ -73,6 +73,7 @@
  
              this.func_226286_f_((double)blockpos.func_177958_n() + 0.5D, (double)blockpos.func_177956_o(), (double)blockpos.func_177952_p() + 0.5D);
 +            if(valid) ((ServerWorld) field_70170_p).func_217464_b(this); // CraftBukkit
+\ No newline at end of file
           }
        }
  

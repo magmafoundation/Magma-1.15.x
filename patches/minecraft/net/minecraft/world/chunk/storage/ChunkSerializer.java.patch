@@ -78,6 +78,7 @@
 +         } catch (Exception exception) {
 +             LogManager.getLogger().error("A capability provider has thrown an exception trying to write state. It will not persist. Report this to the mod author", exception);
 +         }
+\ No newline at end of file
        } else {
           ChunkPrimer chunkprimer = (ChunkPrimer)p_222645_1_;
           listnbt2.addAll(chunkprimer.func_201652_l());

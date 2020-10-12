@@ -104,6 +104,7 @@
 +            jsonobject.add("forgeData", net.minecraftforge.fml.network.FMLStatusPing.Serializer.serialize(p_serialize_1_.getForgeData(), p_serialize_3_));
 +         }
 +
+\ No newline at end of file
           return jsonobject;
        }
     }

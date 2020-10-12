@@ -44,4 +44,5 @@
 +        return this.stencilEnabled;
 +    }
 +    /*================================ FORGE END   ================================================*/
+\ No newline at end of file
  }

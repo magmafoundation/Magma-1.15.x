@@ -13,6 +13,7 @@
 +      return 15 + RANDOM.nextInt(15) + RANDOM.nextInt(15);
 +   }
 +
+\ No newline at end of file
     public BlockRenderType func_149645_b(BlockState p_149645_1_) {
        return BlockRenderType.MODEL;
     }

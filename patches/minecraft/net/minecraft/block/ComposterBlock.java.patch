@@ -57,6 +57,7 @@
        public PartialInventory(BlockState p_i50464_1_, IWorld p_i50464_2_, BlockPos p_i50464_3_) {
           super(1);
 +         this.bukkitOwner = new CraftBlockInventoryHolder(p_i50464_2_, p_i50464_3_, this); // CraftBukkit
+\ No newline at end of file
           this.field_213916_a = p_i50464_1_;
           this.field_213917_b = p_i50464_2_;
           this.field_213918_c = p_i50464_3_;

@@ -6,6 +6,7 @@
     private final double field_111120_a;
 -   private final double field_111118_b;
 +   public double field_111118_b; // Spigot
+\ No newline at end of file
     private String field_111119_c;
  
     public RangedAttribute(@Nullable IAttribute p_i45891_1_, String p_i45891_2_, double p_i45891_3_, double p_i45891_5_, double p_i45891_7_) {

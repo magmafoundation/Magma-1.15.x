@@ -8,6 +8,7 @@
 +      return field_219767_d;
 +   }
 +
+\ No newline at end of file
     private static Tag<EntityType<?>> func_219763_a(String p_219763_0_) {
        return new EntityTypeTags.Wrapper(new ResourceLocation(p_219763_0_));
     }

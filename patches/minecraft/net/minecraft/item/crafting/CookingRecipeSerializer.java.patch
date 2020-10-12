@@ -25,6 +25,7 @@
           return new IllegalStateException("Item: " + s1 + " does not exist");
        }));
 +      }
+\ No newline at end of file
        float f = JSONUtils.func_151221_a(p_199425_2_, "experience", 0.0F);
        int i = JSONUtils.func_151208_a(p_199425_2_, "cookingtime", this.field_222178_t);
        return this.field_222179_u.create(p_199425_1_, s, ingredient, itemstack, f, i);

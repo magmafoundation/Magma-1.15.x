@@ -24,6 +24,7 @@
 -            if (this.field_70146_Z.nextInt(3) == 0) {
 +            // CraftBukkit - added event call and isCancelled check
 +            if (this.field_70146_Z.nextInt(3) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, p_184645_1_) && !CraftEventFactory.callEntityTameEvent(this, p_184645_1_).isCancelled()) {
+\ No newline at end of file
                 this.func_213528_r(true);
                 this.func_213527_s(true);
                 this.field_70170_p.func_72960_a(this, (byte)41);

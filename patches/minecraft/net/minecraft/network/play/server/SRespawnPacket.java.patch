@@ -23,6 +23,7 @@
     public DimensionType func_212643_b() {
 -      return this.field_149088_a;
 +      return this.field_149088_a == null ? this.field_149088_a = net.minecraftforge.fml.network.NetworkHooks.getDummyDimType(this.dimensionInt) : this.field_149088_a;
+\ No newline at end of file
     }
  
     @OnlyIn(Dist.CLIENT)

@@ -135,6 +135,7 @@
 +            return this.field_176109_i++ % 5 == 0 ? new SMapDataPacket(FilledMapItem.func_195949_f(p_176101_1_), MapData.this.field_76197_d, MapData.this.field_186210_e, MapData.this.field_215161_h, icons, render.buffer, 0, 0, 0, 0) : null;
           }
 +         // CraftBukkit end
+\ No newline at end of file
        }
  
        public void func_176102_a(int p_176102_1_, int p_176102_2_) {

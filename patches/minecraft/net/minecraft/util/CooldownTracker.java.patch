@@ -20,6 +20,7 @@
        private final int field_185137_a;
 -      private final int field_185138_b;
 +      public final int field_185138_b; // private->public CraftBukkit
+\ No newline at end of file
  
        private Cooldown(int p_i47037_2_, int p_i47037_3_) {
           this.field_185137_a = p_i47037_2_;

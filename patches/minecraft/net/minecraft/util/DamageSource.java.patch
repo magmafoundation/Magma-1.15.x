@@ -17,6 +17,7 @@
 +   }
 +   // CraftBukkit end
 +
+\ No newline at end of file
     public static DamageSource func_226252_a_(LivingEntity p_226252_0_) {
        return new EntityDamageSource("sting", p_226252_0_);
     }

@@ -132,6 +132,7 @@
 -         if (this.field_70251_a == AbstractArrowEntity.PickupStatus.ALLOWED && !p_70100_1_.field_71071_by.func_70441_a(this.func_184550_j())) {
 +         if (this.field_70251_a == AbstractArrowEntity.PickupStatus.ALLOWED && !p_70100_1_.field_71071_by.func_70441_a(itemStack)) {
 +            // CraftBukkit end
+\ No newline at end of file
              flag = false;
           }
  

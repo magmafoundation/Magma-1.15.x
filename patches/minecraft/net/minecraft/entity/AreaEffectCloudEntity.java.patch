@@ -127,6 +127,7 @@
                                } else {
 -                                 livingentity.func_195064_c(new EffectInstance(effectinstance));
 +                                 livingentity.addPotionEffect(new EffectInstance(effectinstance), Cause.AREA_EFFECT_CLOUD); // CraftBukkit
+\ No newline at end of file
                                }
                             }
  

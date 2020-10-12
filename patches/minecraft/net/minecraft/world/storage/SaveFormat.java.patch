@@ -22,6 +22,7 @@
 +         return ret;
 +      } catch (net.minecraftforge.fml.StartupQuery.AbortedException e) {
 +          throw e;
+\ No newline at end of file
        } catch (Exception exception) {
           field_215785_a.error("Exception reading {}", p_215780_0_, exception);
           return null;

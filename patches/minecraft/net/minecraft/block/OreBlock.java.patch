@@ -15,5 +15,6 @@
 +   @Override
 +   public int getExpDrop(BlockState state, net.minecraft.world.IWorldReader reader, BlockPos pos, int fortune, int silktouch) {
 +      return silktouch == 0 ? this.func_220281_a(RANDOM) : 0;
+\ No newline at end of file
     }
  }

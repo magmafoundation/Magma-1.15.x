@@ -8,6 +8,7 @@
 +         this(model.useSmoothLighting(), model.isShadedInGui(), model.isSideLit(), model.getCameraTransforms(), overrides);
 +      }
 +
+\ No newline at end of file
        public Builder(BlockModel p_i230060_1_, ItemOverrideList p_i230060_2_, boolean p_i230060_3_) {
           this(p_i230060_1_.func_178309_b(), p_i230060_1_.func_230176_c_().func_230178_a_(), p_i230060_3_, p_i230060_1_.func_181682_g(), p_i230060_2_);
        }

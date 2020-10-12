@@ -63,6 +63,7 @@
           for(EffectInstance effectinstance1 : this.field_184561_h) {
 -            p_184548_1_.func_195064_c(effectinstance1);
 +            p_184548_1_.addPotionEffect(effectinstance1, Cause.ARROW); // CraftBukkit
+\ No newline at end of file
           }
        }
  

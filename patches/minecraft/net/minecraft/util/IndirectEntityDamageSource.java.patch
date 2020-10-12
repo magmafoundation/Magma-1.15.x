@@ -10,4 +10,5 @@
 +       return super.func_76346_g();
 +   }
 +   // CraftBukkit end
+\ No newline at end of file
  }

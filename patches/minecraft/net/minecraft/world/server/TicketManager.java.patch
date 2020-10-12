@@ -18,7 +18,15 @@
  import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
  import it.unimi.dsi.fastutil.objects.ObjectIterator;
  import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-@@ -37,7 +28,7 @@
+@@ -30,6 +21,7 @@
+ import net.minecraft.world.chunk.ChunkDistanceGraph;
+ import net.minecraft.world.chunk.ChunkStatus;
+ import net.minecraft.world.chunk.ChunkTaskPriorityQueueSorter;
++import org.apache.logging.log4j.Level;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+@@ -37,7 +29,7 @@
     private static final Logger field_219373_a = LogManager.getLogger();
     private static final int field_219374_b = 33 + ChunkStatus.func_222599_a(ChunkStatus.field_222617_m) - 2;
     private final Long2ObjectMap<ObjectSet<ServerPlayerEntity>> field_219375_c = new Long2ObjectOpenHashMap<>();
@@ -27,7 +35,7 @@
     private final TicketManager.ChunkTicketTracker field_219378_f = new TicketManager.ChunkTicketTracker();
     private final TicketManager.PlayerChunkTracker field_219381_i = new TicketManager.PlayerChunkTracker(8);
     private final TicketManager.PlayerTicketTracker field_219382_j = new TicketManager.PlayerTicketTracker(33);
-@@ -99,10 +90,22 @@
+@@ -99,10 +91,22 @@
        }
  
        if (!this.field_219383_k.isEmpty()) {
@@ -54,7 +62,7 @@
           return true;
        } else {
           if (!this.field_219387_o.isEmpty()) {
-@@ -146,6 +149,17 @@
+@@ -146,6 +150,17 @@
  
     }
  
@@ -72,7 +80,7 @@
     private void func_219349_b(long p_219349_1_, Ticket<?> p_219349_3_) {
        SortedArraySet<Ticket<?>> sortedarrayset = this.func_229848_e_(p_219349_1_);
        if (sortedarrayset.remove(p_219349_3_)) {
-@@ -159,6 +173,23 @@
+@@ -159,6 +174,23 @@
        this.field_219378_f.func_215491_b(p_219349_1_, func_229844_a_(sortedarrayset), false);
     }
  
@@ -96,7 +104,7 @@
     public <T> void func_219356_a(TicketType<T> p_219356_1_, ChunkPos p_219356_2_, int p_219356_3_, T p_219356_4_) {
        this.func_219347_a(p_219356_2_.func_201841_a(), new Ticket<>(p_219356_1_, p_219356_3_, p_219356_4_));
     }
-@@ -167,6 +198,10 @@
+@@ -167,6 +199,10 @@
        Ticket<T> ticket = new Ticket<>(p_219345_1_, p_219345_3_, p_219345_4_);
        this.func_219349_b(p_219345_2_.func_201841_a(), ticket);
     }
@@ -107,7 +115,19 @@
  
     public <T> void func_219331_c(TicketType<T> p_219331_1_, ChunkPos p_219331_2_, int p_219331_3_, T p_219331_4_) {
        this.func_219347_a(p_219331_2_.func_201841_a(), new Ticket<>(p_219331_1_, 33 - p_219331_3_, p_219331_4_));
-@@ -244,6 +279,22 @@
+@@ -203,9 +239,10 @@
+    }
+ 
+    public void func_219367_b(SectionPos p_219367_1_, ServerPlayerEntity p_219367_2_) {
++//      LOGGER.warn("Player object is: " + player.toString());
+       long i = p_219367_1_.func_218155_u().func_201841_a();
+       ObjectSet<ServerPlayerEntity> objectset = this.field_219375_c.get(i);
+-      objectset.remove(p_219367_2_);
++//      objectset.remove(player);
+       if (objectset.isEmpty()) {
+          this.field_219375_c.remove(i);
+          this.field_219381_i.func_215491_b(i, Integer.MAX_VALUE, false);
+@@ -244,6 +281,22 @@
        return this.field_219384_l.func_225396_a();
     }
  
@@ -127,6 +147,7 @@
 +   }
 +   // CraftBukkit end
 +
+\ No newline at end of file
     class ChunkTicketTracker extends ChunkDistanceGraph {
        public ChunkTicketTracker() {
           super(ChunkManager.field_219249_a + 2, 16, 256);

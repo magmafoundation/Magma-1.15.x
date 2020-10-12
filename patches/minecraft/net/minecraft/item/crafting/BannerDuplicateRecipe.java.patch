@@ -8,6 +8,7 @@
 -               nonnulllist.set(i, new ItemStack(itemstack.func_77973_b().func_77668_q()));
 +            if (itemstack.hasContainerItem()) {
 +               nonnulllist.set(i, itemstack.getContainerItem());
+\ No newline at end of file
              } else if (itemstack.func_77942_o() && BannerTileEntity.func_175113_c(itemstack) > 0) {
                 ItemStack itemstack1 = itemstack.func_77946_l();
                 itemstack1.func_190920_e(1);

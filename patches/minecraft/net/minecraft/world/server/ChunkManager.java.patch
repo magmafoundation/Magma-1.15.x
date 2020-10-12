@@ -337,6 +337,7 @@
  
 +               p_219400_1_.field_71130_g.remove(Integer.valueOf(this.field_219403_c.func_145782_y()));
 +               // CraftBukkit end
+\ No newline at end of file
                 if (flag1 && this.field_219406_f.add(p_219400_1_)) {
                    this.field_219402_b.func_219455_b(p_219400_1_);
                 }

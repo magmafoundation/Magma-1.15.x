@@ -52,6 +52,7 @@
 +            }
 +            // CraftBukkit end
 +
+\ No newline at end of file
              p_195496_1_.func_223102_j((double)blockpos.func_177958_n() + 0.5D, (double)blockpos.func_177956_o() + 0.5D, (double)blockpos.func_177952_p() + 0.5D);
           }
  

@@ -1,12 +1,11 @@
 package org.bukkit.craftbukkit.v1_15_R1.util;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.fluid.IFluidState;
 import net.minecraft.world.World;
+import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.craftbukkit.v1_15_R1.block.CraftBlockState;
 
@@ -51,6 +50,14 @@ public class BlockStateListPopulator extends DummyGeneratorAccess {
 
     public Set<BlockPos> getBlocks() {
         return list.keySet();
+    }
+
+    public List<BlockState> getBlockStates(){
+        ArrayList<BlockState> states = new ArrayList<>();
+        for(BlockPos bp : list.keySet()){
+            states.add(list.get(bp));
+        }
+        return states;
     }
 
     public List<CraftBlockState> getList() {

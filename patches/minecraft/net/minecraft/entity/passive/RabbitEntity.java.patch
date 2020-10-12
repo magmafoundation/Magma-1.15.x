@@ -51,6 +51,7 @@
 +                     return;
 +                  }
 +                  // CraftBukkit end
+\ No newline at end of file
                    world.func_180501_a(blockpos, blockstate.func_206870_a(CarrotBlock.field_176488_a, Integer.valueOf(integer - 1)), 2);
                    world.func_217379_c(2001, blockpos, Block.func_196246_j(blockstate));
                 }

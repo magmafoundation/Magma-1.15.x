@@ -29,6 +29,7 @@
     public void func_225535_a_(ServerWorld p_225535_1_, Random p_225535_2_, BlockPos p_225535_3_, BlockState p_225535_4_) {
 -      p_225535_1_.func_180501_a(p_225535_3_, p_225535_4_.func_206870_a(field_176501_a, Integer.valueOf(p_225535_4_.func_177229_b(field_176501_a) + 1)), 2);
 +      CraftEventFactory.handleBlockGrowEvent(p_225535_1_, p_225535_3_, p_225535_4_.func_206870_a(field_176501_a, Integer.valueOf(p_225535_4_.func_177229_b(field_176501_a) + 1)), 2); // CraftBukkit
+\ No newline at end of file
     }
  
     protected void func_206840_a(StateContainer.Builder<Block, BlockState> p_206840_1_) {

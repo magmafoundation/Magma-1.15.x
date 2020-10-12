@@ -84,6 +84,7 @@
 +                  org.bukkit.event.player.PlayerRiptideEvent event = new org.bukkit.event.player.PlayerRiptideEvent((org.bukkit.entity.Player) playerentity.getBukkitEntity(), org.bukkit.craftbukkit.v1_15_R1.inventory.CraftItemStack.asCraftMirror(p_77615_1_));
 +                  event.getPlayer().getServer().getPluginManager().callEvent(event);
 +                  // CraftBukkit end
+\ No newline at end of file
                    float f7 = playerentity.field_70177_z;
                    float f = playerentity.field_70125_A;
                    float f1 = -MathHelper.func_76126_a(f7 * ((float)Math.PI / 180F)) * MathHelper.func_76134_b(f * ((float)Math.PI / 180F));

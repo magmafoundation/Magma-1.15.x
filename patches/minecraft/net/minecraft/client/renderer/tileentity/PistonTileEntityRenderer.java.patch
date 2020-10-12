@@ -12,5 +12,6 @@
        this.field_178462_c.func_175019_b().func_228802_a_(p_228876_5_, this.field_178462_c.func_184389_a(p_228876_2_), p_228876_2_, p_228876_1_, p_228876_3_, ivertexbuilder, p_228876_6_, new Random(), p_228876_2_.func_209533_a(p_228876_1_), p_228876_7_);
 +      });
 +      net.minecraftforge.client.ForgeHooksClient.setRenderLayer(null);
+\ No newline at end of file
     }
  }

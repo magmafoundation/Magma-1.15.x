@@ -1,6 +1,18 @@
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
-@@ -38,18 +38,18 @@
+@@ -15,10 +15,7 @@
+ import it.unimi.dsi.fastutil.longs.LongIterator;
+ import java.awt.GraphicsEnvironment;
+ import java.awt.image.BufferedImage;
+-import java.io.File;
+-import java.io.IOException;
+-import java.io.UnsupportedEncodingException;
+-import java.io.Writer;
++import java.io.*;
+ import java.lang.management.ManagementFactory;
+ import java.lang.management.ThreadInfo;
+ import java.lang.management.ThreadMXBean;
+@@ -38,18 +35,18 @@
  import java.util.Date;
  import java.util.List;
  import java.util.Map;
@@ -22,7 +34,7 @@
  import net.minecraft.advancements.AdvancementManager;
  import net.minecraft.advancements.FunctionManager;
  import net.minecraft.block.Block;
-@@ -87,7 +87,6 @@
+@@ -87,7 +84,6 @@
  import net.minecraft.server.management.WhiteList;
  import net.minecraft.tags.NetworkTagManager;
  import net.minecraft.test.TestCollection;
@@ -30,7 +42,7 @@
  import net.minecraft.util.FrameTimer;
  import net.minecraft.util.IProgressUpdate;
  import net.minecraft.util.ResourceLocation;
-@@ -137,25 +136,37 @@
+@@ -137,25 +133,38 @@
  import org.apache.commons.lang3.Validate;
  import org.apache.logging.log4j.LogManager;
  import org.apache.logging.log4j.Logger;
@@ -44,6 +56,7 @@
 +import org.bukkit.event.world.WorldLoadEvent;
 +import org.bukkit.generator.ChunkGenerator;
 +import org.bukkit.plugin.PluginLoadOrder;
++import org.magmafoundation.magma.configuration.MagmaConfig;
 +import org.magmafoundation.magma.forge.ForgeInject;
 +import org.spigotmc.SlackActivityAccountant;
  
@@ -75,7 +88,7 @@
     private PlayerList field_71318_t;
     private volatile boolean field_71317_u = true;
     private boolean field_71316_v;
-@@ -196,7 +207,7 @@
+@@ -196,7 +205,7 @@
     private final GameProfileRepository field_152365_W;
     private final PlayerProfileCache field_152366_X;
     private long field_147142_T;
@@ -84,7 +97,7 @@
        p_213187_0_.setUncaughtExceptionHandler((p_213206_0_, p_213206_1_) -> {
           field_147145_h.error(p_213206_1_);
        });
-@@ -210,7 +221,7 @@
+@@ -210,7 +219,7 @@
     private final ResourcePackList<ResourcePackInfo> field_195577_ad = new ResourcePackList<>(ResourcePackInfo::new);
     @Nullable
     private FolderPackFinder field_195578_ae;
@@ -93,7 +106,7 @@
     private final RecipeManager field_199530_ag = new RecipeManager();
     private final NetworkTagManager field_199736_ah = new NetworkTagManager();
     private final ServerScoreboard field_200255_ai = new ServerScoreboard(this);
-@@ -221,37 +232,85 @@
+@@ -221,37 +230,85 @@
     private final LootTableManager field_200256_aj = new LootTableManager(this.field_229734_an_);
     private final AdvancementManager field_200257_ak = new AdvancementManager();
     private final FunctionManager field_200258_al = new FunctionManager(this);
@@ -186,7 +199,7 @@
  
     private void func_213204_a(DimensionSavedDataManager p_213204_1_) {
        ScoreboardSaveData scoreboardsavedata = p_213204_1_.func_215752_a(ScoreboardSaveData::new, "scoreboard");
-@@ -261,7 +320,7 @@
+@@ -261,7 +318,7 @@
  
     protected abstract boolean func_71197_b() throws IOException;
  
@@ -195,7 +208,7 @@
        if (this.func_71254_M().func_75801_b(p_71237_1_)) {
           field_147145_h.info("Converting map!");
           this.func_200245_b(new TranslationTextComponent("menu.convertingLevel"));
-@@ -293,10 +352,10 @@
+@@ -293,10 +350,10 @@
        }
  
        if (this.field_212205_ao) {
@@ -209,7 +222,7 @@
              ITextComponent itextcomponent = null;
  
              while(!worldoptimizer.func_212218_b()) {
-@@ -332,85 +391,141 @@
+@@ -332,85 +389,141 @@
     }
  
     protected void func_71247_a(String p_71247_1_, String p_71247_2_, long p_71247_3_, WorldType p_71247_5_, JsonElement p_71247_6_) {
@@ -413,7 +426,7 @@
     private void func_213188_a(WorldInfo p_213188_1_) {
        p_213188_1_.func_176128_f(false);
        p_213188_1_.func_176121_c(true);
-@@ -428,6 +543,25 @@
+@@ -428,6 +541,25 @@
     protected void func_195560_a(File p_195560_1_, WorldInfo p_195560_2_) {
        this.field_195577_ad.func_198982_a(new ServerPackFinder());
        this.field_195578_ae = new FolderPackFinder(new File(p_195560_1_, "datapacks"));
@@ -439,7 +452,7 @@
        this.field_195577_ad.func_198982_a(this.field_195578_ae);
        this.field_195577_ad.func_198983_a();
        List<ResourcePackInfo> list = Lists.newArrayList();
-@@ -446,10 +580,13 @@
+@@ -446,10 +578,13 @@
        this.func_229737_ba_();
     }
  
@@ -456,7 +469,7 @@
        BlockPos blockpos = serverworld.func_175694_M();
        p_213186_1_.func_219509_a(new ChunkPos(blockpos));
        ServerChunkProvider serverchunkprovider = serverworld.func_72863_F();
-@@ -458,31 +595,26 @@
+@@ -458,31 +593,26 @@
        serverchunkprovider.func_217228_a(TicketType.field_219488_a, new ChunkPos(blockpos), 11, Unit.INSTANCE);
  
        while(serverchunkprovider.func_217229_b() != 441) {
@@ -499,7 +512,7 @@
     }
  
     protected void func_175584_a(String p_175584_1_, SaveHandler p_175584_2_) {
-@@ -528,11 +660,15 @@
+@@ -528,11 +658,15 @@
           flag = true;
        }
  
@@ -520,7 +533,7 @@
        return flag;
     }
  
-@@ -540,8 +676,28 @@
+@@ -540,8 +674,28 @@
        this.func_71260_j();
     }
  
@@ -549,7 +562,7 @@
        if (this.func_147137_ag() != null) {
           this.func_147137_ag().func_151268_b();
        }
-@@ -550,6 +706,7 @@
+@@ -550,6 +704,7 @@
           field_147145_h.info("Saving players");
           this.field_71318_t.func_72389_g();
           this.field_71318_t.func_72392_r();
@@ -557,7 +570,7 @@
        }
  
        field_147145_h.info("Saving worlds");
-@@ -565,6 +722,7 @@
+@@ -565,6 +720,7 @@
        for(ServerWorld serverworld1 : this.func_212370_w()) {
           if (serverworld1 != null) {
              try {
@@ -565,7 +578,7 @@
                 serverworld1.close();
              } catch (IOException ioexception) {
                 field_147145_h.error("Exception closing the level", (Throwable)ioexception);
-@@ -576,6 +734,13 @@
+@@ -576,6 +732,13 @@
           this.field_71307_n.func_76470_e();
        }
  
@@ -579,7 +592,7 @@
     }
  
     public String func_71211_k() {
-@@ -602,23 +767,47 @@
+@@ -602,23 +765,47 @@
  
     }
  
@@ -629,7 +642,7 @@
                 this.field_211151_aa += 50L;
                 if (this.field_71295_T) {
                    this.field_71295_T = false;
-@@ -636,11 +825,23 @@
+@@ -636,11 +823,23 @@
                 this.field_71304_b.func_219897_b();
                 this.field_71296_Q = true;
              }
@@ -653,7 +666,7 @@
           CrashReport crashreport;
           if (throwable1 instanceof ReportedException) {
              crashreport = this.func_71230_b(((ReportedException)throwable1).func_71575_a());
-@@ -655,6 +856,7 @@
+@@ -655,6 +854,7 @@
              field_147145_h.error("We were unable to save this crash report to disk.");
           }
  
@@ -661,7 +674,7 @@
           this.func_71228_a(crashreport);
        } finally {
           try {
-@@ -663,6 +865,14 @@
+@@ -663,6 +863,14 @@
           } catch (Throwable throwable) {
              field_147145_h.error("Exception stopping the server", throwable);
           } finally {
@@ -676,7 +689,7 @@
              this.func_71240_o();
           }
  
-@@ -671,9 +881,14 @@
+@@ -671,9 +879,14 @@
     }
  
     private boolean func_212379_aT() {
@@ -692,7 +705,7 @@
     protected void func_213202_o() {
        this.func_213160_bf();
        this.func_213161_c(() -> {
-@@ -681,7 +896,7 @@
+@@ -681,7 +894,7 @@
        });
     }
  
@@ -701,7 +714,7 @@
        return new TickDelayedTask(this.field_71315_w, p_212875_1_);
     }
  
-@@ -763,7 +978,10 @@
+@@ -763,7 +976,10 @@
     }
  
     protected void func_71217_p(BooleanSupplier p_71217_1_) {
@@ -712,7 +725,7 @@
        ++this.field_71315_w;
        this.func_71190_q(p_71217_1_);
        if (i - this.field_147142_T >= 5000000000L) {
-@@ -778,15 +996,18 @@
+@@ -778,15 +994,18 @@
  
           Collections.shuffle(Arrays.asList(agameprofile));
           this.field_147147_p.func_151318_b().func_151330_a(agameprofile);
@@ -732,7 +745,7 @@
        }
  
        this.field_71304_b.func_76320_a("snooper");
-@@ -805,52 +1026,101 @@
+@@ -805,52 +1024,101 @@
        long i1 = Util.func_211178_c();
        this.field_213215_ap.func_181747_a(i1 - i);
        this.field_71304_b.func_76319_b();
@@ -841,7 +854,7 @@
  
        this.field_71304_b.func_76319_b();
     }
-@@ -864,39 +1134,31 @@
+@@ -864,73 +1132,121 @@
     }
  
     public static void main(String[] p_main_0_) {
@@ -882,6 +895,8 @@
           }
  
 -         if (!servereula.func_154346_a()) {
+-            field_147145_h.info("You need to agree to the EULA in order to run the server. Go to eula.txt for more info.");
+-            return;
 +         // Spigot Start
 +         boolean eulaAgreed = Boolean.getBoolean( "com.mojang.eula.agree" );
 +         if ( eulaAgreed )
@@ -889,13 +904,46 @@
 +            System.err.println( "You have used the Spigot command line EULA agreement flag." );
 +            System.err.println( "By using this setting you are indicating your agreement to Mojang's EULA (https://account.mojang.com/documents/minecraft_eula)." );
 +            System.err.println( "If you do not agree to the above EULA please stop your server and remove this flag immediately." );
-+         }
+          }
 +         // Spigot End
 +         if (!servereula.func_154346_a()) { // Spigot
-             field_147145_h.info("You need to agree to the EULA in order to run the server. Go to eula.txt for more info.");
-             return;
-          }
-@@ -904,33 +1166,47 @@
++            try {
++               System.out.println("You need to agree to the EULA in order to run the server.");
++               System.out.println("By Typing yes you are indicating your agreement to mojangs EULA (https://account.mojang.com/documents/minecraft_eula).");
++               System.out.println("Would you like to accept the EULA? (Type `yes` or `no`):");
++               boolean startServer = false;
++               int wrongCounter = 0;
++               while(!startServer) {
++                  BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
++                  String answer = input.readLine();
++                  switch (answer.toLowerCase()) {
++                     case "yes":
++                        new File("eula.txt").delete();
++                        new File("eula.txt").createNewFile();
++                        OutputStream os = new FileOutputStream(new File("eula.txt"));
++                        os.write("eula=true".getBytes(), 0, "eula=true".length());
++                        System.out.println("Accepted the EULA! starting Magma....");
++                        startServer = true;
++                        continue;
++                     case "no":
++                        System.out.println("EULA NOT ACCEPTED!\nStoping Server...");
++                        return;
++                     default:
++                        if (wrongCounter >= 2) {
++                           System.out.println("You need to agree to the EULA. Go to eula.txt and accept it.");
++                           return;
++                        }
++                        wrongCounter++;
++                        System.out.println("Invalid response! (" + wrongCounter + "/3) Input 'yes' or 'no'");
++                        System.out.println("Would you like to accept the EULA? (Type `yes` or `no`):");
++                        break;
++                  }
++               }
++            } catch (Exception exception){
++               exception.printStackTrace();
++            }
++         }
+ 
           CrashReport.func_230188_h_();
           Bootstrap.func_151354_b();
           Bootstrap.func_218821_c();
@@ -915,15 +963,27 @@
 -         dedicatedserver.func_213197_c(optionset.has(optionspec5));
 -         dedicatedserver.func_213208_c(optionset.valueOf(optionspec11));
 -         boolean flag = !optionset.has(optionspec) && !optionset.valuesOf(optionspec12).contains("nogui");
+-         if (flag && !GraphicsEnvironment.isHeadless()) {
+-            dedicatedserver.func_120011_ar();
+-         }
 +         String s1 = (String) Optional.ofNullable(optionset.valueOf("world")).orElse(serverpropertiesprovider.func_219034_a().field_219021_o);
 +         final DedicatedServer dedicatedserver = new DedicatedServer(optionset, serverpropertiesprovider, DataFixesManager.func_210901_a(), yggdrasilauthenticationservice, minecraftsessionservice, gameprofilerepository, playerprofilecache, LoggingChunkStatusListener::new, s1);
-+
-+         boolean flag = !optionset.has("nogui") && !optionset.nonOptionArguments().contains("nogui");
-          if (flag && !GraphicsEnvironment.isHeadless()) {
-             dedicatedserver.func_120011_ar();
-          }
  
 -         dedicatedserver.func_71256_s();
++         //Magma Start
++
++         //Disables the graphical GUI from ever being enabled
++
++//         boolean flag = !optionset.has("nogui") && !optionset.nonOptionArguments().contains("nogui");
++//         if (flag && !GraphicsEnvironment.isHeadless()) {
++//            dedicatedserver.setGuiEnabled();
++//         }
++
++         MagmaConfig.instance.init();
++
++
++         //Magma End
++
 +         /*
 +         dedicatedserver.startServerThread();
           Thread thread = new Thread("Server Shutdown Thread") {
@@ -957,7 +1017,7 @@
        } catch (Exception exception) {
           field_147145_h.fatal("Failed to start the minecraft server", (Throwable)exception);
        }
-@@ -950,7 +1226,9 @@
+@@ -950,7 +1266,9 @@
     }
  
     public void func_71256_s() {
@@ -968,7 +1028,7 @@
     }
  
     @OnlyIn(Dist.CLIENT)
-@@ -971,7 +1249,7 @@
+@@ -971,7 +1289,7 @@
     }
  
     public ServerWorld func_71218_a(DimensionType p_71218_1_) {
@@ -977,7 +1037,7 @@
     }
  
     public Iterable<ServerWorld> func_212370_w() {
-@@ -1010,7 +1288,7 @@
+@@ -1010,7 +1328,7 @@
     }
  
     public String getServerModName() {
@@ -986,7 +1046,7 @@
     }
  
     public CrashReport func_71230_b(CrashReport p_71230_1_) {
-@@ -1048,7 +1326,7 @@
+@@ -1048,7 +1366,7 @@
     public abstract Optional<String> func_230045_q_();
  
     public boolean func_175578_N() {
@@ -995,7 +1055,7 @@
     }
  
     public void func_145747_a(ITextComponent p_145747_1_) {
-@@ -1290,7 +1568,7 @@
+@@ -1290,7 +1608,7 @@
  
     @Nullable
     public NetworkSystem func_147137_ag() {
@@ -1004,7 +1064,7 @@
     }
  
     @OnlyIn(Dist.CLIENT)
-@@ -1396,6 +1674,10 @@
+@@ -1396,6 +1714,10 @@
     public FunctionManager func_193030_aL() {
        return this.field_200258_al;
     }
@@ -1015,7 +1075,7 @@
  
     public void func_193031_aM() {
        if (!this.func_213162_bc()) {
-@@ -1567,6 +1849,31 @@
+@@ -1567,6 +1889,31 @@
  
     public abstract boolean func_213199_b(GameProfile p_213199_1_);
  
@@ -1047,7 +1107,7 @@
     public void func_223711_a(Path p_223711_1_) throws IOException {
        Path path = p_223711_1_.resolve("levels");
  
-@@ -1609,8 +1916,8 @@
+@@ -1609,8 +1956,8 @@
           final List<String> list = Lists.newArrayList();
           final GameRules gamerules = this.func_200252_aR();
           GameRules.func_223590_a(new GameRules.IRuleEntryVisitor() {
@@ -1058,7 +1118,7 @@
              }
           });
  
-@@ -1651,4 +1958,16 @@
+@@ -1651,4 +1998,16 @@
     private void func_229737_ba_() {
        Block.field_176229_d.forEach(BlockState::func_215692_c);
     }
@@ -1074,4 +1134,5 @@
 +      return (Bukkit.getServer() instanceof CraftServer) ? ((CraftServer) Bukkit.getServer()).getServer() : null;
 +   }
 +   // CraftBukkit end
+\ No newline at end of file
  }

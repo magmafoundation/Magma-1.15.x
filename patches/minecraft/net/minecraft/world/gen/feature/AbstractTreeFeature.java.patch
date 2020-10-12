@@ -78,6 +78,7 @@
 +      }
 +      ((IWorld)reader).func_180495_p(pos).onPlantGrow((IWorld)reader, pos, origin);
 +   }
+\ No newline at end of file
     protected void func_202278_a(IWorldWriter p_202278_1_, BlockPos p_202278_2_, BlockState p_202278_3_) {
        this.func_208521_b(p_202278_1_, p_202278_2_, p_202278_3_);
     }

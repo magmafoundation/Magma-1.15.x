@@ -23,6 +23,7 @@
                    Block block1 = blockstate1.func_177230_c();
 -                  if (!blockstate1.func_196958_f() && !func_227250_b_(block1) && block1 != Blocks.field_196604_cC && block1 != Blocks.field_150432_aD && block1 != Blocks.field_150403_cj) {
 +                  if (!blockstate1.isAir(p_212245_1_, blockpos) && !func_227250_b_(block1) && block1 != Blocks.field_196604_cC && block1 != Blocks.field_150432_aD && block1 != Blocks.field_150403_cj) {
+\ No newline at end of file
                       break;
                    }
  

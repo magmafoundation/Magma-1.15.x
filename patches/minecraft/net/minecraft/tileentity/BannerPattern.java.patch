@@ -21,6 +21,7 @@
 +      throw new IllegalStateException("Enum not extended");
 +   }
 +
+\ No newline at end of file
     public static class Builder {
        private final List<Pair<BannerPattern, DyeColor>> field_222478_a = Lists.newArrayList();
  

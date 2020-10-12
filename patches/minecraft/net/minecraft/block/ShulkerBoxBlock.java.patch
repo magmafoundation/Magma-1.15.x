@@ -6,6 +6,7 @@
     @Nullable
 -   private final DyeColor field_190958_b;
 +   public final DyeColor field_190958_b; // private->public
+\ No newline at end of file
  
     public ShulkerBoxBlock(@Nullable DyeColor p_i48334_1_, Block.Properties p_i48334_2_) {
        super(p_i48334_2_);

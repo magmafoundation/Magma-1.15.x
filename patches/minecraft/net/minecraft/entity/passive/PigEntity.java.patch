@@ -20,6 +20,7 @@
 +      // CraftBukkit - added a reason for spawning this creature
 +      this.field_70170_p.addEntity(zombiepigmanentity, org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason.LIGHTNING);
 +      // CraftBukkit end
+\ No newline at end of file
        this.func_70106_y();
     }
  

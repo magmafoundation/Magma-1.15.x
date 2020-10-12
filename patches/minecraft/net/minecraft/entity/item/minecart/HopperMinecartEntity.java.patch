@@ -65,6 +65,7 @@
 +   }
 +   // CraftBukkit end
 +
+\ No newline at end of file
     public void func_96095_a(int p_96095_1_, int p_96095_2_, int p_96095_3_, boolean p_96095_4_) {
        boolean flag = !p_96095_4_;
        if (flag != this.func_96111_ay()) {

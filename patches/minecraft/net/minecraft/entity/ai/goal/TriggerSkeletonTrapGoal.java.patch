@@ -34,6 +34,7 @@
        skeletonentity.func_184201_a(EquipmentSlotType.HEAD, EnchantmentHelper.func_77504_a(skeletonentity.func_70681_au(), skeletonentity.func_184582_a(EquipmentSlotType.HEAD), (int)(5.0F + p_188514_1_.func_180170_c() * (float)skeletonentity.func_70681_au().nextInt(18)), false));
 -      skeletonentity.field_70170_p.func_217376_c(skeletonentity);
 +      if (!skeletonentity.field_70170_p.addEntity(skeletonentity, org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason.JOCKEY)) return null; // CraftBukkit
+\ No newline at end of file
        return skeletonentity;
     }
  }

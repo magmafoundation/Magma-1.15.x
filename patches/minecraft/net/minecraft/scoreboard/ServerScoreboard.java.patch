@@ -121,6 +121,7 @@
 +   }
 +   // CraftBukkit end
 +
+\ No newline at end of file
     public static enum Action {
        CHANGE,
        REMOVE;

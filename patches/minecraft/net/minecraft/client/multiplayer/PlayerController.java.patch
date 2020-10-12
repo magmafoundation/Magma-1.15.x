@@ -168,6 +168,7 @@
 +      if (this.field_78779_k == GameType.SPECTATOR) return ActionResultType.PASS; // don't fire for spectators to match non-specific EntityInteract
 +      ActionResultType cancelResult = net.minecraftforge.common.ForgeHooks.onInteractEntityAt(p_187102_1_, p_187102_2_, p_187102_3_, p_187102_4_);
 +      if(cancelResult != null) return cancelResult;
+\ No newline at end of file
        return this.field_78779_k == GameType.SPECTATOR ? ActionResultType.PASS : p_187102_2_.func_184199_a(p_187102_1_, vec3d, p_187102_4_);
     }
  

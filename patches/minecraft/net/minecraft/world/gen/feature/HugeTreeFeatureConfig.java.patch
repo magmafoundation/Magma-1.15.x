@@ -41,6 +41,7 @@
        public HugeTreeFeatureConfig func_225568_b_() {
 -         return new HugeTreeFeatureConfig(this.field_227377_a_, this.field_227378_b_, this.field_227278_c_, this.field_227279_d_, this.field_227280_e_, this.field_227281_f_);
 +         return new HugeTreeFeatureConfig(this.field_227377_a_, this.field_227378_b_, this.field_227278_c_, this.field_227279_d_, this.field_227280_e_, this.field_227281_f_).setSapling(this.sapling);
+\ No newline at end of file
        }
     }
  }

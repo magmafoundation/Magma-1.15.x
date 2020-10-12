@@ -53,6 +53,7 @@
 +   }
 +   // CraftBukkit end
 +
+\ No newline at end of file
     private BarrelTileEntity(TileEntityType<?> p_i49963_1_) {
        super(p_i49963_1_);
     }

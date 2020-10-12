@@ -16,6 +16,7 @@
        this.field_220687_a.clear();
        this.field_220687_a.addAll(p_220684_1_);
 +      this.controlsArray = p_220684_1_.toArray(NO_CONTROLS); // NO_CONTROLS is only used to get around type erasure
+\ No newline at end of file
     }
  
     public String toString() {

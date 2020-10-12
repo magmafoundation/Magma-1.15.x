@@ -20,6 +20,7 @@
 +      }
 +      // CraftBukkit end
 +
+\ No newline at end of file
        public void func_145752_a(String p_145752_1_) {
           super.func_145752_a(p_145752_1_);
           CommandBlockTileEntity.this.func_70296_d();

@@ -27,6 +27,7 @@
        }
 +      Material material = p_150897_1_.func_185904_a();
 +      return material == Material.field_151576_e || material == Material.field_151573_f || material == Material.field_151574_g;
+\ No newline at end of file
     }
  
     public float func_150893_a(ItemStack p_150893_1_, BlockState p_150893_2_) {

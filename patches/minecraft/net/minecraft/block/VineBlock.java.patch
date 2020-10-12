@@ -87,4 +87,5 @@
     }
 +
 +   @Override public boolean isLadder(BlockState state, IWorldReader world, BlockPos pos, net.minecraft.entity.LivingEntity entity) { return true; }
+\ No newline at end of file
  }

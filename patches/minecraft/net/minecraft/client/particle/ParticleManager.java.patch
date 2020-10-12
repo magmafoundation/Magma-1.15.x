@@ -78,6 +78,7 @@
 +         func_180532_a(pos, target.func_216354_b());
 +   }
 +
+\ No newline at end of file
     @OnlyIn(Dist.CLIENT)
     class AnimatedSpriteImpl implements IAnimatedSprite {
        private List<TextureAtlasSprite> field_217594_b;

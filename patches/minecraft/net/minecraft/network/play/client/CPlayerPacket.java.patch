@@ -19,6 +19,7 @@
 -   protected boolean field_149481_i;
 +   public boolean field_149480_h; // CraftBukkit protected->public
 +   public boolean field_149481_i; // CraftBukkit protected->public
+\ No newline at end of file
  
     public CPlayerPacket() {
     }

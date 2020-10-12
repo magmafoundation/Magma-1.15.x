@@ -20,4 +20,5 @@
 +      return new CraftComplexRecipe(this);
 +   }
 +   // CraftBukkit end
+\ No newline at end of file
  }

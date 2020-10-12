@@ -6,6 +6,7 @@
  
 -public class CCustomPayloadLoginPacket implements IPacket<IServerLoginNetHandler> {
 +public class CCustomPayloadLoginPacket implements IPacket<IServerLoginNetHandler>, net.minecraftforge.fml.network.ICustomPacket<CCustomPayloadLoginPacket> {
+\ No newline at end of file
     private int field_209922_a;
     private PacketBuffer field_209923_b;
  

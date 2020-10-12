@@ -18,6 +18,7 @@
 +      func_174937_a(this.lastBlur, this.lastMipmap);
 +   }
 +
+\ No newline at end of file
     public int func_110552_b() {
        RenderSystem.assertThread(RenderSystem::isOnRenderThreadOrInit);
        if (this.field_110553_a == -1) {

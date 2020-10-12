@@ -11,6 +11,7 @@
 +                  }
 +                  // CraftBukkit end
 +
+\ No newline at end of file
                    world.func_217376_c(endercrystalentity);
                    if (world.field_73011_w instanceof EndDimension) {
                       DragonFightManager dragonfightmanager = ((EndDimension)world.field_73011_w).func_186063_s();

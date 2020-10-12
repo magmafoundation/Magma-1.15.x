@@ -6,6 +6,7 @@
     private void func_210324_e(CommandSource p_210324_1_) throws CommandSyntaxException {
 -      if (this.field_210325_m && !p_210324_1_.func_197034_c(2)) {
 +      if (this.field_210325_m && !p_210324_1_.hasPermission(2, "minecraft.command.selector")) { // CraftBukkit
+\ No newline at end of file
           throw EntityArgument.field_210323_f.create();
        }
     }

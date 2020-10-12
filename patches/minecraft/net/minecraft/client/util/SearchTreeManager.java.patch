@@ -9,6 +9,7 @@
 +      return net.minecraftforge.resource.VanillaResourceType.LANGUAGES;
 +   }
 +
+\ No newline at end of file
     @OnlyIn(Dist.CLIENT)
     public static class Key<T> {
     }

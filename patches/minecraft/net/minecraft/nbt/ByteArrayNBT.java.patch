@@ -6,6 +6,7 @@
           int i = p_225649_1_.readInt();
 +         com.google.common.base.Preconditions.checkArgument( i < 1 << 24); // Spigot
 +
+\ No newline at end of file
           p_225649_3_.func_152450_a(8L * (long)i);
           byte[] abyte = new byte[i];
           p_225649_1_.readFully(abyte);

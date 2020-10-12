@@ -6,6 +6,7 @@
  
 -public class SCustomPayloadPlayPacket implements IPacket<IClientPlayNetHandler> {
 +public class SCustomPayloadPlayPacket implements IPacket<IClientPlayNetHandler>, net.minecraftforge.fml.network.ICustomPacket<SCustomPayloadPlayPacket> {
+\ No newline at end of file
     public static final ResourceLocation field_209911_b = new ResourceLocation("brand");
     public static final ResourceLocation field_209913_d = new ResourceLocation("debug/path");
     public static final ResourceLocation field_209914_e = new ResourceLocation("debug/neighbors_update");

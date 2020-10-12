@@ -44,6 +44,7 @@
 +                  return new ActionResult<>(ActionResultType.FAIL, itemstack);
 +               }
 +               // CraftBukkit end
+\ No newline at end of file
                 if (p_77659_2_ instanceof ServerPlayerEntity) {
                    CriteriaTriggers.field_192132_l.func_192239_a((ServerPlayerEntity)p_77659_2_, blockpos);
                 }

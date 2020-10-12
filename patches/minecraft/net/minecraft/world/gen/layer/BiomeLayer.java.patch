@@ -78,4 +78,5 @@
 +      int weight = net.minecraftforge.common.BiomeManager.isTypeListModded(type)?context.func_202696_a(totalWeight):context.func_202696_a(totalWeight / 10) * 10;
 +      return (net.minecraftforge.common.BiomeManager.BiomeEntry)net.minecraft.util.WeightedRandom.func_180166_a(biomeList, weight);
 +   }
+\ No newline at end of file
  }

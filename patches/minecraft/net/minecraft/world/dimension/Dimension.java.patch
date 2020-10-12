@@ -100,4 +100,5 @@
 +   public World getWorld() {
 +      return this.field_76579_a;
 +   }
+\ No newline at end of file
  }

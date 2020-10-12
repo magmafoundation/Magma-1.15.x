@@ -6,6 +6,7 @@
  
 -public class Potion {
 +public class Potion extends net.minecraftforge.registries.ForgeRegistryEntry<Potion> {
+\ No newline at end of file
     private final String field_185179_d;
     private final ImmutableList<EffectInstance> field_185180_e;
  

@@ -6,6 +6,7 @@
                                      ilivingentitydata = phantomentity.func_213386_a(p_203232_1_, difficultyinstance, SpawnReason.NATURAL, ilivingentitydata, (CompoundNBT)null);
 -                                    p_203232_1_.func_217376_c(phantomentity);
 +                                    p_203232_1_.addEntity(phantomentity, org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason.NATURAL); // CraftBukkit
+\ No newline at end of file
                                   }
  
                                   i += l;

@@ -6,6 +6,7 @@
              } else {
 -               p_77654_3_.func_195064_c(new EffectInstance(effectinstance));
 +               p_77654_3_.addEffect(new EffectInstance(effectinstance), org.bukkit.event.entity.EntityPotionEffectEvent.Cause.POTION_DRINK); // CraftBukkit
+\ No newline at end of file
              }
           }
        }

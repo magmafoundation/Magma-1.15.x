@@ -24,6 +24,7 @@
 +      }
 +      // CraftBukkit end
 +
+\ No newline at end of file
        if (p_180666_4_ != i) {
           BlockState blockstate = this.func_176575_a(p_180666_3_, i);
           p_180666_1_.func_180501_a(p_180666_2_, blockstate, 2);

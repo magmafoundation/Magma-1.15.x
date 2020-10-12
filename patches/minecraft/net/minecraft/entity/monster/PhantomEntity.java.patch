@@ -14,6 +14,7 @@
                    if (PhantomEntity.this.func_213344_a(playerentity, EntityPredicate.field_221016_a)) {
 -                     PhantomEntity.this.func_70624_b(playerentity);
 +                     PhantomEntity.this.setAttackTarget(playerentity, TargetReason.CLOSEST_PLAYER, true); // CraftBukkit - reason
+\ No newline at end of file
                       return true;
                    }
                 }

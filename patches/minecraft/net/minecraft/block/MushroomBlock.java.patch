@@ -49,6 +49,7 @@
           }
  
 +         SaplingBlock.treeType = TreeType.RED_MUSHROOM; // CraftBukkit
+\ No newline at end of file
           configuredfeature = Feature.field_202318_R.func_225566_b_(DefaultBiomeFeatures.field_226767_ab_);
        }
  

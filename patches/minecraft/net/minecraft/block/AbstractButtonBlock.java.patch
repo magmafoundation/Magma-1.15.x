@@ -93,6 +93,7 @@
 +            return;
 +         }
 +         // CraftBukkit end
+\ No newline at end of file
           p_185616_2_.func_180501_a(p_185616_3_, p_185616_1_.func_206870_a(field_176584_b, Boolean.valueOf(flag)), 3);
           this.func_196368_e(p_185616_1_, p_185616_2_, p_185616_3_);
           this.func_196367_a((PlayerEntity)null, p_185616_2_, p_185616_3_, flag);

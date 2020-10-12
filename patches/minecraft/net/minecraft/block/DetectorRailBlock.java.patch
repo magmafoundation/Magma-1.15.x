@@ -29,6 +29,7 @@
        if (p_180641_1_.func_177229_b(field_176574_M)) {
 +         List<AbstractMinecartEntity> carts = this.func_200878_a(p_180641_2_, p_180641_3_, AbstractMinecartEntity.class, null);
 +         if (!carts.isEmpty() && carts.get(0).getComparatorLevel() > -1) return carts.get(0).getComparatorLevel();
+\ No newline at end of file
           List<MinecartCommandBlockEntity> list = this.func_200878_a(p_180641_2_, p_180641_3_, MinecartCommandBlockEntity.class, (Predicate<Entity>)null);
           if (!list.isEmpty()) {
              return list.get(0).func_145822_e().func_145760_g();

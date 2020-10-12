@@ -47,6 +47,7 @@
     }
 +   
 +   public boolean isHidden() { return hidden; }
+\ No newline at end of file
  
     public boolean equals(Object p_equals_1_) {
        if (this == p_equals_1_) {

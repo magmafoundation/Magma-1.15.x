@@ -92,6 +92,7 @@
 +       fluidRenderChecks.put(fluid.delegate, predicate);
 +   }
 +
+\ No newline at end of file
     public static void func_228393_a_(boolean p_228393_0_) {
        field_228388_c_ = p_228393_0_;
     }

@@ -38,6 +38,7 @@
 +         }
 +         // CraftBukkit end
 +
+\ No newline at end of file
           BlockState blockstate = this.func_226939_d_(p_225533_1_, p_225533_2_, p_225533_3_);
           float f = blockstate.func_177229_b(field_176359_b) ? 0.6F : 0.5F;
           p_225533_2_.func_184133_a((PlayerEntity)null, p_225533_3_, SoundEvents.field_187750_dc, SoundCategory.BLOCKS, 0.3F, f);

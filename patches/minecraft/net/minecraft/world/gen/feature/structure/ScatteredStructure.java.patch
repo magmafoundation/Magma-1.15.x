@@ -25,4 +25,5 @@
     protected abstract int func_202382_c();
 +
 +   protected abstract int getSeedModifier(World world); // Spigot
+\ No newline at end of file
  }

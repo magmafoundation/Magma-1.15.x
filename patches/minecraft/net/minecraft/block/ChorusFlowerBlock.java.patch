@@ -92,6 +92,7 @@
                    flag = true;
 -               } else if (!blockstate1.func_196958_f()) {
 +               } else if (!blockstate1.isAir(p_196260_2_, p_196260_3_.func_177972_a(direction))) {
+\ No newline at end of file
                    return false;
                 }
              }

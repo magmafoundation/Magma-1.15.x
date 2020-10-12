@@ -31,6 +31,7 @@
  
 -         if (this.field_197270_l.func_177230_c().func_149716_u()) {
 +         if (this.field_197270_l.hasTileEntity()) {
+\ No newline at end of file
              p_197255_1_.suggest(String.valueOf('{'));
           }
        }

@@ -12,6 +12,7 @@
 +                          .map(net.minecraft.util.ResourceLocation::toString), sb))
 +              .executes(ctx -> func_198534_a(ctx.getSource(), ctx.getArgument("structure_type", net.minecraft.util.ResourceLocation.class).toString().replace("minecraft:", ""))
 +      )));
+\ No newline at end of file
     }
  
     private static int func_198534_a(CommandSource p_198534_0_, String p_198534_1_) throws CommandSyntaxException {

@@ -554,6 +554,7 @@
 +                        net.minecraft.entity.item.ItemEntity ent = entity.func_70099_a(d, 1.0F);
 +                        ent.func_213317_d(ent.func_213322_ci().func_72441_c((double)((rand.nextFloat() - rand.nextFloat()) * 0.1F), (double)(rand.nextFloat() * 0.05F), (double)((rand.nextFloat() - rand.nextFloat()) * 0.1F)));
 +                     });
+\ No newline at end of file
                       if (p_82487_2_.func_96631_a(1, world.field_73012_v, (ServerPlayerEntity)null)) {
                          p_82487_2_.func_190920_e(0);
                       }

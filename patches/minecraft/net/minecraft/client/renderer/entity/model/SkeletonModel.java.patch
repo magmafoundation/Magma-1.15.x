@@ -15,6 +15,7 @@
        ItemStack itemstack = p_225597_1_.func_184614_ca();
 -      if (p_225597_1_.func_213398_dR() && (itemstack.func_190926_b() || itemstack.func_77973_b() != Items.field_151031_f)) {
 +      if (p_225597_1_.func_213398_dR() && (itemstack.func_190926_b() || !(itemstack.func_77973_b() instanceof net.minecraft.item.BowItem))) {
+\ No newline at end of file
           float f = MathHelper.func_76126_a(this.field_217112_c * (float)Math.PI);
           float f1 = MathHelper.func_76126_a((1.0F - (1.0F - this.field_217112_c) * (1.0F - this.field_217112_c)) * (float)Math.PI);
           this.field_178723_h.field_78808_h = 0.0F;

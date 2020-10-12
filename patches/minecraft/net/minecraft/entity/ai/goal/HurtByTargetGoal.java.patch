@@ -15,5 +15,6 @@
     protected void func_220793_a(MobEntity p_220793_1_, LivingEntity p_220793_2_) {
 -      p_220793_1_.func_70624_b(p_220793_2_);
 +      p_220793_1_.setAttackTarget(p_220793_2_, org.bukkit.event.entity.EntityTargetEvent.TargetReason.TARGET_ATTACKED_NEARBY_ENTITY, true); // CraftBukkit - reason
+\ No newline at end of file
     }
  }

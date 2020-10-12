@@ -91,6 +91,7 @@
  
 -         if (p_serialize_1_.field_186466_c.length > 0) {
 +         if (!p_serialize_1_.field_186466_c.isEmpty()) {
+\ No newline at end of file
              jsonobject.add("pools", p_serialize_3_.serialize(p_serialize_1_.field_186466_c));
           }
  

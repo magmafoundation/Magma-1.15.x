@@ -15,6 +15,7 @@
           this.field_191888_F.field_71474_y.field_74363_ab = language.getCode();
 -         this.field_191888_F.func_213237_g();
 +         net.minecraftforge.client.ForgeHooksClient.refreshResources(this.field_191888_F, net.minecraftforge.resource.VanillaResourceType.LANGUAGES);
+\ No newline at end of file
           this.field_191888_F.field_71466_p.func_78275_b(languagemanager.func_135044_b());
           this.field_191888_F.field_71474_y.func_74303_b();
        }

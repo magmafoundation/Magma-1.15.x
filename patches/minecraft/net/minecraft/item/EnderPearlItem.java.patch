@@ -37,6 +37,7 @@
 +      p_77659_1_.func_184148_a((PlayerEntity)null, p_77659_2_.func_226277_ct_(), p_77659_2_.func_226278_cu_(), p_77659_2_.func_226281_cx_(), SoundEvents.field_187595_bc, SoundCategory.NEUTRAL, 0.5F, 0.4F / (field_77697_d.nextFloat() * 0.4F + 0.8F));
 +      p_77659_2_.func_184811_cZ().func_185145_a(this, 20);
 +      // CraftBukkit end
+\ No newline at end of file
  
        p_77659_2_.func_71029_a(Stats.field_75929_E.func_199076_b(this));
        if (!p_77659_2_.field_71075_bZ.field_75098_d) {

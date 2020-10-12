@@ -92,6 +92,7 @@
              return false;
 -         } else if (!this.field_179473_a.field_70170_p.func_82736_K().func_223586_b(GameRules.field_223599_b)) {
 +         } else if (!net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.field_179473_a.field_70170_p, this.field_179473_a)) {
+\ No newline at end of file
              return false;
           } else {
              return this.field_179473_a.func_70681_au().nextInt(20) == 0;

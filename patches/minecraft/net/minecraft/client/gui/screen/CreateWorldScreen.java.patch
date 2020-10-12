@@ -22,6 +22,7 @@
  
 +         WorldType.field_77139_a[this.field_146331_K].onGUICreateWorldPress();
 +
+\ No newline at end of file
           WorldSettings worldsettings = new WorldSettings(i, this.field_228197_f_.field_228218_f_, this.field_146341_s, this.field_146337_w, WorldType.field_77139_a[this.field_146331_K]);
           worldsettings.func_205390_a(Dynamic.convert(NBTDynamicOps.field_210820_a, JsonOps.INSTANCE, this.field_146334_a));
           if (this.field_146338_v && !this.field_146337_w) {

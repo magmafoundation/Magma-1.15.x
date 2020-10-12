@@ -27,6 +27,7 @@
 -      p_228826_1_[i + 4 + 1] = Float.floatToRawIntBits(p_228826_5_.func_94207_b((double)p_228826_6_.func_178346_b(p_228826_2_)));
 +      p_228826_1_[i + 4] = Float.floatToRawIntBits(p_228826_5_.func_94214_a((double)p_228826_6_.func_178348_a(p_228826_2_)  * .999 + p_228826_6_.func_178348_a((p_228826_2_ + 2) % 4) * .001));
 +      p_228826_1_[i + 4 + 1] = Float.floatToRawIntBits(p_228826_5_.func_94207_b((double)p_228826_6_.func_178346_b(p_228826_2_) * .999 + p_228826_6_.func_178346_b((p_228826_2_ + 2) % 4) * .001));
+\ No newline at end of file
     }
  
     private void func_199336_a(Vector3f p_199336_1_, @Nullable BlockPartRotation p_199336_2_) {

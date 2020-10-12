@@ -47,6 +47,7 @@
     public ItemStack func_222205_b() {
        int i = this.field_222223_a.func_190916_E();
 +      if (i <= 0) return ItemStack.field_190927_a; // CraftBukkit - SPIGOT-5476
+\ No newline at end of file
        ItemStack itemstack = this.field_222223_a.func_77946_l();
        int j = Math.max(0, MathHelper.func_76141_d((float)(i * this.field_222230_h) * this.field_222231_i));
        itemstack.func_190920_e(MathHelper.func_76125_a(i + j + this.field_222229_g, 1, this.field_222223_a.func_77973_b().func_77639_j()));

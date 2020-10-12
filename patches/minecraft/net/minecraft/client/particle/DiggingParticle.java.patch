@@ -22,4 +22,5 @@
 +         this.func_217567_a(Minecraft.func_71410_x().func_175602_ab().func_175023_a().getTexture(field_174847_a, field_187122_b, pos));
 +      return this;
 +   }
+\ No newline at end of file
  }

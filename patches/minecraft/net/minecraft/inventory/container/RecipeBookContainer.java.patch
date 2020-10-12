@@ -8,4 +8,5 @@
 +   public java.util.List<net.minecraft.client.util.RecipeBookCategories> getRecipeBookCategories() {
 +      return net.minecraft.client.util.ClientRecipeBook.func_216769_b(this);
 +   }
+\ No newline at end of file
  }

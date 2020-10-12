@@ -78,6 +78,7 @@
     public boolean func_70300_a(PlayerEntity p_70300_1_) {
 -      return true;
 +      return false;
+\ No newline at end of file
     }
  
     public void func_174888_l() {

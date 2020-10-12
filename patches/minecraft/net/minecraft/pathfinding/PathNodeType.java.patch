@@ -13,4 +13,5 @@
 +            (this == LAVA) ? DAMAGE_FIRE :
 +            null;
 +   }
+\ No newline at end of file
  }

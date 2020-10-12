@@ -37,4 +37,5 @@
        T create(int p_create_1_, PlayerInventory p_create_2_);
     }
 +   // CraftBukkit end
+\ No newline at end of file
  }

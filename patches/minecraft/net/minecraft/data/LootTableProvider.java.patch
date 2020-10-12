@@ -42,6 +42,7 @@
 +      });
 +   }
 +
+\ No newline at end of file
     private static Path func_218439_a(Path p_218439_0_, ResourceLocation p_218439_1_) {
        return p_218439_0_.resolve("data/" + p_218439_1_.func_110624_b() + "/loot_tables/" + p_218439_1_.func_110623_a() + ".json");
     }

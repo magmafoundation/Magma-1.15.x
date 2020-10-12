@@ -27,6 +27,7 @@
           villagerentity.func_70012_b(p_220480_1_.func_226277_ct_(), p_220480_1_.func_226278_cu_(), p_220480_1_.func_226281_cx_(), 0.0F, 0.0F);
 -         p_220480_1_.field_70170_p.func_217376_c(villagerentity);
 +         p_220480_1_.field_70170_p.addEntity(villagerentity, SpawnReason.BREEDING); // CraftBukkit - added SpawnReason
+\ No newline at end of file
           p_220480_1_.field_70170_p.func_72960_a(villagerentity, (byte)12);
           return Optional.of(villagerentity);
        }

@@ -44,6 +44,7 @@
 +         }
 +         CraftEventFactory.blockDamage = null;
 +         // CraftBukkit end
+\ No newline at end of file
        }
  
        if (livingentity != this.field_205047_j) {

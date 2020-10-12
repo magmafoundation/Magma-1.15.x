@@ -100,6 +100,7 @@
 +   @Override
 +   public int getExpDrop(BlockState state, net.minecraft.world.IWorldReader world, BlockPos pos, int fortune, int silktouch) {
 +      return silktouch == 0 ? 1 + RANDOM.nextInt(5) : 0;
+\ No newline at end of file
     }
  
     @OnlyIn(Dist.CLIENT)

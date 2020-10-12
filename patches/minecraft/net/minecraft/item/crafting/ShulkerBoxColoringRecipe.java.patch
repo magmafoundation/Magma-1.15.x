@@ -33,6 +33,7 @@
  
 -      ItemStack itemstack2 = ShulkerBoxBlock.func_190953_b(dyeitem.func_195962_g());
 +      ItemStack itemstack2 = ShulkerBoxBlock.func_190953_b(dyecolor);
+\ No newline at end of file
        if (itemstack.func_77942_o()) {
           itemstack2.func_77982_d(itemstack.func_77978_p().func_74737_b());
        }

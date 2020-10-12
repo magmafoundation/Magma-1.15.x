@@ -6,6 +6,7 @@
  
 -   public static class Serializer<T extends SingleItemRecipe> implements IRecipeSerializer<T> {
 +   public static class Serializer<T extends SingleItemRecipe> extends net.minecraftforge.registries.ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<T> {
+\ No newline at end of file
        final SingleItemRecipe.Serializer.IRecipeFactory<T> field_222180_t;
  
        protected Serializer(SingleItemRecipe.Serializer.IRecipeFactory<T> p_i50146_1_) {

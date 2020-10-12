@@ -40,6 +40,7 @@
        StringBuilder stringbuilder = new StringBuilder();
        stringbuilder.append("---- Minecraft Crash Report ----\n");
 +      net.minecraftforge.fml.CrashReportExtender.addCrashReportHeader(stringbuilder, this);
+\ No newline at end of file
        stringbuilder.append("// ");
        stringbuilder.append(func_71503_h());
        stringbuilder.append("\n\n");

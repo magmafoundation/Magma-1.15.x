@@ -24,6 +24,7 @@
 +   }
 +   // CraftBukkit end
 +
+\ No newline at end of file
     public CustomServerBossInfo(ResourceLocation p_i48620_1_, ITextComponent p_i48620_2_) {
        super(p_i48620_2_, BossInfo.Color.WHITE, BossInfo.Overlay.PROGRESS);
        this.field_201373_h = p_i48620_1_;

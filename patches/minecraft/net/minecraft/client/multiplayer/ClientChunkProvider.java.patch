@@ -13,6 +13,7 @@
  
           this.field_73235_d.func_228323_e_(p_228313_1_, p_228313_2_);
 +         net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new net.minecraftforge.event.world.ChunkEvent.Load(chunk));
+\ No newline at end of file
           return chunk;
        }
     }

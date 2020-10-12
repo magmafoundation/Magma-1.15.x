@@ -5,6 +5,7 @@
  
     private static Structure<?> func_215141_a(String p_215141_0_, Structure<?> p_215141_1_) {
 +      if (true) return p_215141_1_; // FORGE: Registry replaced with slave map
+\ No newline at end of file
        return Registry.func_218325_a(Registry.field_218361_B, p_215141_0_.toLowerCase(Locale.ROOT), p_215141_1_);
     }
  

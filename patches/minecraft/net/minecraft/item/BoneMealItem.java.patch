@@ -44,6 +44,7 @@
        BlockState blockstate = p_195965_0_.func_180495_p(p_195965_1_);
 -      if (!blockstate.func_196958_f()) {
 +      if (!blockstate.isAir(p_195965_0_, p_195965_1_)) {
+\ No newline at end of file
           for(int i = 0; i < p_195965_2_; ++i) {
              double d0 = field_77697_d.nextGaussian() * 0.02D;
              double d1 = field_77697_d.nextGaussian() * 0.02D;

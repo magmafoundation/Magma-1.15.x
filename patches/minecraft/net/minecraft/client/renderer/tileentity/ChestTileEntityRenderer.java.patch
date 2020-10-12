@@ -17,4 +17,5 @@
 +   protected Material getMaterial(T tileEntity, ChestType chestType) {
 +      return Atlases.func_228771_a_(tileEntity, chestType, this.field_147509_j);
 +   }
+\ No newline at end of file
  }

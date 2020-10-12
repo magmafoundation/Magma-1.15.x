@@ -24,6 +24,7 @@
 -         p_152455_0_.readUTF();
 +         p_152455_2_.readUTF(p_152455_0_.readUTF()); //Forge: Count this string.
 +         p_152455_2_.func_152450_a(32); //Forge: 4 extra bytes for the object allocation.
+\ No newline at end of file
  
           try {
              return NBTTypes.func_229710_a_(b0).func_225649_b_(p_152455_0_, p_152455_1_, p_152455_2_);

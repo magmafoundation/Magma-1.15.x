@@ -187,6 +187,7 @@
 +      this.field_146010_n = Effect.func_188412_a(p_145839_1_.func_74762_e("Secondary"));
 +      this.field_146012_l = p_145839_1_.func_74762_e("Levels"); // SPIGOT-5053, use where available
 +      // CraftBukkit end
+\ No newline at end of file
        if (p_145839_1_.func_150297_b("CustomName", 8)) {
           this.field_146008_p = ITextComponent.Serializer.func_150699_a(p_145839_1_.func_74779_i("CustomName"));
        }

@@ -36,6 +36,7 @@
                 Block block = blockstate.func_177230_c();
 -               if (block instanceof LeavesBlock) {
 +               if (block instanceof LeavesBlock && !CraftEventFactory.callEntityChangeBlockEvent(this,blockpos, Blocks.field_150350_a.func_176223_P()).isCancelled()) { // CraftBukkit
+\ No newline at end of file
                    flag = this.field_70170_p.func_225521_a_(blockpos, true, this) || flag;
                 }
              }

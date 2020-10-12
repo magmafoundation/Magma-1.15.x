@@ -164,6 +164,7 @@
        public void func_75249_e() {
 -         FoxEntity.this.func_70624_b(this.field_220786_j);
 +         FoxEntity.this.setAttackTarget(this.field_220786_j, TargetReason.TARGET_ATTACKED_OWNER, true); // CraftBukkit\
+\ No newline at end of file
           this.field_75309_a = this.field_220786_j;
           if (this.field_220787_k != null) {
              this.field_220788_l = this.field_220787_k.func_142015_aE();

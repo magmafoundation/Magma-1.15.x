@@ -66,6 +66,7 @@
 +   }
 +   // CraftBukkit end
 +
+\ No newline at end of file
     public DoubleSidedInventory(IInventory p_i50399_1_, IInventory p_i50399_2_) {
        if (p_i50399_1_ == null) {
           p_i50399_1_ = p_i50399_2_;

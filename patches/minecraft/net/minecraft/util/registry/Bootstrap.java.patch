@@ -75,6 +75,7 @@
 +               ItemIntIDToString.field_188221_a.put(453, "minecraft:knowledge_book");
 +               SpawnEggNames.field_188226_a[23] = "Arrow";
 +               // CraftBukkit end
+\ No newline at end of file
              }
           }
        }

@@ -15,6 +15,7 @@
  
 -   private INBT func_193606_k() throws CommandSyntaxException {
 +   public INBT func_193606_k() throws CommandSyntaxException { // private->public CraftBukkit
+\ No newline at end of file
        this.func_193604_b('[');
        int i = this.field_197663_n.getCursor();
        char c0 = this.field_197663_n.read();

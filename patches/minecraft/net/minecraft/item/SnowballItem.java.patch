@@ -43,6 +43,7 @@
 +         itemstack.shrink(1);
        }
 +       */
+\ No newline at end of file
  
        return ActionResult.func_226248_a_(itemstack);
     }

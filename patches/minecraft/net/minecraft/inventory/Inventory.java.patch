@@ -81,6 +81,7 @@
 +   }
 +   // CraftBukkit end
 +
+\ No newline at end of file
     public int func_70302_i_() {
        return this.field_70481_b;
     }

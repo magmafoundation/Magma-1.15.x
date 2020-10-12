@@ -26,6 +26,7 @@
 +            if (event.getResultMessage() != null)
 +               p_228051_5_.accept(event.getResultMessage());
 +            else
+\ No newline at end of file
              p_228051_5_.accept(new TranslationTextComponent("screenshot.success", itextcomponent));
           } catch (Exception exception) {
              field_148261_a.warn("Couldn't save screenshot", (Throwable)exception);

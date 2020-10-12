@@ -384,6 +384,7 @@
        public Block.Properties func_222379_b(Block p_222379_1_) {
 -         this.field_222381_j = p_222379_1_.func_220068_i();
 +         this.lootTableSupplier = () -> p_222379_1_.delegate.get().func_220068_i();
+\ No newline at end of file
           return this;
        }
     }

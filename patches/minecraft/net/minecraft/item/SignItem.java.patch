@@ -19,6 +19,7 @@
 +         // entityhuman.openSign((TileEntitySign) world.getTileEntity(blockposition));
 +         SignItem.openSign = p_195943_1_;
 +         // CraftBukkit end
+\ No newline at end of file
        }
  
        return flag;

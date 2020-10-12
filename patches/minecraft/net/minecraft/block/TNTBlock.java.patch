@@ -75,6 +75,7 @@
 +            }
 +            // CraftBukkit end
 +            catchFire(p_220066_2_, p_220066_1_, blockpos, null, entity instanceof LivingEntity ? (LivingEntity)entity : null);
+\ No newline at end of file
              p_220066_1_.func_217377_a(blockpos, false);
           }
        }

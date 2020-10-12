@@ -15,6 +15,7 @@
 +               CraftEventFactory.entityDamage = this; // CraftBukkit
                 this.func_190551_c(livingentity);
 +               CraftEventFactory.entityDamage = null; // CraftBukkit
+\ No newline at end of file
              }
           }
  

@@ -217,6 +217,7 @@
     public Container createMenu(int p_createMenu_1_, PlayerInventory p_createMenu_2_, PlayerEntity p_createMenu_3_) {
 -      return new LecternContainer(p_createMenu_1_, this.field_214048_a, this.field_214049_b);
 +      return new LecternContainer(p_createMenu_1_, this.field_214048_a, this.field_214049_b, p_createMenu_2_); // CraftBukkit
+\ No newline at end of file
     }
  
     public ITextComponent func_145748_c_() {

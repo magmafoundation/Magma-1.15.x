@@ -74,6 +74,7 @@
        super.func_70636_d();
 -      if (this.field_70170_p.field_72995_K) {
 +      if (this.field_70170_p.field_72995_K || ageLocked) { // CraftBukkit
+\ No newline at end of file
           if (this.field_175503_c > 0) {
              if (this.field_175503_c % 4 == 0) {
                 this.field_70170_p.func_195594_a(ParticleTypes.field_197632_y, this.func_226282_d_(1.0D), this.func_226279_cv_() + 0.5D, this.func_226287_g_(1.0D), 0.0D, 0.0D, 0.0D);

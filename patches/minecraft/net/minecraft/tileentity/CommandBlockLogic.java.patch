@@ -26,6 +26,7 @@
                    });
 -                  minecraftserver.func_195571_aL().func_197059_a(commandsource, this.field_145763_e);
 +                  minecraftserver.func_195571_aL().dispatchServerCommand(commandsource, this.field_145763_e);  // CraftBukkit
+\ No newline at end of file
                 } catch (Throwable throwable) {
                    CrashReport crashreport = CrashReport.func_85055_a(throwable, "Executing command block");
                    CrashReportCategory crashreportcategory = crashreport.func_85058_a("Command to be executed");

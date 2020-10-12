@@ -92,6 +92,7 @@
  
 -      return false;
 +      return net.minecraftforge.common.FarmlandWaterManager.hasBlockWaterTicket(p_176530_0_, p_176530_1_);
+\ No newline at end of file
     }
  
     protected void func_206840_a(StateContainer.Builder<Block, BlockState> p_206840_1_) {

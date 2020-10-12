@@ -15,6 +15,7 @@
 +          lastBrightnessX = p_227640_1_;
 +          lastBrightnessY = p_227640_2_;
 +       }
+\ No newline at end of file
     }
  
     public static void func_227706_d_(int p_227706_0_, int p_227706_1_, int p_227706_2_, int p_227706_3_) {

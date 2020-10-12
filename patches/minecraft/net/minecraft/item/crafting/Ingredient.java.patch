@@ -133,6 +133,7 @@
 +         if (list.size() == 0 && !net.minecraftforge.common.ForgeConfig.SERVER.treatEmptyTagsAsAir.get()) {
 +            list.add(new ItemStack(net.minecraft.block.Blocks.field_180401_cv).func_200302_a(new net.minecraft.util.text.StringTextComponent("Empty Tag: " + field_199800_a.func_199886_b().toString())));
 +         }
+\ No newline at end of file
           return list;
        }
  

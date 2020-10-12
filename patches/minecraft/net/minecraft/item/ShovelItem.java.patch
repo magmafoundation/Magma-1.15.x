@@ -15,6 +15,7 @@
           BlockState blockstate2 = null;
 -         if (blockstate1 != null && world.func_180495_p(blockpos.func_177984_a()).func_196958_f()) {
 +         if (blockstate1 != null && world.func_175623_d(blockpos.func_177984_a())) {
+\ No newline at end of file
              world.func_184133_a(playerentity, blockpos, SoundEvents.field_187771_eN, SoundCategory.BLOCKS, 1.0F, 1.0F);
              blockstate2 = blockstate1;
           } else if (blockstate.func_177230_c() instanceof CampfireBlock && blockstate.func_177229_b(CampfireBlock.field_220101_b)) {

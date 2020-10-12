@@ -62,6 +62,7 @@
 +            CraftItemStack.setItemMeta(itemstack, CraftItemStack.getItemMeta(itemstack));
 +         }
 +         // CraftBukkit end
+\ No newline at end of file
           return itemstack;
        }
     }

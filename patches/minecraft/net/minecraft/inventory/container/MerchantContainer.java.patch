@@ -52,6 +52,7 @@
     private void func_223132_j() {
 -      if (!this.field_75178_e.func_190670_t_().field_72995_K) {
 +      if (!this.field_75178_e.func_190670_t_().field_72995_K && this.field_75178_e instanceof Entity) { // CraftBukkit - SPIGOT-5035
+\ No newline at end of file
           Entity entity = (Entity)this.field_75178_e;
           this.field_75178_e.func_190670_t_().func_184134_a(entity.func_226277_ct_(), entity.func_226278_cu_(), entity.func_226281_cx_(), this.field_75178_e.func_213714_ea(), SoundCategory.NEUTRAL, 1.0F, 1.0F, false);
        }

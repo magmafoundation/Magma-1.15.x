@@ -25,6 +25,7 @@
 +               continue;
 +            }
 +            // CraftBukkit end
+\ No newline at end of file
  
              mobentity.func_110162_b(leashknotentity, true);
              flag = true;

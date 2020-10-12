@@ -128,6 +128,7 @@
              if (irongolementity.func_213380_a(this.field_70170_p, SpawnReason.MOB_SUMMONED) && irongolementity.func_205019_a(this.field_70170_p)) {
 -               this.field_70170_p.func_217376_c(irongolementity);
 +               this.field_70170_p.addEntity(irongolementity, org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason.VILLAGE_DEFENSE); // CraftBukkit
+\ No newline at end of file
                 return irongolementity;
              }
  

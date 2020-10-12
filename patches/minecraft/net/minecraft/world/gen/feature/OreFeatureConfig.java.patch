@@ -23,5 +23,6 @@
 +      public void init() {
 +          field_214741_c.put(func_214737_a(), this);
 +      }
+\ No newline at end of file
     }
  }

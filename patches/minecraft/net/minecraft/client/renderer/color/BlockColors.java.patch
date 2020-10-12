@@ -37,6 +37,7 @@
        for(Block block : p_186722_2_) {
 -         this.field_186725_a.func_148746_a(p_186722_1_, Registry.field_212618_g.func_148757_b(block));
 +         this.field_186725_a.put(block.delegate, p_186722_1_);
+\ No newline at end of file
        }
  
     }

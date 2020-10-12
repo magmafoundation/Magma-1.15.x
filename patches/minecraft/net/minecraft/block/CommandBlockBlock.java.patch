@@ -36,6 +36,7 @@
 +            flag1 = eventRedstone.getNewCurrent() > 0;
 +            // CraftBukkit end
 +
+\ No newline at end of file
              commandblocktileentity.func_184250_a(flag);
              if (!flag1 && !commandblocktileentity.func_184254_e() && commandblocktileentity.func_184251_i() != CommandBlockTileEntity.Mode.SEQUENCE) {
                 if (flag) {

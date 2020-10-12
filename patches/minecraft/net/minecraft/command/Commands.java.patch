@@ -16,8 +16,11 @@
  import java.util.Map;
  import java.util.function.Predicate;
  import javax.annotation.Nullable;
-@@ -96,12 +99,15 @@
+@@ -94,14 +97,18 @@
+ import net.minecraft.util.text.TranslationTextComponent;
+ import net.minecraft.util.text.event.ClickEvent;
  import net.minecraft.util.text.event.HoverEvent;
++import org.apache.logging.log4j.Level;
  import org.apache.logging.log4j.LogManager;
  import org.apache.logging.log4j.Logger;
 +import org.bukkit.event.player.PlayerCommandSendEvent;
@@ -33,7 +36,7 @@
        AdvancementCommand.func_198199_a(this.field_197062_b);
        ExecuteCommand.func_198378_a(this.field_197062_b);
        BossBarCommand.func_201413_a(this.field_197062_b);
-@@ -160,7 +166,7 @@
+@@ -160,7 +167,7 @@
           TestCommand.func_229613_a_(this.field_197062_b);
        }
  
@@ -42,7 +45,7 @@
           BanIpCommand.func_198220_a(this.field_197062_b);
           BanListCommand.func_198229_a(this.field_197062_b);
           BanCommand.func_198235_a(this.field_197062_b);
-@@ -177,35 +183,82 @@
+@@ -177,35 +184,83 @@
        }
  
        this.field_197062_b.findAmbiguities((p_201302_1_, p_201302_2_, p_201302_3_, p_201302_4_) -> {
@@ -94,6 +97,7 @@
 +   }
 +
 +   public int handleCommand(CommandSource source, String command, String label) {
++      field_197061_a.log(Level.INFO, "CommandSource: " + source.func_197037_c());
 +      // CraftBukkit end
 +      StringReader stringreader = new StringReader(command);
        if (stringreader.canRead() && stringreader.peek() == '/') {
@@ -132,7 +136,7 @@
                 });
                 if (k > 10) {
                    itextcomponent1.func_150258_a("...");
-@@ -218,12 +271,12 @@
+@@ -218,12 +273,12 @@
                 }
  
                 itextcomponent1.func_150257_a((new TranslationTextComponent("command.context.here")).func_211709_a(new TextFormatting[]{TextFormatting.RED, TextFormatting.ITALIC}));
@@ -147,7 +151,7 @@
                 StackTraceElement[] astacktraceelement = exception.getStackTrace();
  
                 for(int j = 0; j < Math.min(astacktraceelement.length, 3); ++j) {
-@@ -231,12 +284,12 @@
+@@ -231,12 +286,12 @@
                 }
              }
  
@@ -163,7 +167,7 @@
              }
  
              byte b2 = 0;
-@@ -246,15 +299,39 @@
+@@ -246,15 +301,39 @@
           byte b0 = 0;
           return b0;
        } finally {
@@ -202,6 +206,7 @@
 +      }
 +      // CraftBukkit end
 +
+\ No newline at end of file
        p_197051_1_.field_71135_a.func_147359_a(new SCommandListPacket(rootcommandnode));
     }
  

@@ -28,6 +28,7 @@
        for(IItemProvider iitemprovider : p_199877_2_) {
 -         this.field_186732_a.func_148746_a(p_199877_1_, Item.func_150891_b(iitemprovider.func_199767_j()));
 +         this.field_186732_a.put(iitemprovider.func_199767_j().delegate, p_199877_1_);
+\ No newline at end of file
        }
  
     }

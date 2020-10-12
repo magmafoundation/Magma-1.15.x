@@ -18,6 +18,7 @@
 -         p_225534_2_.func_180501_a(p_225534_3_, p_225534_1_, 2);
 +         CraftEventFactory.handleBlockGrowEvent(p_225534_2_, p_225534_3_, p_225534_1_, 2); // CraftBukkit
 +         net.minecraftforge.common.ForgeHooks.onCropsGrowPost(p_225534_2_, p_225534_3_, p_225534_1_);
+\ No newline at end of file
        }
  
        super.func_225534_a_(p_225534_1_, p_225534_2_, p_225534_3_, p_225534_4_);

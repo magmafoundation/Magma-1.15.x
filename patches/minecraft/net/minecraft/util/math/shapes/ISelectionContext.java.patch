@@ -6,6 +6,7 @@
  
 -public interface ISelectionContext {
 +public interface ISelectionContext extends net.minecraftforge.common.extensions.IForgeSelectionContext {
+\ No newline at end of file
     static ISelectionContext func_216377_a() {
        return EntitySelectionContext.field_216379_a;
     }

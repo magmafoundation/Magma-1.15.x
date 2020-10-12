@@ -34,6 +34,7 @@
 +               itemstack1 = CraftItemStack.asNMSCopy(result);
 +               // CraftBukkit end
 +
+\ No newline at end of file
                 InventoryHelper.func_180173_a(this.field_145850_b, (double)blockpos.func_177958_n(), (double)blockpos.func_177956_o(), (double)blockpos.func_177952_p(), itemstack1);
                 this.field_213987_a.set(i, ItemStack.field_190927_a);
                 this.func_213981_s();

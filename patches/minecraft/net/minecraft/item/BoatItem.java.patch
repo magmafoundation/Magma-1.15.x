@@ -45,6 +45,7 @@
 +                  }
 +                  // CraftBukkit end
 +
+\ No newline at end of file
                    if (!p_77659_2_.field_71075_bZ.field_75098_d) {
                       itemstack.func_190918_g(1);
                    }

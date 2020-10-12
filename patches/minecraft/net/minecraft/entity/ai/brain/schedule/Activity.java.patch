@@ -6,6 +6,7 @@
  
 -public class Activity {
 +public class Activity extends net.minecraftforge.registries.ForgeRegistryEntry<Activity> {
+\ No newline at end of file
     public static final Activity field_221365_a = func_221363_a("core");
     public static final Activity field_221366_b = func_221363_a("idle");
     public static final Activity field_221367_c = func_221363_a("work");

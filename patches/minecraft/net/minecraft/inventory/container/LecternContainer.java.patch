@@ -79,6 +79,7 @@
  
     public boolean func_75145_c(PlayerEntity p_75145_1_) {
 +      if (!this.checkReachable) return true; // CraftBukkit
+\ No newline at end of file
        return this.field_217018_c.func_70300_a(p_75145_1_);
     }
  

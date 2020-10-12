@@ -217,4 +217,5 @@
 +   {
 +      return blockstate.func_177230_c() instanceof ILiquidContainer && ((ILiquidContainer)blockstate.func_177230_c()).func_204510_a(worldIn, posIn, blockstate, this.field_77876_a);
 +   }
+\ No newline at end of file
  }

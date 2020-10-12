@@ -6,6 +6,7 @@
           if (!s.isEmpty()) {
 -            this.minecraft.field_71439_g.func_71165_d(s);
 +            this.sendMessage(s); // Forge: fix vanilla not adding messages to the sent list while sleeping
+\ No newline at end of file
           }
  
           this.field_146415_a.func_146180_a("");

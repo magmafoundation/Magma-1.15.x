@@ -145,6 +145,7 @@
 +         areaeffectcloudentity.field_70128_L = true;
 +      }
 +      // CraftBukkit end
+\ No newline at end of file
     }
  
     private boolean func_184544_n() {

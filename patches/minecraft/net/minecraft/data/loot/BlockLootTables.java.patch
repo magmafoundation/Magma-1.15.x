@@ -32,6 +32,7 @@
 +       return Registry.field_212618_g;
 +   }
 +
+\ No newline at end of file
     public void func_218547_a(Block p_218547_1_) {
        this.func_218522_a(p_218547_1_, (p_229438_0_) -> {
           return func_218523_c(((FlowerPotBlock)p_229438_0_).func_220276_d());

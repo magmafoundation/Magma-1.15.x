@@ -22,6 +22,7 @@
 +             }
 +            // CaftBukkit end
 +
+\ No newline at end of file
              ((DoorBlock)block).func_176512_a(p_220434_1_, p_225447_4_, flag);
              GlobalPos globalpos = GlobalPos.func_218179_a(p_220434_1_.func_201675_m().func_186058_p(), p_225447_4_);
              if (!p_220434_6_.func_218207_c(MemoryModuleType.field_225462_q).isPresent() && flag) {

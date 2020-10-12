@@ -206,6 +206,7 @@
 +   @Override
 +   public void remove(boolean keepData) {
 +      super.remove(keepData);
+\ No newline at end of file
        if (this.field_146042_b != null) {
           this.field_146042_b.field_71104_cf = null;
        }

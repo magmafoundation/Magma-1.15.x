@@ -12,6 +12,7 @@
 +               }
 +            }
 +            net.minecraftforge.client.ForgeHooksClient.setRenderLayer(null);
+\ No newline at end of file
              p_225623_4_.func_227865_b_();
              super.func_225623_a_(p_225623_1_, p_225623_2_, p_225623_3_, p_225623_4_, p_225623_5_, p_225623_6_);
           }

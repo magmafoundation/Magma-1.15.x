@@ -29,6 +29,7 @@
           IDispenseItemBehavior idispenseitembehavior = this.func_149940_a(itemstack);
           if (idispenseitembehavior != IDispenseItemBehavior.field_223216_a_) {
 +            eventFired = false; // CraftBukkit - reset event status
+\ No newline at end of file
              dispensertileentity.func_70299_a(i, idispenseitembehavior.dispense(proxyblocksource, itemstack));
           }
  

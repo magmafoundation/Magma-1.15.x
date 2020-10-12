@@ -9,6 +9,7 @@
  
 -@OnlyIn(Dist.CLIENT)
 +//@OnlyIn(Dist.CLIENT)
+\ No newline at end of file
  public interface IRendersAsItem {
     ItemStack func_184543_l();
  }

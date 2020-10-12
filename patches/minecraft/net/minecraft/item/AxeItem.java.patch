@@ -6,6 +6,7 @@
     public AxeItem(IItemTier p_i48530_1_, float p_i48530_2_, float p_i48530_3_, Item.Properties p_i48530_4_) {
 -      super(p_i48530_2_, p_i48530_3_, p_i48530_1_, field_150917_c, p_i48530_4_);
 +      super(p_i48530_2_, p_i48530_3_, p_i48530_1_, field_150917_c, p_i48530_4_.addToolType(net.minecraftforge.common.ToolType.AXE, p_i48530_1_.func_200925_d()));
+\ No newline at end of file
     }
  
     public float func_150893_a(ItemStack p_150893_1_, BlockState p_150893_2_) {

@@ -10,6 +10,7 @@
 +            }
 +            // CraftBukkit end
 +
+\ No newline at end of file
              float f6 = field_222576_h[k + 2 + (l + 2) * 5] / (f4 + 2.0F);
              if (biome.func_185355_j() > f3) {
                 f6 /= 2.0F;

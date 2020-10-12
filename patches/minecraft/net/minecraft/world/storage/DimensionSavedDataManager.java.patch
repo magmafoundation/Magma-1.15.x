@@ -11,6 +11,7 @@
 +      } else if (worldsaveddata == null) {
 +         this.field_212778_c.put(p_215753_2_, net.minecraftforge.common.util.DummyWorldSaveData.DUMMY);
 +         return null;
+\ No newline at end of file
        }
  
        return (T)worldsaveddata;

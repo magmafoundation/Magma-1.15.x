@@ -18,6 +18,7 @@
 +               continue;
 +            }
 +            // CraftBukkit end
+\ No newline at end of file
              func_208517_a(p_198484_0_.getSource(), serverplayerentity, p_198484_2_);
              ++i;
           }

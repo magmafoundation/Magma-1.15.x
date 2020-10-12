@@ -78,6 +78,7 @@
 +
 +   // CraftBukkit end
 +
+\ No newline at end of file
     public MerchantInventory(IMerchant p_i50071_1_) {
        this.field_70476_a = p_i50071_1_;
     }

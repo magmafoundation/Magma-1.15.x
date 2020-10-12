@@ -8,4 +8,5 @@
 +   default int getMaxHeight() {
 +      return this instanceof net.minecraft.world.IWorld ? ((net.minecraft.world.IWorld)this).func_201672_e().func_201675_m().getHeight() : 256;
 +   }
+\ No newline at end of file
  }

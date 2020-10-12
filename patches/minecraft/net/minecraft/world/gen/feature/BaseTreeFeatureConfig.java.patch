@@ -53,6 +53,7 @@
        public BaseTreeFeatureConfig func_225568_b_() {
 -         return new BaseTreeFeatureConfig(this.field_227377_a_, this.field_227378_b_, this.field_227379_c_, this.field_227380_d_);
 +         return new BaseTreeFeatureConfig(this.field_227377_a_, this.field_227378_b_, this.field_227379_c_, this.field_227380_d_).setSapling(sapling);
+\ No newline at end of file
        }
     }
  }

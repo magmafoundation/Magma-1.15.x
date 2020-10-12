@@ -21,6 +21,7 @@
     }
  
 +   @Deprecated
+\ No newline at end of file
     public ItemTransformVec3f func_181688_b(ItemCameraTransforms.TransformType p_181688_1_) {
        switch(p_181688_1_) {
        case THIRD_PERSON_LEFT_HAND:

@@ -189,6 +189,7 @@
           }
 -
 +         return true; // CraftBukkit
+\ No newline at end of file
        }
  
        private boolean func_196899_f() {

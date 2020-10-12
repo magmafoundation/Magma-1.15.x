@@ -198,6 +198,7 @@
 +               ((ServerPlayerEntity) this.field_219461_c).getBukkitEntity().injectScaledMaxHealth(set, false);
 +            }
 +            // CraftBukkit end
+\ No newline at end of file
              this.func_219451_a(new SEntityPropertiesPacket(this.field_219461_c.func_145782_y(), set));
           }
  

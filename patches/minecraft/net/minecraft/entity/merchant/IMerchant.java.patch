@@ -6,4 +6,5 @@
     }
 +
 +   org.bukkit.craftbukkit.v1_15_R1.inventory.CraftMerchant getCraftMerchant(); // CraftBukkit
+\ No newline at end of file
  }

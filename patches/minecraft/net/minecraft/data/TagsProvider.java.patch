@@ -5,6 +5,7 @@
           JsonObject jsonobject = p_223474_3_.func_200571_a(this.field_200435_c::func_177774_c);
           Path path = this.func_200431_a(p_223474_2_);
 +         if (path == null) return; //Forge: Allow running this data provider without writing it. Recipe provider needs valid tags.
+\ No newline at end of file
  
           try {
              String s = field_200437_e.toJson((JsonElement)jsonobject);

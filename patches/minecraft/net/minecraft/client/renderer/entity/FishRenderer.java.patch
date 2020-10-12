@@ -6,6 +6,7 @@
           ItemStack itemstack = playerentity.func_184614_ca();
 -         if (itemstack.func_77973_b() != Items.field_151112_aM) {
 +         if (!(itemstack.func_77973_b() instanceof net.minecraft.item.FishingRodItem)) {
+\ No newline at end of file
              i = -i;
           }
  

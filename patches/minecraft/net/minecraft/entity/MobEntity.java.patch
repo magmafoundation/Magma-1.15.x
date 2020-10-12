@@ -369,6 +369,7 @@
                 if (this.field_70146_Z.nextFloat() < f2) {
 -                  playerentity.func_184811_cZ().func_185145_a(Items.field_185159_cQ, 100);
 +                  playerentity.func_184811_cZ().func_185145_a(itemstack.func_77973_b(), 100);
+\ No newline at end of file
                    this.field_70170_p.func_72960_a(playerentity, (byte)30);
                 }
              }

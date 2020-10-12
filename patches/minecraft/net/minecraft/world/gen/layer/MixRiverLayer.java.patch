@@ -10,6 +10,7 @@
 -            return i != field_202722_e && i != field_202723_f ? j & 255 : field_202723_f;
 -         }
 +         return Registry.field_212624_m.func_148757_b(Registry.field_212624_m.func_148745_a(i).getRiver());
+\ No newline at end of file
        } else {
           return i;
        }

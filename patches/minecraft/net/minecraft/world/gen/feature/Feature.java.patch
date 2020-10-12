@@ -48,5 +48,6 @@
     protected static boolean func_227250_b_(Block p_227250_0_) {
 -      return p_227250_0_ == Blocks.field_150346_d || p_227250_0_ == Blocks.field_196658_i || p_227250_0_ == Blocks.field_196661_l || p_227250_0_ == Blocks.field_196660_k || p_227250_0_ == Blocks.field_150391_bh;
 +      return net.minecraftforge.common.Tags.Blocks.DIRT.func_199685_a_(p_227250_0_);
+\ No newline at end of file
     }
  }

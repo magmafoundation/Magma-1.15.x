@@ -48,6 +48,7 @@
              BlockPos blockpos = blockraytraceresult.func_216350_a().func_177972_a(blockraytraceresult.func_216354_b());
 -            if (this.field_70170_p.func_175623_d(blockpos)) {
 +            if (this.field_70170_p.func_175623_d(blockpos) && !CraftEventFactory.callBlockIgniteEvent(field_70170_p, blockpos, this).isCancelled()) { // CraftBukkit
+\ No newline at end of file
                 this.field_70170_p.func_175656_a(blockpos, Blocks.field_150480_ab.func_176223_P());
              }
           }

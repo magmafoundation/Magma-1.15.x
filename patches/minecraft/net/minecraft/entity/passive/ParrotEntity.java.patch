@@ -34,6 +34,7 @@
 -            this.field_70911_d.func_75270_a(false);
 +            // CraftBukkit - moved into LivingEntity
 +//            this.sitGoal.setSitting(false);
+\ No newline at end of file
           }
  
           return super.func_70097_a(p_70097_1_, p_70097_2_);

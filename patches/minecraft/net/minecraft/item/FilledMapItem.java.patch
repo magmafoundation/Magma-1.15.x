@@ -43,6 +43,7 @@
 +      MapInitializeEvent event = new MapInitializeEvent(mapdata.mapView);
 +      Bukkit.getServer().getPluginManager().callEvent(event);
 +      // CraftBukkit end
+\ No newline at end of file
        return mapdata;
     }
  

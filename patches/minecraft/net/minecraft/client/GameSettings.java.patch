@@ -60,4 +60,5 @@
 +      field_151458_ab.setKeyConflictContext(inGame);
 +      field_186718_X.setKeyConflictContext(inGame);
 +   }
+\ No newline at end of file
  }

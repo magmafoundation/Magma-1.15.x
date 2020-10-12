@@ -19,6 +19,7 @@
 +         this.forceDrops = true; // CraftBukkit
           this.func_199703_a(Items.field_151110_aK);
 +         this.forceDrops = false; // CraftBukkit
+\ No newline at end of file
           this.field_70887_j = this.field_70146_Z.nextInt(6000) + 6000;
        }
  

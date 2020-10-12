@@ -76,6 +76,7 @@
              BlockState blockstate1 = this.field_177261_a.func_180495_p(blockpos);
 -            if (func_227030_a_(blockstate1.func_177230_c(), blockstate.func_177230_c()) && !this.func_177251_a(blockpos, direction)) {
 +            if (blockstate1.canStickTo(blockstate) && !this.func_177251_a(blockpos, direction)) {
+\ No newline at end of file
                 return false;
              }
           }

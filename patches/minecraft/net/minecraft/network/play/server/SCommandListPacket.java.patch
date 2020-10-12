@@ -7,6 +7,7 @@
 +            if ((p_197695_2_ & 16) != 0) { // FORGE: Flush unused suggestion data
 +               p_197695_1_.func_192575_l();
 +            }
+\ No newline at end of file
              return null;
           } else {
              RequiredArgumentBuilder<ISuggestionProvider, ?> requiredargumentbuilder = RequiredArgumentBuilder.argument(s, argumenttype);

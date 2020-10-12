@@ -5,6 +5,7 @@
        Texture texture = this.func_229267_b_(p_147645_1_);
        if (texture != null) {
 +         this.field_110585_a.remove(p_147645_1_); // Forge: fix MC-98707
+\ No newline at end of file
           TextureUtil.func_225679_a_(texture.func_110552_b());
        }
  

@@ -565,6 +565,7 @@
 +       return this.field_151002_e;
 +   }
 +
+\ No newline at end of file
     public SoundEvent func_226629_F_() {
        return this.func_77973_b().func_225520_U__();
     }

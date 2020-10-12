@@ -14,6 +14,7 @@
     }
  
 +   @OnlyIn(Dist.CLIENT)
+\ No newline at end of file
     protected Item func_196279_O_() {
        if (this.field_196281_b == Blocks.field_150423_aK) {
           return Items.field_151080_bb;

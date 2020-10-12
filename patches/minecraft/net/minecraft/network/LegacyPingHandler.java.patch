@@ -37,6 +37,7 @@
                 field_151258_a.debug("Ping: (1.6) from {}:{}", inetsocketaddress.getAddress(), inetsocketaddress.getPort());
 -               String s1 = String.format("\u00a71\u0000%d\u0000%s\u0000%s\u0000%d\u0000%d", 127, minecraftserver.func_71249_w(), minecraftserver.func_71273_Y(), minecraftserver.func_71233_x(), minecraftserver.func_71275_y());
 +               String s1 = String.format("\u00a71\u0000%d\u0000%s\u0000%s\u0000%d\u0000%d", 127, minecraftserver.func_71249_w(), event.getMotd(), event.getNumPlayers(), event.getMaxPlayers()); // CraftBukkit
+\ No newline at end of file
                 ByteBuf bytebuf1 = this.func_151255_a(s1);
  
                 try {

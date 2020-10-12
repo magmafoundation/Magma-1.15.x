@@ -57,6 +57,7 @@
 +         }
 +      }
 +      // CraftBukkit end
+\ No newline at end of file
     }
  
     protected int func_220259_a(IBlockReader p_220259_1_, BlockPos p_220259_2_) {

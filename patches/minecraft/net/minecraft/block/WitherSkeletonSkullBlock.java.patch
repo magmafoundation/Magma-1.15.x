@@ -53,6 +53,7 @@
  
 -               p_196298_0_.func_217376_c(witherentity);
 +               // worldIn.addEntity(witherentity);  // CraftBukkit - moved up
+\ No newline at end of file
  
                 for(int k = 0; k < blockpattern.func_177684_c(); ++k) {
                    for(int l = 0; l < blockpattern.func_177685_b(); ++l) {

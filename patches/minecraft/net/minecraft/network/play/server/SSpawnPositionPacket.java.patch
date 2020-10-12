@@ -15,6 +15,7 @@
  
 -   @OnlyIn(Dist.CLIENT)
 +   //@OnlyIn(Dist.CLIENT)
+\ No newline at end of file
     public BlockPos func_179800_a() {
        return this.field_179801_a;
     }

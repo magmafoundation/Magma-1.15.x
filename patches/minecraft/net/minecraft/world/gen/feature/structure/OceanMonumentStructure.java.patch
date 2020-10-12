@@ -6,6 +6,7 @@
        int l1 = j1 / i;
 -      ((SharedSeedRandom)p_211744_2_).func_202427_a(p_211744_1_.func_202089_c(), k1, l1, 10387313);
 +      ((SharedSeedRandom)p_211744_2_).func_202427_a(p_211744_1_.func_202089_c(), k1, l1, p_211744_1_.getWorld().spigotConfig.monumentSeed); // Spigot
+\ No newline at end of file
        k1 = k1 * i;
        l1 = l1 * i;
        k1 = k1 + (p_211744_2_.nextInt(i - j) + p_211744_2_.nextInt(i - j)) / 2;

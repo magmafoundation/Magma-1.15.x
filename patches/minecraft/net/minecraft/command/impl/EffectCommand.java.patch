@@ -32,6 +32,7 @@
        for(Entity entity : p_198355_1_) {
 -         if (entity instanceof LivingEntity && ((LivingEntity)entity).func_195063_d(p_198355_2_)) {
 +         if (entity instanceof LivingEntity && ((LivingEntity)entity).removeEffect(p_198355_2_, Cause.COMMAND)) { // CraftBukkit
+\ No newline at end of file
              ++i;
           }
        }
