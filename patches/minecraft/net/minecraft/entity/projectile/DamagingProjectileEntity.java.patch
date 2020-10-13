@@ -153,4 +153,5 @@
 +          new Vec3d(this.field_70232_b, this.field_70233_c, this.field_70230_d));
     }
 +
+\ No newline at end of file
  }

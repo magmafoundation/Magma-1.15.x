@@ -28,6 +28,8 @@ import java.util.stream.Collectors;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.dimension.DimensionType;
@@ -52,6 +54,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerContainerEvent;
 import net.minecraftforge.fml.config.ConfigTracker;
+import org.bukkit.Bukkit;
+import org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory;
+import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftInventory;
+import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftInventoryView;
+import org.bukkit.event.inventory.InventoryType;
 
 public class NetworkHooks
 {
@@ -204,6 +211,20 @@ public class NetworkHooks
             throw new IllegalArgumentException("Invalid PacketBuffer for openGui, found "+ output.readableBytes()+ " bytes");
         }
         Container c = containerSupplier.createMenu(openContainerId, player.inventory, player);
+        // Magma start - Forge Inventory View
+        if (c.getBukkitView() == null) {
+            TileEntity tileEntity = player.world.getTileEntity(output.readBlockPos());
+            if (tileEntity instanceof IInventory) {
+                c.setBukkitView(new CraftInventoryView(player.getBukkitEntity(), new CraftInventory((IInventory) tileEntity), c));
+            } else {
+                c.setBukkitView(new CraftInventoryView(player.getBukkitEntity(), Bukkit.createInventory(player.getBukkitEntity(), InventoryType.CHEST), c));
+            }
+        }
+        c = CraftEventFactory.callInventoryOpenEvent(player, c, false);
+        if (c == null) {
+            return;
+        }
+        // Magma end
         ContainerType<?> type = c.getType();
         FMLPlayMessages.OpenContainer msg = new FMLPlayMessages.OpenContainer(type, openContainerId, containerSupplier.getDisplayName(), output);
         FMLNetworkConstants.playChannel.sendTo(msg, player.connection.getNetworkManager(), NetworkDirection.PLAY_TO_CLIENT);
