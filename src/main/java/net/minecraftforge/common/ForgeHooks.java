@@ -95,6 +95,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.IntIdentityHashBiMap;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -151,7 +152,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.ForgeRegistry;
 import net.minecraftforge.registries.GameData;
 import net.minecraftforge.registries.IRegistryDelegate;
-import net.minecraftforge.common.util.FakePlayer;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -445,14 +445,14 @@ public class ForgeHooks
     }
 
     @Nullable
-    public static ITextComponent onServerChatEvent(ServerPlayNetHandler net, String raw, ITextComponent comp) {
+    public static ITextComponent onServerChatEvent(ServerPlayNetHandler net, String raw, ITextComponent comp)
+    {
         ServerChatEvent event = new ServerChatEvent(net.player, raw, comp);
-        synchronized (ServerChatEvent.class) {
-            if (MinecraftForge.EVENT_BUS.post(event)) {
-                return null;
-            }
-            return event.getComponent();
+        if (MinecraftForge.EVENT_BUS.post(event))
+        {
+            return null;
         }
+        return event.getComponent();
     }
 
 
@@ -557,7 +557,7 @@ public class ForgeHooks
         }
 
         // Tell client the block is gone immediately then process events
-        if (world.getTileEntity(pos) == null && !(entityPlayer instanceof FakePlayer))
+        if (world.getTileEntity(pos) == null)
         {
             entityPlayer.connection.sendPacket(new SChangeBlockPacket(DUMMY_WORLD, pos));
         }
@@ -569,7 +569,7 @@ public class ForgeHooks
         MinecraftForge.EVENT_BUS.post(event);
 
         // Handle if the event is canceled
-        if (event.isCanceled() && !(entityPlayer instanceof FakePlayer))
+        if (event.isCanceled())
         {
             // Let the client know the block still exists
             entityPlayer.connection.sendPacket(new SChangeBlockPacket(world, pos));
@@ -852,13 +852,17 @@ public class ForgeHooks
                     new ResourceLocation("block/water_flow"))
                     .overlay(new ResourceLocation("block/water_overlay"))
                     .translationKey("block.minecraft.water")
-                    .color(0xFF3F76E4).build(fluid);
+                    .color(0xFF3F76E4)
+                    .sound(SoundEvents.ITEM_BUCKET_FILL, SoundEvents.ITEM_BUCKET_EMPTY)
+                    .build(fluid);
         if (fluid instanceof LavaFluid)
             return net.minecraftforge.fluids.FluidAttributes.builder(
                     new ResourceLocation("block/lava_still"),
                     new ResourceLocation("block/lava_flow"))
                     .translationKey("block.minecraft.lava")
-                    .luminosity(15).density(3000).viscosity(6000).temperature(1300).build(fluid);
+                    .luminosity(15).density(3000).viscosity(6000).temperature(1300)
+                    .sound(SoundEvents.ITEM_BUCKET_FILL_LAVA, SoundEvents.ITEM_BUCKET_EMPTY_LAVA)
+                    .build(fluid);
         throw new RuntimeException("Mod fluids must override createAttributes.");
     }
 

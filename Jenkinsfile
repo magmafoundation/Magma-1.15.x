@@ -7,7 +7,7 @@ pipeline {
     environment {
         DISCORD_PREFIX = "Magma: ${BRANCH_NAME} #${BUILD_NUMBER}"
         CHANGES = getChanges(currentBuild)
-        ARTIFACT = " https://ci.hexeption.dev/job/Magma%20Foundation/job/Magma-1.15.x/job/1.15.x/${currentBuild.id}/artifact/projects/magma/build/libs/forge-1.15.2-31.2.23-${GIT_COMMIT[0..6]}-installer.jar"
+        ARTIFACT = " https://ci.hexeption.dev/job/Magma%20Foundation/job/Magma-1.15.x/job/1.15.x/${currentBuild.id}/artifact/projects/magma/build/libs/forge-1.15.2-31.2.45-${GIT_COMMIT[0..6]}-installer.jar"
     }
     stages {
         stage('Setup') {
