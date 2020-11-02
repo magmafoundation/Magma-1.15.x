@@ -1252,11 +1252,11 @@
              this.func_226293_b_(this.field_184627_bm, 16);
 -            this.func_184611_a(this.func_184600_cs(), this.field_184627_bm.func_77950_b(this.field_70170_p, this));
 +            ItemStack copy = this.field_184627_bm.func_77946_l();
-+            ItemStack stack = net.minecraftforge.event.ForgeEventFactory.onItemUseFinish(this, copy, func_184605_cv(), this.field_184627_bm.func_77950_b(this.field_70170_p, this)); // Magma - TODO Implment this
++            ItemStack stack = net.minecraftforge.event.ForgeEventFactory.onItemUseFinish(this, copy, func_184605_cv(), this.field_184627_bm.func_77950_b(this.field_70170_p, this));
 +            // CraftBukkit start - fire PlayerItemConsumeEvent
 +            ItemStack itemstack;
 +            if (this instanceof ServerPlayerEntity) {
-+               org.bukkit.inventory.ItemStack craftItem = CraftItemStack.asBukkitCopy(this.field_184627_bm);
++               org.bukkit.inventory.ItemStack craftItem = CraftItemStack.asBukkitCopy(copy);
 +               PlayerItemConsumeEvent event = new PlayerItemConsumeEvent((Player) this.getBukkitEntity(), craftItem);
 +               field_70170_p.getServerCB().getPluginManager().callEvent(event);
 +               if (event.isCancelled()) {
@@ -1265,7 +1265,7 @@
 +                  ((ServerPlayerEntity) this).getBukkitEntity().updateScaledHealth();
 +                  return;
 +               }
-+               itemstack = (craftItem.equals(event.getItem())) ? this.field_184627_bm.func_77950_b(this.field_70170_p, this) : CraftItemStack.asNMSCopy(event.getItem()).func_77950_b(field_70170_p, this);
++               itemstack = (craftItem.equals(event.getItem())) ? stack : CraftItemStack.asNMSCopy(event.getItem()).func_77950_b(field_70170_p, this);
 +            } else {
 +               itemstack = this.field_184627_bm.func_77950_b(this.field_70170_p, this);
 +            }

@@ -58,10 +58,12 @@
        }
  
     }
-@@ -43,6 +62,15 @@
+@@ -42,7 +61,16 @@
+          if (this.field_75125_b > 0.0F) {
              this.field_75125_b = Math.max(this.field_75125_b - 1.0F, 0.0F);
           } else if (difficulty != Difficulty.PEACEFUL) {
-             this.field_75127_a = Math.max(this.field_75127_a - 1, 0);
+-            this.field_75127_a = Math.max(this.field_75127_a - 1, 0);
++            // this.foodLevel = Math.max(this.foodLevel - 1, 0);
 +            // CraftBukkit start
 +            org.bukkit.event.entity.FoodLevelChangeEvent event = org.bukkit.craftbukkit.v1_15_R1.event.CraftEventFactory.callFoodLevelChangeEvent(entityhuman, Math.max(this.field_75127_a - 1, 0));
 +
@@ -90,7 +92,6 @@
 -            this.func_75113_a(6.0F);
 +            p_75118_1_.heal(1.0F, org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason.SATIATED); // CraftBukkit - added RegainReason
 +            this.func_75113_a(p_75118_1_.field_70170_p.spigotConfig.regenExhaustion); // Spigot - Change to use configurable value
-\ No newline at end of file
              this.field_75123_d = 0;
           }
        } else if (this.field_75127_a <= 0) {
