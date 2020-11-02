@@ -187,6 +187,7 @@ import org.bukkit.event.player.PlayerItemBreakEvent;
 import org.bukkit.event.player.PlayerItemMendEvent;
 import org.bukkit.event.player.PlayerLevelChangeEvent;
 import org.bukkit.event.player.PlayerRecipeDiscoverEvent;
+import org.bukkit.event.player.PlayerShearEntityEvent;
 import org.bukkit.event.player.PlayerStatisticIncrementEvent;
 import org.bukkit.event.player.PlayerUnleashEntityEvent;
 import org.bukkit.event.raid.RaidFinishEvent;
@@ -1316,6 +1317,16 @@ public class CraftEventFactory {
         BlockShearEntityEvent bse = new BlockShearEntityEvent(dispenser, sheep, is);
         Bukkit.getPluginManager().callEvent(bse);
         return bse;
+    }
+
+    public static boolean handlePlayerShearEntityEvent(PlayerEntity player, Entity sheared, ItemStack shears, Hand hand) {
+        if (!(player instanceof ServerPlayerEntity)) {
+            return true;
+        }
+
+        PlayerShearEntityEvent event = new PlayerShearEntityEvent((Player) player.getBukkitEntity(), sheared.getBukkitEntity(), CraftItemStack.asCraftMirror(shears), (hand == Hand.OFF_HAND ? EquipmentSlot.OFF_HAND : EquipmentSlot.HAND));
+        Bukkit.getPluginManager().callEvent(event);
+        return !event.isCancelled();
     }
 
     public static Cancellable handleStatisticsIncrease(PlayerEntity entityHuman, net.minecraft.stats.Stat<?> statistic, int current, int incrementation) {
