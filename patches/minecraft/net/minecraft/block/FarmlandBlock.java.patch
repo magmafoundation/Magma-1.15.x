@@ -25,7 +25,7 @@
  
  public class FarmlandBlock extends Block {
     public static final IntegerProperty field_176531_a = BlockStateProperties.field_208133_ah;
-@@ -64,32 +64,53 @@
+@@ -64,32 +64,54 @@
           int i = p_225534_1_.func_177229_b(field_176531_a);
           if (!func_176530_e(p_225534_2_, p_225534_3_) && !p_225534_2_.func_175727_C(p_225534_3_.func_177984_a())) {
              if (i > 0) {
@@ -81,18 +81,18 @@
 -      Block block = p_176529_0_.func_180495_p(p_176529_1_.func_177984_a()).func_177230_c();
 -      return block instanceof CropsBlock || block instanceof StemBlock || block instanceof AttachedStemBlock;
 +   private boolean func_176529_d(IBlockReader p_176529_0_, BlockPos p_176529_1_) {
-+      BlockState state = p_176529_0_.func_180495_p(p_176529_1_.func_177984_a());
-+      return state.func_177230_c() instanceof net.minecraftforge.common.IPlantable && canSustainPlant(state, p_176529_0_, p_176529_1_, Direction.UP, (net.minecraftforge.common.IPlantable)state.func_177230_c());
++      BlockState plant = p_176529_0_.func_180495_p(p_176529_1_.func_177984_a());
++      BlockState state = p_176529_0_.func_180495_p(p_176529_1_);
++      return plant.func_177230_c() instanceof net.minecraftforge.common.IPlantable && state.canSustainPlant(p_176529_0_, p_176529_1_, Direction.UP, (net.minecraftforge.common.IPlantable)plant.func_177230_c());
     }
  
     private static boolean func_176530_e(IWorldReader p_176530_0_, BlockPos p_176530_1_) {
-@@ -99,7 +120,7 @@
+@@ -99,7 +121,7 @@
           }
        }
  
 -      return false;
 +      return net.minecraftforge.common.FarmlandWaterManager.hasBlockWaterTicket(p_176530_0_, p_176530_1_);
-\ No newline at end of file
     }
  
     protected void func_206840_a(StateContainer.Builder<Block, BlockState> p_206840_1_) {

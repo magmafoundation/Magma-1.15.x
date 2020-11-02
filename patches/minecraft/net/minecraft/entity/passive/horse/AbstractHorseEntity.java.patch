@@ -126,7 +126,15 @@
           }
  
           if (this.func_190684_dE()) {
-@@ -725,6 +710,7 @@
+@@ -672,6 +657,7 @@
+                this.func_213293_j(vec3d.field_72450_a, d1, vec3d.field_72449_c);
+                this.func_110255_k(true);
+                this.field_70160_al = true;
++               net.minecraftforge.common.ForgeHooks.onLivingJump(this);
+                if (f1 > 0.0F) {
+                   float f2 = MathHelper.func_76126_a(this.field_70177_z * ((float)Math.PI / 180F));
+                   float f3 = MathHelper.func_76134_b(this.field_70177_z * ((float)Math.PI / 180F));
+@@ -725,6 +711,7 @@
        if (this.func_184780_dh() != null) {
           p_213281_1_.func_74778_a("OwnerUUID", this.func_184780_dh().toString());
        }
@@ -134,7 +142,7 @@
  
        if (!this.field_110296_bG.func_70301_a(0).func_190926_b()) {
           p_213281_1_.func_218657_a("SaddleItem", this.field_110296_bG.func_70301_a(0).func_77955_b(new CompoundNBT()));
-@@ -750,6 +736,12 @@
+@@ -750,6 +737,12 @@
           this.func_184779_b(UUID.fromString(s));
        }
  
@@ -147,7 +155,7 @@
        IAttributeInstance iattributeinstance = this.func_110140_aT().func_111152_a("Speed");
        if (iattributeinstance != null) {
           this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(iattributeinstance.func_111125_b() * 0.25D);
-@@ -830,6 +822,18 @@
+@@ -830,6 +823,18 @@
     }
  
     public void func_184775_b(int p_184775_1_) {
@@ -166,7 +174,7 @@
        this.field_110294_bI = true;
        this.func_110220_cK();
     }
-@@ -947,4 +951,22 @@
+@@ -947,4 +952,22 @@
  
        return super.func_213386_a(p_213386_1_, p_213386_2_, p_213386_3_, p_213386_4_, p_213386_5_);
     }
@@ -188,5 +196,4 @@
 +         itemHandler = null;
 +      }
 +   }
-\ No newline at end of file
  }

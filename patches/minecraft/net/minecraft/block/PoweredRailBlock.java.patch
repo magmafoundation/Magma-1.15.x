@@ -54,7 +54,18 @@
           p_189541_2_.func_180501_a(p_189541_3_, p_189541_1_.func_206870_a(field_176569_M, Boolean.valueOf(flag1)), 3);
           p_189541_2_.func_195593_d(p_189541_3_.func_177977_b(), this);
           if (p_189541_1_.func_177229_b(field_176568_b).func_208092_c()) {
-@@ -255,4 +269,8 @@
+@@ -156,6 +170,10 @@
+             return p_185499_1_.func_206870_a(field_176568_b, RailShape.SOUTH_EAST);
+          case NORTH_EAST:
+             return p_185499_1_.func_206870_a(field_176568_b, RailShape.SOUTH_WEST);
++             //Forge fix: MC-196102
++         case NORTH_SOUTH:
++         case EAST_WEST:
++            return p_185499_1_;
+          }
+       case COUNTERCLOCKWISE_90:
+          switch((RailShape)p_185499_1_.func_177229_b(field_176568_b)) {
+@@ -255,4 +273,8 @@
     protected void func_206840_a(StateContainer.Builder<Block, BlockState> p_206840_1_) {
        p_206840_1_.func_206894_a(field_176568_b, field_176569_M);
     }
@@ -62,5 +73,4 @@
 +   public boolean isActivatorRail() {
 +      return isActivator;
 +   }
-\ No newline at end of file
  }

@@ -520,8 +520,8 @@
 -               return Registry.field_212629_r.func_177774_c(p_217479_1_.func_200600_R()).toString();
 +               return p_217479_1_.func_200600_R().getRegistryName() == null ? p_217479_1_.func_200600_R().toString() : p_217479_1_.func_200600_R().getRegistryName().toString();
              });
-+            if (p_217479_1_.canUpdate())
              iprofiler.func_230035_c_("tickNonPassenger");
++            if (p_217479_1_.canUpdate())
              p_217479_1_.func_70071_h_();
 +            p_217479_1_.postTick(); // CraftBukkit
              iprofiler.func_76319_b();
@@ -827,7 +827,7 @@
        }
     }
  
-@@ -985,16 +1158,31 @@
+@@ -985,16 +1158,32 @@
     }
  
     public void func_217434_e(ServerPlayerEntity p_217434_1_) {
@@ -855,6 +855,7 @@
 +         return;
 +      }
 +      // CraftBukkit end
++      if (net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new net.minecraftforge.event.entity.EntityJoinWorldEvent(entityIn, this))) return;
 +      this.field_217497_w.add(entityIn);
 +      this.field_73061_a.func_184103_al()
 +          .func_148543_a((PlayerEntity) null, entityIn.func_226277_ct_(), entityIn.func_226278_cu_(), entityIn.func_226281_cx_(), 512.0D, this.field_73011_w.func_186058_p(), new SSpawnGlobalEntityPacket(entityIn));
@@ -863,7 +864,7 @@
     public void func_175715_c(int p_175715_1_, BlockPos p_175715_2_, int p_175715_3_) {
        for(ServerPlayerEntity serverplayerentity : this.field_73061_a.func_184103_al().func_181057_v()) {
           if (serverplayerentity != null && serverplayerentity.field_70170_p == this && serverplayerentity.func_145782_y() != p_175715_1_) {
-@@ -1010,10 +1198,20 @@
+@@ -1010,10 +1199,20 @@
     }
  
     public void func_184148_a(@Nullable PlayerEntity p_184148_1_, double p_184148_2_, double p_184148_4_, double p_184148_6_, SoundEvent p_184148_8_, SoundCategory p_184148_9_, float p_184148_10_, float p_184148_11_) {
@@ -884,7 +885,7 @@
        this.field_73061_a.func_184103_al().func_148543_a(p_217384_1_, p_217384_2_.func_226277_ct_(), p_217384_2_.func_226278_cu_(), p_217384_2_.func_226281_cx_(), p_217384_5_ > 1.0F ? (double)(16.0F * p_217384_5_) : 16.0D, this.field_73011_w.func_186058_p(), new SSpawnMovingSoundEffectPacket(p_217384_3_, p_217384_4_, p_217384_2_, p_217384_5_, p_217384_6_));
     }
  
-@@ -1049,6 +1247,7 @@
+@@ -1049,6 +1248,7 @@
  
     public Explosion func_217401_a(@Nullable Entity p_217401_1_, @Nullable DamageSource p_217401_2_, double p_217401_3_, double p_217401_5_, double p_217401_7_, float p_217401_9_, boolean p_217401_10_, Explosion.Mode p_217401_11_) {
        Explosion explosion = new Explosion(this, p_217401_1_, p_217401_3_, p_217401_5_, p_217401_7_, p_217401_9_, p_217401_10_, p_217401_11_);
@@ -892,7 +893,7 @@
        if (p_217401_2_ != null) {
           explosion.func_199592_a(p_217401_2_);
        }
-@@ -1188,7 +1387,13 @@
+@@ -1188,7 +1388,13 @@
     @Nullable
     public MapData func_217406_a(String p_217406_1_) {
        return this.func_73046_m().func_71218_a(DimensionType.field_223227_a_).func_217481_x().func_215753_b(() -> {
@@ -907,7 +908,7 @@
        }, p_217406_1_);
     }
  
-@@ -1377,4 +1582,20 @@
+@@ -1377,4 +1583,20 @@
           return p_229854_1_.func_175898_b(p_229855_1_.func_180328_a());
        });
     }
@@ -927,5 +928,4 @@
 +    public void sendParticles(Object o, IParticleData toNMS, double x, double y, double z, int count, double offsetX, double offsetY, double offsetZ, double extra, boolean force) {
 +    }
 +   // CraftBukkit end
-\ No newline at end of file
  }

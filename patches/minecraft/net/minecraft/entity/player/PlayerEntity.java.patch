@@ -913,6 +913,15 @@
           return false;
        } else {
           if (p_225503_1_ >= 2.0F) {
+@@ -1519,7 +1740,7 @@
+    public boolean func_226566_ei_() {
+       if (!this.field_70122_E && !this.func_184613_cA() && !this.func_70090_H()) {
+          ItemStack itemstack = this.func_184582_a(EquipmentSlotType.CHEST);
+-         if (itemstack.func_77973_b() == Items.field_185160_cR && ElytraItem.func_185069_d(itemstack)) {
++         if (itemstack.canElytraFly(this)) {
+             this.func_226567_ej_();
+             return true;
+          }
 @@ -1529,12 +1750,24 @@
     }
  
@@ -1018,19 +1027,20 @@
     }
  
     public abstract boolean func_175149_v();
-@@ -1789,7 +2038,10 @@
+@@ -1789,7 +2038,11 @@
     }
  
     public ITextComponent func_145748_c_() {
 -      ITextComponent itextcomponent = ScorePlayerTeam.func_200541_a(this.func_96124_cp(), this.func_200200_C_());
++      if (this.displayname == null) this.displayname = net.minecraftforge.event.ForgeEventFactory.getPlayerDisplayName(this, this.func_200200_C_());
 +      ITextComponent itextcomponent = new StringTextComponent("");
 +      prefixes.forEach(e -> itextcomponent.func_150257_a(e));
-+      itextcomponent.func_150257_a(ScorePlayerTeam.func_200541_a(this.func_96124_cp(), this.func_200200_C_()));
++      itextcomponent.func_150257_a(ScorePlayerTeam.func_200541_a(this.func_96124_cp(), this.displayname));
 +      suffixes.forEach(e -> itextcomponent.func_150257_a(e));
        return this.func_208016_c(itextcomponent);
     }
  
-@@ -1922,7 +2174,7 @@
+@@ -1922,7 +2175,7 @@
        return this.field_70180_af.func_187225_a(field_192032_bt);
     }
  
@@ -1039,7 +1049,7 @@
        this.field_70180_af.func_187227_b(field_192032_bt, p_192029_1_);
     }
  
-@@ -1930,7 +2182,7 @@
+@@ -1930,7 +2183,7 @@
        return this.field_70180_af.func_187225_a(field_192033_bu);
     }
  
@@ -1048,7 +1058,7 @@
        this.field_70180_af.func_187227_b(field_192033_bu, p_192031_1_);
     }
  
-@@ -2029,4 +2281,45 @@
+@@ -2029,4 +2282,53 @@
           return this.field_221260_g;
        }
     }
@@ -1068,6 +1078,14 @@
 +
 +   public Collection<ITextComponent> getSuffixes() {
 +       return this.suffixes;
++   }
++
++   private ITextComponent displayname = null;
++   /**
++    * Force the displayed name to refresh, by firing {@link net.minecraftforge.event.entity.player.PlayerEvent.NameFormat}, using the real player name as event parameter.
++    */
++   public void refreshDisplayName() {
++      this.displayname = net.minecraftforge.event.ForgeEventFactory.getPlayerDisplayName(this, this.func_200200_C_());
 +   }
 +
 +   private final net.minecraftforge.common.util.LazyOptional<net.minecraftforge.items.IItemHandler>
@@ -1093,5 +1111,4 @@
 +      }
 +      return super.getCapability(capability, facing);
 +   }
-\ No newline at end of file
  }
