@@ -73,7 +73,7 @@
 -            d6 = 1.0D;
 -         }
 +         // CraftBukkit start code moved in to calculateBoundingBox
-+         calculateBoundingBox(this, this.field_174861_a, this.field_174860_b, this.func_82329_d(), this.func_82330_g());
++         this.func_174826_a(calculateBoundingBox(this, this.field_174861_a, this.field_174860_b, this.func_82329_d(), this.func_82330_g()));
 +         // CraftBukkit ebd
 +      }
 +   }
