@@ -21,7 +21,12 @@ public class ReloadCommand extends BukkitCommand {
     @Override
     public boolean execute(@NotNull CommandSender sender, @NotNull String currentAlias, @NotNull String[] args) {
         if (!testPermission(sender)) return true;
-
+        // TODO: Add check for server mod size
+        if (!(args.length >= 1 && args[0].equalsIgnoreCase("confirm"))) {
+        	Command.broadcastCommandMessage(sender, ChatColor.RED + "The /reload command is not supported if mods are installed.");
+        	Command.broadcastCommandMessage(sender, ChatColor.RED + "Please use '/reload confirm' if you want to force reload the server.");
+        	return true;
+        }
         Command.broadcastCommandMessage(sender, ChatColor.RED + "Please note that this command is not supported and may cause issues when using some plugins.");
         Command.broadcastCommandMessage(sender, ChatColor.RED + "If you encounter any issues please use the /stop command to restart your server.");
         Bukkit.reload();
